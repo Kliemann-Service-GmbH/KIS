@@ -113,6 +113,8 @@ de:
   mobile_number: Mobilnummer
   montage_date: Montage Datum
   name: Name
+  name_or_chemical_formula: Name or chemical formula
+  need to be entered: Need to be entered
   new_central_device_service_protocol: Neues Prüfprotokoll erstellen
   new_service_object_central_device: Neues Gerät erfassen
   next_exchange:
@@ -128,7 +130,15 @@ de:
     formats:
       default: Sensor Nummer
       short: "#"
-  sensor_type: Sensor Typ
+  sensor_type: Sensorart
+  sensor_types:
+    edit:
+      Edit: Sensorart bearbeiten
+    index:
+      New: Neue Sensorart erstellen
+    new:
+      New: Sensorart speichern
+  sensor_types_title: Sensorarten
   serial_number: Seriennummer
   service_contract_auto_resume_interval: Wartungsvertrag wird automatisch verlängert um
   service_contract_begin: Beginn Wartungsvertrag
@@ -165,6 +175,14 @@ de:
     formats:
       default: SI Einheit
       short: SI
+  si_units:
+    edit:
+      Edit: SI Einheit bearbeiten
+    index:
+      New: Neue SI Einheit erfassen
+    new:
+      New: SI Einheit speichern
+  si_units_title: SI Einheiten
   street: Straße
   telephone_number: Telefonnummer
   title: Titel

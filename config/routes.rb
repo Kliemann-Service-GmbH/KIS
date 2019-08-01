@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   resources :gas_types
   resources :sensor_types
+  resources :si_units
 
   resources :service_objects do
     resources :central_devices

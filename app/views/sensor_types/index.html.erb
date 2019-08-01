@@ -1,0 +1,28 @@
+<h1 class="title"><%= t(:sensor_types_title) %></h1>
+
+<table class="table is-fullwidth is-bordered is-hoverable">
+  <thead>
+    <tr>
+      <th><%= t(:name) %></th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+  <tfoot>
+    <tr>
+      <th><%= t(:name) %></th>
+      <th colspan="2"></th>
+    </tr>
+  </tfoot>
+  <tbody>
+    <% @sensor_types.each do |sensor_type| %>
+      <%= render partial: "sensor_type", locals: { sensor_type: sensor_type } %>
+    <% end %>
+  </tbody>
+</table>
+
+
+
+
+<div style="padding-top: 1em;">
+  <%= link_to t('.New'), new_sensor_type_path %>
+</div>
