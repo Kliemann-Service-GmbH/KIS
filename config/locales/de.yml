@@ -113,8 +113,8 @@ de:
   mobile_number: Mobilnummer
   montage_date: Montage Datum
   name: Name
-  name_or_chemical_formula: Name or chemical formula
-  need to be entered: Need to be entered
+  name_or_chemical_formula: Name oder Chemische Formel
+  need to be entered: müssen eingegeben werden
   new_central_device_service_protocol: Neues Prüfprotokoll erstellen
   new_service_object_central_device: Neues Gerät erfassen
   next_exchange:
