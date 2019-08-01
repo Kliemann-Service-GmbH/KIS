@@ -1,0 +1,95 @@
+<%= form_with(model: service_protocol, local: true) do |form| %>
+  <% if service_protocol.errors.any? %>
+    <div id="error_explanation" class="notification is-danger">
+      <h2><%= pluralize(service_protocol.errors.count, "error") %> prohibited this service_protocol from being saved:</h2>
+
+      <ul>
+      <% service_protocol.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="container">
+    <h2 class="subtitle"><%= t :customer %></h2>
+    <%= render partial: "addresses/attributes", locals: { address: @central_device.service_object.customer.address } %>
+  </div>
+
+  <hr>
+
+  <div class="container">
+    <h2 class="subtitle"><%= t :service_object %></h2>
+    <%= render partial: "addresses/attributes", locals: { address: @central_device.service_object.address } %>
+  </div>
+
+  <hr>
+
+  <div class="columns">
+    <div class="column">
+      <%= form.label :is_function_check, class: "has-text-weight-bold" %>
+    </div>
+    <div class="column">
+      <%= form.check_box :is_function_check %>
+    </div>
+    <div class="column">
+      <%= form.label :is_montage, class: "has-text-weight-bold" %>
+    </div>
+    <div class="column">
+      <%= form.check_box :is_montage %>
+    </div>
+    <div class="column">
+      <%= form.label :is_systemcheck, class: "has-text-weight-bold" %>
+    </div>
+    <div class="column">
+      <%= form.check_box :is_systemcheck %>
+    </div>
+    <div class="column">
+      <%= form.label :is_repair, class: "has-text-weight-bold" %>
+    </div>
+    <div class="column">
+      <%= form.check_box :is_repair %>
+    </div>
+  </div>
+
+  <div class="columns">
+    <div class="column">
+      <%= form.label :is_commisioning, class: "has-text-weight-bold" %>
+    </div>
+    <div class="column">
+      <%= form.check_box :is_commisioning %>
+    </div>
+    <div class="column">
+      <%= form.label :is_systemcheck, class: "has-text-weight-bold" %>
+    </div>
+    <div class="column">
+      <%= form.check_box :is_systemcheck %>
+    </div>
+    <div class="column">
+      <%= form.label :is_service_contract, class: "has-text-weight-bold" %>
+    </div>
+    <div class="column">
+      <%= form.check_box :is_service_contract %>
+    </div>
+    <div class="column">
+      <%= form.label :is_expenditure, class: "has-text-weight-bold" %>
+    </div>
+    <div class="column">
+      <%= form.check_box :is_expenditure %>
+    </div>
+  </div>
+
+  <hr>
+
+  <div class="container">
+    <h2 class="subtitle"><%= t :central_device %></h2>
+    <%= render partial: "central_devices/attributes", locals: { central_device: @central_device } %>
+    <%= form.hidden_field :central_device_id, value: @central_device.id %>
+  </div>
+
+  <hr>
+
+  <div class="actions">
+    <%= form.submit nil, class: 'button is-primary' %>
+  </div>
+<% end %>

@@ -1,0 +1,110 @@
+
+<h1 class="title"><%= @central_device.device_type %></h1>
+
+<hr>
+
+<h2 class="subtitle"><%= t('.customer') %></h2>
+<% unless @customer.blank? %>
+<div class="">
+  <%=  @customer.first.address.address_line %>
+</div>
+<%= render partial: "addresses/post_address", locals: {address: @customer.first.address} %>
+<% end %>
+
+<hr>
+
+<h2 class="subtitle"><%= t('.service_object') %></h2>
+<% unless @service_object.blank? %>
+<div class="">
+  <%= @service_object.first.service_object_address_details %>
+</div>
+<%= render partial: "addresses/post_address", locals: {address: @service_object.first.address} %>
+<% end %>
+
+<hr>
+
+<div class="columns">
+  <div class="column">
+    <%= t('.serial_number') %>
+  </div>
+  <div class="column">
+    <%= @central_device.serial_number %>
+  </div>
+</div>
+
+<div class="columns">
+  <div class="column">
+    <%= t('.device_number') %>
+  </div>
+  <div class="column">
+    <%= @central_device.device_number %>
+  </div>
+</div>
+
+<div class="columns">
+  <div class="column">
+    <%= t('.location') %>
+  </div>
+  <div class="column">
+    <%= @central_device.location %>
+  </div>
+</div>
+
+<hr>
+
+<h2 class="subtitle"><%= t('.alarm_outputs') %></h2>
+
+<hr>
+
+
+<table class="table is-narrow is-bordered is-striped is-hoverable">
+  <thead>
+    <tr>
+      <th><abbr title="<%= t 'sensor_number.formats.default' %>"><%= t 'sensor_number.formats.short' %></abbr></th>
+      <th><%= t :sensor_type %></th>
+      <th><%= t :gas_type %></th>
+      <th><abbr title="<%= t 'zero_point.formats.default' %>"><%= t 'zero_point.formats.short' %></abbr></th>
+      <th><abbr title="<%= t 'min_value.formats.default' %>"><%= t 'min_value.formats.short' %></abbr></th>
+      <th><abbr title="<%= t 'max_value.formats.default' %>"><%= t 'max_value.formats.short' %></abbr></th>
+      <th><abbr title="<%= t 'application_date.formats.default' %>"><%= t 'application_date.formats.short' %></abbr></th>
+      <th><abbr title="<%= t 'livetime.formats.default' %>"><%= t 'livetime.formats.short' %></abbr></th>
+      <th><abbr title="<%= t 'a1.formats.default' %>"><%= t 'a1.formats.short' %></abbr></th>
+      <th><abbr title="<%= t 'a2.formats.default' %>"><%= t 'a2.formats.short' %></abbr></th>
+      <th><abbr title="<%= t 'a3.formats.default' %>"><%= t 'a3.formats.short' %></abbr></th>
+      <th><abbr title="<%= t 'a4.formats.default' %>"><%= t 'a4.formats.short' %></abbr></th>
+      <th><abbr title="<%= t 'si_unit.formats.default' %>"><%= t 'si_unit.formats.short' %></abbr></th>
+      <th><%= t :location %></th>
+    </tr>
+  </thead>
+  <tfoot>
+    <tr>
+      <th><abbr title="<%= t 'sensor_number.formats.default' %>"><%= t 'sensor_number.formats.short' %></abbr></th>
+      <th><%= t :sensor_type %></th>
+      <th><%= t :gas_type %></th>
+      <th><abbr title="<%= t 'zero_point.formats.default' %>"><%= t 'zero_point.formats.short' %></abbr></th>
+      <th><abbr title="<%= t 'min_value.formats.default' %>"><%= t 'min_value.formats.short' %></abbr></th>
+      <th><abbr title="<%= t 'max_value.formats.default' %>"><%= t 'max_value.formats.short' %></abbr></th>
+      <th><abbr title="<%= t 'application_date.formats.default' %>"><%= t 'application_date.formats.short' %></abbr></th>
+      <th><abbr title="<%= t 'livetime.formats.default' %>"><%= t 'livetime.formats.short' %></abbr></th>
+      <th><abbr title="<%= t 'a1.formats.default' %>"><%= t 'a1.formats.short' %></abbr></th>
+      <th><abbr title="<%= t 'a2.formats.default' %>"><%= t 'a2.formats.short' %></abbr></th>
+      <th><abbr title="<%= t 'a3.formats.default' %>"><%= t 'a3.formats.short' %></abbr></th>
+      <th><abbr title="<%= t 'a4.formats.default' %>"><%= t 'a4.formats.short' %></abbr></th>
+      <th><abbr title="<%= t 'si_unit.formats.default' %>"><%= t 'si_unit.formats.short' %></abbr></th>
+      <th><%= t :location %></th>
+    </tr>
+  </tfoot>
+  <tbody>
+  <% for sensor in @sensors do %>
+    <%= render "sensors/sensor", sensor: sensor %>
+  <% end %>
+  </tbody>
+</table>
+
+<%= link_to t(:new_central_device_service_protocol), new_central_device_service_protocol_path(@central_device) %>
+
+
+<div style="padding-top: 1em;">
+  <%= link_to t('Edit'), edit_central_device_path(@central_device) %> |
+  <%= link_to t('Back'), central_devices_path %>
+</div>

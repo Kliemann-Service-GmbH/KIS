@@ -1,0 +1,26 @@
+<div class="field is-grouped ">
+  <span class="control label has-text-weight-bold"><%= t :device_number %>:</span>
+  <span><%= central_device.device_number %></span>
+</div>
+
+<div class="field is-grouped ">
+  <span class="control label has-text-weight-bold"><%= t :serial_number %>:</span>
+  <span><%= central_device.serial_number %></span>
+</div>
+
+<div class="field is-grouped ">
+  <span class="control label has-text-weight-bold"><%= t :device_type %>:</span>
+  <span><%= central_device.device_type %></span>
+</div>
+
+<div class="field is-grouped ">
+  <span class="control label has-text-weight-bold"><%= t :location %>:</span>
+  <span><%= central_device.location %></span>
+</div>
+
+<div class="has-text-weight-light field is-grouped is-expanded">
+  <p class="control label"><%= t :created_at %>:&nbsp;</p>
+  <p class="control"><%= central_device.created_at %></p>
+  <p class="control label"><%= t :updated_at %>:&nbsp;</p>
+  <p class="control"><%= central_device.updated_at %></p>
+</div>

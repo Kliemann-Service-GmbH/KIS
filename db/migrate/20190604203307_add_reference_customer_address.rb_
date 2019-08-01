@@ -1,0 +1,6 @@
+class AddReferenceCustomerAddress < ActiveRecord::Migration[5.2]
+  def change
+    add_foreign_key :customer_addresses, :addresses
+    add_foreign_key :customer_addresses, :customers
+  end
+end

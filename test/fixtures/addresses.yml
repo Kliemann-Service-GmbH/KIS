@@ -1,0 +1,49 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+baroness: &minimal
+  address_details:
+    :address_number: 1
+    :last_name: Baroness
+
+incomplete: &realistic
+  <<: *minimal
+  address_details:
+    :address_number: 2
+    :last_name: Minimal
+
+complete: &full
+  <<: *realistic
+  address_details:
+    :address_number: 1457
+    :match_code: "AVL Deutschland GmbH"
+    :city: "Mainz-Kastel"
+    :zip: 55252
+
+customer_address:
+  <<: *realistic
+  address_details:
+    :address_number: 1457
+    :match_code: "AVL Deutschland GmbH"
+    :city: "Mainz-Kastel"
+    :zip: 55252
+
+object_address:
+  <<: *realistic
+  address_details:
+    :address_number: 1458
+    :match_code: "AVL-Hauptgebäude Anlage 1"
+    :city: "Bietigheim-Bissingen"
+    :zip: 74321
+    :street: "Carl-Zeiss-Strasse"
+    :street_number: 26
+
+contact_address:
+  <<: *realistic
+  address_details:
+    :address_number: "01815-1"
+    :prefix: Herr
+    :first_name: Max
+    :last_name: Mustermann
+    :mobile_number: 0160 1234567890
+    :telephone_number: +49 711 1234567890
+    :email_address: max.mustermann@musterdomain.tld

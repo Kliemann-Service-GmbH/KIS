@@ -1,0 +1,27 @@
+<div class="columns">
+  <div class="column">
+    <div class="columns is-mobile">
+      <div class="column is-narrow" style="transform: rotate(-90deg);"><!-- Model Name -->
+        <%= t(:customer) %>
+      </div>
+      <div class="column is-narrow"><!-- Symbol -->
+        <span class="icon is-size-1">
+          <i class="fas fa-users" style="margin-top: 1em"></i>
+        </span>
+      </div><!-- END Symbol -->
+
+      <div class="column"><!-- Attributes -->
+        <%= render partial: "customers/attributes", locals: { customer: customer } %>
+      </div><!-- END Attributes -->
+    </div>
+  </div>
+</div>
+
+
+<div class="columns">
+  <div class="column">
+    <%= link_to t('Show'), customer, class: 'button' %>
+  </div>
+</div>
+
+<hr>

@@ -1,0 +1,8 @@
+<h1 class="title"><%= t '.Edit' %></h1>
+
+<%= render 'form', central_device: @central_device %>
+
+<div style="padding-top: 1em;">
+<%= link_to t('Show'), @central_device %> |
+<%= link_to t('Back'), central_devices_path %>
+</div>

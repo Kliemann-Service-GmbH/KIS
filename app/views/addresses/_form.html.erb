@@ -1,0 +1,165 @@
+<%= form_with(model: address, local: true) do |form| %>
+  <% if address.errors.any? %>
+    <div id="error_explanation" class="notification is-danger">
+      <h2><%= pluralize(address.errors.count, "error") %> prohibited this address from being saved:</h2>
+
+      <ul>
+      <% address.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= form.fields_for :address_details, OpenStruct.new(form.object.address_details) do |d| %>
+  <div class="field is-horizontal">
+    <div class="field-label is-normal">
+      <%= d.label :match_code, class: 'label' %>
+    </div>
+    <div class="field-body">
+      <div class="field">
+        <p class="control">
+          <%= d.text_field :match_code, class: 'input is-danger' %>
+        </p>
+        <p class="help is-danger"><%= t :field_required %></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="field is-horizontal">
+    <div class="field-label is-normal">
+      <%= d.label :prefix, class: 'label' %>
+    </div>
+    <div class="field-body">
+      <div class="field">
+        <p class="control">
+          <%= d.text_field :prefix, class: 'input' %>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="field is-horizontal">
+    <div class="field-label is-normal">
+      <%= d.label :first_name, class: 'label' %>
+    </div>
+    <div class="field-body">
+      <div class="field">
+        <p class="control">
+          <%= d.text_field :first_name, class: 'input' %>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="field is-horizontal">
+    <div class="field-label is-normal">
+      <%= d.label :last_name, class: 'label' %>
+    </div>
+    <div class="field-body">
+      <div class="field">
+        <p class="control">
+          <%= d.text_field :last_name, class: 'input' %>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="field is-horizontal">
+    <div class="field-label is-normal">
+      <%= d.label :street, class: 'label' %>
+    </div>
+    <div class="field-body">
+      <div class="field">
+        <p class="control">
+          <%= d.text_field :street, class: 'input' %>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="field is-horizontal">
+    <div class="field-label is-normal">
+      <%= d.label :street_number, class: 'label' %>
+    </div>
+    <div class="field-body">
+      <div class="field">
+        <p class="control">
+          <%= d.text_field :street_number, class: 'input' %>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="field is-horizontal">
+    <div class="field-label is-normal">
+      <%= d.label :zip, class: 'label' %>
+    </div>
+    <div class="field-body">
+      <div class="field">
+        <p class="control">
+          <%= d.text_field :zip, class: 'input' %>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="field is-horizontal">
+    <div class="field-label is-normal">
+      <%= d.label :city, class: 'label' %>
+    </div>
+    <div class="field-body">
+      <div class="field">
+        <p class="control">
+          <%= d.text_field :city, class: 'input' %>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="field is-horizontal">
+    <div class="field-label is-normal">
+      <%= d.label :telephone_number, class: 'label' %>
+    </div>
+    <div class="field-body">
+      <div class="field">
+        <p class="control">
+          <%= d.text_field :telephone_number, class: 'input' %>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="field is-horizontal">
+    <div class="field-label is-normal">
+      <%= d.label :mobile_number, class: 'label' %>
+    </div>
+    <div class="field-body">
+      <div class="field">
+        <p class="control">
+          <%= d.text_field :mobile_number, class: 'input' %>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="field is-horizontal">
+    <div class="field-label is-normal">
+      <%= d.label :email_address, class: 'label' %>
+    </div>
+    <div class="field-body">
+      <div class="field">
+        <p class="control">
+          <%= d.text_field :email_address, class: 'input' %>
+        </p>
+      </div>
+    </div>
+  </div>
+  <% end %>
+
+  <div class="columns">
+    <div class="column">
+      <%= form.submit nil, class: 'button is-primary' %>
+    </div>
+  </div>
+<% end %>

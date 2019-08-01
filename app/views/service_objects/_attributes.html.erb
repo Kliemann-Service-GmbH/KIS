@@ -1,0 +1,11 @@
+<p>
+  <span class="has-text-weight-bold">#</span>
+  <span class="has-text-weight-bold"><%= service_object.object_number %></span>
+  <% if service_object.has_service_contract %>
+  <span class="button is-size-7 is-warning">Wartungsvertrag</span>
+  <% end %>
+  <!-- Address, only if present -->
+  <% unless service_object.address.blank? %>
+  <%= render partial: "addresses/attributes", locals: { address: service_object.address } %>
+  <% end %>
+</p>

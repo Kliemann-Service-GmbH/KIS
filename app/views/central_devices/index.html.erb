@@ -1,0 +1,27 @@
+
+
+<h1 class="title"><%= t :central_devices_title %></h1>
+
+<div class="columns is-centered">
+  <%= form_tag(central_devices_path, method: :get) do %>
+  <div class="field has-addons">
+    <div class="control">
+      <!-- TODO: fix placeholder messages in de.yml -->
+      <%= text_field_tag :q, params[:q], { class: 'input', placeholder: t('.placeholder') } %>
+    </div>
+    <div class="control">
+      <%= submit_tag t('Search'), name:nil, class: 'button is-info' %>
+    </div>
+  </div>
+  <% end %>
+</div>
+
+
+<% @central_devices.each do |central_device| %>
+  <%= render partial: "central_device", locals: { central_device: central_device } %>
+<% end %>
+
+
+<div style="padding-top: 1em;">
+<%= link_to t('.New'), new_central_device_path %>
+</div>

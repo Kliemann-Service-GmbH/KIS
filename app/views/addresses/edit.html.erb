@@ -1,0 +1,8 @@
+<h1 class="title"><%= t '.Edit' %></h1>
+
+<%= render 'form', address: @address %>
+
+<div style="padding-top: 1em">
+<%= link_to t('Show'), @address %> |
+<%= link_to t('Back'), addresses_path %>
+</div>

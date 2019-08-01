@@ -1,0 +1,28 @@
+<div class="columns">
+  <div class="column">
+    <div class="columns is-mobile">
+      <div class="column is-narrow" style="transform: rotate(-90deg);"><!-- Model Name -->
+        <%= t(:service_object) %>
+      </div>
+      <div class="column is-narrow"><!-- Symbol -->
+        <span class="icon is-size-1">
+          <i class="far fa-building" style="margin-top: 1em"></i>
+        </span>
+      </div><!-- END Symbol -->
+
+      <div class="column"><!-- Attributes -->
+        <%= render partial: "service_objects/attributes", locals: { service_object: service_object }  %>
+      </div><!-- END Attributes -->
+    </div>
+  </div>
+</div>
+
+<div class="columns">
+  <div class="column">
+    <%= link_to t('Show'), service_object, class: 'button' %>
+    <%= link_to t('Edit'), edit_service_object_path(service_object), class: 'button' %>
+    <%= link_to t('Destroy'), service_object, method: :delete, data: { confirm: 'Are you sure?' }, class: 'button is-danger' %>
+  </div>
+</div>
+
+<hr>

@@ -1,0 +1,28 @@
+<div class="columns">
+  <div class="column">
+    <div class="columns is-mobile">
+      <div class="column is-narrow" style="transform: rotate(-90deg);"><!-- Model Name -->
+        <%= t(:service_protocol) %>
+      </div>
+      <div class="column is-narrow"><!-- Symbol -->
+        <span class="icon is-size-1">
+          <i class="far fa-file" style="margin-top: 1em"></i>
+        </span>
+      </div><!-- END Symbol -->
+
+      <div class="column"><!-- Attributes -->
+        <%= render partial: "service_protocols/attributes", locals: { service_protocol: service_protocol } %>
+      </div><!-- END Attributes -->
+    </div>
+  </div>
+</div>
+
+<div class="columns">
+  <div class="column">
+    <%= link_to t('Show'), service_protocol, class: 'button' %>
+    <%= link_to t('Edit'), edit_central_device_service_protocol_path(service_protocol.central_device, service_protocol), class: 'button' %>
+    <%= link_to t('Destroy'), service_protocol, method: :delete, data: { confirm: 'Are you sure?' }, class: 'button is-danger' %>
+  </div>
+</div>
+
+<hr>
