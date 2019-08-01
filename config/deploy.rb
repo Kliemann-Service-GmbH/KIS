@@ -1,5 +1,10 @@
 set :user,            "kis"
 set :repo_url,        "git@github.com:Kliemann-Service-GmbH/KIS.git"
+
+# Fix: 'no tty present and no askpass program specified'
+set :pty, true
+
+
 set :application,     "kis"
 set :puma_threads,    [4, 16]
 set :puma_workers,    0
@@ -28,9 +33,8 @@ set :branch,          "master"
 namespace :deploy do
   before :check, 'deploy:check_create_shared'
 
-  desc 'Check and create shared/config'
   task :check_create_shared do
-    on roles(:all) do
+    on roles(:app), in: :sequence, wait: 5 do
       execute :mkdir, '-p', "#{shared_path}/config"
     end
   end
