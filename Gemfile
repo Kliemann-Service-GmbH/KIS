@@ -64,6 +64,12 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 end
 
+# SQL Server support
+# https://github.com/rails-sqlserver/activerecord-sqlserver-adapter
+gem 'tiny_tds'
+gem 'activerecord-sqlserver-adapter'
+
+
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
   gem 'web-console', '>= 3.3.0'
@@ -82,15 +88,12 @@ group :development do
   gem 'bcrypt_pbkdf', '>= 1.0', '< 2.0'
   gem "capistrano-rails", "~> 1.3", require: false
   gem 'capistrano-bundler', '~> 1.5'
+  # https://github.com/capistrano/rvm
   gem 'capistrano-rvm'
   gem 'capistrano-postgresql', '~> 6.2'
+  gem 'capistrano-yarn'
   gem 'capistrano3-puma',   require: false
   gem 'capistrano-linked-files'
-
-  # SQL Server support
-  # https://github.com/rails-sqlserver/activerecord-sqlserver-adapter
-  gem 'tiny_tds'
-  gem 'activerecord-sqlserver-adapter'
 
   # https://github.com/james2m/seedbank
   gem "seedbank"
