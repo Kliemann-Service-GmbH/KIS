@@ -1,0 +1,29 @@
+<div class="columns">
+  <div class="column">
+    <div class="columns is-mobile">
+      <div class="column is-narrow" style="transform: rotate(-90deg);"><!-- Model Name -->
+        <%= t(:central_device) %>
+      </div>
+      <div class="column is-narrow"><!-- Symbol -->
+        <span class="icon is-size-1">
+          <i class="far fa-address-book" style="margin-top: 1em"></i>
+        </span>
+      </div><!-- END Symbol -->
+
+      <div class="column"><!-- Attributes -->
+        <b><%= render partial: "central_devices/attributes", locals: { central_device: central_device } %></b>
+      </div><!-- END Attributes -->
+    </div>
+  </div>
+</div>
+
+
+<div class="columns">
+  <div class="column">
+    <%= link_to t('Show'), central_device, class: 'button' %>
+    <%= link_to t('Edit'), edit_central_device_path(central_device), class: 'button' %>
+    <%= link_to t('Destroy'), central_device, method: :delete, data: { confirm: 'Are you sure?' }, class: 'button is-danger' %>
+  </div>
+</div>
+
+<hr>

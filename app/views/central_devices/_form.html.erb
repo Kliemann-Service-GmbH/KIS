@@ -1,0 +1,152 @@
+<%= form_with(model: central_device, local: true) do |form| %>
+  <% if central_device.errors.any? %>
+    <div id="error_explanation" class="notification is-danger">
+      <h2><%= pluralize(central_device.errors.count, "error") %> prohibited this central_device from being saved:</h2>
+
+      <ul>
+      <% central_device.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field is-horizontal">
+    <div class="field-label is-normal">
+      <%= form.label t(:service_object), class: 'label', id: :service_object %>
+    </div>
+    <div class="field-body">
+      <div class="field">
+        <p class="control">
+          <%= form.select :service_object_id, ServiceObject.all.collect { |so| [so.service_object_address_details, so.id]}, { include_blank: 'None' } %>
+        </p>
+        <p class="help is-danger"><%= t :field_required %></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="field is-horizontal">
+    <div class="field-label is-normal">
+      <%= form.label t(:device_number), class: 'label' %>
+    </div>
+    <div class="field-body">
+      <div class="field">
+        <p class="control">
+          <%= form.text_field :device_number, class: 'input' %>
+        </p>
+        <p class="help"></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="field is-horizontal">
+    <div class="field-label is-normal">
+      <%= form.label t(:serial_number), class: 'label' %>
+    </div>
+    <div class="field-body">
+      <div class="field">
+        <p class="control">
+          <%= form.text_field :serial_number, class: 'input' %>
+        </p>
+        <p class=""></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="field is-horizontal">
+    <div class="field-label is-normal">
+      <%= form.label t(:device_type), class: 'label' %>
+    </div>
+    <div class="field-body">
+      <div class="field">
+        <p class="control">
+          <%= form.text_field :device_type, class: 'input' %>
+        </p>
+        <p class="help"></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="field is-horizontal">
+    <div class="field-label is-normal">
+      <%= form.label t(:location), class: 'label' %>
+    </div>
+    <div class="field-body">
+      <div class="field">
+        <p class="control">
+          <%= form.text_field :location, class: 'input' %>
+        </p>
+        <p class="help"></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="field is-horizontal">
+    <div class="field-label is-normal">
+      <%= form.label t(:montage_date), class: 'label', id: :montage_date %>
+    </div>
+    <div class="field-body">
+      <div class="field">
+        <p class="control">
+          <%= form.date_field :montage_date %>
+        </p>
+        <p class="help"></p>
+      </div>
+    </div>
+  </div>
+
+  <table class="table has-td-padding-0 is-bordered is-striped is-hoverable">
+    <thead>
+      <tr>
+        <th><abbr title="<%= t 'sensor_number.formats.default' %>"><%= t 'sensor_number.formats.short' %></abbr></th>
+        <th><%= t :sensor_type %></th>
+        <th><%= t :gas_type %></th>
+        <th><abbr title="<%= t 'zero_point.formats.default' %>"><%= t 'zero_point.formats.short' %></abbr></th>
+        <th><abbr title="<%= t 'min_value.formats.default' %>"><%= t 'min_value.formats.short' %></abbr></th>
+        <th><abbr title="<%= t 'max_value.formats.default' %>"><%= t 'max_value.formats.short' %></abbr></th>
+        <th><abbr title="<%= t 'application_date.formats.default' %>"><%= t 'application_date.formats.short' %></abbr></th>
+        <th><abbr title="<%= t 'livetime.formats.default' %>"><%= t 'livetime.formats.short' %></abbr></th>
+        <th><abbr title="<%= t 'a1.formats.default' %>"><%= t 'a1.formats.short' %></abbr></th>
+        <th><abbr title="<%= t 'a2.formats.default' %>"><%= t 'a2.formats.short' %></abbr></th>
+        <th><abbr title="<%= t 'a3.formats.default' %>"><%= t 'a3.formats.short' %></abbr></th>
+        <th><abbr title="<%= t 'a4.formats.default' %>"><%= t 'a4.formats.short' %></abbr></th>
+        <th><abbr title="<%= t 'si_unit.formats.default' %>"><%= t 'si_unit.formats.short' %></abbr></th>
+        <th><%= t :location %></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tfoot>
+      <tr>
+        <th><abbr title="<%= t 'sensor_number.formats.default' %>"><%= t 'sensor_number.formats.short' %></abbr></th>
+        <th><%= t :sensor_type %></th>
+        <th><%= t :gas_type %></th>
+        <th><abbr title="<%= t 'zero_point.formats.default' %>"><%= t 'zero_point.formats.short' %></abbr></th>
+        <th><abbr title="<%= t 'min_value.formats.default' %>"><%= t 'min_value.formats.short' %></abbr></th>
+        <th><abbr title="<%= t 'max_value.formats.default' %>"><%= t 'max_value.formats.short' %></abbr></th>
+        <th><abbr title="<%= t 'application_date.formats.default' %>"><%= t 'application_date.formats.short' %></abbr></th>
+        <th><abbr title="<%= t 'livetime.formats.default' %>"><%= t 'livetime.formats.short' %></abbr></th>
+        <th><abbr title="<%= t 'a1.formats.default' %>"><%= t 'a1.formats.short' %></abbr></th>
+        <th><abbr title="<%= t 'a2.formats.default' %>"><%= t 'a2.formats.short' %></abbr></th>
+        <th><abbr title="<%= t 'a3.formats.default' %>"><%= t 'a3.formats.short' %></abbr></th>
+        <th><abbr title="<%= t 'a4.formats.default' %>"><%= t 'a4.formats.short' %></abbr></th>
+        <th><abbr title="<%= t 'si_unit.formats.default' %>"><%= t 'si_unit.formats.short' %></abbr></th>
+        <th><%= t :location %></th>
+        <th></th>
+      </tr>
+    </tfoot>
+    <tbody class="fields">
+    <%= form.fields_for :sensors, @central_device.sensors.sort_by(&:number) do |builder| %>
+      <%= render "sensors/form_sensor", form: builder %>
+    <% end %>
+
+
+
+    </tbody>
+  </table>
+
+
+  <div class="actions">
+    <%= form.submit nil, class: 'button is-primary' %>
+    <%= link_to_add_row(t('New Sensor'), form, :sensors, class: 'button remove_record') %>
+  </div>
+<% end %>

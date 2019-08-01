@@ -1,0 +1,12 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+baroness: &minimal
+  name: String
+
+incomplete: &realistic
+  <<: *minimal
+  name: AnotherString
+
+complete: &full
+  <<: *realistic
+  name: "NAP 55"

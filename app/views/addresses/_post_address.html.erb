@@ -1,0 +1,11 @@
+<!--
+Used in:
+* _address.html.erb
+-->
+
+<div class="columns">
+  <div class="column">
+    <p class=""><%= address.try(:street) %></p>
+    <p class=""><%= address.try(:zip_city) %></p>
+  </div>
+</div>

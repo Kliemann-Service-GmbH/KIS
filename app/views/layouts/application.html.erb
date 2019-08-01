@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>KIS - KLS Info System</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= favicon_link_tag asset_path('favicon.ico') %>
+  </head>
+
+  <body>
+    <%= render 'layouts/navbar' %>
+
+    <%= render partial: "partials/notice_messages", flash: flash %>
+
+    <section class="section">
+      <div class="container">
+      <%= yield %>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class=" has-text-centered">
+        <p>
+          <strong>KIS - KLS Info System</strong>
+        </p>
+        <p><%= version_number %></p>
+      </div>
+    </footer>
+
+  </body>
+</html>

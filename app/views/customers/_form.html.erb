@@ -1,0 +1,33 @@
+<%= form_with(model: customer, local: true) do |form| %>
+  <% if customer.errors.any? %>
+    <div id="error_explanation" class="notification is-danger">
+      <h2><%= pluralize(customer.errors.count, "error") %> prohibited this customer from being saved:</h2>
+
+      <ul>
+      <% customer.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field is-horizontal">
+    <div class="field-label is-normal">
+      <%= form.label t(:address), class: 'label', id: :address %>
+    </div>
+    <div class="field-body">
+      <div class="field">
+        <p class="control">
+          <%= form.collection_select :address_id, Address.all, :id, :address_line, class: 'input is-danger' %>
+        </p>
+        <p class="help is-danger"><%= t :field_required %></p>
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="actions">
+    <%= form.submit nil, class: 'button is-primary' %>
+  </div>
+<% end %>

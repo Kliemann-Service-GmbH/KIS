@@ -1,0 +1,19 @@
+
+
+<div class="columns is-centered">
+  <%= form_tag(welcome_index_path, method: :get) do %>
+  <div class="field has-addons">
+    <div class="control">
+      <%= text_field_tag :q, params[:q], { class: 'input', placeholder: t('.placeholder') } %>
+    </div>
+    <div class="control">
+      <%= submit_tag t('Search'), name:nil, class: 'button is-info' %>
+    </div>
+  </div>
+  <% end %>
+</div>
+
+
+<% @search_results.each do |result| %>
+<%= render_partial_for result %>
+<% end %>

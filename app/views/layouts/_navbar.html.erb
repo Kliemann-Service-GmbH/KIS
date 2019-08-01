@@ -1,0 +1,25 @@
+
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <%= link_to( image_tag( "logo_kliemann-service-gmbh.svg"), root_path, class: 'navbar-item' ) %>
+
+    <a role="button" class="navbar-burger" data-target="nav-menu" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="nav-menu" class="navbar-menu">
+    <div class="navbar-start">
+      <%= link_to customers_title_with_size, :customers, class: 'navbar-item' %>
+      <%= link_to service_objects_title_with_size, :service_objects, class: 'navbar-item' %>
+      <%= link_to central_devices_title_with_size, :central_devices, class: 'navbar-item' %>
+      <%= link_to addresses_title_with_size, :addresses, class: 'navbar-item' %>
+    </div>
+
+    <div class="navbar-end">
+      <%= link_to service_protocols_title_with_size, :service_protocols, {class: 'button is-warning'} %>
+    </div>
+  </div>
+</nav>

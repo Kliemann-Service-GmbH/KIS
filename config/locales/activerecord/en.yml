@@ -1,0 +1,9 @@
+---
+en:
+  activerecord:
+    models:
+      address: Address
+      central_device: Device
+      customer: Customer
+      service_object: Object
+      service_protocol: Service Protocol

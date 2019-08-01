@@ -1,0 +1,9 @@
+---
+de:
+  activerecord:
+    models:
+      address: Addresse
+      central_device: Gerät
+      customer: Kunde
+      service_object: Object
+      service_protocol: Prüfprotokoll

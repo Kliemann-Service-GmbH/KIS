@@ -1,0 +1,20 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+baroness: &minimal
+  name: String
+
+incomplete: &realistic
+  <<: *minimal
+  name: AnotherString
+
+complete: &full
+  <<: *realistic
+  name: ppm
+
+volumen:
+  <<: *realistic
+  name: "Vol%"
+
+ueg:
+  <<: *realistic
+  name: "% UEG"

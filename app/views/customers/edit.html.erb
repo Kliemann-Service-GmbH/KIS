@@ -1,0 +1,8 @@
+<h1 class="title"><%= t '.Edit' %></h1>
+
+<%= render 'form', customer: @customer %>
+
+<div style="padding-top: 1em">
+<%= link_to t('Show'), @customer %> |
+<%= link_to t('Back'), customers_path %>
+</div>

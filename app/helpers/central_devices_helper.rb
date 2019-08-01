@@ -1,0 +1,2 @@
+module CentralDevicesHelper
+end

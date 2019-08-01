@@ -1,0 +1,167 @@
+---
+de:
+  Back: zurück
+  Destroy: löschen
+  Edit: bearbeiten
+  New Sensor: Neuer Sensor
+  Search: Suche
+  Show: anzeigen
+  a1:
+    formats:
+      default: Alarmpunkt 1
+      short: AP1
+  a2:
+    formats:
+      default: Alarmpunkt 2
+      short: AP2
+  a3:
+    formats:
+      default: Alarmpunkt 3
+      short: AP3
+  a4:
+    formats:
+      default: Alarmpunkt 4
+      short: AP4
+  address: Adresse
+  addresses:
+    edit:
+      Edit: Adresse bearbeiten
+    index:
+      placeholder: Adressdetails Name, Telefonnummer, ...
+    new:
+      New: Neue Adresse
+  addresses_title: Adressen
+  alarm_settings: Alarm Einstellungen
+  application_date:
+    formats:
+      default: Installations Datum
+      short: Inst
+  central_device: Gerät
+  central_devices:
+    edit:
+      Edit: bearbeiten
+    index:
+      New: Neues Gerät
+      placeholder: Gerätenummner, -typ, Standort, ...
+    new:
+      New: Neue Gerät
+    show:
+      alarm_outputs: Alarmausgänge
+      customer: Kunde
+      device_number: Gerätenummer
+      location: Standort
+      serial_number: Seriennummer
+      service_object: Objekt
+  central_devices_title: Geräte
+  checked:
+    formats:
+      default: geprüft
+      short: Ok?
+  contact_person: Kontakt
+  created_at: erstellt
+  customer: Kunde
+  customers:
+    edit:
+      Edit: bearbeiten
+    index:
+      New: Neuer Kunde
+      placeholder: Adressdetails Name, Telefonnummer, ...
+    new:
+      New: Neuer Kunde
+  customers_title: Kunden
+  device_number: Gerätenummer
+  device_type: Geräteart
+  edit_central_device: Gerät bearbeiten
+  email_address: Email Adresse
+  field_required: "(*) benötigt"
+  gas_type: Gasart
+  has_service_contract: Wartungsvertrag?
+  is_commisioning: Kommision
+  is_expenditure: Wartung
+  is_function_check: Funktionsüberprüfung
+  is_montage: Montage
+  is_repair: Reparatur
+  is_service_contract: Wartungsvertrag
+  is_systemcheck: Systemprüfung
+  livetime:
+    formats:
+      default: Normale Lebensdauer
+      short: LD
+  location: Standort
+  max_value:
+    formats:
+      default: Messbereich Maximal
+      short: Max
+  measuring_range:
+    formats:
+      default: Messbereich
+      short: MB
+  min_value:
+    formats:
+      default: Messbereich Minimal
+      short: Min
+  mobile_number: Mobilnummer
+  montage_date: Montage Datum
+  new_central_device_service_protocol: Neues Prüfprotokoll erstellen
+  new_service_object_central_device: Neues Gerät erfassen
+  next_exchange:
+    formats:
+      default: Nächster Wechsel
+      short: NW
+  number: Nummer
+  object: Objekt
+  object_nr: Objekt Nummer
+  object_number: Object number
+  placeholder: Platzhalter
+  sensor_number:
+    formats:
+      default: Sensor Nummer
+      short: "#"
+  sensor_type: Sensor Typ
+  serial_number: Seriennummer
+  service_contract_auto_resume_interval: Wartungsvertrag wird automatisch verlängert um
+  service_contract_begin: Beginn Wartungsvertrag
+  service_contract_length: Länge Wartungsvertrag
+  service_object: Objekt
+  service_objects:
+    edit:
+      Edit: bearbeiten
+    index:
+      New: Neues Objekt erstellen
+      placeholder: Adressdetails, Name, Ort, ...
+    new:
+      New: Neues Objekt
+    show:
+      address: Adresse
+      central_devices: Geräte
+  service_objects_title: Objekte
+  service_protocol: Prüfprotokoll
+  service_protocols:
+    attributes:
+      device_number: Gerätenummer
+      object_address: Objektadresse
+      object_number: Objektnummer
+      serial_number: Seriennummer
+    edit:
+      Edit: bearbeiten
+    index:
+      New: Neu
+      placeholder: Gerätenummer,
+    new:
+      New: Neu
+  service_protocols_title: Prüfprotokolle
+  si_unit:
+    formats:
+      default: SI Einheit
+      short: SI
+  street: Straße
+  telephone_number: Telefonnummer
+  title: Titel
+  updated_at: aktualisiert
+  welcome:
+    index:
+      placeholder: Adressnummer, Objektnummer, Adressdetail, Seriennummer, ...
+  zero_point:
+    formats:
+      default: Nullpunkt
+      short: NP

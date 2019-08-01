@@ -1,0 +1,26 @@
+
+
+<h1 class="title"><%= service_objects_title_with_size %></h1>
+
+<div class="columns is-centered">
+  <%= form_tag(service_objects_path, method: :get) do %>
+  <div class="field has-addons">
+    <div class="control">
+      <%= text_field_tag :q, params[:q], { class: 'input', placeholder: t('.placeholder') } %>
+    </div>
+    <div class="control">
+      <%= submit_tag t('Search'), name:nil, class: 'button is-info' %>
+    </div>
+  </div>
+  <% end %>
+</div>
+
+<% @service_objects.each do |service_object| %>
+  <%= render partial: "service_object", locals: { service_object: service_object } %>
+<% end %>
+
+<br>
+
+<div style="padding-top: 1em;">
+  <%= link_to t('.New'), new_service_object_path %>
+</div>

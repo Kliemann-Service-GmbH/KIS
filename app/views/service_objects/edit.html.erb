@@ -1,0 +1,8 @@
+<h1 class="title"><%= t '.Edit' %></h1>
+
+<%= render 'form', service_object: @service_object %>
+
+<div style="padding-top: 1em">
+<%= link_to t('Show'), @service_object %> |
+<%= link_to t('Back'), service_objects_path %>
+</div>

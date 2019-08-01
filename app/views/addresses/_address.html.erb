@@ -1,0 +1,27 @@
+<div class="columns">
+  <div class="column">
+    <div class="columns is-mobile">
+      <div class="column is-narrow" style="transform: rotate(-90deg);"><!-- Model Name -->
+        <%= t(:address) %>
+      </div>
+      <div class="column is-narrow"><!-- Symbol -->
+        <span class="icon is-size-1">
+          <i class="far fa-address-book" style="margin-top: 1em"></i>
+        </span>
+      </div><!-- END Symbol -->
+
+      <div class="column"><!-- Attributes -->
+        <b><%= render partial: "addresses/attributes", locals: { address: address } %></b>
+      </div><!-- END Attributes -->
+    </div>
+  </div>
+</div>
+
+
+<div class="columns">
+  <div class="column">
+    <%= link_to t('Show'), address, class: 'button' %>
+  </div>
+</div>
+
+<hr>

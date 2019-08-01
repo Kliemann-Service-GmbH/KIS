@@ -1,0 +1,33 @@
+<!--
+Used in:
+* _address.html.erb
+-->
+
+<div class="columns">
+  <div class="column">
+    <p class="is-size-5"><%= address.try(:match_code) %></p>
+    <p class="is-size-5"><%= address.try(:full_name) %></p>
+    <p class=""><%= address.try(:zip_city) %></p>
+
+    <% unless address.email_address.empty? %>
+    <p>
+      <span class="has-text-weight-light"><%= t :email_address %>:&nbsp;</span>
+      <span><%= address.email_address %></span>
+    </p>
+    <% end %>
+
+    <% unless address.mobile_number.empty? %>
+    <p>
+      <span class="has-text-weight-light"><%= t :mobile_number %>:&nbsp;</span>
+      <span><%= address.mobile_number %></span>
+    </p>
+    <% end %>
+
+    <% unless address.telephone_number.empty? %>
+    <p>
+      <span class="has-text-weight-light"><%= t :telephone_number %>:&nbsp;</span>
+      <span><%= address.telephone_number %></span>
+    </p>
+    <% end %>
+  </div>
+</div>
