@@ -1,9 +1,6 @@
-# config valid for current version and patch releases of Capistrano
-lock "~> 3.11.0"
-
-set :user,            "smueller"
-set :repo_url,        "git@github.com:zzeroo/web-app.git"
-set :application,     "kls-kis"
+set :user,            "kis"
+set :repo_url,        "git@github.com:Kliemann-Service-GmbH/KIS.git"
+set :application,     "kis"
 set :puma_threads,    [4, 16]
 set :puma_workers,    0
 
@@ -23,9 +20,21 @@ set :pg_without_sudo,  false
 set :pg_extensions,    ['hstore']
 
 # Default branch is :master
-set :branch,          "development"
+set :branch,          "master"
 #ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 # ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }
+
+# Check and create shared folder
+namespace :deploy do
+  before :check, 'deploy:check_create_shared'
+
+  desc 'Check and create shared/config'
+  task :check_create_shared do
+    on roles(:all) do
+      execute :mkdir, '-p', "#{shared_path}/config"
+    end
+  end
+end
 
 namespace :deploy do
   desc 'Runs any rake task, cap deploy:rake task=db:rollback'

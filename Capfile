@@ -19,6 +19,8 @@ install_plugin Capistrano::SCM::Git
 require 'capistrano/rails'
 # https://github.com/capistrano/bundler/blob/master/README.md
 require 'capistrano/bundler'
+# https://github.com/j-arnaiz/capistrano-yarn
+require 'capistrano/yarn'
 # https://github.com/capistrano/rvm
 require 'capistrano/rvm'
 # https://github.com/capistrano-plugins/capistrano-postgresql
