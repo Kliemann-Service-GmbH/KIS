@@ -82,8 +82,10 @@ group :development do
   gem 'bcrypt_pbkdf', '>= 1.0', '< 2.0'
   gem "capistrano-rails", "~> 1.3", require: false
   gem 'capistrano-bundler', '~> 1.5'
+  # https://github.com/capistrano/rvm
   gem 'capistrano-rvm'
   gem 'capistrano-postgresql', '~> 6.2'
+  gem 'capistrano-yarn'
   gem 'capistrano3-puma',   require: false
   gem 'capistrano-linked-files'
 
