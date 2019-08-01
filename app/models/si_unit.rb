@@ -3,4 +3,5 @@ class SiUnit < ApplicationRecord
   has_many :sensors, dependent: :destroy
 
   # Validations
+  validates :name, presence: true, uniqueness: true
 end

@@ -113,6 +113,8 @@ en:
   mobile_number: Mobile number
   montage_date: Montage date
   name: Name
+  name_or_chemical_formula: Name or chemical formula
+  need to be entered: Need to be entered
   new_central_device_service_protocol: New central device service protocol
   new_service_object_central_device: New service object central device
   next_exchange:
@@ -129,6 +131,14 @@ en:
       default: Default
       short: Short
   sensor_type: Sensor type
+  sensor_types:
+    edit:
+      Edit: Edit
+    index:
+      New: New
+    new:
+      New: New
+  sensor_types_title: Sensor types title
   serial_number: Serial number
   service_contract_auto_resume_interval: Service contract auto resume interval
   service_contract_begin: Service contract begin
@@ -165,6 +175,14 @@ en:
     formats:
       default: Default
       short: Short
+  si_units:
+    edit:
+      Edit: Edit
+    index:
+      New: New
+    new:
+      New: New
+  si_units_title: Si units title
   street: Street
   telephone_number: Telephone number
   title: Title

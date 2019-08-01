@@ -1,0 +1,9 @@
+<tr>
+  <td><%= sensor_type.name %></td>
+  <td>
+    <%= link_to t('Destroy'), sensor_type, method: :delete, data: { confirm: 'Are you sure?' }, class: 'button is-danger' %>
+  </td>
+  <td>
+    <%= link_to t('Edit'), edit_sensor_type_path(sensor_type), class: 'button' %>
+  </td>
+</tr>
