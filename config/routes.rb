@@ -2,6 +2,9 @@ Rails.application.routes.draw do
   resources :addresses, only: [:index, :show]
   resources :customers, only: [:index, :show]
 
+  resources :gas_types
+  resources :sensor_types
+
   resources :service_objects do
     resources :central_devices
   end

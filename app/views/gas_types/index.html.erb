@@ -1,0 +1,32 @@
+<h1 class="title"><%= service_objects_title_with_size %></h1>
+
+<table class="table is-fullwidth is-bordered is-hoverable">
+  <thead>
+    <tr>
+      <th><%= t(:name) %></th>
+      <th><%= t(:chemical_formula) %></th>
+      <th><%= t(:description) %></th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+  <tfoot>
+    <tr>
+      <th><%= t(:name) %></th>
+      <th><%= t(:chemical_formula) %></th>
+      <th><%= t(:description) %></th>
+      <th colspan="2"></th>
+    </tr>
+  </tfoot>
+  <tbody>
+    <% @gas_types.each do |gas_type| %>
+      <%= render partial: "gas_type", locals: { gas_type: gas_type } %>
+    <% end %>
+  </tbody>
+</table>
+
+
+
+
+<div style="padding-top: 1em;">
+  <%= link_to t('.New'), new_gas_type_path %>
+</div>

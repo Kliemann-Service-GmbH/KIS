@@ -1,0 +1,11 @@
+<tr>
+  <td><%= gas_type.name %></td>
+  <td><%= gas_type.chemical_formula %></td>
+  <td><%= gas_type.description %></td>
+  <td>
+    <%= link_to t('Destroy'), gas_type, method: :delete, data: { confirm: 'Are you sure?' }, class: 'button is-danger' %>
+  </td>
+  <td>
+    <%= link_to t('Edit'), edit_gas_type_path(gas_type), class: 'button' %>
+  </td>
+</tr>
