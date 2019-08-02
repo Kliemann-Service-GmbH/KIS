@@ -1,0 +1,9 @@
+<tr>
+  <td><%= si_unit.name %></td>
+  <td>
+    <%= link_to t('Destroy'), si_unit, method: :delete, data: { confirm: 'Are you sure?' }, class: 'button is-danger' %>
+  </td>
+  <td>
+    <%= link_to t('Edit'), edit_si_unit_path(si_unit), class: 'button' %>
+  </td>
+</tr>

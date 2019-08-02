@@ -42,13 +42,13 @@ de:
       Edit: bearbeiten
     index:
       New: Neues Gerät
-      placeholder: Gerätenummner, -typ, Standort, ...
+      placeholder: Anlagennummer, -typ, Standort, ...
     new:
       New: Neue Gerät
     show:
       alarm_outputs: Alarmausgänge
       customer: Kunde
-      device_number: Gerätenummer
+      device_number: Anlagennummer
       location: Standort
       serial_number: Seriennummer
       service_object: Objekt
@@ -57,6 +57,7 @@ de:
     formats:
       default: geprüft
       short: Ok?
+  chemical_formula: Chemische Formel
   contact_person: Kontakt
   created_at: erstellt
   customer: Kunde
@@ -69,12 +70,21 @@ de:
     new:
       New: Neuer Kunde
   customers_title: Kunden
-  device_number: Gerätenummer
+  description: Beschreibung
+  device_number: Anlagennummer
   device_type: Geräteart
   edit_central_device: Gerät bearbeiten
   email_address: Email Adresse
   field_required: "(*) benötigt"
   gas_type: Gasart
+  gas_types:
+    edit:
+      Edit: Bearbeiten
+    index:
+      New: Neue Gasart erfassen
+    new:
+      New: Neue Gasart speichern
+  gas_types_title: Gasarten
   has_service_contract: Wartungsvertrag?
   is_commisioning: Kommision
   is_expenditure: Wartung
@@ -102,6 +112,9 @@ de:
       short: Min
   mobile_number: Mobilnummer
   montage_date: Montage Datum
+  name: Name
+  name_or_chemical_formula: Name oder Chemische Formel
+  need to be entered: müssen eingegeben werden
   new_central_device_service_protocol: Neues Prüfprotokoll erstellen
   new_service_object_central_device: Neues Gerät erfassen
   next_exchange:
@@ -117,7 +130,15 @@ de:
     formats:
       default: Sensor Nummer
       short: "#"
-  sensor_type: Sensor Typ
+  sensor_type: Sensorart
+  sensor_types:
+    edit:
+      Edit: Sensorart bearbeiten
+    index:
+      New: Neue Sensorart erstellen
+    new:
+      New: Sensorart speichern
+  sensor_types_title: Sensorarten
   serial_number: Seriennummer
   service_contract_auto_resume_interval: Wartungsvertrag wird automatisch verlängert um
   service_contract_begin: Beginn Wartungsvertrag
@@ -138,7 +159,7 @@ de:
   service_protocol: Prüfprotokoll
   service_protocols:
     attributes:
-      device_number: Gerätenummer
+      device_number: Anlagennummer
       object_address: Objektadresse
       object_number: Objektnummer
       serial_number: Seriennummer
@@ -146,14 +167,26 @@ de:
       Edit: bearbeiten
     index:
       New: Neu
-      placeholder: Gerätenummer,
+      placeholder: Anlagennummer,
     new:
       New: Neu
+    show:
+      edit:
+        central_device: Gerät bearbeiten
+        service_object: Objekt bearbeiten
   service_protocols_title: Prüfprotokolle
   si_unit:
     formats:
       default: SI Einheit
       short: SI
+  si_units:
+    edit:
+      Edit: SI Einheit bearbeiten
+    index:
+      New: Neue SI Einheit erfassen
+    new:
+      New: SI Einheit speichern
+  si_units_title: SI Einheiten
   street: Straße
   telephone_number: Telefonnummer
   title: Titel

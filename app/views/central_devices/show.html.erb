@@ -101,6 +101,11 @@
   </tbody>
 </table>
 
+<% for service_protocol in @central_device.service_protocols do %>
+  <%= render "service_protocols/service_protocol", service_protocol: service_protocol %>
+<% end %>
+
+
 <%= link_to t(:new_central_device_service_protocol), new_central_device_service_protocol_path(@central_device) %>
 
 
