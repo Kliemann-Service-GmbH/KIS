@@ -8,13 +8,15 @@ prawn_document do |pdf|
     # header
     pdf.image "#{Rails.root}/app/assets/images/logo_kliemann-service-gmbh.png", :at => [410,790], :width => 100
     pdf.draw_text t(:service_protocol).upcase, style: :bold, size: 16, at: [0, 730]
-    pdf.draw_text "#{t(:object_number)}: #{@service_protocol.central_device.service_object.object_number}", style: :bold, size: 16, at: [210, 730]
+    pdf.draw_text "#{t(:object_nr)}: #{@service_protocol.central_device.service_object.object_number}-#{@service_protocol.central_device.device_number}", style: :bold, size: 16, at: [260, 730]
 
     # footer
   end
 
   # body
-  pdf.bounding_box([pdf.bounds.left, pdf.bounds.top - 100], :width  => pdf.bounds.width, :height => pdf.bounds.height - 100) do
+  pdf.bounding_box([pdf.bounds.left, pdf.bounds.top - 80], :width  => pdf.bounds.width, :height => pdf.bounds.height - 100) do
+    pdf.line_width = 0.5
+
     pdf.text "#{t(:customer)}", style: :bold
     pdf.text "#{@service_protocol.central_device.service_object.customer.address.street}"
     pdf.text "#{@service_protocol.central_device.service_object.customer.address.zip_city}"
@@ -41,7 +43,7 @@ prawn_document do |pdf|
 
     data_sensor = [["#", "NP", "Gasart", "Sensortyp", "MB", "NW", "GW", "A1", "A2", "A3", "A4", "Einh.", "Standort"]]
     for sensor in @service_protocol.central_device.sensors
-      data_sensor += [[sensor.number, "", sensor.gas_type.chemical_formula, sensor.sensor_type.name, "", "", "", "", "", "", "", sensor.si_unit.name, sensor.location]]
+      data_sensor += [[sensor.number, "", sensor.gas_type.chemical_formula, sensor.sensor_type.name, "#{sensor.min_value}-#{sensor.max_value}", "", "", sensor.alarm_point_1, sensor.alarm_point_2, sensor.alarm_point_3, sensor.alarm_point_4, sensor.si_unit.name, sensor.location]]
     end
 
     pdf.table data_sensor,
@@ -56,7 +58,6 @@ prawn_document do |pdf|
     pdf.bounding_box([pdf.bounds.left, pdf.cursor], :width  => pdf.bounds.width, :height => pdf.bounds.height - 400) do
       pdf.line_width = 0.5
       pdf.stroke_bounds
-      pdf.text "foo"
     end
     pdf.move_down 20
 
