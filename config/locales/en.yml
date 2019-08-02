@@ -170,6 +170,10 @@ en:
       placeholder: Placeholder
     new:
       New: New
+    show:
+      edit:
+        central_device: Central device
+        service_object: Service object
   service_protocols_title: Service protocols title
   si_unit:
     formats:

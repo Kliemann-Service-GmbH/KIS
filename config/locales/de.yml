@@ -170,6 +170,10 @@ de:
       placeholder: Anlagennummer,
     new:
       New: Neu
+    show:
+      edit:
+        central_device: Gerät bearbeiten
+        service_object: Objekt bearbeiten
   service_protocols_title: Prüfprotokolle
   si_unit:
     formats:
