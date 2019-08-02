@@ -84,7 +84,7 @@ class AddressTest < ActiveSupport::TestCase
   end
 
   test 'zip_city_baroness' do
-    assert_equal @address.zip_city, ''
+    assert_equal @address.zip_city, ""
   end
 
   test 'zip_city' do

@@ -18,6 +18,7 @@ class Address < ApplicationRecord
 
   # Virtual Attributes
   def full_name
+    return "" if address_details.nil?
     name = ""
     name << "#{address_details['prefix']} " if address_details['prefix'].present?
     name << "#{address_details['first_name']} " if address_details['first_name'].present?
@@ -25,52 +26,62 @@ class Address < ApplicationRecord
   end
 
   def address_number
+    return id if address_details.nil?
     "#{address_details['address_number']}"
   end
 
   def email_address
+    return "" if address_details.nil?
     "#{address_details['email_address']}"
   end
 
   def telephone_number
+    return "" if address_details.nil?
     "#{address_details['telephone_number']}"
   end
 
   def mobile_number
+    return "" if address_details.nil?
     "#{address_details['mobile_number']}"
   end
 
   def short_name
+    return "" if address_details.nil?
     first_name = address_details["first_name"]
     last_name = address_details["last_name"]
     if first_name && last_name
       "#{first_name} #{last_name}"
     elsif first_name
-      first_name
+      "#{first_name}"
     elsif last_name
-      last_name
+      "#{last_name}"
     else
       ""
     end
   end
 
   def match_code
+    return "" if address_details.nil?
     "#{address_details["match_code"]}"
   end
 
   def street
-    if address_details["street"].nil?
-      ""
-    else
-      "#{address_details["street"]}"
-    end
+    return "" if address_details.nil?
+    "#{address_details["street"]}"
   end
 
   def zip_city
-    if address_details["zip"].nil? || address_details["city"].empty?
-      ""
-    else
+    return "" if address_details.nil?
+    zip = address_details["zip"]
+    city = address_details["city"]
+    if zip && city
       "#{address_details["zip"]}, #{address_details["city"]}"
+    elsif zip
+      "#{zip}"
+    elsif city
+      "#{city}"
+    else
+      ""
     end
   end
 
@@ -80,6 +91,7 @@ class Address < ApplicationRecord
 
   # Address Line, address_number - Matchcode or Fullname
   def address_line
+    return "" if address_details.nil?
     line = ""
     line << "#{address_number} - "
     if address_details["match_code"].present?
