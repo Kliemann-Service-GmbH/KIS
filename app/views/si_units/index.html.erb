@@ -1,0 +1,28 @@
+<h1 class="title"><%= t(:si_units_title) %></h1>
+
+<table class="table is-fullwidth is-bordered is-hoverable">
+  <thead>
+    <tr>
+      <th><%= t(:name) %></th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+  <tfoot>
+    <tr>
+      <th><%= t(:name) %></th>
+      <th colspan="2"></th>
+    </tr>
+  </tfoot>
+  <tbody>
+    <% @si_units.each do |si_unit| %>
+      <%= render partial: "si_unit", locals: { si_unit: si_unit } %>
+    <% end %>
+  </tbody>
+</table>
+
+
+
+
+<div style="padding-top: 1em;">
+  <%= link_to t('.New'), new_si_unit_path %>
+</div>

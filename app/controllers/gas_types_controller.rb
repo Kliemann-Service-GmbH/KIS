@@ -69,6 +69,6 @@ class GasTypesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def gas_type_params
-      params.require(:gas_type).permit(:name, :chemical_formula)
+      params.require(:gas_type).permit(:name, :chemical_formula, :description)
     end
 end

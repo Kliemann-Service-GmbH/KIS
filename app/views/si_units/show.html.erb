@@ -1,0 +1,15 @@
+<div class="">
+  <div class="has-text-weight-bold">
+    <%= t(:name) %>:
+  </div>
+  <div class="column">
+    <%= @si_unit.name %>
+  </div>
+</div>
+
+
+<!-- Site Navigation -->
+<div style="padding-top: 1em">
+  <%= link_to t('Edit'), edit_si_unit_path(@si_unit) %> |
+  <%= link_to t('Back'), si_units_path %>
+</div>

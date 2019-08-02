@@ -1,0 +1,33 @@
+<div class="">
+  <div class="has-text-weight-bold">
+    <%= t(:chemical_formula) %>:
+  </div>
+  <div class="column">
+    <%= @gas_type.chemical_formula %>
+  </div>
+</div>
+
+<div class="">
+  <div class="has-text-weight-bold">
+    <%= t(:name) %>:
+  </div>
+  <div class="column">
+    <%= @gas_type.name %>
+  </div>
+</div>
+
+<div class="">
+  <div class="has-text-weight-bold">
+    <%= t(:description) %>:
+  </div>
+  <div class="column">
+    <%= @gas_type.description %>
+  </div>
+</div>
+
+
+<!-- Site Navigation -->
+<div style="padding-top: 1em">
+  <%= link_to t('Edit'), edit_gas_type_path(@gas_type) %> |
+  <%= link_to t('Back'), gas_types_path %>
+</div>

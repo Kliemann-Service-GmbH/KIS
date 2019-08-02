@@ -57,6 +57,7 @@ en:
     formats:
       default: Default
       short: Short
+  chemical_formula: Chemical formula
   contact_person: Contact person
   created_at: Created at
   customer: Customer
@@ -69,12 +70,21 @@ en:
     new:
       New: New
   customers_title: Customers title
+  description: Description
   device_number: Device number
   device_type: Device type
   edit_central_device: Edit central device
   email_address: Email address
   field_required: Field required
   gas_type: Gas type
+  gas_types:
+    edit:
+      Edit: Edit
+    index:
+      New: Neue Gasart
+    new:
+      New: New
+  gas_types_title: Gasarten
   has_service_contract: Has service contract
   is_commisioning: Is commisioning
   is_expenditure: Is expenditure
@@ -102,6 +112,9 @@ en:
       short: Short
   mobile_number: Mobile number
   montage_date: Montage date
+  name: Name
+  name_or_chemical_formula: Name or chemical formula
+  need to be entered: Need to be entered
   new_central_device_service_protocol: New central device service protocol
   new_service_object_central_device: New service object central device
   next_exchange:
@@ -118,6 +131,14 @@ en:
       default: Default
       short: Short
   sensor_type: Sensor type
+  sensor_types:
+    edit:
+      Edit: Edit
+    index:
+      New: New
+    new:
+      New: New
+  sensor_types_title: Sensor types title
   serial_number: Serial number
   service_contract_auto_resume_interval: Service contract auto resume interval
   service_contract_begin: Service contract begin
@@ -149,11 +170,23 @@ en:
       placeholder: Placeholder
     new:
       New: New
+    show:
+      edit:
+        central_device: Central device
+        service_object: Service object
   service_protocols_title: Service protocols title
   si_unit:
     formats:
       default: Default
       short: Short
+  si_units:
+    edit:
+      Edit: Edit
+    index:
+      New: New
+    new:
+      New: New
+  si_units_title: Si units title
   street: Street
   telephone_number: Telephone number
   title: Title

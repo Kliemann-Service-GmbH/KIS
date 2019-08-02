@@ -1,0 +1,60 @@
+<%= form_with(model: gas_type, local: true) do |form| %>
+  <% if gas_type.errors.any? %>
+    <div id="error_explanation" class="notification is-danger">
+      <h2><%= pluralize(gas_type.errors.count, "error") %> prohibited this gas_type from being saved:</h2>
+
+      <ul>
+      <% gas_type.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field is-horizontal">
+    <div class="field-label is-normal">
+      <%= form.label t(:chemical_formula), class: 'label' %>
+    </div>
+    <div class="field-body">
+      <div class="field">
+        <p class="control">
+          <%= form.text_field :chemical_formula %>
+        </p>
+        <p class="help"></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="field is-horizontal">
+    <div class="field-label is-normal">
+      <%= form.label t(:name), class: 'label' %>
+    </div>
+    <div class="field-body">
+      <div class="field">
+        <p class="control">
+          <%= form.text_field :name %>
+        </p>
+        <p class="help"></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="field is-horizontal">
+    <div class="field-label is-normal">
+      <%= form.label t(:description), class: 'label' %>
+    </div>
+    <div class="field-body">
+      <div class="field">
+        <p class="control">
+          <%= form.text_area :description %>
+        </p>
+        <p class="help"></p>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="actions">
+    <%= form.submit nil, class: 'button is-primary' %>
+  </div>
+<% end %>

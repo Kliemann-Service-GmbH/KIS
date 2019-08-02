@@ -25,7 +25,7 @@
 
   <div class="columns">
     <div class="column">
-      <%= label_tag nil, t(:object), class: "has-text-weight-bold" %>
+      <%= label_tag nil, t(:service_object), class: "has-text-weight-bold" %>
     </div>
     <div class="column">
       <span><%= @service_protocol.central_device.service_object.address.match_code %></span>
@@ -37,6 +37,11 @@
       <span><%= render partial: "addresses/attributes", locals: {address: @service_protocol.central_device.service_object.address} %></span>
     </div>
   </div>
+  <div class="">
+    <%= link_to t('.edit.service_object'), edit_service_object_path(@service_protocol.central_device.service_object.id), class: 'button is-warning' %>
+  </div>
+
+  <hr>
 
   <div class="columns">
     <div class="column">
@@ -92,6 +97,9 @@
     <div class="column">
       <span><%=  @service_protocol.central_device.location %></span>
     </div>
+  </div>
+  <div class="">
+    <%= link_to t('.edit.central_device'), edit_central_device_path(@service_protocol.central_device), class: 'button is-warning' %>
   </div>
 
   <hr>
@@ -157,8 +165,6 @@
       <label>Alarm outputs:</label>
     </div>
   </div>
-
-  <hr>
 
   <table class="table is-fullwidth is-bordered is-hoverable">
     <thead>

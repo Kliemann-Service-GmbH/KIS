@@ -1,0 +1,15 @@
+<div class="">
+  <div class="has-text-weight-bold">
+    <%= t(:name) %>:
+  </div>
+  <div class="column">
+    <%= @sensor_type.name %>
+  </div>
+</div>
+
+
+<!-- Site Navigation -->
+<div style="padding-top: 1em">
+  <%= link_to t('Edit'), edit_sensor_type_path(@sensor_type) %> |
+  <%= link_to t('Back'), sensor_types_path %>
+</div>

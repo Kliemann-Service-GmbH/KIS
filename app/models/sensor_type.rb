@@ -3,5 +3,5 @@ class SensorType < ApplicationRecord
   has_many :sensors, dependent: :destroy
 
   # Validations
-  validates :name, presence: true
+  validates :name, presence: true, uniqueness: true
 end
