@@ -2,6 +2,7 @@ require "application_system_test_case"
 
 class CentralDevicesTest < ApplicationSystemTestCase
   setup do
+    Capybara.javascript_driver = :apparition
     @service_object = service_objects(:baroness)
     @central_device = central_devices(:baroness)
   end
@@ -42,8 +43,7 @@ class CentralDevicesTest < ApplicationSystemTestCase
     visit service_object_central_devices_url(@service_object)
     click_on I18n.t('central_devices.index.New')
 
-    # select "#{@service_object.service_object_address_details.strip!}", from: 'central_device_service_object_id', match: :first
-    # assert page.has_select?("#central_device_service_object_id", selected: "#{@service_object.service_object_address_details.strip!}")
+    assert page.has_select?('central_device_service_object_id', selected: "#{@service_object.service_object_address_details.strip!}")
 
     fill_in :central_device_device_number, with: @central_device.device_number
     fill_in :central_device_serial_number, with: @central_device.serial_number
@@ -58,8 +58,6 @@ class CentralDevicesTest < ApplicationSystemTestCase
   end
 
   test "creating Sensors on Central device" do
-    Capybara.javascript_driver = :apparition
-
     @central_device = central_devices(:complete)
     visit central_devices_url()
     click_on I18n.t('central_devices.index.New')
