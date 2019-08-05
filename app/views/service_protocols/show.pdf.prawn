@@ -12,6 +12,12 @@ prawn_document do |pdf|
   )
   pdf.font "Arial", size: 10
 
+  # Variables
+  width = pdf.bounds.width
+  width_third = width / 3
+  width_half = width / 2
+
+  # Header and Footer
   pdf.repeat :all do
     if Rails.env.development?
       pdf.stroke_axis
@@ -21,7 +27,8 @@ prawn_document do |pdf|
     pdf.image "#{Rails.root}/app/assets/images/logo_kliemann-service-gmbh.png", :at => [410,790], :width => 100
     pdf.draw_text t(:service_protocol).upcase, style: :bold, size: 16, at: [0, 730]
     pdf.draw_text "#{t(:object_nr)}: #{@service_protocol.central_device.service_object.object_number}-#{@service_protocol.central_device.device_number}", style: :bold, size: 16, at: [260, 730]
-
+    pdf.draw_text "#{t(:service_protocol)} #{t(:created_at)}: #{@service_protocol.created_at.strftime("%F %T")}", size: 8, at: [0, 710]
+    pdf.draw_text "#{t(:service_protocol)} #{t(:updated_at)}: #{@service_protocol.updated_at.strftime("%F %T")}", size: 8, at: [width_half, 710]
     # footer
   end
 
@@ -80,19 +87,15 @@ prawn_document do |pdf|
 
     pdf.text "Die Anlage ist:", style: :bold
 
-    width = pdf.bounds.width
-    width_third = width / 3
-    width_half = width / 2
-
     current_line = pdf.cursor
     pdf.bounding_box [pdf.bounds.left, current_line], width: width_third do
-      pdf.text "[ ] funktionstüchtig"
+      pdf.text "[ ] #{t(:working)}"
     end
     pdf.bounding_box [pdf.bounds.left + width_third, current_line], width: width_third do
-      pdf.text "[ ] nicht funktionstüchtig"
+      pdf.text "[ ] #{t(:not_working)}"
     end
     pdf.bounding_box [pdf.bounds.left + 2 * width_third, current_line], width: width_third do
-      pdf.text "[ ] mit Mängel"
+      pdf.text "[ ] #{t(:with_shortcomings)}"
     end
 
     # Signatur fields on bottom
@@ -112,4 +115,14 @@ prawn_document do |pdf|
       pdf.text t(:name_customer), size: 6
     end
   end
+
+  string ="#{t(:page)} <page> #{t(:of)} <total>"
+  options ={
+    :at =>[ pdf.bounds.right - 150, 10],
+    :width => 150,
+    :align =>:right,
+    :start_count_at => 1,
+  }
+  pdf.number_pages string, options
+
 end

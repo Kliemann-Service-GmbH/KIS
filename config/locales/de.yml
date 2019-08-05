@@ -113,7 +113,7 @@ de:
   mobile_number: Mobilnummer
   montage_date: Montage Datum
   name: Name
-  name_customer: "Unterschrift: AG/ Betreiber (Name in Druckbuchstaben)"
+  name_customer: 'Unterschrift: AG/ Betreiber (Name in Druckbuchstaben)'
   name_or_chemical_formula: Name oder Chemische Formel
   need to be entered: müssen eingegeben werden
   new_central_device_service_protocol: Neues Prüfprotokoll erstellen
@@ -122,11 +122,14 @@ de:
     formats:
       default: Nächster Wechsel
       short: NW
+  not_working: nicht funktionstüchtig
   notes: Bemerkungen
   number: Nummer
   object: Objekt
   object_nr: Objekt Nr.
   object_number: Object number
+  of: von
+  page: Seite
   placeholder: Platzhalter
   sensor_number:
     formats:
@@ -189,7 +192,7 @@ de:
     new:
       New: SI Einheit speichern
   si_units_title: SI Einheiten
-  signature_employee: "Unterschrift AN"
+  signature_employee: Unterschrift AN
   street: Straße
   telephone_number: Telefonnummer
   title: Titel
@@ -197,6 +200,8 @@ de:
   welcome:
     index:
       placeholder: Adressnummer, Objektnummer, Adressdetail, Seriennummer, ...
+  with_shortcomings: mit Mängeln
+  working: funktionstüchtig
   zero_point:
     formats:
       default: Nullpunkt
