@@ -1,6 +1,16 @@
 require "prawn/measurement_extensions"
 
 prawn_document do |pdf|
+  # Font setup
+  pdf.font_families.update(
+    "Arial" => {
+      :bold        => "#{Rails.root}/vendor/fonts/arialbd.ttf",
+      :italic      => "#{Rails.root}/vendor/fonts/ariali.ttf",
+      :bold_italic => "#{Rails.root}/vendor/fonts/arialbi.ttf",
+      :normal      => "#{Rails.root}/vendor/fonts/arial.ttf"
+    }
+  )
+  pdf.font "Arial", size: 10
 
   pdf.repeat :all do
     if Rails.env.development?
@@ -52,15 +62,16 @@ prawn_document do |pdf|
     end
 
     pdf.table data_sensor,
-      :header => true,
-      :column_widths => { 12 => 120 },
-      :row_colors =>["F0F0F0","FFFFFF"],
-      cell_style: {border_width: 0.5, size: 10} do
-      row(0).font_style = :bold
-    end
+      width: pdf.bounds.right,
+      header: true,
+      column_widths: { 12 => 120 },
+      row_colors: ["F0F0F0","FFFFFF"],
+      cell_style: { border_width: 0.5, size: 10 } do
+        row(0).font_style = :bold
+      end
     pdf.move_down 20
 
-    pdf.bounding_box([pdf.bounds.left, pdf.cursor], width: pdf.bounds.width, height: 5cm) do
+    pdf.bounding_box [pdf.bounds.left, pdf.cursor], width: pdf.bounds.width, height: 5.cm do
       pdf.line_width = 0.5
       pdf.stroke_bounds
     end
@@ -68,9 +79,16 @@ prawn_document do |pdf|
 
 
     pdf.text "Die Anlage ist:", style: :bold
-    pdf.text "[ ] funktionstüchtig"
-    pdf.text "[ ] nicht funktionstüchtig"
-    pdf.text "[ ] mit Mängel"
+
+    pdf.bounding_box [pdf.bounds.left, pdf.cursor], width: pdf.bounds.width do
+      pdf.text "[ ] funktionstüchtig"
+    end
+    pdf.bounding_box [pdf.bounds.left, pdf.cursor], width: pdf.bounds.width do
+      pdf.text "[ ] nicht funktionstüchtig"
+    end
+    pdf.bounding_box [pdf.bounds.left, pdf.cursor], width: pdf.bounds.width do
+      pdf.text "[ ] mit Mängel"
+    end
     pdf.move_down 10
 
     pdf.text "Ort: #{@service_protocol.central_device.service_object.address.zip_city}", style: :bold
