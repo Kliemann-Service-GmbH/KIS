@@ -121,6 +121,7 @@ en:
     formats:
       default: Default
       short: Short
+  notes: Notes
   number: Number
   object: Object
   object_nr: Object nr

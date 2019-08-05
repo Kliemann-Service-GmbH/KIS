@@ -121,6 +121,7 @@ de:
     formats:
       default: Nächster Wechsel
       short: NW
+  notes: Bemerkungen
   number: Nummer
   object: Objekt
   object_nr: Objekt Nr.

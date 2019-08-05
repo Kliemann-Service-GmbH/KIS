@@ -56,9 +56,6 @@ prawn_document do |pdf|
     data_sensor = [["#", "NP", "Gasart", "Sensortyp", "MB", "NW", "GW", "A1", "A2", "A3", "A4", "Einh.", "Standort"]]
     for sensor in @service_protocol.central_device.sensors
       data_sensor += [[sensor.number, "", sensor.gas_type.chemical_formula, sensor.sensor_type.name, "#{sensor.min_value}-#{sensor.max_value}", "", "", sensor.alarm_point_1, sensor.alarm_point_2, sensor.alarm_point_3, sensor.alarm_point_4, sensor.si_unit.name, sensor.location]]
-      data_sensor += [[sensor.number, "", sensor.gas_type.chemical_formula, sensor.sensor_type.name, "#{sensor.min_value}-#{sensor.max_value}", "", "", sensor.alarm_point_1, sensor.alarm_point_2, sensor.alarm_point_3, sensor.alarm_point_4, sensor.si_unit.name, sensor.location]]
-      data_sensor += [[sensor.number, "", sensor.gas_type.chemical_formula, sensor.sensor_type.name, "#{sensor.min_value}-#{sensor.max_value}", "", "", sensor.alarm_point_1, sensor.alarm_point_2, sensor.alarm_point_3, sensor.alarm_point_4, sensor.si_unit.name, sensor.location]]
-      data_sensor += [[sensor.number, "", sensor.gas_type.chemical_formula, sensor.sensor_type.name, "#{sensor.min_value}-#{sensor.max_value}", "", "", sensor.alarm_point_1, sensor.alarm_point_2, sensor.alarm_point_3, sensor.alarm_point_4, sensor.si_unit.name, sensor.location]]
     end
 
     pdf.table data_sensor,
@@ -71,6 +68,9 @@ prawn_document do |pdf|
       end
     pdf.move_down 20
 
+    # Notes
+    pdf.start_new_page if pdf.cursor < 200
+    pdf.text "#{t(:notes)}", style: :bold
     pdf.bounding_box [pdf.bounds.left, pdf.cursor], width: pdf.bounds.width, height: 5.cm do
       pdf.line_width = 0.5
       pdf.stroke_bounds
@@ -80,25 +80,34 @@ prawn_document do |pdf|
 
     pdf.text "Die Anlage ist:", style: :bold
 
-    pdf.bounding_box [pdf.bounds.left, pdf.cursor], width: pdf.bounds.width do
+    width = pdf.bounds.width
+    width_third = width / 3
+    width_half = width / 2
+
+    current_line = pdf.cursor
+    pdf.bounding_box [pdf.bounds.left, current_line], width: width_third do
       pdf.text "[ ] funktionstüchtig"
     end
-    pdf.bounding_box [pdf.bounds.left, pdf.cursor], width: pdf.bounds.width do
+    pdf.bounding_box [pdf.bounds.left + width_third, current_line], width: width_third do
       pdf.text "[ ] nicht funktionstüchtig"
     end
-    pdf.bounding_box [pdf.bounds.left, pdf.cursor], width: pdf.bounds.width do
+    pdf.bounding_box [pdf.bounds.left + 2 * width_third, current_line], width: width_third do
       pdf.text "[ ] mit Mängel"
     end
-    pdf.move_down 10
 
-    pdf.text "Ort: #{@service_protocol.central_device.service_object.address.zip_city}", style: :bold
-    pdf.move_down 30
-    pdf.text "Unterschrift AN", size: 6
-    pdf.move_down 30
+    pdf.move_down 50
 
-    pdf.text "Datum:", style: :bold
-    pdf.move_down 30
-    pdf.text "Unterschrift: AG/ Betreiber (Name in Druckbuchstaben)", size: 6
+    current_line = pdf.cursor
+    pdf.bounding_box [pdf.bounds.left, current_line], width: width_half do
+      pdf.text "Ort: #{@service_protocol.central_device.service_object.address.zip_city}", style: :bold
+      pdf.move_down 30
+      pdf.text "Unterschrift AN", size: 6
+    end
 
+    pdf.bounding_box [pdf.bounds.left + width_half, current_line], width: width_half do
+      pdf.text "Datum:", style: :bold
+      pdf.move_down 30
+      pdf.text "Unterschrift: AG/ Betreiber (Name in Druckbuchstaben)", size: 6
+    end
   end
 end
