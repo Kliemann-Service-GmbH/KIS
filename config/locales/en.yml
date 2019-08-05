@@ -113,6 +113,7 @@ en:
   mobile_number: Mobile number
   montage_date: Montage date
   name: Name
+  name_customer: Name customer
   name_or_chemical_formula: Name or chemical formula
   need to be entered: Need to be entered
   new_central_device_service_protocol: New central device service protocol
@@ -188,6 +189,7 @@ en:
     new:
       New: New
   si_units_title: Si units title
+  signature_employee: Signature employee
   street: Street
   telephone_number: Telephone number
   title: Title

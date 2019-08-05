@@ -113,6 +113,7 @@ de:
   mobile_number: Mobilnummer
   montage_date: Montage Datum
   name: Name
+  name_customer: "Unterschrift: AG/ Betreiber (Name in Druckbuchstaben)"
   name_or_chemical_formula: Name oder Chemische Formel
   need to be entered: müssen eingegeben werden
   new_central_device_service_protocol: Neues Prüfprotokoll erstellen
@@ -188,6 +189,7 @@ de:
     new:
       New: SI Einheit speichern
   si_units_title: SI Einheiten
+  signature_employee: "Unterschrift AN"
   street: Straße
   telephone_number: Telefonnummer
   title: Titel

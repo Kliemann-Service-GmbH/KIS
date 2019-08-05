@@ -95,19 +95,21 @@ prawn_document do |pdf|
       pdf.text "[ ] mit Mängel"
     end
 
-    pdf.move_down 50
-
-    current_line = pdf.cursor
+    # Signatur fields on bottom
+    pdf.start_new_page if pdf.cursor < 70
+    current_line = 60
     pdf.bounding_box [pdf.bounds.left, current_line], width: width_half do
       pdf.text "Ort: #{@service_protocol.central_device.service_object.address.zip_city}", style: :bold
-      pdf.move_down 30
-      pdf.text "Unterschrift AN", size: 6
+      pdf.move_down 50
+      pdf.stroke_horizontal_line 0, 150
+      pdf.text t(:signature_employee), size: 6
     end
 
     pdf.bounding_box [pdf.bounds.left + width_half, current_line], width: width_half do
       pdf.text "Datum:", style: :bold
-      pdf.move_down 30
-      pdf.text "Unterschrift: AG/ Betreiber (Name in Druckbuchstaben)", size: 6
+      pdf.move_down 50
+      pdf.stroke_horizontal_line 0, 150
+      pdf.text t(:name_customer), size: 6
     end
   end
 end
