@@ -1,3 +1,5 @@
+require "prawn/measurement_extensions"
+
 prawn_document do |pdf|
 
   pdf.repeat :all do
@@ -44,6 +46,9 @@ prawn_document do |pdf|
     data_sensor = [["#", "NP", "Gasart", "Sensortyp", "MB", "NW", "GW", "A1", "A2", "A3", "A4", "Einh.", "Standort"]]
     for sensor in @service_protocol.central_device.sensors
       data_sensor += [[sensor.number, "", sensor.gas_type.chemical_formula, sensor.sensor_type.name, "#{sensor.min_value}-#{sensor.max_value}", "", "", sensor.alarm_point_1, sensor.alarm_point_2, sensor.alarm_point_3, sensor.alarm_point_4, sensor.si_unit.name, sensor.location]]
+      data_sensor += [[sensor.number, "", sensor.gas_type.chemical_formula, sensor.sensor_type.name, "#{sensor.min_value}-#{sensor.max_value}", "", "", sensor.alarm_point_1, sensor.alarm_point_2, sensor.alarm_point_3, sensor.alarm_point_4, sensor.si_unit.name, sensor.location]]
+      data_sensor += [[sensor.number, "", sensor.gas_type.chemical_formula, sensor.sensor_type.name, "#{sensor.min_value}-#{sensor.max_value}", "", "", sensor.alarm_point_1, sensor.alarm_point_2, sensor.alarm_point_3, sensor.alarm_point_4, sensor.si_unit.name, sensor.location]]
+      data_sensor += [[sensor.number, "", sensor.gas_type.chemical_formula, sensor.sensor_type.name, "#{sensor.min_value}-#{sensor.max_value}", "", "", sensor.alarm_point_1, sensor.alarm_point_2, sensor.alarm_point_3, sensor.alarm_point_4, sensor.si_unit.name, sensor.location]]
     end
 
     pdf.table data_sensor,
@@ -55,7 +60,7 @@ prawn_document do |pdf|
     end
     pdf.move_down 20
 
-    pdf.bounding_box([pdf.bounds.left, pdf.cursor], :width  => pdf.bounds.width, :height => pdf.bounds.height - 400) do
+    pdf.bounding_box([pdf.bounds.left, pdf.cursor], width: pdf.bounds.width, height: 5cm) do
       pdf.line_width = 0.5
       pdf.stroke_bounds
     end
