@@ -73,8 +73,12 @@ de:
   description: Beschreibung
   device_number: Anlagennummer
   device_type: Geräteart
+  draft: Entwurf
   edit_central_device: Gerät bearbeiten
   email_address: Email Adresse
+  exchanged:
+    formats:
+      short: GW
   field_required: "(*) benötigt"
   gas_type: Gasart
   gas_types:
@@ -113,6 +117,7 @@ de:
   mobile_number: Mobilnummer
   montage_date: Montage Datum
   name: Name
+  name_customer: 'Unterschrift: AG/ Betreiber (Name in Druckbuchstaben)'
   name_or_chemical_formula: Name oder Chemische Formel
   need to be entered: müssen eingegeben werden
   new_central_device_service_protocol: Neues Prüfprotokoll erstellen
@@ -121,10 +126,14 @@ de:
     formats:
       default: Nächster Wechsel
       short: NW
+  not_working: nicht funktionstüchtig
+  notes: Bemerkungen
   number: Nummer
   object: Objekt
   object_nr: Objekt Nr.
   object_number: Object number
+  of: von
+  page: Seite
   placeholder: Platzhalter
   sensor_number:
     formats:
@@ -171,6 +180,7 @@ de:
     new:
       New: Neu
     show:
+      devices_fazit: 'Die Anlage ist:'
       edit:
         central_device: Gerät bearbeiten
         service_object: Objekt bearbeiten
@@ -178,7 +188,7 @@ de:
   si_unit:
     formats:
       default: SI Einheit
-      short: SI
+      short: SI Einh.
   si_units:
     edit:
       Edit: SI Einheit bearbeiten
@@ -187,6 +197,7 @@ de:
     new:
       New: SI Einheit speichern
   si_units_title: SI Einheiten
+  signature_employee: Unterschrift AN
   street: Straße
   telephone_number: Telefonnummer
   title: Titel
@@ -194,6 +205,8 @@ de:
   welcome:
     index:
       placeholder: Adressnummer, Objektnummer, Adressdetail, Seriennummer, ...
+  with_shortcomings: mit Mängeln
+  working: funktionstüchtig
   zero_point:
     formats:
       default: Nullpunkt
