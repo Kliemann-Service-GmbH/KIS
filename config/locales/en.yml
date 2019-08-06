@@ -73,8 +73,12 @@ en:
   description: Description
   device_number: Device number
   device_type: Device type
+  draft: Draft
   edit_central_device: Edit central device
   email_address: Email address
+  exchanged:
+    formats:
+      short: Short
   field_required: Field required
   gas_type: Gas type
   gas_types:
@@ -113,6 +117,7 @@ en:
   mobile_number: Mobile number
   montage_date: Montage date
   name: Name
+  name_customer: Name customer
   name_or_chemical_formula: Name or chemical formula
   need to be entered: Need to be entered
   new_central_device_service_protocol: New central device service protocol
@@ -121,10 +126,14 @@ en:
     formats:
       default: Default
       short: Short
+  not_working: Not working
+  notes: Notes
   number: Number
   object: Object
   object_nr: Object nr
   object_number: Object number
+  of: Of
+  page: Page
   placeholder: Placeholder
   sensor_number:
     formats:
@@ -171,6 +180,7 @@ en:
     new:
       New: New
     show:
+      devices_fazit: Devices fazit
       edit:
         central_device: Central device
         service_object: Service object
@@ -187,6 +197,7 @@ en:
     new:
       New: New
   si_units_title: Si units title
+  signature_employee: Signature employee
   street: Street
   telephone_number: Telephone number
   title: Title
@@ -194,6 +205,8 @@ en:
   welcome:
     index:
       placeholder: Placeholder
+  with_shortcomings: With shortcomings
+  working: Working
   zero_point:
     formats:
       default: Default
