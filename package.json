@@ -3,5 +3,8 @@
   "private": true,
   "dependencies": {
     "bulma": "^0.7.5"
+  },
+  "devDependencies": {
+    "cypress": "^3.4.1"
   }
 }

@@ -34,3 +34,14 @@
 /config/master.key
 
 .env
+
+# cypress.io test framework
+cypress/screenshots
+
+
+# cypress.io test framework
+cypress/screenshots
+
+# cypress.io test framework
+cypress/screenshots
+cypress/videos
