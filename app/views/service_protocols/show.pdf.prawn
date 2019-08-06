@@ -12,15 +12,27 @@ prawn_document do |pdf|
   )
   pdf.font "Arial", size: 10
 
-  # Variables
+  # Variables and default values
   width = pdf.bounds.width
   width_third = width / 3
   width_half = width / 2
+  pdf.line_width = 0.5
+  pdf.fill_color "111111"
+
 
   # Header and Footer
   pdf.repeat :all do
     if Rails.env.development?
       pdf.stroke_axis
+
+      pdf.fill_color "999999"
+      pdf.transparent 0.5 do
+        pdf.draw_text t('draft').capitalize, size: 45, style: :bold, at: [0, 600], rotate: 45
+        pdf.draw_text t('draft').capitalize, size: 45, style: :bold, at: [200, 400], rotate: 45
+        pdf.draw_text t('draft').capitalize, size: 45, style: :bold, at: [200, 200], rotate: 45
+        pdf.draw_text t('draft').capitalize, size: 45, style: :bold, at: [400, 100], rotate: 45
+      end
+      pdf.fill_color "111111"
     end
 
     # header
@@ -33,18 +45,23 @@ prawn_document do |pdf|
   end
 
   # body
-  pdf.bounding_box([pdf.bounds.left, pdf.bounds.top - 80], :width  => pdf.bounds.width, :height => pdf.bounds.height - 100) do
-    pdf.line_width = 0.5
+  pdf.bounding_box [pdf.bounds.left, pdf.bounds.top - 80], :width  => pdf.bounds.width, :height => pdf.bounds.height - 100 do
+    # ServiceObject address
+    current_line = pdf.cursor
+    row_height = 50
+    pdf.bounding_box [pdf.bounds.left, current_line], width: width_half, height: row_height do
+      pdf.text "#{t(:service_object)}", style: :bold
+      pdf.text "#{@service_protocol.central_device.service_object.address.street}"
+      pdf.text "#{@service_protocol.central_device.service_object.address.zip_city}"
+    end
 
-    pdf.text "#{t(:customer)}", style: :bold
-    pdf.text "#{@service_protocol.central_device.service_object.customer.address.street}"
-    pdf.text "#{@service_protocol.central_device.service_object.customer.address.zip_city}"
-    pdf.stroke_horizontal_rule
-    pdf.move_down 20
+    # Customer address
+    pdf.bounding_box [pdf.bounds.left + width_half, current_line], width: width_half, height: row_height do
+      pdf.text "#{t(:customer)}", style: :bold
+      pdf.text "#{@service_protocol.central_device.service_object.customer.address.street}"
+      pdf.text "#{@service_protocol.central_device.service_object.customer.address.zip_city}"
+    end
 
-    pdf.text "#{t(:service_object)}", style: :bold
-    pdf.text "#{@service_protocol.central_device.service_object.address.street}"
-    pdf.text "#{@service_protocol.central_device.service_object.address.zip_city}"
     pdf.stroke_horizontal_rule
     pdf.move_down 20
 
@@ -56,11 +73,24 @@ prawn_document do |pdf|
     pdf.move_down 20
 
     pdf.text "#{t(:alarm_settings)}", style: :bold
+
     pdf.stroke_horizontal_rule
     pdf.move_down 20
 
-
-    data_sensor = [["#", "NP", "Gasart", "Sensortyp", "MB", "NW", "GW", "A1", "A2", "A3", "A4", "Einh.", "Standort"]]
+    data_sensor = [[
+      "#{t('sensor_number.formats.short')}",
+      "#{t('zero_point.formats.short')}",
+      "#{t(:gas_type)}",
+      "#{t(:sensor_type)}",
+      "#{t('measuring_range.formats.short')}",
+      "#{t('next_exchange.formats.short')}",
+      "#{t('exchanged.formats.short')}",
+      "#{t('a1.formats.short')}",
+      "#{t('a2.formats.short')}",
+      "#{t('a3.formats.short')}",
+      "#{t('a4.formats.short')}",
+      "#{t('si_unit.formats.short')}",
+      "#{t(:location)}"]]
     for sensor in @service_protocol.central_device.sensors
       data_sensor += [[sensor.number, "", sensor.gas_type.chemical_formula, sensor.sensor_type.name, "#{sensor.min_value}-#{sensor.max_value}", "", "", sensor.alarm_point_1, sensor.alarm_point_2, sensor.alarm_point_3, sensor.alarm_point_4, sensor.si_unit.name, sensor.location]]
     end
@@ -70,22 +100,22 @@ prawn_document do |pdf|
       header: true,
       column_widths: { 12 => 120 },
       row_colors: ["F0F0F0","FFFFFF"],
-      cell_style: { border_width: 0.5, size: 10 } do
+      cell_style: { border_width: 0.5, size: 8 } do
         row(0).font_style = :bold
       end
     pdf.move_down 20
 
     # Notes
-    pdf.start_new_page if pdf.cursor < 200
+    pdf.start_new_page if pdf.cursor < 100
     pdf.text "#{t(:notes)}", style: :bold
-    pdf.bounding_box [pdf.bounds.left, pdf.cursor], width: pdf.bounds.width, height: 5.cm do
+    pdf.bounding_box [pdf.bounds.left, pdf.cursor], width: pdf.bounds.width, height: 3.cm do
       pdf.line_width = 0.5
       pdf.stroke_bounds
     end
     pdf.move_down 20
 
 
-    pdf.text "Die Anlage ist:", style: :bold
+    pdf.text t('.devices_fazit'), style: :bold
 
     current_line = pdf.cursor
     pdf.bounding_box [pdf.bounds.left, current_line], width: width_third do

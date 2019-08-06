@@ -73,8 +73,12 @@ de:
   description: Beschreibung
   device_number: Anlagennummer
   device_type: Geräteart
+  draft: Entwurf
   edit_central_device: Gerät bearbeiten
   email_address: Email Adresse
+  exchanged:
+    formats:
+      short: GW
   field_required: "(*) benötigt"
   gas_type: Gasart
   gas_types:
@@ -176,6 +180,7 @@ de:
     new:
       New: Neu
     show:
+      devices_fazit: 'Die Anlage ist:'
       edit:
         central_device: Gerät bearbeiten
         service_object: Objekt bearbeiten
@@ -183,7 +188,7 @@ de:
   si_unit:
     formats:
       default: SI Einheit
-      short: SI
+      short: SI Einh.
   si_units:
     edit:
       Edit: SI Einheit bearbeiten
