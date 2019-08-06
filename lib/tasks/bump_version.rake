@@ -1,7 +1,7 @@
 namespace :release do
 
-  desc "create VERSION. Use BUILD_VERSION to override defaults"
-  task :create_version do
+  desc "bump VERSION. Use BUILD_VERSION to override defaults"
+  task :bump_version do
 
     version_file = "#{Rails.root}/config/initializers/version.rb"
     version = ENV["VBUILD_ERSION"] || `git describe --always --tags`
