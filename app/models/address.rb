@@ -17,6 +17,10 @@ class Address < ApplicationRecord
     }
 
   # Virtual Attributes
+  def address_number_match_code
+    "##{address_details['address_number']} - #{address_details['match_code']}"
+  end
+
   def full_name
     return "" if address_details.nil?
     name = ""

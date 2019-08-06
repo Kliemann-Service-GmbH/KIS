@@ -26,10 +26,6 @@ class Customer < ApplicationRecord
     address.address_details['address_number']
   end
 
-  def address_number_match_code
-    "#{address.address_details['address_number']} - #{address.address_details['match_code']}"
-  end
-
   # Alias for backward compatiblity
   # FIXME: rename to 'address_number_match_code'
   def customer_address_details

@@ -33,23 +33,24 @@ class ServiceObject < ApplicationRecord
 
   # Virtual Attributes
 
+  # TODO: Add usage
   # used in:
-  # * app/views/central_devices/_form.html.erb
-  # * app/views/central_devices/show.html.erb
-  def service_object_address_details
-  "#{address.address_details['address_number']} #{address.address_details['match_code']}"
-  end
-
+  # *
   def object_number
     address.address_number
   end
 
+  # TODO: Add usage
+  # used in:
+  # *
   def customer_number
     customer.customer_number
   end
 
+  # TODO: Add usage
+  # used in:
+  # *
   def address_details
     address.address_details
   end
-
 end

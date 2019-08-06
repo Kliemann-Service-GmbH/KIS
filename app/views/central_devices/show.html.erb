@@ -16,7 +16,7 @@
 <h2 class="subtitle"><%= t('.service_object') %></h2>
 <% unless @service_object.blank? %>
 <div class="">
-  <%= @service_object.first.service_object_address_details %>
+  <%= @service_object.first.address.address_number_match_code %>
 </div>
 <%= render partial: "addresses/post_address", locals: {address: @service_object.first.address} %>
 <% end %>

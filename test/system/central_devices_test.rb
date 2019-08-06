@@ -24,7 +24,7 @@ class CentralDevicesTest < ApplicationSystemTestCase
     visit central_devices_url()
     click_on I18n.t('central_devices.index.New')
 
-    select "#{@service_object.service_object_address_details.strip!}", from: 'central_device_service_object_id', match: :first
+    select "#{@service_object.address.address_number_match_code.strip!}", from: 'central_device_service_object_id', match: :first
 
     fill_in :central_device_device_number, with: @central_device.device_number
     fill_in :central_device_device_type, with: @central_device.device_type
@@ -43,7 +43,7 @@ class CentralDevicesTest < ApplicationSystemTestCase
     visit service_object_central_devices_url(@service_object)
     click_on I18n.t('central_devices.index.New')
 
-    assert page.has_select?('central_device_service_object_id', selected: "#{@service_object.service_object_address_details.strip!}")
+    assert page.has_select?('central_device_service_object_id', selected: "#{@service_object.address.address_number_match_code.strip!}")
 
     fill_in :central_device_device_number, with: @central_device.device_number
     fill_in :central_device_serial_number, with: @central_device.serial_number
@@ -62,7 +62,7 @@ class CentralDevicesTest < ApplicationSystemTestCase
     visit central_devices_url()
     click_on I18n.t('central_devices.index.New')
 
-    select "#{@service_object.service_object_address_details.strip!}", from: 'central_device_service_object_id', match: :first
+    select "#{@service_object.address.address_number_match_code.strip!}", from: 'central_device_service_object_id', match: :first
 
     fill_in :central_device_device_number, with: @central_device.device_number
     fill_in :central_device_device_type, with: @central_device.device_type
