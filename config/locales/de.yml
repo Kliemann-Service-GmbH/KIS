@@ -36,10 +36,11 @@ de:
     formats:
       default: Installations Datum
       short: Inst
+  begin: Beginn
   central_device: Gerät
   central_devices:
     edit:
-      Edit: bearbeiten
+      Edit: Gerät bearbeiten
     index:
       New: Neues Gerät
       placeholder: Anlagennummer, -typ, Standort, ...
@@ -63,7 +64,7 @@ de:
   customer: Kunde
   customers:
     edit:
-      Edit: bearbeiten
+      Edit: Kunde bearbeiten
     index:
       New: Neuer Kunde
       placeholder: Adressdetails Name, Telefonnummer, ...
@@ -76,6 +77,7 @@ de:
   draft: Entwurf
   edit_central_device: Gerät bearbeiten
   email_address: Email Adresse
+  end: Ende
   exchanged:
     formats:
       short: GW
@@ -83,7 +85,7 @@ de:
   gas_type: Gasart
   gas_types:
     edit:
-      Edit: Bearbeiten
+      Edit: Gasart bearbeiten
     index:
       New: Neue Gasart erfassen
     new:
@@ -97,6 +99,7 @@ de:
   is_repair: Reparatur
   is_service_contract: Wartungsvertrag
   is_systemcheck: Systemprüfung
+  length: Länge
   livetime:
     formats:
       default: Normale Lebensdauer
@@ -149,13 +152,19 @@ de:
       New: Sensorart speichern
   sensor_types_title: Sensorarten
   serial_number: Seriennummer
+  service_contract: Wartungsvertrag
   service_contract_auto_resume_interval: Wartungsvertrag wird automatisch verlängert um
   service_contract_begin: Beginn Wartungsvertrag
+  service_contract_end: Ende Wartungsvertrag
   service_contract_length: Länge Wartungsvertrag
   service_object: Objekt
   service_objects:
     edit:
-      Edit: bearbeiten
+      Edit: Objekt bearbeiten
+    form:
+      help_service_contract_begin: Beginn des Wartungsvertrags
+      help_service_contract_end: Ende des Wartungsvertrags
+      help_service_contract_length: Länge des Wartungsvertrags
     index:
       New: Neues Objekt erstellen
       placeholder: Adressdetails, Name, Ort, ...
@@ -173,7 +182,7 @@ de:
       object_number: Objektnummer
       serial_number: Seriennummer
     edit:
-      Edit: bearbeiten
+      Edit: Prüfprotokoll bearbeiten
     index:
       New: Neu
       placeholder: Anlagennummer,

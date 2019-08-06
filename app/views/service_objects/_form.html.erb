@@ -41,56 +41,43 @@
 
   <div class="field is-horizontal">
     <div class="field-label is-normal">
-      <%= form.label t(:has_service_contract), class: 'label', id: :has_service_contract %>
+      <%= form.label t(:service_contract), class: 'label' %>
     </div>
     <div class="field-body">
       <div class="field">
-        <div class="control">
-          <%= form.check_box :has_service_contract, class: 'check_box' %>
+        <div class="label">
+          <%= form.label t(:begin), class: 'label', id: :service_contract_begin %>
         </div>
-        <div class="help"></div>
-      </div>
-    </div>
-  </div>
-
-  <div class="field is-horizontal">
-    <div class="field-label is-normal">
-      <%= form.label t(:service_contract_begin), class: 'label', id: :service_contract_begin %>
-    </div>
-    <div class="field-body">
-      <div class="field">
-        <div class="control">
+        <div class="control is-expanded">
           <%= form.date_field :service_contract_begin %>
         </div>
-        <div class="help"></div>
+        <div class="help">
+          <%= t('service_objects.form.help_service_contract_begin') %>
+        </div>
       </div>
-    </div>
-  </div>
 
-  <div class="field is-horizontal">
-    <div class="field-label is-normal">
-      <%= form.label t(:service_contract_length), class: 'label', id: :service_contract_length %>
-    </div>
-    <div class="field-body">
       <div class="field">
-        <div class="control">
+        <div class="label">
+          <%= form.label t(:length), class: 'label', id: :service_contract_length %>
+        </div>
+        <div class="control is-expanded">
           <%= form.date_field :service_contract_length %>
         </div>
-        <div class="help"></div>
-      </div>
-    </div>
-  </div>
-
-  <div class="field is-horizontal">
-    <div class="field-label is-normal">
-      <%= form.label t(:service_contract_auto_resume_interval), class: 'label', id: :service_contract_auto_resume_interval %>
-    </div>
-    <div class="field-body">
-      <div class="field">
-        <div class="control">
-          <%= form.datetime_field :service_contract_auto_resume_interval %>
+        <div class="help">
+          <%= t('service_objects.form.help_service_contract_length') %>
         </div>
-        <div class="help"></div>
+      </div>
+
+      <div class="field">
+        <div class="label">
+          <%= form.label t(:end), class: 'label', id: :service_contract_end %>
+        </div>
+        <div class="control is-expanded">
+          <%= form.date_field :service_contract_end %>
+        </div>
+        <div class="help">
+          <%= t('service_objects.form.help_service_contract_end') %>
+        </div>
       </div>
     </div>
   </div>
