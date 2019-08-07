@@ -17,3 +17,7 @@ complete: &full
 with_service_contract:
   <<: *full
   service_contract_begin: <%= Time.now %>
+
+with_service_contract_end:
+  <<: *full
+  service_contract_end: <%= 5.years.from_now %>
