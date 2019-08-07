@@ -43,10 +43,7 @@ class ServiceObjectsTest < ApplicationSystemTestCase
     # ServiceObject.address (match_code)
     select @service_object.address.address_line, from: 'service_object_address_id', match: :first
 
-    check 'service_object_has_service_contract'
-    # select 'service_contract_begin', with: DateTime.now.strftime('%m/%d/2000')
-    # fill_in 'service_contract_length', with: DateTime.now.strftime('%m/%d/2000')
-    # fill_in 'service_contract_auto_resume_interval', with: DateTime.now.strftime('%m/%d/2000')
+    fill_in 'service_object_service_contract_begin', with: @service_object.service_contract_begin
 
     find(:css, 'input[type="submit"]').click
 

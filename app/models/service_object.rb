@@ -53,4 +53,8 @@ class ServiceObject < ApplicationRecord
   def address_details
     address.address_details
   end
+
+  def has_service_contract
+    false
+  end
 end
