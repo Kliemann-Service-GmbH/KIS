@@ -9,7 +9,11 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <% if Rails.env.development? %>
+    <%= favicon_link_tag asset_path('favicon-development.ico') %>
+    <% else %>
     <%= favicon_link_tag asset_path('favicon.ico') %>
+    <% end %>
   </head>
 
   <body>
@@ -25,13 +29,12 @@
 
     <footer class="footer">
       <div class=" has-text-centered">
-        <p>
+        <div>
           <strong>KIS - KLS Info System</strong>
-        </p>
-        <p><%= version_number %></p>
-        <p class="is-size-7">&copy; 2019 Stefan Müller<br />Kliemann-Service GmbH</p>
+        </div>
+        <div><%= version_number %></div>
+        <div class="is-size-7">&copy; 2019 Stefan Müller<br />Kliemann-Service GmbH</div>
       </div>
     </footer>
-
   </body>
 </html>
