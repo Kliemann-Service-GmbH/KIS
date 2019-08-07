@@ -59,6 +59,15 @@ ActiveRecord::Schema.define(version: 2019_06_19_091633) do
     t.index ["address_id"], name: "index_contact_addresses_on_address_id"
   end
 
+  create_table "customer_addresses", force: :cascade do |t|
+    t.bigint "address_id"
+    t.bigint "customer_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["address_id"], name: "index_customer_addresses_on_address_id"
+    t.index ["customer_id"], name: "index_customer_addresses_on_customer_id"
+  end
+
   create_table "customers", force: :cascade do |t|
     t.bigint "address_id"
     t.datetime "created_at", null: false
@@ -123,6 +132,15 @@ ActiveRecord::Schema.define(version: 2019_06_19_091633) do
     t.index ["gas_type_id"], name: "index_sensors_on_gas_type_id"
     t.index ["sensor_type_id"], name: "index_sensors_on_sensor_type_id"
     t.index ["si_unit_id"], name: "index_sensors_on_si_unit_id"
+  end
+
+  create_table "service_object_addresses", force: :cascade do |t|
+    t.bigint "address_id"
+    t.bigint "service_object_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["address_id"], name: "index_service_object_addresses_on_address_id"
+    t.index ["service_object_id"], name: "index_service_object_addresses_on_service_object_id"
   end
 
   create_table "service_objects", force: :cascade do |t|

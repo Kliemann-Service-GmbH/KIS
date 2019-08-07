@@ -23,7 +23,7 @@ class ServiceObjectsTest < ApplicationSystemTestCase
     click_on I18n.t('service_objects.index.New')
 
     # Customer (customer_number)
-    select @service_object.customer.customer_address_line, from: 'service_object_customer_id', match: :first
+    select @service_object.customer.address_number_match_code, from: 'service_object_customer_id', match: :first
     # ServiceObject.address (match_code)
     select @service_object.address.address_line, from: 'service_object_address_id', match: :first
 
@@ -39,7 +39,7 @@ class ServiceObjectsTest < ApplicationSystemTestCase
     click_on I18n.t('service_objects.index.New')
 
     # Customer (customer_number)
-    select @service_object.customer.customer_address_line, from: 'service_object_customer_id', match: :first
+    select @service_object.customer.address_number_match_code, from: 'service_object_customer_id', match: :first
     # ServiceObject.address (match_code)
     select @service_object.address.address_line, from: 'service_object_address_id', match: :first
 

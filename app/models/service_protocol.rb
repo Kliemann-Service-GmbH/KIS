@@ -7,10 +7,10 @@ class ServiceProtocol < ApplicationRecord
 
   # Full-Text search in PostgreSQL database
   include PgSearch
-  multisearchable against: [:device_number, :customer_number, :service_object_number]
+  multisearchable against: [:serial_number, :customer_number, :service_object_number]
 
   pg_search_scope :search_full_text, associated_against: {
-    central_device: :device_number,
+    central_device: [:serial_number, :device_type, :location]
   },
     using: {
       tsearch: {
@@ -21,8 +21,8 @@ class ServiceProtocol < ApplicationRecord
     }
 
     # Virtual attributes
-    def device_number
-      central_device.device_number
+    def serial_number
+      central_device.serial_number
     end
 
     # Used in:

@@ -5,6 +5,7 @@ class WelcomeTest < ApplicationSystemTestCase
     @address = addresses(:baroness)
     @customer = customers(:complete)
     @service_object = service_objects(:complete)
+    @service_protocol = service_protocols(:complete)
     rebuild_multisearch
   end
 
@@ -45,6 +46,18 @@ class WelcomeTest < ApplicationSystemTestCase
   end
 
   test "search Customer shows ServiceObjects" do
+    assert_equal @customer.address.address_number, @service_protocol.service_object_number
+
+    visit root_url
+    # search
+    fill_in :q, with: @customer.address.address_number
+    click_on I18n.t('Search')
+
+    assert_selector "div", text: @customer.address.address_number
+    assert_selector "div", text: @service_protocol.service_object_number
+  end
+
+  test "search Customer shows ServiceProtocols" do
     assert_equal @customer.address.address_number, @service_object.customer.address.address_number
 
     visit root_url
