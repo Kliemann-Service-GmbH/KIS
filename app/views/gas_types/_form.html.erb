@@ -17,10 +17,10 @@
     </div>
     <div class="field-body">
       <div class="field">
-        <p class="control">
+        <div class="control">
           <%= form.text_field :chemical_formula %>
-        </p>
-        <p class="help"></p>
+        </div>
+        <div class="help"></div>
       </div>
     </div>
   </div>
@@ -31,10 +31,10 @@
     </div>
     <div class="field-body">
       <div class="field">
-        <p class="control">
+        <div class="control">
           <%= form.text_field :name %>
-        </p>
-        <p class="help"></p>
+        </div>
+        <div class="help"></div>
       </div>
     </div>
   </div>
@@ -45,14 +45,13 @@
     </div>
     <div class="field-body">
       <div class="field">
-        <p class="control">
+        <div class="control">
           <%= form.text_area :description %>
-        </p>
-        <p class="help"></p>
+        </div>
+        <div class="help"></div>
       </div>
     </div>
   </div>
-
 
   <div class="actions">
     <%= form.submit nil, class: 'button is-primary' %>
