@@ -17,10 +17,10 @@
     </div>
     <div class="field-body">
       <div class="field">
-        <p class="control">
+        <div class="control">
           <%= form.select :service_object_id, ServiceObject.all.collect { |service_object| [service_object.address.address_number_match_code, service_object.id]}, { include_blank: 'None' } %>
-        </p>
-        <p class="help is-danger"><%= t :field_required %></p>
+        </div>
+        <div class="help is-danger"><%= t :field_required %></div>
       </div>
     </div>
   </div>
@@ -31,10 +31,10 @@
     </div>
     <div class="field-body">
       <div class="field">
-        <p class="control">
+        <div class="control">
           <%= form.text_field :device_number, class: 'input' %>
-        </p>
-        <p class="help"></p>
+        </div>
+        <div class="help"></div>
       </div>
     </div>
   </div>
@@ -45,10 +45,10 @@
     </div>
     <div class="field-body">
       <div class="field">
-        <p class="control">
+        <div class="control">
           <%= form.text_field :serial_number, class: 'input' %>
-        </p>
-        <p class=""></p>
+        </div>
+        <div class=""></div>
       </div>
     </div>
   </div>
@@ -59,10 +59,10 @@
     </div>
     <div class="field-body">
       <div class="field">
-        <p class="control">
+        <div class="control">
           <%= form.text_field :device_type, class: 'input' %>
-        </p>
-        <p class="help"></p>
+        </div>
+        <div class="help"></div>
       </div>
     </div>
   </div>
@@ -73,10 +73,10 @@
     </div>
     <div class="field-body">
       <div class="field">
-        <p class="control">
+        <div class="control">
           <%= form.text_field :location, class: 'input' %>
-        </p>
-        <p class="help"></p>
+        </div>
+        <div class="help"></div>
       </div>
     </div>
   </div>
@@ -87,10 +87,10 @@
     </div>
     <div class="field-body">
       <div class="field">
-        <p class="control">
+        <div class="control">
           <%= form.date_field :montage_date %>
-        </p>
-        <p class="help"></p>
+        </div>
+        <div class="help"></div>
       </div>
     </div>
   </div>
@@ -138,12 +138,8 @@
     <%= form.fields_for :sensors, @central_device.sensors.sort_by(&:number) do |builder| %>
       <%= render "sensors/form_sensor", form: builder %>
     <% end %>
-
-
-
     </tbody>
   </table>
-
 
   <div class="actions">
     <%= form.submit nil, class: 'button is-primary' %>

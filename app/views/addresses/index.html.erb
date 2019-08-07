@@ -1,5 +1,3 @@
-
-
 <h1 class="title"><%= addresses_title_with_size %></h1>
 
 <div class="columns is-centered">
@@ -14,9 +12,6 @@
   </div>
   <% end %>
 </div>
-
-
-
 
 <% @addresses.each do |address| %>
   <%= render partial: "address", locals: { address: address } %>

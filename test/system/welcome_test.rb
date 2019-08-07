@@ -18,7 +18,7 @@ class WelcomeTest < ApplicationSystemTestCase
     click_on I18n.t('Search')
 
     # TODO: extend with more models then @address and with more attributes to search against
-    # assert_selector "p", text: @address.address_details['last_name'] # failure
-    assert_selector "p", text: @address.address_details['match_code']
+    # assert_selector "div", text: @address.address_details['last_name'] # failure
+    assert_selector "div", text: @address.address_details['match_code']
   end
 end
