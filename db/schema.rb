@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_19_091633) do
+ActiveRecord::Schema.define(version: 2019_08_08_124723) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "hstore"
@@ -57,15 +57,6 @@ ActiveRecord::Schema.define(version: 2019_06_19_091633) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["address_id"], name: "index_contact_addresses_on_address_id"
-  end
-
-  create_table "customer_addresses", force: :cascade do |t|
-    t.bigint "address_id"
-    t.bigint "customer_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["address_id"], name: "index_customer_addresses_on_address_id"
-    t.index ["customer_id"], name: "index_customer_addresses_on_customer_id"
   end
 
   create_table "customers", force: :cascade do |t|
@@ -134,25 +125,14 @@ ActiveRecord::Schema.define(version: 2019_06_19_091633) do
     t.index ["si_unit_id"], name: "index_sensors_on_si_unit_id"
   end
 
-  create_table "service_object_addresses", force: :cascade do |t|
-    t.bigint "address_id"
-    t.bigint "service_object_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["address_id"], name: "index_service_object_addresses_on_address_id"
-    t.index ["service_object_id"], name: "index_service_object_addresses_on_service_object_id"
-  end
-
   create_table "service_objects", force: :cascade do |t|
     t.bigint "address_id"
     t.bigint "customer_id"
-    t.boolean "has_service_contract"
     t.datetime "service_contract_begin"
     t.datetime "service_contract_end"
-    t.datetime "service_contract_length"
-    t.datetime "service_contract_auto_resume_interval"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "service_contract_auto_resume_interval"
     t.index ["address_id"], name: "index_service_objects_on_address_id"
     t.index ["customer_id"], name: "index_service_objects_on_customer_id"
   end
