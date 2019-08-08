@@ -39,13 +39,24 @@ prawn_document do |pdf|
     pdf.image "#{Rails.root}/app/assets/images/logo_kliemann-service-gmbh.png", :at => [410,790], :width => 100
     pdf.draw_text t(:service_protocol).upcase, style: :bold, size: 16, at: [0, 730]
     pdf.draw_text "#{t(:object_nr)}: #{@service_protocol.central_device.service_object.object_number}-#{@service_protocol.central_device.device_number}", style: :bold, size: 16, at: [260, 730]
+
     pdf.draw_text "#{t(:service_protocol)} #{t(:created_at)}: #{@service_protocol.created_at.strftime("%F %T")}", size: 8, at: [0, 710]
     pdf.draw_text "#{t(:service_protocol)} #{t(:updated_at)}: #{@service_protocol.updated_at.strftime("%F %T")}", size: 8, at: [width_half, 710]
+
+    if @service_protocol.central_device.service_object.has_service_contract
+      pdf.draw_text t(:service_contract), style: :bold, at: [width_half, 695]
+    end
+
+    @service_protocol.central_device.service_object.service_contract_length = Time.now
+    if @service_protocol.central_device.service_object.has_service_contract && @service_protocol.central_device.service_object.service_contract_length
+      pdf.draw_text "bis: #{@service_protocol.central_device.service_object.service_contract_length.strftime("%F")}", at: [width_half + 90, 695]
+    end
+
     # footer
   end
 
   # body
-  pdf.bounding_box [pdf.bounds.left, pdf.bounds.top - 80], :width  => pdf.bounds.width, :height => pdf.bounds.height - 100 do
+  pdf.bounding_box [pdf.bounds.left, pdf.bounds.top - 100], :width  => pdf.bounds.width, :height => pdf.bounds.height - 100 do
     # ServiceObject address
     current_line = pdf.cursor
     row_height = 50
