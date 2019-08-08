@@ -1,4 +1,3 @@
-
 <h1 class="title"><%= @central_device.device_type %></h1>
 
 <hr>
@@ -56,7 +55,6 @@
 
 <hr>
 
-
 <table class="table is-narrow is-bordered is-striped is-hoverable">
   <thead>
     <tr>
@@ -105,9 +103,7 @@
   <%= render "service_protocols/service_protocol", service_protocol: service_protocol %>
 <% end %>
 
-
 <%= link_to t(:new_central_device_service_protocol), new_central_device_service_protocol_path(@central_device) %>
-
 
 <div style="padding-top: 1em;">
   <%= link_to t('Edit'), edit_central_device_path(@central_device) %> |
