@@ -19,5 +19,9 @@
 <% end %>
 
 <div style="padding-top: 1em;">
+<% if params[:service_object_id] %>
+<%= link_to t('.New'), new_service_object_central_device_path(@service_object) %>
+<% else %>
 <%= link_to t('.New'), new_central_device_path %>
+<% end %>
 </div>
