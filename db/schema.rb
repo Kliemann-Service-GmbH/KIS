@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_08_062049) do
+ActiveRecord::Schema.define(version: 2019_08_08_124723) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "hstore"
@@ -130,7 +130,6 @@ ActiveRecord::Schema.define(version: 2019_08_08_062049) do
     t.bigint "customer_id"
     t.datetime "service_contract_begin"
     t.datetime "service_contract_end"
-    t.datetime "service_contract_length"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "service_contract_auto_resume_interval"

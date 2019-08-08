@@ -47,8 +47,7 @@ prawn_document do |pdf|
       pdf.draw_text t(:service_contract), style: :bold, at: [width_half, 695]
     end
 
-    @service_protocol.central_device.service_object.service_contract_length = Time.now
-    if @service_protocol.central_device.service_object.has_service_contract && @service_protocol.central_device.service_object.service_contract_length
+    if @service_protocol.central_device.service_object.has_service_contract
       pdf.draw_text "bis: #{@service_protocol.central_device.service_object.service_contract_length.strftime("%F")}", at: [width_half + 90, 695]
     end
 
@@ -141,9 +140,11 @@ prawn_document do |pdf|
       pdf.text "[ ] #{t(:with_shortcomings)}"
     end
 
-    # Signatur fields on bottom
+    # # Signatur fields on bottom
     pdf.start_new_page if pdf.cursor < 70
-    current_line = 60
+
+    pdf.move_down 20
+    current_line = pdf.cursor
     pdf.bounding_box [pdf.bounds.left, current_line], width: width_half do
       pdf.text "Ort: #{@service_protocol.central_device.service_object.address.zip_city}", style: :bold
       pdf.move_down 50
@@ -167,5 +168,4 @@ prawn_document do |pdf|
     :start_count_at => 1,
   }
   pdf.number_pages string, options
-
 end

@@ -41,7 +41,7 @@ class ServiceObject < ApplicationRecord
       (service_contract_auto_resume_interval.nil? || service_contract_auto_resume_interval)
       errors.add(:service_contract_end, "can't be in the past if service_contract_begin is in the future")
     end
-end
+  end
 
   def service_contract_auto_resume_interval_cant_set_without_the_other_fields
     if service_contract_auto_resume_interval && service_contract_begin.nil? && service_contract_end.nil?
@@ -49,6 +49,7 @@ end
     end
   end
 
+  # Virtual Attributes
   def has_service_contract
     return false if service_contract_begin.nil? && service_contract_end.nil? && service_contract_auto_resume_interval.nil? #17
     return false if service_contract_begin.nil? && service_contract_end.nil? && service_contract_auto_resume_interval #18 unreachable #
@@ -57,9 +58,9 @@ end
     return true if service_contract_begin.nil? && service_contract_end > Time.now && service_contract_auto_resume_interval #14
     return true if service_contract_begin.nil? && service_contract_end < Time.now && service_contract_auto_resume_interval #15
     return false if service_contract_begin > Time.now && service_contract_end.nil? && service_contract_auto_resume_interval.nil? #1
-    return true if  service_contract_begin < Time.now && service_contract_end.nil? && service_contract_auto_resume_interval.nil? #2
+    return true if service_contract_begin < Time.now && service_contract_end.nil? && service_contract_auto_resume_interval.nil? #2
     return false if service_contract_begin > Time.now && service_contract_end.nil? && service_contract_auto_resume_interval #3
-    return true if  service_contract_begin < Time.now && service_contract_end.nil? && service_contract_auto_resume_interval #4
+    return true if service_contract_begin < Time.now && service_contract_end.nil? && service_contract_auto_resume_interval #4
     return false if service_contract_begin > Time.now && service_contract_end > Time.now && service_contract_auto_resume_interval.nil? #5
     return true if service_contract_begin < Time.now && service_contract_end > Time.now && service_contract_auto_resume_interval.nil? #6
     return false if service_contract_begin > Time.now && service_contract_end < Time.now && service_contract_auto_resume_interval.nil? #9 unreachable #
@@ -73,8 +74,19 @@ end
     false
   end
 
+  def service_contract_length
+    return nil unless has_service_contract
 
-  # Virtual Attributes
+    return service_contract_end if service_contract_begin.nil? && service_contract_end > Time.now && service_contract_auto_resume_interval.nil? #13
+    return service_contract_end if service_contract_begin.nil? && service_contract_end > Time.now && service_contract_auto_resume_interval #14
+    return Time.now.end_of_year if service_contract_begin.nil? && service_contract_end < Time.now && service_contract_auto_resume_interval #15
+    return Time.now.end_of_year if service_contract_begin < Time.now && service_contract_end.nil? && service_contract_auto_resume_interval.nil? #2
+    return Time.now.end_of_year if service_contract_begin < Time.now && service_contract_end.nil? && service_contract_auto_resume_interval #4
+    return service_contract_end if service_contract_begin < Time.now && service_contract_end > Time.now && service_contract_auto_resume_interval.nil? #6
+    return service_contract_end if service_contract_begin < Time.now && service_contract_end > Time.now && service_contract_auto_resume_interval #8
+    return Time.now.end_of_year if service_contract_begin < Time.now && service_contract_end < Time.now && service_contract_auto_resume_interval #12
+
+  end
 
   # TODO: Add usage
   # used in:
