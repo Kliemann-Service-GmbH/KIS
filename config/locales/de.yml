@@ -162,6 +162,8 @@ de:
     edit:
       Edit: Objekt bearbeiten
     form:
+      automatic_resume: automatische Verlängerung
+      help_service_contract_auto_resume_interval: Wird der Wartungsvertrag automatisch verlängert bitte dieses Feld ausfüllen.
       help_service_contract_begin: Beginn des Wartungsvertrags
       help_service_contract_end: Ende des Wartungsvertrags
       help_service_contract_length: Länge des Wartungsvertrags
@@ -216,6 +218,7 @@ de:
       placeholder: Adressnummer, Objektnummer, Adressdetail, Seriennummer, ...
   with_shortcomings: mit Mängeln
   working: funktionstüchtig
+  years: Jahre
   zero_point:
     formats:
       default: Nullpunkt

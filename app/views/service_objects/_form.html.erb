@@ -58,18 +58,6 @@
 
       <div class="field">
         <div class="label">
-          <%= form.label t(:length), class: 'label', id: :service_contract_length %>
-        </div>
-        <div class="control is-expanded">
-          <%= form.date_field :service_contract_length %>
-        </div>
-        <div class="help">
-          <%= t('service_objects.form.help_service_contract_length') %>
-        </div>
-      </div>
-
-      <div class="field">
-        <div class="label">
           <%= form.label t(:end), class: 'label', id: :service_contract_end %>
         </div>
         <div class="control is-expanded">
@@ -78,6 +66,18 @@
         <div class="help">
           <%= t('service_objects.form.help_service_contract_end') %>
         </div>
+      </div>
+    </div>
+
+    <div class="field">
+      <div class="label">
+        <%= form.label t('.automatic_resume'), class: 'label' %>
+      </div>
+      <div class="control is-expanded">
+        <%= form.text_field :service_contract_auto_resume_interval, size: 2 %>&nbsp;<%= t(:years) %>
+      </div>
+      <div class="help">
+        <%= t('service_objects.form.help_service_contract_auto_resume_interval') %>
       </div>
     </div>
   </div>

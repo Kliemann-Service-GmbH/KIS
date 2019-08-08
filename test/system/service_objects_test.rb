@@ -51,6 +51,43 @@ class ServiceObjectsTest < ApplicationSystemTestCase
     click_on I18n.t('Back')
   end
 
+  test "create a Service object with service contract end datum" do
+    @service_object = service_objects(:with_service_contract_end)
+    visit service_objects_url
+    click_on I18n.t('service_objects.index.New')
+
+    # Customer (customer_number)
+    select @service_object.customer.address_number_match_code, from: 'service_object_customer_id', match: :first
+    # ServiceObject.address (match_code)
+    select @service_object.address.address_line, from: 'service_object_address_id', match: :first
+
+    fill_in 'service_object_service_contract_end', with: @service_object.service_contract_end
+
+    find(:css, 'input[type="submit"]').click
+
+    assert_text "Service object was successfully created"
+    click_on I18n.t('Back')
+  end
+
+  test "create a Service object with service contract start and length" do
+    @service_object = service_objects(:with_service_contract)
+    visit service_objects_url
+    click_on I18n.t('service_objects.index.New')
+
+    # Customer (customer_number)
+    select @service_object.customer.address_number_match_code, from: 'service_object_customer_id', match: :first
+    # ServiceObject.address (match_code)
+    select @service_object.address.address_line, from: 'service_object_address_id', match: :first
+
+    fill_in 'service_object_service_contract_begin', with: @service_object.service_contract_begin
+    fill_in 'service_object_service_contract_auto_resume_interval', with: @service_object.service_contract_auto_resume_interval
+
+    find(:css, 'input[type="submit"]').click
+
+    assert_text "Service object was successfully created"
+    click_on I18n.t('Back')
+  end
+
   test "updating a Service object" do
     @service_object = service_objects(:complete)
     visit service_objects_url

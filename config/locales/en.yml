@@ -162,6 +162,8 @@ en:
     edit:
       Edit: Edit
     form:
+      automatic_resume: Automatic resume
+      help_service_contract_auto_resume_interval: Help service contract auto resume interval
       help_service_contract_begin: Help service contract begin
       help_service_contract_end: Help service contract end
       help_service_contract_length: Help service contract length
@@ -216,6 +218,7 @@ en:
       placeholder: Placeholder
   with_shortcomings: With shortcomings
   working: Working
+  years: Years
   zero_point:
     formats:
       default: Default
