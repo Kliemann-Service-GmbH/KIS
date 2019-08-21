@@ -1,3 +1,15 @@
+# == Schema Information
+#
+# Table name: gas_types
+#
+#  id               :bigint           not null, primary key
+#  chemical_formula :string
+#  description      :text
+#  name             :string
+#  created_at       :datetime         not null
+#  updated_at       :datetime         not null
+#
+
 class GasType < ApplicationRecord
   # Associations
   has_many :sensors, dependent: :destroy

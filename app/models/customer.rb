@@ -1,3 +1,17 @@
+# == Schema Information
+#
+# Table name: customers
+#
+#  id         :bigint           not null, primary key
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#  address_id :bigint
+#
+# Indexes
+#
+#  index_customers_on_address_id  (address_id)
+#
+
 class Customer < ApplicationRecord
   # Associations
   belongs_to :address

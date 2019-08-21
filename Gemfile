@@ -104,6 +104,8 @@ group :development do
   gem 'i18n-tasks', '~> 0.9.29'
   # google translate
   gem 'easy_translate'
+  # https://github.com/ctran/annotate_models
+  gem 'annotate'
 end
 
 group :test do
