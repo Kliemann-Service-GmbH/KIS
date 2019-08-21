@@ -67,12 +67,9 @@ class CentralDevicesTest < ApplicationSystemTestCase
     fill_in :central_device_location, with: @central_device.location
     fill_in :central_device_montage_date, with: @central_device.montage_date
 
-    click_on I18n.t('New Sensor')
-    click_on I18n.t('New Sensor')
-    click_on I18n.t('New Sensor')
-    click_on I18n.t('New Sensor')
-    click_on I18n.t('New Sensor')
-    click_on I18n.t('New Sensor')
+    5.times do
+      click_on I18n.t('New Sensor')
+    end
 
     find(:css, 'input[type="submit"]').click
 
