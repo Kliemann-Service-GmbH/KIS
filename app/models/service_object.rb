@@ -20,7 +20,7 @@ class ServiceObject < ApplicationRecord
   # accepts_nested_attributes_for :central_device
 
   # Full-Text search in PostgreSQL database
-  include PgSearch
+  include PgSearch::Model
   multisearchable against: [:object_number, :address_details]
 
   pg_search_scope :search_full_text, against: [:id], associated_against: {

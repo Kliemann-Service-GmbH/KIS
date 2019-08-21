@@ -7,7 +7,7 @@ class Customer < ApplicationRecord
   validates :address, presence: true
 
   # Full-Text search in PostgreSQL database
-  include PgSearch
+  include PgSearch::Model
   multisearchable against: [:customer_number, :customer_address_details]
 
   pg_search_scope :search_full_text, against: [], associated_against: {

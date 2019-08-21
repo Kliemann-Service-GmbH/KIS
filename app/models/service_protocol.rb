@@ -6,7 +6,7 @@ class ServiceProtocol < ApplicationRecord
   validates :central_device, presence: true
 
   # Full-Text search in PostgreSQL database
-  include PgSearch
+  include PgSearch::Model
   multisearchable against: [:serial_number, :customer_number, :service_object_number]
 
   pg_search_scope :search_full_text, associated_against: {

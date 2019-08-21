@@ -20,7 +20,7 @@ class CentralDevice < ApplicationRecord
 
 
   # Full-Text search in PostgreSQL database
-  include PgSearch
+  include PgSearch::Model
   multisearchable against: [:serial_number, :device_type, :location]
 
   pg_search_scope :search_full_text, against: [:serial_number, :device_type, :location],
