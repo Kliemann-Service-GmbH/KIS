@@ -123,6 +123,8 @@ end
 
 group :development, :test do
     gem 'capybara'
+    # https://relishapp.com/rspec/rspec-rails/v/3-8/docs/gettingstarted
+    gem "rspec-rails"
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
