@@ -1,3 +1,22 @@
+# == Schema Information
+#
+# Table name: service_objects
+#
+#  id                                    :bigint           not null, primary key
+#  service_contract_auto_resume_interval :integer
+#  service_contract_begin                :datetime
+#  service_contract_end                  :datetime
+#  created_at                            :datetime         not null
+#  updated_at                            :datetime         not null
+#  address_id                            :bigint
+#  customer_id                           :bigint
+#
+# Indexes
+#
+#  index_service_objects_on_address_id   (address_id)
+#  index_service_objects_on_customer_id  (customer_id)
+#
+
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 baroness: &minimal

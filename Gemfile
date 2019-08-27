@@ -104,6 +104,8 @@ group :development do
   gem 'i18n-tasks', '~> 0.9.29'
   # google translate
   gem 'easy_translate'
+  # https://github.com/ctran/annotate_models
+  gem 'annotate'
 end
 
 group :test do
@@ -112,7 +114,7 @@ group :test do
   gem 'selenium-webdriver'
   # Easy installation and use of chromedriver to run system tests with Chrome
   # gem 'chromedriver-helper'
-  gem 'webdrivers', '~> 3.0'
+  gem 'webdrivers'
   # https://github.com/teampoltergeist/poltergeist
   # gem 'poltergeist'
 
@@ -123,6 +125,8 @@ end
 
 group :development, :test do
     gem 'capybara'
+    # https://relishapp.com/rspec/rspec-rails/v/3-8/docs/gettingstarted
+    gem "rspec-rails"
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

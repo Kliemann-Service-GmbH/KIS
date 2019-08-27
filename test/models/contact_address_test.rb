@@ -1,3 +1,17 @@
+# == Schema Information
+#
+# Table name: contact_addresses
+#
+#  id         :bigint           not null, primary key
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#  address_id :bigint
+#
+# Indexes
+#
+#  index_contact_addresses_on_address_id  (address_id)
+#
+
 require 'test_helper'
 
 class ContactAddressTest < ActiveSupport::TestCase
