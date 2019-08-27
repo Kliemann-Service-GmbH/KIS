@@ -13,8 +13,9 @@
 #
 # Indexes
 #
-#  index_service_objects_on_address_id   (address_id)
-#  index_service_objects_on_customer_id  (customer_id)
+#  index_service_objects_on_address_id                  (address_id)
+#  index_service_objects_on_address_id_and_customer_id  (address_id,customer_id) UNIQUE
+#  index_service_objects_on_customer_id                 (customer_id)
 #
 
 class ServiceObject < ApplicationRecord
@@ -29,6 +30,9 @@ class ServiceObject < ApplicationRecord
   # Validations
   validates :address, presence: true
   validates :customer, presence: true
+
+  validates :address, uniqueness: { scope: :customer,
+    message: I18n.t("Object with such a customer address combination already exists.") }
   # TODO: test central_device presence
   # validates :central_device, presence: true
   # Custom Validations

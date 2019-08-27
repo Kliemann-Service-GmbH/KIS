@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_08_124723) do
+ActiveRecord::Schema.define(version: 2019_08_27_115258) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "hstore"
@@ -133,6 +133,7 @@ ActiveRecord::Schema.define(version: 2019_08_08_124723) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "service_contract_auto_resume_interval"
+    t.index ["address_id", "customer_id"], name: "index_service_objects_on_address_id_and_customer_id", unique: true
     t.index ["address_id"], name: "index_service_objects_on_address_id"
     t.index ["customer_id"], name: "index_service_objects_on_customer_id"
   end

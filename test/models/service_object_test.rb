@@ -13,8 +13,9 @@
 #
 # Indexes
 #
-#  index_service_objects_on_address_id   (address_id)
-#  index_service_objects_on_customer_id  (customer_id)
+#  index_service_objects_on_address_id                  (address_id)
+#  index_service_objects_on_address_id_and_customer_id  (address_id,customer_id) UNIQUE
+#  index_service_objects_on_customer_id                 (customer_id)
 #
 
 require 'test_helper'
@@ -39,6 +40,12 @@ class ServiceObjectTest < ActiveSupport::TestCase
     @service_object.customer = nil
     assert_not @service_object.valid?, 'saved customer without a customer'
     assert_not_nil @service_object.errors[:customer], 'no validation error for customer present'
+  end
+
+  test 'invalid if address/ object combination already exists' do
+    service_object_copy = @service_object.dup
+    assert_not service_object_copy.valid?, 'address/ object combination already exists'
+    assert_not_nil service_object_copy.errors[:address], 'no validation error for address present'
   end
 
   # Virtual Attributes
