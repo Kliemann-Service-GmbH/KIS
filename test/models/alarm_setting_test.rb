@@ -17,11 +17,11 @@ require 'test_helper'
 
 class AlarmSettingTest < ActiveSupport::TestCase
   def setup
-    @alarm_setting = alarm_settings(:baroness)
+    @alarm_setting = create(:alarm_setting)
   end
 
   test 'valid alarm_setting' do
-    assert @alarm_setting.valid?, 'Fixture baroness is invalid'
+    assert @alarm_setting.valid?, 'Factory is invalid'
   end
 
   # Validations

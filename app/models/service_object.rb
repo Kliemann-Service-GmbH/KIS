@@ -62,13 +62,13 @@ class ServiceObject < ApplicationRecord
     if (!service_contract_begin.nil? && service_contract_begin > Time.now) &&
       (!service_contract_end.nil? && service_contract_end < Time.now) &&
       (service_contract_auto_resume_interval.nil? || service_contract_auto_resume_interval)
-      errors.add(:service_contract_end, "can't be in the past if service_contract_begin is in the future")
+      errors.add(:service_contract_end, I18n.t("End can't be in the past if the service contracts begin starts in the future"))
     end
   end
 
   def service_contract_auto_resume_interval_cant_set_without_the_other_fields
     if service_contract_auto_resume_interval && service_contract_begin.nil? && service_contract_end.nil?
-      errors.add(:service_contract_auto_resume_interval, "can't be set without a valid begin or end")
+      errors.add(:service_contract_auto_resume_interval, I18n.t("Auto resume can't be set without a valid begin or end"))
     end
   end
 

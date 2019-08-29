@@ -33,11 +33,11 @@ require 'test_helper'
 
 class SensorTest < ActiveSupport::TestCase
   def setup
-    @sensor = sensors(:baroness)
+    @sensor = create(:sensor)
   end
 
   test 'valid sensor' do
-    assert @sensor.valid?, 'Fixture baroness is invalid'
+    assert @sensor.valid?, 'Factory is invalid'
   end
 
   # Validations

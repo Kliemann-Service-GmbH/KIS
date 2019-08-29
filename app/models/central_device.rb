@@ -28,7 +28,7 @@ class CentralDevice < ApplicationRecord
 
 
   # Validations
-  # validates :device_number, presence: true
+  validates :device_type, presence: true
 
   # Nested Attributes
   # accepts_nested_attributes_for :sensors, allow_destroy: true, reject_if: proc { |attr| attr['sensor_type_id'].blank? }

@@ -123,6 +123,11 @@ GEM
     erubi (1.8.0)
     eventmachine (1.2.7)
     execjs (2.7.0)
+    factory_bot (5.0.2)
+      activesupport (>= 4.2.0)
+    factory_bot_rails (5.0.2)
+      factory_bot (~> 5.0.2)
+      railties (>= 4.2.0)
     ffi (1.11.1)
     flashee (0.3.5)
       rails (>= 4.0.0)
@@ -362,6 +367,7 @@ DEPENDENCIES
   coffee-rails (~> 4.2)
   easy_translate
   ed25519 (>= 1.2, < 2.0)
+  factory_bot_rails
   flashee
   font_awesome5_rails
   guard-livereload (~> 2.5)

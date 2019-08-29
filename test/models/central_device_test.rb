@@ -21,10 +21,10 @@ require 'test_helper'
 
 class CentralDeviceTest < ActiveSupport::TestCase
   def setup
-    @central_device = central_devices(:baroness)
+    @central_device = create(:central_device)
   end
 
   test 'valid central_device' do
-    assert @central_device.valid?, 'Fixture baroness is invalid'
+    assert @central_device.valid?, 'Factory is invalid'
   end
 end

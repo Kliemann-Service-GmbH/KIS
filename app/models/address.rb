@@ -101,7 +101,12 @@ class Address < ApplicationRecord
   end
 
   def post_address
-    "#{match_code}\n#{short_name}\n#{street}\n#{zip_city}"
+    return "" if address_details.nil?
+    address = ""
+    address << "#{full_name}\n" unless full_name.blank?
+    address << "#{street}\n" unless street.blank?
+    address << "#{zip_city}" unless zip_city.blank?
+    address
   end
 
   # Address Line, address_number - Matchcode or Fullname

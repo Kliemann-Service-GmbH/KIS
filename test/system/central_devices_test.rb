@@ -3,21 +3,29 @@ require "application_system_test_case"
 class CentralDevicesTest < ApplicationSystemTestCase
   setup do
     Capybara.javascript_driver = :apparition
-    @service_object = service_objects(:baroness)
-    @central_device = central_devices(:baroness)
+    @service_object = create(:service_object)
+    @central_device = create(:central_device)
   end
 
   test "visiting the index" do
-    visit service_object_central_devices_url(@service_object)
+    visit central_devices_url()
     assert_selector "h1", text: I18n.t(:central_devices_title)
   end
 
-  test "search field" do
+  test "search field " do
+    visit central_devices_url()
+    # search
+    fill_in :q, with: @central_device.device_type
+    click_on I18n.t('Search')
+    assert_selector "span", text: @central_device.device_type
+  end
+
+  test "search field nested under service_object" do
     visit service_object_central_devices_url(@service_object)
     # search
-    fill_in :q, with: @central_device.device_number
+    fill_in :q, with: @central_device.device_type
     click_on I18n.t('Search')
-    assert_selector "span", text: @central_device.device_number
+    assert_selector "span", text: @central_device.device_type
   end
 
   test "creating a Central device, without ServiceObject" do
@@ -38,8 +46,6 @@ class CentralDevicesTest < ApplicationSystemTestCase
   end
 
   test "creating a Central device, with ServiceObject" do
-    @service_object = service_objects(:complete)
-    @central_device = central_devices(:complete)
     visit service_object_central_devices_url(@service_object)
     click_on I18n.t('central_devices.index.New')
 
@@ -56,7 +62,9 @@ class CentralDevicesTest < ApplicationSystemTestCase
   end
 
   test "creating Sensors on Central device" do
-    @central_device = central_devices(:complete)
+    create(:si_unit)
+    create(:gas_type)
+    create(:sensor_type)
     visit central_devices_url()
     click_on I18n.t('central_devices.index.New')
 
@@ -78,7 +86,11 @@ class CentralDevicesTest < ApplicationSystemTestCase
   end
 
   test "updating a Central device" do
-    visit central_devices_url
+    visit central_devices_url()
+    # search
+    fill_in :q, with: @central_device.device_type
+    click_on I18n.t('Search')
+
     click_on I18n.t('Edit'), match: :first
 
     fill_in :central_device_device_number, with: @central_device.device_number
@@ -93,9 +105,9 @@ class CentralDevicesTest < ApplicationSystemTestCase
   end
 
   test "destroying a Central device" do
-    visit central_devices_url
+    visit central_devices_url()
     # search
-    fill_in :q, with: @central_device.device_number
+    fill_in :q, with: @central_device.device_type
     click_on I18n.t('Search')
 
     page.accept_confirm do

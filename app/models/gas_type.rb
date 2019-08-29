@@ -21,14 +21,17 @@ class GasType < ApplicationRecord
 
   # Virtual Attributes
   def name_with_formula
+    return if name.blank? && chemical_formula.blank?
     if name.blank?
-      name
+      "(#{chemical_formula})"
+    elsif chemical_formula.blank?
+      "#{name}"
     else
       "#{name} (#{chemical_formula})"
     end
   end
 
   def name_or_chemical_formula_present
-    errors.add(I18n.t(:name_or_chemical_formula), I18n.t("need to be entered")) if name.blank? && chemical_formula.blank? 
+    errors.add(I18n.t(:name_or_chemical_formula), I18n.t("need to be entered")) if name.blank? && chemical_formula.blank?
   end
 end

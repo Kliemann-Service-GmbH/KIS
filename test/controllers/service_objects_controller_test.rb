@@ -2,7 +2,7 @@ require 'test_helper'
 
 class ServiceObjectsControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @service_object = service_objects(:baroness)
+    @service_object = create(:service_object)
   end
 
   test "should get index" do

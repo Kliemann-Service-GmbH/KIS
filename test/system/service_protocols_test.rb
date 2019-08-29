@@ -2,8 +2,8 @@ require "application_system_test_case"
 
 class ServiceProtocolsTest < ApplicationSystemTestCase
   setup do
-    @service_protocol = service_protocols(:baroness)
-    @central_device = central_devices(:baroness)
+    @service_protocol = create(:service_protocol)
+    @central_device = create(:central_device)
   end
 
   test "visiting the index" do
@@ -12,7 +12,7 @@ class ServiceProtocolsTest < ApplicationSystemTestCase
   end
 
   test "search field" do
-    visit service_protocols_url
+    visit service_protocols_url()
     # search
     fill_in :q, with: @service_protocol.central_device.serial_number
     click_on I18n.t('Search')
@@ -20,7 +20,6 @@ class ServiceProtocolsTest < ApplicationSystemTestCase
   end
 
   test "creating a Service protocol, only valid within a CentralDevice" do
-    @central_device = central_devices(:complete)
     visit central_device_url(@central_device)
     click_on I18n.t(:new_central_device_service_protocol)
 

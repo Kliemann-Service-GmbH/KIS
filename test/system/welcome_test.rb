@@ -2,10 +2,10 @@ require "application_system_test_case"
 
 class WelcomeTest < ApplicationSystemTestCase
   setup do
-    @address = addresses(:baroness)
-    @customer = customers(:complete)
-    @service_object = service_objects(:complete)
-    @service_protocol = service_protocols(:complete)
+    @address = create(:address)
+    @customer = create(:customer)
+    @service_object = create(:service_object)
+    @service_protocol = create(:service_protocol)
     rebuild_multisearch
   end
 

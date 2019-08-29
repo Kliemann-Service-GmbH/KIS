@@ -62,6 +62,12 @@ gem 'bootsnap', '>= 1.1.0', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+
+  gem 'capybara'
+  # https://relishapp.com/rspec/rspec-rails/v/3-8/docs/gettingstarted
+  gem "rspec-rails"
+  # https://github.com/thoughtbot/factory_bot/blob/master/GETTING_STARTED.md
+  gem "factory_bot_rails"
 end
 
 # SQL Server support
@@ -121,12 +127,6 @@ group :test do
   # https://github.com/twalpole/apparition
   # gem 'apparition'
   gem 'apparition', github: 'twalpole/apparition'
-end
-
-group :development, :test do
-    gem 'capybara'
-    # https://relishapp.com/rspec/rspec-rails/v/3-8/docs/gettingstarted
-    gem "rspec-rails"
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
