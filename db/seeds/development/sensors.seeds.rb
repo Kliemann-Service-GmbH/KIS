@@ -1,7 +1,7 @@
 $sensors = Sensor.create(
   [
     {
-      central_device: $service_object_avl,
+      central_device: $central_device_avl1,
       gas_type: $gas_type_hc,
       sensor_type: $sensor_type_nap55,
       min_value: 0,
@@ -17,7 +17,7 @@ $sensors = Sensor.create(
       number: 1,
     },
     {
-      central_device: $service_object_avl,
+      central_device: $central_device_avl1,
       gas_type: $gas_type_no2,
       sensor_type: $sensor_type_no2,
       min_value: 0,
@@ -33,7 +33,7 @@ $sensors = Sensor.create(
       number: 2,
     },
     {
-      central_device: $service_object_avl,
+      central_device: $central_device_avl1,
       gas_type: $gas_type_o2,
       sensor_type: $sensor_type_o2,
       min_value: 0,
@@ -49,7 +49,7 @@ $sensors = Sensor.create(
       number: 3,
     },
     {
-      central_device: $service_object_avl,
+      central_device: $central_device_avl1,
       gas_type: $gas_type_co,
       sensor_type: $sensor_type_co,
       min_value: 0,
@@ -65,7 +65,7 @@ $sensors = Sensor.create(
       number: 4,
     },
     {
-      central_device: $service_object_avl,
+      central_device: $central_device_avl1,
       gas_type: $gas_type_h2,
       sensor_type: $sensor_type_nap55,
       min_value: 0,
@@ -82,7 +82,7 @@ $sensors = Sensor.create(
     },
     # END Block 1
     {
-      central_device: $service_object_avl,
+      central_device: $central_device_avl1,
       gas_type: $gas_type_co,
       sensor_type: $sensor_type_co,
       min_value: 0,
@@ -98,7 +98,7 @@ $sensors = Sensor.create(
       number: 7,
     },
     {
-      central_device: $service_object_avl,
+      central_device: $central_device_avl1,
       gas_type: $gas_type_no2,
       sensor_type: $sensor_type_no2,
       min_value: 0,
@@ -114,7 +114,7 @@ $sensors = Sensor.create(
       number: 8,
     },
     {
-      central_device: $service_object_avl,
+      central_device: $central_device_avl1,
       gas_type: $gas_type_hc,
       sensor_type: $sensor_type_nap55,
       min_value: 0,
@@ -130,7 +130,7 @@ $sensors = Sensor.create(
       number: 9,
     },
     {
-      central_device: $service_object_avl,
+      central_device: $central_device_avl1,
       gas_type: $gas_type_hc,
       sensor_type: $sensor_type_nap55,
       min_value: 0,
@@ -146,7 +146,7 @@ $sensors = Sensor.create(
       number: 10,
     },
     {
-      central_device: $service_object_avl,
+      central_device: $central_device_avl1,
       gas_type: $gas_type_co,
       sensor_type: $sensor_type_co,
       min_value: 0,
@@ -162,7 +162,7 @@ $sensors = Sensor.create(
       number: 11,
     },
     {
-      central_device: $service_object_avl,
+      central_device: $central_device_avl1,
       gas_type: $gas_type_co,
       sensor_type: $sensor_type_co,
       min_value: 0,
@@ -178,7 +178,7 @@ $sensors = Sensor.create(
       number: 12,
     },
     {
-      central_device: $service_object_avl,
+      central_device: $central_device_avl1,
       gas_type: $gas_type_hc,
       sensor_type: $sensor_type_nap55,
       min_value: 0,
@@ -194,7 +194,7 @@ $sensors = Sensor.create(
       number: 13,
     },
     {
-      central_device: $service_object_avl,
+      central_device: $central_device_avl1,
       gas_type: $gas_type_hc,
       sensor_type: $sensor_type_nap55,
       min_value: 0,
@@ -210,7 +210,7 @@ $sensors = Sensor.create(
       number: 14,
     },
     {
-      central_device: $service_object_avl,
+      central_device: $central_device_avl1,
       gas_type: $gas_type_hc,
       sensor_type: $sensor_type_nap55,
       min_value: 0,
@@ -227,7 +227,7 @@ $sensors = Sensor.create(
     },
     # END block 2
     {
-      central_device: $service_object_avl,
+      central_device: $central_device_avl1,
       gas_type: $gas_type_co,
       sensor_type: $sensor_type_co,
       min_value: 0,
@@ -243,7 +243,7 @@ $sensors = Sensor.create(
       number: 17,
     },
     {
-      central_device: $service_object_avl,
+      central_device: $central_device_avl1,
       gas_type: $gas_type_hc,
       sensor_type: $sensor_type_nap55,
       min_value: 0,
@@ -259,7 +259,7 @@ $sensors = Sensor.create(
       number: 18,
     },
     {
-      central_device: $service_object_avl,
+      central_device: $central_device_avl1,
       gas_type: $gas_type_h2,
       sensor_type: $sensor_type_nap55,
       min_value: 0,
@@ -276,7 +276,7 @@ $sensors = Sensor.create(
     },
     # END block 3
     {
-      central_device: $service_object_avl,
+      central_device: $central_device_avl1,
       gas_type: $gas_type_h2,
       sensor_type: $sensor_type_nap55,
       min_value: 0,
@@ -292,7 +292,7 @@ $sensors = Sensor.create(
       number: 25,
     },
     {
-      central_device: $service_object_avl,
+      central_device: $central_device_avl1,
       gas_type: $gas_type_co,
       sensor_type: $sensor_type_co,
       min_value: 0,
@@ -308,7 +308,7 @@ $sensors = Sensor.create(
       number: 26,
     },
     {
-      central_device: $service_object_avl,
+      central_device: $central_device_avl1,
       gas_type: $gas_type_h2,
       sensor_type: $sensor_type_nap55,
       min_value: 0,
@@ -324,7 +324,7 @@ $sensors = Sensor.create(
       number: 27,
     },
     {
-      central_device: $service_object_avl,
+      central_device: $central_device_avl1,
       gas_type: $gas_type_co,
       sensor_type: $sensor_type_co,
       min_value: 0,
@@ -340,7 +340,7 @@ $sensors = Sensor.create(
       number: 28,
     },
     {
-      central_device: $service_object_avl,
+      central_device: $central_device_avl1,
       gas_type: $gas_type_no2,
       sensor_type: $sensor_type_no2,
       min_value: 0,
@@ -356,7 +356,7 @@ $sensors = Sensor.create(
       number: 29,
     },
     {
-      central_device: $service_object_avl,
+      central_device: $central_device_avl1,
       gas_type: $gas_type_h2,
       sensor_type: $sensor_type_nap55,
       min_value: 0,
@@ -372,7 +372,7 @@ $sensors = Sensor.create(
       number: 30,
     },
     {
-      central_device: $service_object_avl,
+      central_device: $central_device_avl1,
       gas_type: $gas_type_hc,
       sensor_type: $sensor_type_nap55,
       min_value: 0,
@@ -388,7 +388,7 @@ $sensors = Sensor.create(
       number: 31
     },
     {
-      central_device: $service_object_avl,
+      central_device: $central_device_avl1,
       gas_type: $gas_type_h2,
       sensor_type: $sensor_type_nap55,
       min_value: 0,
@@ -404,7 +404,7 @@ $sensors = Sensor.create(
       number: 32,
     },
     {
-      central_device: $service_object_avl,
+      central_device: $central_device_avl1,
       gas_type: $gas_type_h2,
       sensor_type: $sensor_type_nap55,
       min_value: 0,
@@ -421,7 +421,7 @@ $sensors = Sensor.create(
     },
     # END block 4
     {
-      central_device: $service_object_avl,
+      central_device: $central_device_avl1,
       gas_type: $gas_type_empty,
       sensor_type: $sensor_type_leckage,
       min_value: nil,
@@ -437,7 +437,7 @@ $sensors = Sensor.create(
       number: 35,
     },
     {
-      central_device: $service_object_avl,
+      central_device: $central_device_avl1,
       gas_type: $gas_type_empty,
       sensor_type: $sensor_type_leckage,
       min_value: nil,
@@ -453,7 +453,7 @@ $sensors = Sensor.create(
       number: 36,
     },
     {
-      central_device: $service_object_avl,
+      central_device: $central_device_avl1,
       gas_type: $gas_type_empty,
       sensor_type: $sensor_type_leckage,
       min_value: nil,
@@ -469,7 +469,7 @@ $sensors = Sensor.create(
       number: 37,
     },
     {
-      central_device: $service_object_avl,
+      central_device: $central_device_avl1,
       gas_type: $gas_type_empty,
       sensor_type: $sensor_type_leckage,
       min_value: nil,
@@ -485,7 +485,7 @@ $sensors = Sensor.create(
       number: 38,
     },
     {
-      central_device: $service_object_avl,
+      central_device: $central_device_avl1,
       gas_type: $gas_type_no,
       sensor_type: $sensor_type_no,
       min_value: 0,
@@ -501,7 +501,7 @@ $sensors = Sensor.create(
       number: 39,
     },
     {
-      central_device: $service_object_avl,
+      central_device: $central_device_avl1,
       gas_type: $gas_type_no,
       sensor_type: $sensor_type_no,
       min_value: 0,
