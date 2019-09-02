@@ -61,7 +61,7 @@ prawn_document do |pdf|
     row_height = 50
     pdf.bounding_box [pdf.bounds.left, current_line], width: width_half, height: row_height do
       pdf.text "#{t(:service_object)}", style: :bold
-      pdf.text "#{@service_protocol.central_device.service_object.address.address_number_match_code}"
+      pdf.text "#{@service_protocol.central_device.service_object.address.address_line}"
       pdf.text "#{@service_protocol.central_device.service_object.address.street}"
       pdf.text "#{@service_protocol.central_device.service_object.address.zip_city}"
     end
@@ -69,7 +69,7 @@ prawn_document do |pdf|
     # Customer address
     pdf.bounding_box [pdf.bounds.left + width_half, current_line], width: width_half, height: row_height do
       pdf.text "#{t(:customer)}", style: :bold
-      pdf.text "#{@service_protocol.central_device.service_object.customer.address.address_number_match_code}"
+      pdf.text "#{@service_protocol.central_device.service_object.customer.address.address_line}"
       pdf.text "#{@service_protocol.central_device.service_object.customer.address.street}"
       pdf.text "#{@service_protocol.central_device.service_object.customer.address.zip_city}"
     end

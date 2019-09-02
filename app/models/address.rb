@@ -28,10 +28,6 @@ class Address < ApplicationRecord
     }
 
   # Virtual Attributes
-  def address_number_match_code
-    "##{address_details['address_number']} - #{address_details['match_code']}"
-  end
-
   def full_name
     return "" if address_details.nil?
     name = ""
@@ -109,13 +105,13 @@ class Address < ApplicationRecord
     address
   end
 
-  # Address Line, address_number - Matchcode or Fullname
+  # Address Line is either, 'address_number', 'address_number - match_code' or just 'full_name'
   def address_line
     return "" if address_details.nil?
     line = ""
-    line << "#{address_number} - "
+    line << "#{address_number}"
     if address_details["match_code"].present?
-      line << "#{address_details["match_code"]}"
+      line << " - #{address_details["match_code"]}"
     else
       line << "#{full_name}"
     end

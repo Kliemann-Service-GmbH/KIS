@@ -50,11 +50,11 @@ class ServiceObjectTest < ActiveSupport::TestCase
 
   # Virtual Attributes
   test 'address_number' do
-    assert_equal @service_object.object_number, "1"
+    assert_equal @service_object.object_number, "1000"
   end
 
   test 'object_number' do
-    assert_equal @service_object.object_number, "1"
+    assert_equal @service_object.object_number, "1000"
   end
 
   # ServiceContract details

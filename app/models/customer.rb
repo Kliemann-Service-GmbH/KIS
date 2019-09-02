@@ -22,7 +22,7 @@ class Customer < ApplicationRecord
 
   # Full-Text search in PostgreSQL database
   include PgSearch::Model
-  multisearchable against: [:customer_number, :customer_address_details]
+  multisearchable against: [:customer_number, :address_details]
 
   pg_search_scope :search_full_text, against: [], associated_against: {
     address: :address_details,
@@ -41,11 +41,11 @@ class Customer < ApplicationRecord
   end
 
   # Alias for backward compatiblity
-  def customer_address_details
+  def address_details
     address.address_details
   end
 
-  def address_number_match_code
+  def address_line
     "#{address.address_line}"
   end
 end
