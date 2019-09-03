@@ -103,7 +103,7 @@ prawn_document do |pdf|
       "#{t('a4.formats.short')}",
       "#{t('si_unit.formats.short')}",
       "#{t(:location)}"]]
-    for sensor in @service_protocol.central_device.sensors
+    for sensor in @service_protocol.central_device.sensors.sort_by(&:number)
       data_sensor += [[sensor.number, "", sensor.gas_type.chemical_formula, sensor.sensor_type.name, "#{sensor.min_value}-#{sensor.max_value}", "", "", sensor.alarm_point_1, sensor.alarm_point_2, sensor.alarm_point_3, sensor.alarm_point_4, sensor.si_unit.name, sensor.location]]
     end
 
