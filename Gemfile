@@ -67,8 +67,8 @@ group :development, :test do
   # https://relishapp.com/rspec/rspec-rails/v/3-8/docs/gettingstarted
   gem "rspec-rails"
   # https://github.com/thoughtbot/factory_bot/blob/master/GETTING_STARTED.md
-  gem "factory_bot_rails"
-  gem "faker"
+  gem 'factory_bot_rails'
+  gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
 end
 
 # SQL Server support
