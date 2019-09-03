@@ -7,9 +7,9 @@ FactoryBot.define do
     address_type { 'FactoryBot' }
     address_details {
       {
-        name: 'FactoryBot',
-        match_code: 'Factory Bot',
-        address_number: 1000
+        name: Faker::Company.unique.name,
+        match_code: Faker::Company.unique.name,
+        address_number: rand(1000..9999)
       }
     }
   end
@@ -19,16 +19,18 @@ FactoryBot.define do
   end
 
   factory :central_device do
-    device_type { "Factory Device" }
+    device_type { Faker::Device.model_name }
     service_object
 
     factory :central_device_with_sensors do
-      transient do
-        device_number { 1 }
-        serial_number { 2019-1234567 }
-        device_type { "Factory Device with Sensors" }
-        location { "Somewere" }
-        montage_date { Time.now }
+      device_number { 1 }
+      serial_number { 2019-1234567 }
+      device_type { "DEVICE-#{Faker::Hipster.word}" }
+      location { "Somewhere" }
+      montage_date { Time.now }
+
+      after :create do |central_device, evaluator|
+        create_list(:sensor, 2, central_device: central_device)
       end
     end
   end
@@ -42,7 +44,18 @@ FactoryBot.define do
   end
 
   factory :gas_type do
-    name { 'FactoryGas' }
+    name { "GAS-#{Faker::Name.initials(number: 3)}" }
+    chemical_formula { "FORMULA-#{Faker::Name.initials(number: 2)}" }
+
+    factory :gas_type_only_name do
+      name { "GAS-#{Faker::Name.initials(number: 3)}" }
+      chemical_formula { nil }
+    end
+
+    factory :gas_type_only_chemical_formula do
+      name { nil }
+      chemical_formula { "FORMULA-#{Faker::Name.initials(number: 2)}" }
+    end
   end
 
   factory :object_maintenance do
@@ -51,7 +64,7 @@ FactoryBot.define do
   end
 
   factory :sensor_type do
-    name { 'FactorySensor' }
+    name { "SENSOR-#{Faker::Name.name}" }
   end
 
   factory :sensor do
@@ -79,6 +92,6 @@ FactoryBot.define do
   end
 
   factory :si_unit do
-    name { 'FactorySI' }
+    name {  "SI-#{Faker::Name.name}" }
   end
 end

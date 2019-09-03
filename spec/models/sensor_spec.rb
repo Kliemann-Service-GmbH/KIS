@@ -12,7 +12,7 @@
 #  location          :string
 #  max_value         :decimal(, )
 #  min_value         :decimal(, )
-#  number            :integer          default(0)
+#  number            :string           default("0")
 #  zero_point        :decimal(, )
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
