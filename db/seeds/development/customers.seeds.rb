@@ -4,4 +4,4 @@ $customer_avl = Customer.create({
 
 $customer_deckel_maho = Customer.create({
   address: $address_deckel_maho
- })
+})
