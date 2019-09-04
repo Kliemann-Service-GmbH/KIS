@@ -1,20 +1,20 @@
-<p>
+<div>
   <span class="has-text-weight-light"><%= t '.object_number' %>:</span>
   <span class="has-text-weight-bold">#</span>
   <span class="has-text-weight-bold"><%= service_protocol.central_device.service_object.object_number %></span>
-</p>
-<p>
+</div>
+<div>
   <span class="has-text-weight-light"><%= t '.device_number' %>:</span>
   <span class=""><%= service_protocol.central_device.device_number %></span>
-</p>
-<p>
+</div>
+<div>
   <span class="has-text-weight-light"><%= t '.serial_number' %>:</span>
   <span class=""><%= service_protocol.central_device.serial_number %></span>
-</p>
+</div>
 
-<p class="is-size-5"><%= service_protocol.central_device.device_type %></p>
+<div class="is-size-5"><%= service_protocol.central_device.device_type %></div>
 
-<p>
+<div>
   <span class="has-text-weight-light"><%= t '.object_address' %>:</span>
   <span><%= render partial: "addresses/attributes", locals: {address: service_protocol.central_device.service_object.address } %></span>
-</p>
+</div>

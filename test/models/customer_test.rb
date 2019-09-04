@@ -1,12 +1,26 @@
+# == Schema Information
+#
+# Table name: customers
+#
+#  id         :bigint           not null, primary key
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#  address_id :bigint
+#
+# Indexes
+#
+#  index_customers_on_address_id  (address_id)
+#
+
 require 'test_helper'
 
 class CustomerTest < ActiveSupport::TestCase
   def setup
-    @customer = customers(:baroness)
+    @customer = create(:customer)
   end
 
   test 'valid customer' do
-    assert @customer.valid?, 'Fixture baroness is invalid'
+    assert @customer.valid?, 'Factory is invalid'
   end
 
   # Validations

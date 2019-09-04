@@ -1,5 +1,3 @@
-
-
 <h1 class="title"><%= t :central_devices_title %></h1>
 
 <div class="columns is-centered">
@@ -16,12 +14,14 @@
   <% end %>
 </div>
 
-
 <% @central_devices.each do |central_device| %>
   <%= render partial: "central_device", locals: { central_device: central_device } %>
 <% end %>
 
-
 <div style="padding-top: 1em;">
+<% if params[:service_object_id] %>
+<%= link_to t('.New'), new_service_object_central_device_path(@service_object) %>
+<% else %>
 <%= link_to t('.New'), new_central_device_path %>
+<% end %>
 </div>

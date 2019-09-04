@@ -1,5 +1,3 @@
-
-
 <div class="container">
   <div class="columns">
     <div class="column"><h1 class="title"><%= t(:service_protocol) %></h1></div>
@@ -52,20 +50,9 @@
     </div>
   </div>
 
-  <div class="columns">
-    <div class="column">
-      <%= label_tag nil, t(:telephone_number), class: "has-text-weight-bold" %>
-    </div>
-    <div class="column">
-      <span><%=  @service_protocol.central_device.device_number %></span>
-    </div>
-    <div class="column">
-      <%= label_tag nil, t(:mobile_number), class: "has-text-weight-bold" %>
-    </div>
-    <div class="column">
-      <span><%#= @service_protocol.service_object.address.first %></span>
-    </div>
-  </div>
+  <% for contact in @service_protocol.central_device.service_object.contact_addresses %>
+    <%= render 'addresses/attributes', locals: { address: contact } %>
+  <% end %>
 
   <hr>
 
@@ -220,8 +207,8 @@
   </table>
 
   <div style="padding-top: 1em;">
-    <%= link_to "PDF anzeigen", central_device_service_protocol_path(@service_protocol.central_device.id, @service_protocol, :format => "pdf"), class: "button is-info" %>
-    <%= link_to t('Edit'), edit_central_device_service_protocol_path(@service_protocol.central_device.id, @service_protocol), class: "button is-warning" %>
-    <%= link_to t('Back'), service_protocols_path, class: "button" %>
+  <%= link_to "PDF anzeigen", central_device_service_protocol_path(@service_protocol.central_device.id, @service_protocol, :format => "pdf"), class: "button is-info" %>
+  <%= link_to t('Edit'), edit_central_device_service_protocol_path(@service_protocol.central_device.id, @service_protocol), class: "button is-warning" %>
+  <%= link_to t('Back'), service_protocols_path, class: "button" %>
   </div>
 </div> <!-- End conatiner -->

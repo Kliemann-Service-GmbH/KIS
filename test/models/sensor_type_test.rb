@@ -1,12 +1,25 @@
+# == Schema Information
+#
+# Table name: sensor_types
+#
+#  id                :bigint           not null, primary key
+#  default_livetime  :datetime
+#  default_max_value :decimal(, )
+#  default_min_value :decimal(, )
+#  name              :string
+#  created_at        :datetime         not null
+#  updated_at        :datetime         not null
+#
+
 require 'test_helper'
 
 class SensorTypeTest < ActiveSupport::TestCase
   def setup
-    @sensor_type = sensor_types(:baroness)
+    @sensor_type = create(:sensor_type)
   end
 
   test 'valid sensor_type' do
-    assert @sensor_type.valid?, 'Fixture baroness is invalid'
+    assert @sensor_type.valid?, 'Factory is invalid'
   end
 
   # Validations

@@ -1,4 +1,3 @@
-
 <h1 class="title"><%= @central_device.device_type %></h1>
 
 <hr>
@@ -16,7 +15,7 @@
 <h2 class="subtitle"><%= t('.service_object') %></h2>
 <% unless @service_object.blank? %>
 <div class="">
-  <%= @service_object.first.service_object_address_details %>
+  <%= @service_object.first.address.address_line %>
 </div>
 <%= render partial: "addresses/post_address", locals: {address: @service_object.first.address} %>
 <% end %>
@@ -55,7 +54,6 @@
 <h2 class="subtitle"><%= t('.alarm_outputs') %></h2>
 
 <hr>
-
 
 <table class="table is-narrow is-bordered is-striped is-hoverable">
   <thead>
@@ -105,9 +103,7 @@
   <%= render "service_protocols/service_protocol", service_protocol: service_protocol %>
 <% end %>
 
-
 <%= link_to t(:new_central_device_service_protocol), new_central_device_service_protocol_path(@central_device) %>
-
 
 <div style="padding-top: 1em;">
   <%= link_to t('Edit'), edit_central_device_path(@central_device) %> |

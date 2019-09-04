@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>KIS - KLS Info System</title>
+    <title>KIS - Kliemann-Service Info System</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -9,7 +9,11 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <% if Rails.env.development? %>
+    <%= favicon_link_tag asset_path('favicon-development.ico') %>
+    <% else %>
     <%= favicon_link_tag asset_path('favicon.ico') %>
+    <% end %>
   </head>
 
   <body>
@@ -25,12 +29,12 @@
 
     <footer class="footer">
       <div class=" has-text-centered">
-        <p>
-          <strong>KIS - KLS Info System</strong>
-        </p>
-        <p><%= version_number %></p>
+        <div>
+          <strong>KIS - Kliemann-Service Info System</strong>
+        </div>
+        <div><%= version_number %></div>
+        <div class="is-size-7">&copy; 2019 Stefan Müller<br />Kliemann-Service GmbH</div>
       </div>
     </footer>
-
   </body>
 </html>

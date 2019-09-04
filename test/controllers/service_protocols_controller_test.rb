@@ -2,8 +2,8 @@ require 'test_helper'
 
 class ServiceProtocolsControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @service_protocol = service_protocols(:baroness)
-    @central_device = central_devices(:baroness)
+    @service_protocol = create(:service_protocol)
+    @central_device = create(:central_device)
   end
 
   test "should get index" do

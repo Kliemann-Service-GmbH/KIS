@@ -6,9 +6,11 @@ class CentralDevicesController < ApplicationController
   def index
     if params[:service_object_id]
       # @central_device = CentralDevice.find(params[:service_object]).includes(:service_object).service_object
+      @service_object = ServiceObject.find(params[:service_object_id])
       @central_devices = CentralDevice.where(service_object_id: params[:service_object_id])
     else
-      @central_devices = CentralDevice.all
+      # @central_devices = CentralDevice.all
+      @central_devices = []
     end
 
     if params[:q] && !params[:q].empty?

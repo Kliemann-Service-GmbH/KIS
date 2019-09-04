@@ -1,4 +1,4 @@
-<%= form_with(model: central_device, local: true) do |form| %>
+<%= form_with model: central_device, local: true do |form| %>
   <% if central_device.errors.any? %>
     <div id="error_explanation" class="notification is-danger">
       <h2><%= pluralize(central_device.errors.count, "error") %> prohibited this central_device from being saved:</h2>
@@ -17,10 +17,10 @@
     </div>
     <div class="field-body">
       <div class="field">
-        <p class="control">
-          <%= form.select :service_object_id, ServiceObject.all.collect { |so| [so.service_object_address_details, so.id]}, { include_blank: 'None' } %>
-        </p>
-        <p class="help is-danger"><%= t :field_required %></p>
+        <div class="control">
+          <%= form.select :service_object_id, ServiceObject.all.collect { |service_object| [service_object.address.address_line, service_object.id]}, { include_blank: 'None' } %>
+        </div>
+        <div class="help is-danger"><%= t :field_required %></div>
       </div>
     </div>
   </div>
@@ -31,10 +31,10 @@
     </div>
     <div class="field-body">
       <div class="field">
-        <p class="control">
+        <div class="control">
           <%= form.text_field :device_number, class: 'input' %>
-        </p>
-        <p class="help"></p>
+        </div>
+        <div class="help"></div>
       </div>
     </div>
   </div>
@@ -45,10 +45,10 @@
     </div>
     <div class="field-body">
       <div class="field">
-        <p class="control">
+        <div class="control">
           <%= form.text_field :serial_number, class: 'input' %>
-        </p>
-        <p class=""></p>
+        </div>
+        <div class=""></div>
       </div>
     </div>
   </div>
@@ -59,10 +59,10 @@
     </div>
     <div class="field-body">
       <div class="field">
-        <p class="control">
+        <div class="control">
           <%= form.text_field :device_type, class: 'input' %>
-        </p>
-        <p class="help"></p>
+        </div>
+        <div class="help"></div>
       </div>
     </div>
   </div>
@@ -73,10 +73,10 @@
     </div>
     <div class="field-body">
       <div class="field">
-        <p class="control">
+        <div class="control">
           <%= form.text_field :location, class: 'input' %>
-        </p>
-        <p class="help"></p>
+        </div>
+        <div class="help"></div>
       </div>
     </div>
   </div>
@@ -87,10 +87,10 @@
     </div>
     <div class="field-body">
       <div class="field">
-        <p class="control">
+        <div class="control">
           <%= form.date_field :montage_date %>
-        </p>
-        <p class="help"></p>
+        </div>
+        <div class="help"></div>
       </div>
     </div>
   </div>
@@ -112,7 +112,7 @@
         <th><abbr title="<%= t 'a4.formats.default' %>"><%= t 'a4.formats.short' %></abbr></th>
         <th><abbr title="<%= t 'si_unit.formats.default' %>"><%= t 'si_unit.formats.short' %></abbr></th>
         <th><%= t :location %></th>
-        <th></th>
+        <th colspan="2"></th>
       </tr>
     </thead>
     <tfoot>
@@ -131,22 +131,18 @@
         <th><abbr title="<%= t 'a4.formats.default' %>"><%= t 'a4.formats.short' %></abbr></th>
         <th><abbr title="<%= t 'si_unit.formats.default' %>"><%= t 'si_unit.formats.short' %></abbr></th>
         <th><%= t :location %></th>
-        <th></th>
+        <th colspan="2"></th>
       </tr>
     </tfoot>
     <tbody class="fields">
     <%= form.fields_for :sensors, @central_device.sensors.sort_by(&:number) do |builder| %>
       <%= render "sensors/form_sensor", form: builder %>
     <% end %>
-
-
-
     </tbody>
   </table>
 
-
   <div class="actions">
     <%= form.submit nil, class: 'button is-primary' %>
-    <%= link_to_add_row(t('New Sensor'), form, :sensors, class: 'button remove_record') %>
+    <%= link_to_add_row(t('New Sensor'), form, :sensors, class: 'button') %>
   </div>
 <% end %>

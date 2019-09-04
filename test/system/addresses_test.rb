@@ -2,7 +2,7 @@ require "application_system_test_case"
 
 class AddressesTest < ApplicationSystemTestCase
   setup do
-    @address = addresses(:baroness)
+    @address = create(:address)
   end
 
   test "visiting the index" do
@@ -16,6 +16,6 @@ class AddressesTest < ApplicationSystemTestCase
     fill_in :q, with: @address.address_details['last_name']
     click_on I18n.t('Search')
 
-    assert_selector "p", text: @address.address_details['last_name']
+    assert_selector "div", text: @address.address_details['last_name']
   end
 end

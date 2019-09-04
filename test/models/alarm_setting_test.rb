@@ -1,12 +1,27 @@
+# == Schema Information
+#
+# Table name: alarm_settings
+#
+#  id                :bigint           not null, primary key
+#  outputs           :hstore
+#  created_at        :datetime         not null
+#  updated_at        :datetime         not null
+#  central_device_id :bigint
+#
+# Indexes
+#
+#  index_alarm_settings_on_central_device_id  (central_device_id)
+#
+
 require 'test_helper'
 
 class AlarmSettingTest < ActiveSupport::TestCase
   def setup
-    @alarm_setting = alarm_settings(:baroness)
+    @alarm_setting = create(:alarm_setting)
   end
 
   test 'valid alarm_setting' do
-    assert @alarm_setting.valid?, 'Fixture baroness is invalid'
+    assert @alarm_setting.valid?, 'Factory is invalid'
   end
 
   # Validations

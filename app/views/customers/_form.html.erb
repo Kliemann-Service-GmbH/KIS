@@ -17,15 +17,13 @@
     </div>
     <div class="field-body">
       <div class="field">
-        <p class="control">
+        <div class="control">
           <%= form.collection_select :address_id, Address.all, :id, :address_line, class: 'input is-danger' %>
-        </p>
-        <p class="help is-danger"><%= t :field_required %></p>
+        </div>
+        <div class="help is-danger"><%= t :field_required %></div>
       </div>
     </div>
   </div>
-
-
 
   <div class="actions">
     <%= form.submit nil, class: 'button is-primary' %>

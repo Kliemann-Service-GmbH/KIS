@@ -1,5 +1,3 @@
-
-
 <div class="columns is-centered">
   <%= form_tag(welcome_index_path, method: :get) do %>
   <div class="field has-addons">
@@ -12,7 +10,6 @@
   </div>
   <% end %>
 </div>
-
 
 <% @search_results.each do |result| %>
 <%= render_partial_for result %>

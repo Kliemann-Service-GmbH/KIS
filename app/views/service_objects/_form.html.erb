@@ -17,10 +17,10 @@
     </div>
     <div class="field-body">
       <div class="field">
-        <p class="control">
-          <%= form.collection_select :customer_id, Customer.all, :id, :customer_address_line, class: 'input is-danger' %>
-        </p>
-        <p class="help is-danger"><%= t :field_required %></p>
+        <div class="control">
+          <%= form.collection_select :customer_id, Customer.all, :id, :address_line, class: 'input is-danger' %>
+        </div>
+        <div class="help is-danger"><%= t :field_required %></div>
       </div>
     </div>
   </div>
@@ -31,72 +31,58 @@
     </div>
     <div class="field-body">
       <div class="field">
-        <p class="control">
+        <div class="control">
           <%= form.collection_select :address_id, Address.all, :id, :address_line, class: 'input is-danger' %>
-        </p>
-        <p class="help is-danger"><%= t :field_required %></p>
+        </div>
+        <div class="help is-danger"><%= t :field_required %></div>
       </div>
     </div>
   </div>
 
   <div class="field is-horizontal">
     <div class="field-label is-normal">
-      <%= form.label t(:has_service_contract), class: 'label', id: :has_service_contract %>
+      <%= form.label t(:service_contract), class: 'label' %>
     </div>
     <div class="field-body">
       <div class="field">
-        <p class="control">
-          <%= form.check_box :has_service_contract, class: 'check_box' %>
-        </p>
-        <p class="help"></p>
-      </div>
-    </div>
-  </div>
-
-  <div class="field is-horizontal">
-    <div class="field-label is-normal">
-      <%= form.label t(:service_contract_begin), class: 'label', id: :service_contract_begin %>
-    </div>
-    <div class="field-body">
-      <div class="field">
-        <p class="control">
+        <div class="label">
+          <%= form.label t(:begin), class: 'label', id: :service_contract_begin %>
+        </div>
+        <div class="control is-expanded">
           <%= form.date_field :service_contract_begin %>
-        </p>
-        <p class="help"></p>
+        </div>
+        <div class="help">
+          <%= t('service_objects.form.help_service_contract_begin') %>
+        </div>
       </div>
-    </div>
-  </div>
 
-  <div class="field is-horizontal">
-    <div class="field-label is-normal">
-      <%= form.label t(:service_contract_length), class: 'label', id: :service_contract_length %>
-    </div>
-    <div class="field-body">
       <div class="field">
-        <p class="control">
-          <%= form.date_field :service_contract_length %>
-        </p>
-        <p class="help"></p>
+        <div class="label">
+          <%= form.label t(:end), class: 'label', id: :service_contract_end %>
+        </div>
+        <div class="control is-expanded">
+          <%= form.date_field :service_contract_end %>
+        </div>
+        <div class="help">
+          <%= t('service_objects.form.help_service_contract_end') %>
+        </div>
+      </div>
+    </div>
+
+    <div class="field">
+      <div class="label">
+        <%= form.label t('.automatic_resume'), class: 'label' %>
+      </div>
+      <div class="control is-expanded">
+        <%= form.text_field :service_contract_auto_resume_interval, size: 2 %>&nbsp;<%= t(:years) %>
+      </div>
+      <div class="help">
+        <%= t('service_objects.form.help_service_contract_auto_resume_interval') %>
       </div>
     </div>
   </div>
-
-  <div class="field is-horizontal">
-    <div class="field-label is-normal">
-      <%= form.label t(:service_contract_auto_resume_interval), class: 'label', id: :service_contract_auto_resume_interval %>
-    </div>
-    <div class="field-body">
-      <div class="field">
-        <p class="control">
-          <%= form.datetime_field :service_contract_auto_resume_interval %>
-        </p>
-        <p class="help"></p>
-      </div>
-    </div>
-  </div>
-
 
   <div class="actions">
-    <%= form.submit nil, class: 'button is-primary' %>
+  <%= form.submit nil, class: 'button is-primary' %>
   </div>
 <% end %>

@@ -1,9 +1,12 @@
 ---
 de:
+  Auto resume can't be set without a valid begin or end: Automatische Verlängerung kann nicht gesetzt werden ohne gültigen Beginn oder Ende des Vertrags
   Back: zurück
   Destroy: löschen
   Edit: bearbeiten
+  End can't be in the past if the service contracts begin starts in the future: Ende kann nicht in der Vergangenheit liegen wenn der Vertrag in der Zukunft beginnt
   New Sensor: Neuer Sensor
+  Object with such a customer address combination already exists: Es existiert bereits ein Objekt mit dieser 'Kunde/ Objektadresse' Kombination.
   Search: Suche
   Show: anzeigen
   a1:
@@ -36,10 +39,11 @@ de:
     formats:
       default: Installations Datum
       short: Inst
+  begin: Beginn
   central_device: Gerät
   central_devices:
     edit:
-      Edit: bearbeiten
+      Edit: Gerät bearbeiten
     index:
       New: Neues Gerät
       placeholder: Anlagennummer, -typ, Standort, ...
@@ -63,7 +67,7 @@ de:
   customer: Kunde
   customers:
     edit:
-      Edit: bearbeiten
+      Edit: Kunde bearbeiten
     index:
       New: Neuer Kunde
       placeholder: Adressdetails Name, Telefonnummer, ...
@@ -76,6 +80,7 @@ de:
   draft: Entwurf
   edit_central_device: Gerät bearbeiten
   email_address: Email Adresse
+  end: Ende
   exchanged:
     formats:
       short: GW
@@ -83,7 +88,7 @@ de:
   gas_type: Gasart
   gas_types:
     edit:
-      Edit: Bearbeiten
+      Edit: Gasart bearbeiten
     index:
       New: Neue Gasart erfassen
     new:
@@ -97,6 +102,7 @@ de:
   is_repair: Reparatur
   is_service_contract: Wartungsvertrag
   is_systemcheck: Systemprüfung
+  length: Länge
   livetime:
     formats:
       default: Normale Lebensdauer
@@ -131,7 +137,7 @@ de:
   number: Nummer
   object: Objekt
   object_nr: Objekt Nr.
-  object_number: Object number
+  object_number: Objektnummer
   of: von
   page: Seite
   placeholder: Platzhalter
@@ -149,13 +155,21 @@ de:
       New: Sensorart speichern
   sensor_types_title: Sensorarten
   serial_number: Seriennummer
+  service_contract: Wartungsvertrag
   service_contract_auto_resume_interval: Wartungsvertrag wird automatisch verlängert um
   service_contract_begin: Beginn Wartungsvertrag
+  service_contract_end: Ende Wartungsvertrag
   service_contract_length: Länge Wartungsvertrag
   service_object: Objekt
   service_objects:
     edit:
-      Edit: bearbeiten
+      Edit: Objekt bearbeiten
+    form:
+      automatic_resume: automatische Verlängerung
+      help_service_contract_auto_resume_interval: Wird der Wartungsvertrag automatisch verlängert bitte dieses Feld ausfüllen.
+      help_service_contract_begin: Beginn des Wartungsvertrags
+      help_service_contract_end: Ende des Wartungsvertrags
+      help_service_contract_length: Länge des Wartungsvertrags
     index:
       New: Neues Objekt erstellen
       placeholder: Adressdetails, Name, Ort, ...
@@ -173,7 +187,7 @@ de:
       object_number: Objektnummer
       serial_number: Seriennummer
     edit:
-      Edit: bearbeiten
+      Edit: Prüfprotokoll bearbeiten
     index:
       New: Neu
       placeholder: Anlagennummer,
@@ -207,6 +221,7 @@ de:
       placeholder: Adressnummer, Objektnummer, Adressdetail, Seriennummer, ...
   with_shortcomings: mit Mängeln
   working: funktionstüchtig
+  years: Jahre
   zero_point:
     formats:
       default: Nullpunkt

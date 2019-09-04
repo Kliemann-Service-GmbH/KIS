@@ -62,6 +62,13 @@ gem 'bootsnap', '>= 1.1.0', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+
+  gem 'capybara'
+  # https://relishapp.com/rspec/rspec-rails/v/3-8/docs/gettingstarted
+  gem "rspec-rails"
+  # https://github.com/thoughtbot/factory_bot/blob/master/GETTING_STARTED.md
+  gem 'factory_bot_rails'
+  gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
 end
 
 # SQL Server support
@@ -104,6 +111,8 @@ group :development do
   gem 'i18n-tasks', '~> 0.9.29'
   # google translate
   gem 'easy_translate'
+  # https://github.com/ctran/annotate_models
+  gem 'annotate'
 end
 
 group :test do
@@ -112,17 +121,13 @@ group :test do
   gem 'selenium-webdriver'
   # Easy installation and use of chromedriver to run system tests with Chrome
   # gem 'chromedriver-helper'
-  gem 'webdrivers', '~> 3.0'
+  gem 'webdrivers'
   # https://github.com/teampoltergeist/poltergeist
   # gem 'poltergeist'
 
   # https://github.com/twalpole/apparition
   # gem 'apparition'
   gem 'apparition', github: 'twalpole/apparition'
-end
-
-group :development, :test do
-    gem 'capybara'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

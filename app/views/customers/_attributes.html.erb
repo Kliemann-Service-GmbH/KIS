@@ -1,6 +1,11 @@
-<p>
+<div>
   <span class="has-text-weight-bold">#</span>
   <span class="has-text-weight-bold"><%= customer.customer_number %></span>
 
   <%= render partial: "addresses/attributes", locals: {address: customer.address } %>
-</p>
+
+  <div class="">
+    <span><%= customer.service_objects.size %></span>
+    <span><%= t 'service_object' %></span>
+  </div>
+</div>

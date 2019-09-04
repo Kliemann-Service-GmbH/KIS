@@ -1,5 +1,3 @@
-
-
 <h1 class="title"><%= t :service_protocols_title %></h1>
 
 <div class="columns is-centered">
@@ -15,7 +13,6 @@
   <% end %>
 </div>
 
-
 <% @service_protocols.each do |service_protocol| %>
-  <%= render partial: "service_protocol", locals: { service_protocol: service_protocol } %>
+<%= render partial: "service_protocol", locals: { service_protocol: service_protocol } %>
 <% end %>

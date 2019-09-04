@@ -1,12 +1,26 @@
+# == Schema Information
+#
+# Table name: contact_addresses
+#
+#  id         :bigint           not null, primary key
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#  address_id :bigint
+#
+# Indexes
+#
+#  index_contact_addresses_on_address_id  (address_id)
+#
+
 require 'test_helper'
 
 class ContactAddressTest < ActiveSupport::TestCase
   def setup
-    @contact_address = contact_addresses(:baroness)
+    @contact_address = create(:contact_address)
   end
 
   test 'valid contact_address' do
-    assert @contact_address.valid?, 'Fixture baroness is invalid'
+    assert @contact_address.valid?, 'Factory is invalid'
   end
 
   # Validations

@@ -1,9 +1,12 @@
 ---
 en:
+  Auto resume can't be set without a valid begin or end: Auto resume can't be set without a valid begin or end
   Back: Back
   Destroy: Destroy
   Edit: Edit
+  End can't be in the past if the service contracts begin starts in the future: Can't be in the past if service contract begin is in the future
   New Sensor: Neuer Sensor
+  Object with such a customer address combination already exists: Object with such a customer address combination already exists
   Search: Search
   Show: Show
   a1:
@@ -36,6 +39,7 @@ en:
     formats:
       default: Default
       short: Short
+  begin: Begin
   central_device: Central device
   central_devices:
     edit:
@@ -76,6 +80,7 @@ en:
   draft: Draft
   edit_central_device: Edit central device
   email_address: Email address
+  end: End
   exchanged:
     formats:
       short: Short
@@ -97,6 +102,7 @@ en:
   is_repair: Is repair
   is_service_contract: Is service contract
   is_systemcheck: Is systemcheck
+  length: Length
   livetime:
     formats:
       default: Default
@@ -149,13 +155,21 @@ en:
       New: New
   sensor_types_title: Sensor types title
   serial_number: Serial number
+  service_contract: Service contract
   service_contract_auto_resume_interval: Service contract auto resume interval
   service_contract_begin: Service contract begin
+  service_contract_end: Service contract end
   service_contract_length: Service contract length
   service_object: Service object
   service_objects:
     edit:
       Edit: Edit
+    form:
+      automatic_resume: Automatic resume
+      help_service_contract_auto_resume_interval: Help service contract auto resume interval
+      help_service_contract_begin: Help service contract begin
+      help_service_contract_end: Help service contract end
+      help_service_contract_length: Help service contract length
     index:
       New: New
       placeholder: Placeholder
@@ -207,6 +221,7 @@ en:
       placeholder: Placeholder
   with_shortcomings: With shortcomings
   working: Working
+  years: Years
   zero_point:
     formats:
       default: Default

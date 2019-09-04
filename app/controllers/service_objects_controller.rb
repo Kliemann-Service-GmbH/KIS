@@ -82,6 +82,7 @@ class ServiceObjectsController < ApplicationController
         :object_number,
         :has_service_contract,
         :service_contract_begin,
+        :service_contract_end,
         :service_contract_length,
         :service_contract_auto_resume_interval
       )

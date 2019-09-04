@@ -39,18 +39,29 @@ prawn_document do |pdf|
     pdf.image "#{Rails.root}/app/assets/images/logo_kliemann-service-gmbh.png", :at => [410,790], :width => 100
     pdf.draw_text t(:service_protocol).upcase, style: :bold, size: 16, at: [0, 730]
     pdf.draw_text "#{t(:object_nr)}: #{@service_protocol.central_device.service_object.object_number}-#{@service_protocol.central_device.device_number}", style: :bold, size: 16, at: [260, 730]
+
     pdf.draw_text "#{t(:service_protocol)} #{t(:created_at)}: #{@service_protocol.created_at.strftime("%F %T")}", size: 8, at: [0, 710]
     pdf.draw_text "#{t(:service_protocol)} #{t(:updated_at)}: #{@service_protocol.updated_at.strftime("%F %T")}", size: 8, at: [width_half, 710]
+
+    if @service_protocol.central_device.service_object.has_service_contract
+      pdf.draw_text t(:service_contract), style: :bold, at: [width_half, 695]
+    end
+
+    if @service_protocol.central_device.service_object.has_service_contract
+      pdf.draw_text "bis: #{@service_protocol.central_device.service_object.service_contract_length.strftime("%F")}", at: [width_half + 90, 695]
+    end
+
     # footer
   end
 
   # body
-  pdf.bounding_box [pdf.bounds.left, pdf.bounds.top - 80], :width  => pdf.bounds.width, :height => pdf.bounds.height - 100 do
+  pdf.bounding_box [pdf.bounds.left, pdf.bounds.top - 100], :width  => pdf.bounds.width, :height => pdf.bounds.height - 100 do
     # ServiceObject address
     current_line = pdf.cursor
     row_height = 50
     pdf.bounding_box [pdf.bounds.left, current_line], width: width_half, height: row_height do
       pdf.text "#{t(:service_object)}", style: :bold
+      pdf.text "#{@service_protocol.central_device.service_object.address.address_line}"
       pdf.text "#{@service_protocol.central_device.service_object.address.street}"
       pdf.text "#{@service_protocol.central_device.service_object.address.zip_city}"
     end
@@ -58,6 +69,7 @@ prawn_document do |pdf|
     # Customer address
     pdf.bounding_box [pdf.bounds.left + width_half, current_line], width: width_half, height: row_height do
       pdf.text "#{t(:customer)}", style: :bold
+      pdf.text "#{@service_protocol.central_device.service_object.customer.address.address_line}"
       pdf.text "#{@service_protocol.central_device.service_object.customer.address.street}"
       pdf.text "#{@service_protocol.central_device.service_object.customer.address.zip_city}"
     end
@@ -91,7 +103,7 @@ prawn_document do |pdf|
       "#{t('a4.formats.short')}",
       "#{t('si_unit.formats.short')}",
       "#{t(:location)}"]]
-    for sensor in @service_protocol.central_device.sensors
+    for sensor in @service_protocol.central_device.sensors.sort_by(&:number)
       data_sensor += [[sensor.number, "", sensor.gas_type.chemical_formula, sensor.sensor_type.name, "#{sensor.min_value}-#{sensor.max_value}", "", "", sensor.alarm_point_1, sensor.alarm_point_2, sensor.alarm_point_3, sensor.alarm_point_4, sensor.si_unit.name, sensor.location]]
     end
 
@@ -128,9 +140,11 @@ prawn_document do |pdf|
       pdf.text "[ ] #{t(:with_shortcomings)}"
     end
 
-    # Signatur fields on bottom
+    # # Signatur fields on bottom
     pdf.start_new_page if pdf.cursor < 70
-    current_line = 60
+
+    pdf.move_down 20
+    current_line = pdf.cursor
     pdf.bounding_box [pdf.bounds.left, current_line], width: width_half do
       pdf.text "Ort: #{@service_protocol.central_device.service_object.address.zip_city}", style: :bold
       pdf.move_down 50
@@ -154,5 +168,4 @@ prawn_document do |pdf|
     :start_count_at => 1,
   }
   pdf.number_pages string, options
-
 end
