@@ -2,7 +2,7 @@ require "application_system_test_case"
 
 class AddressesTest < ApplicationSystemTestCase
   setup do
-    @address = addresses(:baroness)
+    @address = create(:address)
   end
 
   test "visiting the index" do

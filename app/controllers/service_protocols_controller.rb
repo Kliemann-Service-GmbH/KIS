@@ -7,7 +7,8 @@ class ServiceProtocolsController < ApplicationController
     if params[:central_device_id]
       @service_protocols = ServiceProtocol.where(central_device_id: params[:central_device_id])
     else
-      @service_protocols = ServiceProtocol.all
+      # @service_protocols = ServiceProtocol.all
+      @service_protocols = []
     end
 
     if params[:q] && !params[:q].empty?

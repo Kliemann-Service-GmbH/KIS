@@ -1,9 +1,12 @@
 ---
 en:
+  Auto resume can't be set without a valid begin or end: Auto resume can't be set without a valid begin or end
   Back: Back
   Destroy: Destroy
   Edit: Edit
+  End can't be in the past if the service contracts begin starts in the future: Can't be in the past if service contract begin is in the future
   New Sensor: Neuer Sensor
+  Object with such a customer address combination already exists: Object with such a customer address combination already exists
   Search: Search
   Show: Show
   a1:

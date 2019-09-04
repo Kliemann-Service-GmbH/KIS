@@ -1,10 +1,21 @@
+# == Schema Information
+#
+# Table name: addresses
+#
+#  id              :bigint           not null, primary key
+#  address_details :hstore
+#  address_type    :string
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#
+
 class Address < ApplicationRecord
   # Associations
 
   # Validations
 
 # Full-Text search in PostgreSQL database
-  include PgSearch
+  include PgSearch::Model
   multisearchable against: [:address_details]
 
   pg_search_scope :search_full_text, against: [:address_details],
@@ -17,10 +28,6 @@ class Address < ApplicationRecord
     }
 
   # Virtual Attributes
-  def address_number_match_code
-    "##{address_details['address_number']} - #{address_details['match_code']}"
-  end
-
   def full_name
     return "" if address_details.nil?
     name = ""
@@ -90,16 +97,21 @@ class Address < ApplicationRecord
   end
 
   def post_address
-    "#{match_code}\n#{short_name}\n#{street}\n#{zip_city}"
+    return "" if address_details.nil?
+    address = ""
+    address << "#{full_name}\n" unless full_name.blank?
+    address << "#{street}\n" unless street.blank?
+    address << "#{zip_city}" unless zip_city.blank?
+    address
   end
 
-  # Address Line, address_number - Matchcode or Fullname
+  # Address Line is either, 'address_number', 'address_number - match_code' or just 'full_name'
   def address_line
     return "" if address_details.nil?
     line = ""
-    line << "#{address_number} - "
+    line << "#{address_number}"
     if address_details["match_code"].present?
-      line << "#{address_details["match_code"]}"
+      line << " - #{address_details["match_code"]}"
     else
       line << "#{full_name}"
     end

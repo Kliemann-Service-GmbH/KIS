@@ -14,6 +14,10 @@
   <td><%= form.collection_select :si_unit_id, SiUnit.all, :id, :name, class: '' %></td>
   <td><%= form.text_field :location, class: 'input' %></td>
   <td>
+    <%= form.hidden_field :_destroy %>
     <%= link_to t('Destroy'), '#', class: 'button is-danger remove_record' %>
+  </td>
+  <td>
+    <%= link_to_copy_row t('Copy Sensor'), form, :sensors, class: 'button' %>
   </td>
 </tr>

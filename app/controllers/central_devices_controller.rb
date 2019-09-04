@@ -9,7 +9,8 @@ class CentralDevicesController < ApplicationController
       @service_object = ServiceObject.find(params[:service_object_id])
       @central_devices = CentralDevice.where(service_object_id: params[:service_object_id])
     else
-      @central_devices = CentralDevice.all
+      # @central_devices = CentralDevice.all
+      @central_devices = []
     end
 
     if params[:q] && !params[:q].empty?
