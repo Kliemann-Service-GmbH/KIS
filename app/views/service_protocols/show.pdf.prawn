@@ -75,19 +75,41 @@ prawn_document do |pdf|
     end
 
     pdf.stroke_horizontal_rule
-    pdf.move_down 20
+    pdf.move_down 10
 
-    pdf.text "#{t(:central_device)}", style: :bold
-    pdf.text "#{t(:serial_number)}: #{@service_protocol.central_device.serial_number}"
-    pdf.text "#{t(:device_type)}: #{@service_protocol.central_device.device_type}"
-    pdf.text "#{t(:location)}: #{@service_protocol.central_device.location}"
+    # CentralDevice
+    current_line = pdf.cursor
+    row_height = 100
+    pdf.bounding_box [pdf.bounds.left, current_line], width: width_half, height: row_height do
+      pdf.text "#{t(:central_device)}", style: :bold
+      pdf.text "#{t(:serial_number)}: #{@service_protocol.central_device.serial_number}"
+      pdf.text "#{t(:device_type)}: #{@service_protocol.central_device.device_type}"
+      pdf.text "#{t(:location)}: #{@service_protocol.central_device.location}"
+    end
+
+    # ContactAdresses
+    unless @service_protocol.central_device.service_object.contact_addresses.empty?
+      pdf.bounding_box [pdf.bounds.left + width_half, current_line], width: width_half, height: row_height do
+        pdf.text "#{t(:contact_person)}", style: :bold
+        @service_protocol.central_device.service_object.contact_addresses.each_with_index do |contact, idx|
+          pdf.text "#{contact.address.match_code}", style: :bold unless contact.address.match_code.empty?
+          pdf.text "#{contact.address.full_name}", style: :bold unless contact.address.full_name.empty?
+          pdf.text "#{contact.address.mobile_number}" unless contact.address.mobile_number.empty?
+          pdf.text "#{contact.address.telephone_number}" unless contact.address.telephone_number.empty?
+          pdf.text "#{contact.address.email_address}" unless contact.address.email_address.empty?
+
+          pdf.stroke_horizontal_rule
+        end
+      end
+    end
+
     pdf.stroke_horizontal_rule
     pdf.move_down 20
 
-    pdf.text "#{t(:alarm_settings)}", style: :bold
-
-    pdf.stroke_horizontal_rule
-    pdf.move_down 20
+    # pdf.text "#{t(:alarm_settings)}", style: :bold
+    #
+    # pdf.stroke_horizontal_rule
+    # pdf.move_down 20
 
     data_sensor = [[
       "#{t('sensor_number.formats.short')}",
