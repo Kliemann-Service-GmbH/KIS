@@ -17,5 +17,7 @@
 require 'rails_helper'
 
 RSpec.describe ObjectMaintenance, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it "is valid with valid attributes" do
+    expect(build(:object_maintenance)).to be_valid
+  end
 end
