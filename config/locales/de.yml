@@ -214,6 +214,11 @@ de:
   signature_employee: Unterschrift AN
   street: Straße
   telephone_number: Telefonnummer
+  time:
+    formats:
+      default: "%d.%m.%Y %H:%M:%S"
+      modern: "%Y-%m-%d"
+      short: "%d.%m.%Y"
   title: Titel
   updated_at: aktualisiert
   welcome:

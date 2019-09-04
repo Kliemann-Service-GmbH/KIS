@@ -214,6 +214,11 @@ en:
   signature_employee: Signature employee
   street: Street
   telephone_number: Telephone number
+  time:
+    formats:
+      default: "%dd.%mm.%YYYY"
+      short: "%d.%m.%Y"
+      modern: "%Y-%m-%d"
   title: Title
   updated_at: Updated at
   welcome:

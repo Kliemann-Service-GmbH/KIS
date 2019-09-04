@@ -61,7 +61,6 @@
       <th><abbr title="<%= t('sensor_number.formats.default') %>"><%= t('sensor_number.formats.short') %></abbr></th>
       <th><%= t(:sensor_type) %></th>
       <th><%= t(:gas_type) %></th>
-      <th><abbr title="<%= t('zero_point.formats.default') %>"><%= t('zero_point.formats.short') %></abbr></th>
       <th><abbr title="<%= t('min_value.formats.default') %>"><%= t('min_value.formats.short') %></abbr></th>
       <th><abbr title="<%= t('max_value.formats.default') %>"><%= t('max_value.formats.short') %></abbr></th>
       <th><abbr title="<%= t('application_date.formats.default') %>"><%= t('application_date.formats.short') %></abbr></th>
@@ -79,7 +78,6 @@
       <th><abbr title="<%= t('sensor_number.formats.default') %>"><%= t('sensor_number.formats.short') %></abbr></th>
       <th><%= t(:sensor_type) %></th>
       <th><%= t(:gas_type) %></th>
-      <th><abbr title="<%= t('zero_point.formats.default') %>"><%= t('zero_point.formats.short') %></abbr></th>
       <th><abbr title="<%= t('min_value.formats.default') %>"><%= t('min_value.formats.short') %></abbr></th>
       <th><abbr title="<%= t('max_value.formats.default') %>"><%= t('max_value.formats.short') %></abbr></th>
       <th><abbr title="<%= t('application_date.formats.default') %>"><%= t('application_date.formats.short') %></abbr></th>
@@ -106,6 +104,6 @@
 <%= link_to t(:new_central_device_service_protocol), new_central_device_service_protocol_path(@central_device) %>
 
 <div style="padding-top: 1em;">
-  <%= link_to t('Edit'), edit_central_device_path(@central_device) %> |
-  <%= link_to t('Back'), central_devices_path %>
+  <%= link_to t('Edit'), edit_central_device_path(@central_device), class: 'button is-warning' %> |
+  <%= link_to t('Back'), central_devices_path, class: 'button' %>
 </div>
