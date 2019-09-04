@@ -4,8 +4,8 @@
   <td><%= sensor.gas_type.name_with_formula %></td>
   <td><%= sensor.min_value %></td>
   <td><%= sensor.max_value %></td>
-  <td><%= l sensor.application_date, format: :short %></td>
-  <td><%= l sensor.livetime, format: :short %></td>
+  <td><%= l sensor.application_date, format: :short unless sensor.application_date.nil? %></td>
+  <td><%= l sensor.livetime, format: :short unless sensor.livetime.nil? %></td>
   <td><%= sensor.alarm_point_1 %></td>
   <td><%= sensor.alarm_point_2 %></td>
   <td><%= sensor.alarm_point_3 %></td>
