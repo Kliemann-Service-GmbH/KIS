@@ -212,13 +212,15 @@ en:
       New: New
   si_units_title: Si units title
   signature_employee: Signature employee
+  status: Status
   street: Street
   telephone_number: Telephone number
   time:
     formats:
       default: "%dd.%mm.%YYYY"
-      short: "%d.%m.%Y"
       modern: "%Y-%m-%d"
+      only_year: "%Y"
+      short: "%d.%m.%Y"
   title: Title
   updated_at: Updated at
   welcome:

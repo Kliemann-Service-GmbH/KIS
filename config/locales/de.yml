@@ -212,12 +212,14 @@ de:
       New: SI Einheit speichern
   si_units_title: SI Einheiten
   signature_employee: Unterschrift AN
+  status: Zustand
   street: Straße
   telephone_number: Telefonnummer
   time:
     formats:
       default: "%d.%m.%Y %H:%M:%S"
       modern: "%Y-%m-%d"
+      only_year: "%Y"
       short: "%d.%m.%Y"
   title: Titel
   updated_at: aktualisiert

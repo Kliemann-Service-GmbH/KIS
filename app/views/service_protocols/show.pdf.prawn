@@ -95,24 +95,43 @@ prawn_document do |pdf|
       "#{t(:gas_type)}",
       "#{t(:sensor_type)}",
       "#{t('measuring_range.formats.short')}",
-      "#{t('next_exchange.formats.short')}",
       "#{t('exchanged.formats.short')}",
+      "#{t('next_exchange.formats.short')}",
       "#{t('a1.formats.short')}",
       "#{t('a2.formats.short')}",
       "#{t('a3.formats.short')}",
       "#{t('a4.formats.short')}",
       "#{t('si_unit.formats.short')}",
-      "#{t(:location)}"]]
+      "#{t(:location)}",
+      "#{t(:status)}"
+
+    ]]
+
     for sensor in @service_protocol.central_device.sensors.sort_by(&:number)
-      data_sensor += [[sensor.number, "", sensor.gas_type.chemical_formula, sensor.sensor_type.name, "#{sensor.min_value}-#{sensor.max_value}", "", "", sensor.alarm_point_1, sensor.alarm_point_2, sensor.alarm_point_3, sensor.alarm_point_4, sensor.si_unit.name, sensor.location]]
+      data_sensor += [[
+        sensor.number,
+        "",
+        sensor.gas_type.name_with_formula,
+        sensor.sensor_type.name,
+        sensor.operational_range,
+        "#{l sensor.application_date, format: :only_year}",
+        "#{l sensor.livetime, format: :only_year}",
+        sensor.alarm_point_1,
+        sensor.alarm_point_2,
+        sensor.alarm_point_3,
+        sensor.alarm_point_4,
+        sensor.si_unit.name,
+        sensor.location,
+        ""
+      ]]
     end
 
     pdf.table data_sensor,
       width: pdf.bounds.right,
       header: true,
-      column_widths: { 12 => 120 },
+      column_widths: { 12 => 100 },
       row_colors: ["F0F0F0","FFFFFF"],
-      cell_style: { border_width: 0.5, size: 8 } do
+      cell_style: { border_width: 0.5, size: 7 } do
         row(0).font_style = :bold
       end
     pdf.move_down 20
