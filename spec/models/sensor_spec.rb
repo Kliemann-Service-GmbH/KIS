@@ -12,7 +12,7 @@
 #  location          :string
 #  max_value         :decimal(, )
 #  min_value         :decimal(, )
-#  number            :integer          default(0)
+#  number            :string           default("0")
 #  zero_point        :decimal(, )
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
@@ -29,37 +29,8 @@
 #  index_sensors_on_si_unit_id         (si_unit_id)
 #
 
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+require 'rails_helper'
 
-baroness: &minimal
-  number: 1
-  central_device: baroness
-  gas_type: baroness
-  sensor_type: baroness
-  si_unit: baroness
-
-incomplete: &realistic
-  <<: *minimal
-  number: 2
-  central_device: incomplete
-  gas_type: incomplete
-  sensor_type: incomplete
-  si_unit: incomplete
-
-complete: &full
-  <<: *realistic
-  number: 3
-  central_device: complete
-  gas_type: complete
-  sensor_type: complete
-  si_unit: complete
-  zero_point: 0.0
-  min_value: 0.0
-  max_value: 300.0
-  application_date: <%= Time.now %>
-  livetime: <%= 2.years.from_now.to_s(:db) %>
-  alarm_point_1: 30
-  alarm_point_2: 60
-  alarm_point_3: 90
-  alarm_point_4: 250
-  location: Stellplatz 1
+RSpec.describe Sensor, type: :model do
+  pending "add some examples to (or delete) #{__FILE__}"
+end

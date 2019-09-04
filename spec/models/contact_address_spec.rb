@@ -12,15 +12,8 @@
 #  index_contact_addresses_on_address_id  (address_id)
 #
 
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+require 'rails_helper'
 
-baroness: &minimal
-  address: baroness
-
-incomplete: &realistic
-  <<: *minimal
-  address: incomplete
-
-complete: &full
-  <<: *realistic
-  address: complete
+RSpec.describe ContactAddress, type: :model do
+  pending "add some examples to (or delete) #{__FILE__}"
+end

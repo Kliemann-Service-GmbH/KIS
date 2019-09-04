@@ -14,18 +14,8 @@
 #  index_object_maintenances_on_service_object_id   (service_object_id)
 #
 
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+require 'rails_helper'
 
-baroness: &minimal
-  service_object: baroness
-  contact_address: baroness
-
-incomplete: &realistic
-  <<: *minimal
-  service_object: incomplete
-  contact_address: incomplete
-
-complete: &full
-  <<: *realistic
-  service_object: complete
-  contact_address: complete
+RSpec.describe ObjectMaintenance, type: :model do
+  pending "add some examples to (or delete) #{__FILE__}"
+end

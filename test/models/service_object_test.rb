@@ -13,19 +13,20 @@
 #
 # Indexes
 #
-#  index_service_objects_on_address_id   (address_id)
-#  index_service_objects_on_customer_id  (customer_id)
+#  index_service_objects_on_address_id                  (address_id)
+#  index_service_objects_on_address_id_and_customer_id  (address_id,customer_id) UNIQUE
+#  index_service_objects_on_customer_id                 (customer_id)
 #
 
 require 'test_helper'
 
 class ServiceObjectTest < ActiveSupport::TestCase
   def setup
-    @service_object = service_objects(:baroness)
+    @service_object = create(:service_object)
   end
 
   test 'valid service_object' do
-    assert @service_object.valid?, 'Fixture baroness is invalid'
+    assert @service_object.valid?, 'Factory is invalid'
   end
 
   # Validations
@@ -41,23 +42,23 @@ class ServiceObjectTest < ActiveSupport::TestCase
     assert_not_nil @service_object.errors[:customer], 'no validation error for customer present'
   end
 
+  test 'invalid if address/ object combination already exists' do
+    service_object_copy = @service_object.dup
+    assert_not service_object_copy.valid?, 'address/ object combination already exists'
+    assert_not_nil service_object_copy.errors[:address], 'no validation error for address present'
+  end
+
   # Virtual Attributes
-  test 'address_number_baroness' do
-    assert_equal @service_object.object_number, "1"
-  end
-
-  test 'address_number' do
-    @service_object = service_objects(:complete)
-    assert_equal @service_object.object_number, "1457"
-  end
-
-  test 'object_number_baroness' do
-    assert_equal @service_object.object_number, "1"
-  end
-
   test 'object_number' do
-    @service_object = service_objects(:complete)
-    assert_equal @service_object.object_number, "1457"
+    assert_equal @service_object.object_number, @service_object.address.address_number
+  end
+
+  test 'customer_number' do
+    assert_equal @service_object.customer_number, @service_object.customer.customer_number
+  end
+
+  test 'address_details' do
+    assert_equal @service_object.address_details, @service_object.address.address_details
   end
 
   # ServiceContract details
@@ -212,12 +213,12 @@ class ServiceObjectTest < ActiveSupport::TestCase
   end
 
   # Test service_contract_length virtual attribute
-  test 'has_service_contract baroness' do
+  test 'it has not service_contract per default' do
     assert_not @service_object.has_service_contract
   end
 
   test 'has_service_contract' do
-    @service_object = service_objects(:with_service_contract)
+    @service_object.service_contract_begin = 1.day.ago
     assert_not @service_object.has_service_contract.nil?
   end
 

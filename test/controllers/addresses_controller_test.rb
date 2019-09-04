@@ -2,7 +2,7 @@ require 'test_helper'
 
 class AddressesControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @address = addresses(:baroness)
+    @address = create(:address)
   end
 
   test "should get index" do

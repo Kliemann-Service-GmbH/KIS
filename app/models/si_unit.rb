@@ -10,7 +10,7 @@
 
 class SiUnit < ApplicationRecord
   # Associations
-  has_many :sensors, dependent: :destroy
+  has_many :sensors, dependent: :destroy, inverse_of: :si_unit
 
   # Validations
   validates :name, presence: true, uniqueness: true

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_08_124723) do
+ActiveRecord::Schema.define(version: 2019_09_03_083541) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "hstore"
@@ -116,7 +116,7 @@ ActiveRecord::Schema.define(version: 2019_08_08_124723) do
     t.decimal "alarm_point_3"
     t.decimal "alarm_point_4"
     t.string "location"
-    t.integer "number", default: 0
+    t.string "number", default: "0"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["central_device_id"], name: "index_sensors_on_central_device_id"
@@ -133,6 +133,7 @@ ActiveRecord::Schema.define(version: 2019_08_08_124723) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "service_contract_auto_resume_interval"
+    t.index ["address_id", "customer_id"], name: "index_service_objects_on_address_id_and_customer_id", unique: true
     t.index ["address_id"], name: "index_service_objects_on_address_id"
     t.index ["customer_id"], name: "index_service_objects_on_customer_id"
   end

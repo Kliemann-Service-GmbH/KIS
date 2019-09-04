@@ -13,17 +13,8 @@
 #  index_alarm_settings_on_central_device_id  (central_device_id)
 #
 
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+require 'rails_helper'
 
-baroness: &minimal
-  central_device: baroness
-
-incomplete: &realistic
-  <<: *minimal
-  central_device: incomplete
-
-complete: &full
-  <<: *realistic
-  central_device: complete
-  outputs:
-    :k1: String
+RSpec.describe AlarmSetting, type: :model do
+  pending "add some examples to (or delete) #{__FILE__}"
+end

@@ -12,7 +12,7 @@
 #  location          :string
 #  max_value         :decimal(, )
 #  min_value         :decimal(, )
-#  number            :integer          default(0)
+#  number            :string           default("0")
 #  zero_point        :decimal(, )
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
@@ -33,11 +33,11 @@ require 'test_helper'
 
 class SensorTest < ActiveSupport::TestCase
   def setup
-    @sensor = sensors(:baroness)
+    @sensor = create(:sensor)
   end
 
   test 'valid sensor' do
-    assert @sensor.valid?, 'Fixture baroness is invalid'
+    assert @sensor.valid?, 'Factory is invalid'
   end
 
   # Validations
@@ -69,5 +69,21 @@ class SensorTest < ActiveSupport::TestCase
     @sensor.number = nil
     assert_not @sensor.valid?, 'saved customer without a number'
     assert_not_nil @sensor.errors[:number], 'no validation error for number present'
+  end
+
+  # Positive validations Sensor Number
+  test 'valid with string as number' do
+    @sensor = create(:sensor, number: '1-abc')
+    assert @sensor.valid?, 'sensor valid with string as number'
+  end
+
+  test 'valid with float as number' do
+    @sensor = create(:sensor, number: 3.21)
+    assert @sensor.valid?, 'sensor valid with float as number'
+  end
+
+  test 'valid with integer as number' do
+    @sensor = create(:sensor, number: 1)
+    assert @sensor.valid?, 'sensor valid with integer as number'
   end
 end

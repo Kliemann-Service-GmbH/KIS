@@ -18,10 +18,15 @@ require 'test_helper'
 
 class AccuTest < ActiveSupport::TestCase
   def setup
-    @accu = accus(:baroness)
+    @accu = create(:accu)
   end
 
   test 'valid accu' do
-    assert @accu.valid?, 'Fixture baroness is invalid'
+    assert @accu.valid?, 'Factory is invalid'
   end
+
+  # Test Validations
+
+  # Test Virtual Attributes
+
 end

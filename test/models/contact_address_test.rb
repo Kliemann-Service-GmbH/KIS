@@ -16,11 +16,11 @@ require 'test_helper'
 
 class ContactAddressTest < ActiveSupport::TestCase
   def setup
-    @contact_address = contact_addresses(:baroness)
+    @contact_address = create(:contact_address)
   end
 
   test 'valid contact_address' do
-    assert @contact_address.valid?, 'Fixture baroness is invalid'
+    assert @contact_address.valid?, 'Factory is invalid'
   end
 
   # Validations

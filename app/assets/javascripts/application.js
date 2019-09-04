@@ -17,6 +17,9 @@
 //= require turbolinks
 //= require_tree .
 
+
+// Add rows to the a rails form table
+// https://www.driftingruby.com/episodes/nested-forms-from-scratch
 $(document).on('turbolinks:load', function() {
 
   $('form').on('click', '.remove_record', function(event) {
@@ -33,5 +36,11 @@ $(document).on('turbolinks:load', function() {
     return event.preventDefault();
   });
 
-
+  $('form').on('click', '.copy_row', function(event) {
+    var regexp, time;
+    time = new Date().getTime();
+    regexp = new RegExp($(this).data('id'), 'g');
+    $(this).closest('tr').after($(this).data('fields').replace(regexp, time))
+    return event.preventDefault();
+  });
 });

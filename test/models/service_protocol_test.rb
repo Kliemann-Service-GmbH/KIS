@@ -24,11 +24,11 @@ require 'test_helper'
 
 class ServiceProtocolTest < ActiveSupport::TestCase
   def setup
-    @service_protocol = service_protocols(:baroness)
+    @service_protocol = create(:service_protocol)
   end
 
   test 'valid service_protocol' do
-    assert @service_protocol.valid?, 'Fixture baroness is invalid'
+    assert @service_protocol.valid?, 'Factory is invalid'
   end
 
   # # Validations

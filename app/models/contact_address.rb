@@ -15,9 +15,10 @@
 class ContactAddress < ApplicationRecord
   # Associations
   belongs_to :address
-  has_many :object_maintenances, dependent: :destroy
+
+  has_many :object_maintenances, dependent: :destroy, inverse_of: :contact_address
 
   # Validations
-  validates :address, presence: true
+  # validates :address, presence: true
 
 end

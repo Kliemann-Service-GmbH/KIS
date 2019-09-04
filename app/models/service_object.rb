@@ -13,22 +13,26 @@
 #
 # Indexes
 #
-#  index_service_objects_on_address_id   (address_id)
-#  index_service_objects_on_customer_id  (customer_id)
+#  index_service_objects_on_address_id                  (address_id)
+#  index_service_objects_on_address_id_and_customer_id  (address_id,customer_id) UNIQUE
+#  index_service_objects_on_customer_id                 (customer_id)
 #
 
 class ServiceObject < ApplicationRecord
   # Associations
-  belongs_to :customer, inverse_of: :service_objects
+  belongs_to :customer
   belongs_to :address
 
-  # has_many :object_maintenances, dependent: :destroy
-  # has_many :contact_addresses, through: :object_maintenances, dependent: :destroy
-  has_many :central_devices, dependent: :destroy
+  has_many :object_maintenances, dependent: :destroy, inverse_of: :service_object
+  has_many :contact_addresses, through: :object_maintenances, dependent: :destroy
+  has_many :central_devices, dependent: :destroy, inverse_of: :service_object
 
   # Validations
   validates :address, presence: true
   validates :customer, presence: true
+
+  validates :address, uniqueness: { scope: :customer,
+    message: I18n.t("Object with such a customer address combination already exists.") }
   # TODO: test central_device presence
   # validates :central_device, presence: true
   # Custom Validations
@@ -58,13 +62,13 @@ class ServiceObject < ApplicationRecord
     if (!service_contract_begin.nil? && service_contract_begin > Time.now) &&
       (!service_contract_end.nil? && service_contract_end < Time.now) &&
       (service_contract_auto_resume_interval.nil? || service_contract_auto_resume_interval)
-      errors.add(:service_contract_end, "can't be in the past if service_contract_begin is in the future")
+      errors.add(:service_contract_end, I18n.t("End can't be in the past if the service contracts begin starts in the future"))
     end
   end
 
   def service_contract_auto_resume_interval_cant_set_without_the_other_fields
     if service_contract_auto_resume_interval && service_contract_begin.nil? && service_contract_end.nil?
-      errors.add(:service_contract_auto_resume_interval, "can't be set without a valid begin or end")
+      errors.add(:service_contract_auto_resume_interval, I18n.t("Auto resume can't be set without a valid begin or end"))
     end
   end
 

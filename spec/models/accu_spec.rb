@@ -14,17 +14,8 @@
 #  index_accus_on_central_device_id  (central_device_id)
 #
 
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+require 'rails_helper'
 
-baroness: &minimal
-  central_device: baroness
-
-incomplete: &realistic
-  <<: *minimal
-  central_device: incomplete
-
-complete: &full
-  <<: *realistic
-  central_device: complete
-  application_date: <%= Time.now %>
-  livetime: <%= 2.years.from_now.to_s(:db) %>
+RSpec.describe Accu, type: :model do
+  pending "add some examples to (or delete) #{__FILE__}"
+end

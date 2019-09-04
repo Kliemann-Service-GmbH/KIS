@@ -17,24 +17,8 @@
 #  index_central_devices_on_service_object_id  (service_object_id)
 #
 
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+require 'rails_helper'
 
-baroness: &minimal
-  service_object: baroness
-  device_number: 1
-
-incomplete: &realistic
-  <<: *minimal
-  service_object: incomplete
-  device_number: 1
-  serial_number: "4321"
-  device_type: "MCS4000"
-
-complete: &full
-  <<: *realistic
-  service_object: complete
-  device_number: 1
-  serial_number: "20190102-0002"
-  device_type: "CMZ Touch LON"
-  location: "Anlage 1"
-  montage_date: <%= Time.now %>
+RSpec.describe CentralDevice, type: :model do
+  pending "add some examples to (or delete) #{__FILE__}"
+end

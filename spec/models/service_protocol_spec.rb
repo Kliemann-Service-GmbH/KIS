@@ -20,23 +20,8 @@
 #  index_service_protocols_on_central_device_id  (central_device_id)
 #
 
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+require 'rails_helper'
 
-baroness: &minimal
-  central_device: baroness
-
-incomplete: &realistic
-  <<: *minimal
-  central_device: incomplete
-
-complete: &full
-  <<: *realistic
-  central_device: complete
-  is_function_check: true
-  is_montage: false
-  is_systemcheck: false
-  is_repair: false
-  is_commisioning: false
-  is_service_contract: false
-  is_expenditure: false
-  is_order: false
+RSpec.describe ServiceProtocol, type: :model do
+  pending "add some examples to (or delete) #{__FILE__}"
+end

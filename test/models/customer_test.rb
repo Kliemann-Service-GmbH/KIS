@@ -16,11 +16,11 @@ require 'test_helper'
 
 class CustomerTest < ActiveSupport::TestCase
   def setup
-    @customer = customers(:baroness)
+    @customer = create(:customer)
   end
 
   test 'valid customer' do
-    assert @customer.valid?, 'Fixture baroness is invalid'
+    assert @customer.valid?, 'Factory is invalid'
   end
 
   # Validations

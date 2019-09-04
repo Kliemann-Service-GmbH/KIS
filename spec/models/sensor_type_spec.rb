@@ -11,15 +11,8 @@
 #  updated_at        :datetime         not null
 #
 
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+require 'rails_helper'
 
-baroness: &minimal
-  name: String
-
-incomplete: &realistic
-  <<: *minimal
-  name: AnotherString
-
-complete: &full
-  <<: *realistic
-  name: "NAP 55"
+RSpec.describe SensorType, type: :model do
+  pending "add some examples to (or delete) #{__FILE__}"
+end

@@ -13,26 +13,13 @@
 #
 # Indexes
 #
-#  index_service_objects_on_address_id   (address_id)
-#  index_service_objects_on_customer_id  (customer_id)
+#  index_service_objects_on_address_id                  (address_id)
+#  index_service_objects_on_address_id_and_customer_id  (address_id,customer_id) UNIQUE
+#  index_service_objects_on_customer_id                 (customer_id)
 #
 
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+require 'rails_helper'
 
-baroness: &minimal
-  customer: baroness
-  address: baroness
-
-incomplete: &realistic
-  <<: *minimal
-  customer: incomplete
-  address: baroness
-
-complete: &full
-  <<: *realistic
-  customer: complete
-  address: complete
-
-with_service_contract:
-  <<: *full
-  service_contract_begin: <%= Time.now %>
+RSpec.describe ServiceObject, type: :model do
+  pending "add some examples to (or delete) #{__FILE__}"
+end
