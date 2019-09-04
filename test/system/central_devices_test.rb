@@ -69,7 +69,7 @@ class CentralDevicesTest < ApplicationSystemTestCase
     click_on I18n.t('central_devices.index.New')
 
     select @service_object.address.address_line, from: 'central_device_service_object_id', match: :first
-  
+
     fill_in :central_device_device_number, with: @central_device.device_number
     fill_in :central_device_device_type, with: @central_device.device_type
     fill_in :central_device_location, with: @central_device.location
@@ -92,6 +92,25 @@ class CentralDevicesTest < ApplicationSystemTestCase
     click_on I18n.t('Search')
 
     click_on I18n.t('Edit'), match: :first
+
+    fill_in :central_device_device_number, with: @central_device.device_number
+    fill_in :central_device_device_type, with: @central_device.device_type
+    fill_in :central_device_location, with: @central_device.location
+    fill_in :central_device_montage_date, with: @central_device.montage_date
+
+    find(:css, 'input[type="submit"]').click
+
+    assert_text "Central device was successfully updated"
+    click_on I18n.t('Back')
+  end
+
+  test "updating a Central device remove a sensor" do
+    @central_device = create(:central_device_with_sensors)
+    visit central_device_url(@central_device.id)
+
+    click_on I18n.t('Edit'), match: :first
+
+    assert false
 
     fill_in :central_device_device_number, with: @central_device.device_number
     fill_in :central_device_device_type, with: @central_device.device_type

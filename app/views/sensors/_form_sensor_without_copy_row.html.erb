@@ -18,6 +18,7 @@
     <%= link_to t('Destroy'), '#', class: 'button is-danger remove_record' %>
   </td>
   <td>
-    <%= link_to_copy_row t('Copy Sensor'), form, :sensors, class: 'button' %>
+    <%#= FIXME: The following row causes an infinite loop, crash Error 500!!!  %>
+    <%#= link_to_copy_row t('Copy Sensor'), form, :sensors, class: 'button' %>
   </td>
 </tr>

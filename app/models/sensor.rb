@@ -31,10 +31,10 @@
 
 class Sensor < ApplicationRecord
   # Associations
-  belongs_to :central_device, inverse_of: :sensors
-  belongs_to :gas_type, inverse_of: :sensors
-  belongs_to :sensor_type, inverse_of: :sensors
-  belongs_to :si_unit, inverse_of: :sensors
+  belongs_to :central_device
+  belongs_to :gas_type
+  belongs_to :sensor_type
+  belongs_to :si_unit
 
   # Validations
   validates :central_device, presence: true

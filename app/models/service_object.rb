@@ -20,12 +20,12 @@
 
 class ServiceObject < ApplicationRecord
   # Associations
-  belongs_to :customer, inverse_of: :service_objects
+  belongs_to :customer
   belongs_to :address
 
-  # has_many :object_maintenances, dependent: :destroy
-  # has_many :contact_addresses, through: :object_maintenances, dependent: :destroy
-  has_many :central_devices, dependent: :destroy
+  has_many :object_maintenances, dependent: :destroy, inverse_of: :service_object
+  has_many :contact_addresses, through: :object_maintenances, dependent: :destroy
+  has_many :central_devices, dependent: :destroy, inverse_of: :service_object
 
   # Validations
   validates :address, presence: true

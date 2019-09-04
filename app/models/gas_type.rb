@@ -12,11 +12,11 @@
 
 class GasType < ApplicationRecord
   # Associations
-  has_many :sensors, dependent: :destroy
+  has_many :sensors, dependent: :destroy, inverse_of: :gas_type
+
   # Validations
   validates :name, uniqueness: true
   validates :chemical_formula, uniqueness: true
-
   validate :name_or_chemical_formula_present
 
   # Virtual Attributes
@@ -31,6 +31,7 @@ class GasType < ApplicationRecord
     end
   end
 
+  # Custom Validation function
   def name_or_chemical_formula_present
     errors.add(I18n.t(:name_or_chemical_formula), I18n.t("need to be entered")) if name.blank? && chemical_formula.blank?
   end

@@ -15,7 +15,8 @@
 class Customer < ApplicationRecord
   # Associations
   belongs_to :address
-  has_many :service_objects, dependent: :destroy
+
+  has_many :service_objects, dependent: :destroy, inverse_of: :customer
 
   # Validations
   validates :address, presence: true
