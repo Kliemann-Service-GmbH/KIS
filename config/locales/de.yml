@@ -220,6 +220,7 @@ de:
       default: "%d.%m.%Y %H:%M:%S"
       modern: "%Y-%m-%d"
       only_year: "%Y"
+      month_year: "%m/%y"
       short: "%d.%m.%Y"
   title: Titel
   updated_at: aktualisiert

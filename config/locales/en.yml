@@ -219,6 +219,7 @@ en:
     formats:
       default: "%dd.%mm.%YYYY"
       modern: "%Y-%m-%d"
+      month_year: "%m/%y"
       only_year: "%Y"
       short: "%d.%m.%Y"
   title: Title
