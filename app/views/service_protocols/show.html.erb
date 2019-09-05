@@ -41,20 +41,20 @@
 
   <hr>
 
+  <% unless @service_protocol.central_device.service_object.contact_addresses.empty? %> <!-- Begin check contact address -->
   <div class="columns">
     <div class="column">
       <%= label_tag nil, t(:contact_person), class: "has-text-weight-bold" %>
     </div>
+    <% for contact in @service_protocol.central_device.service_object.contact_addresses %>
     <div class="column">
-      <span><%#= @service_protocol.service_object.address.first %></span>
+      <%= render partial: 'addresses/attributes', locals: { address: contact.address } %>
     </div>
+    <% end %>
   </div>
 
-  <% for contact in @service_protocol.central_device.service_object.contact_addresses %>
-    <%= render 'addresses/attributes', locals: { address: contact } %>
-  <% end %>
-
   <hr>
+  <% end %> <!-- End check contact address -->
 
   <div class="columns">
     <div class="column">
