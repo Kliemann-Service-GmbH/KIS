@@ -75,19 +75,41 @@ prawn_document do |pdf|
     end
 
     pdf.stroke_horizontal_rule
-    pdf.move_down 20
+    pdf.move_down 10
 
-    pdf.text "#{t(:central_device)}", style: :bold
-    pdf.text "#{t(:serial_number)}: #{@service_protocol.central_device.serial_number}"
-    pdf.text "#{t(:device_type)}: #{@service_protocol.central_device.device_type}"
-    pdf.text "#{t(:location)}: #{@service_protocol.central_device.location}"
+    # CentralDevice
+    current_line = pdf.cursor
+    row_height = 100
+    pdf.bounding_box [pdf.bounds.left, current_line], width: width_half, height: row_height do
+      pdf.text "#{t(:central_device)}", style: :bold
+      pdf.text "#{t(:serial_number)}: #{@service_protocol.central_device.serial_number}"
+      pdf.text "#{t(:device_type)}: #{@service_protocol.central_device.device_type}"
+      pdf.text "#{t(:location)}: #{@service_protocol.central_device.location}"
+    end
+
+    # ContactAdresses
+    unless @service_protocol.central_device.service_object.contact_addresses.empty?
+      pdf.bounding_box [pdf.bounds.left + width_half, current_line], width: width_half, height: row_height do
+        pdf.text "#{t(:contact_person)}", style: :bold
+        @service_protocol.central_device.service_object.contact_addresses.each_with_index do |contact, idx|
+          pdf.text "#{contact.address.match_code}", style: :bold unless contact.address.match_code.empty?
+          pdf.text "#{contact.address.full_name}", style: :bold unless contact.address.full_name.empty?
+          pdf.text "#{contact.address.mobile_number}" unless contact.address.mobile_number.empty?
+          pdf.text "#{contact.address.telephone_number}" unless contact.address.telephone_number.empty?
+          pdf.text "#{contact.address.email_address}" unless contact.address.email_address.empty?
+
+          pdf.stroke_horizontal_rule
+        end
+      end
+    end
+
     pdf.stroke_horizontal_rule
     pdf.move_down 20
 
-    pdf.text "#{t(:alarm_settings)}", style: :bold
-
-    pdf.stroke_horizontal_rule
-    pdf.move_down 20
+    # pdf.text "#{t(:alarm_settings)}", style: :bold
+    #
+    # pdf.stroke_horizontal_rule
+    # pdf.move_down 20
 
     data_sensor = [[
       "#{t('sensor_number.formats.short')}",
@@ -95,24 +117,43 @@ prawn_document do |pdf|
       "#{t(:gas_type)}",
       "#{t(:sensor_type)}",
       "#{t('measuring_range.formats.short')}",
-      "#{t('next_exchange.formats.short')}",
       "#{t('exchanged.formats.short')}",
+      "#{t('next_exchange.formats.short')}",
       "#{t('a1.formats.short')}",
       "#{t('a2.formats.short')}",
       "#{t('a3.formats.short')}",
       "#{t('a4.formats.short')}",
       "#{t('si_unit.formats.short')}",
-      "#{t(:location)}"]]
+      "#{t(:location)}",
+      "#{t(:status)}"
+
+    ]]
+
     for sensor in @service_protocol.central_device.sensors.sort_by(&:number)
-      data_sensor += [[sensor.number, "", sensor.gas_type.chemical_formula, sensor.sensor_type.name, "#{sensor.min_value}-#{sensor.max_value}", "", "", sensor.alarm_point_1, sensor.alarm_point_2, sensor.alarm_point_3, sensor.alarm_point_4, sensor.si_unit.name, sensor.location]]
+      data_sensor += [[
+        sensor.number,
+        "",
+        sensor.gas_type.name_with_formula,
+        sensor.sensor_type.name,
+        sensor.operational_range,
+        "#{l sensor.application_date, format: :month_year unless sensor.application_date.nil?}",
+        "#{l sensor.livetime, format: :month_year unless sensor.livetime.nil?}",
+        sensor.alarm_point_1,
+        sensor.alarm_point_2,
+        sensor.alarm_point_3,
+        sensor.alarm_point_4,
+        sensor.si_unit.name,
+        sensor.location,
+        ""
+      ]]
     end
 
     pdf.table data_sensor,
       width: pdf.bounds.right,
       header: true,
-      column_widths: { 12 => 120 },
+      column_widths: { 12 => 100 },
       row_colors: ["F0F0F0","FFFFFF"],
-      cell_style: { border_width: 0.5, size: 8 } do
+      cell_style: { border_width: 0.5, size: 7 } do
         row(0).font_style = :bold
       end
     pdf.move_down 20

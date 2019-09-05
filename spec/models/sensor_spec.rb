@@ -32,5 +32,18 @@
 require 'rails_helper'
 
 RSpec.describe Sensor, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it "is valid with valid attributes" do
+    expect(build(:sensor)).to be_valid
+  end
+end
+
+# Prefix instance methods with a '#'
+RSpec.describe Sensor, '#operational_range' do
+  it 'it returns the operational sensor range, called Messbereich in germany' do
+    # setup
+    sensor = build(:sensor_with_range)
+
+    # exercise and verify
+    expect(sensor.operational_range).to eq "0.0-100.0"
+  end
 end

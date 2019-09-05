@@ -2,7 +2,6 @@
   <td><%= form.text_field :number, class: 'input is-fullwidth' %></td>
   <td><%= form.collection_select :sensor_type_id, SensorType.all, :id, :name, class: '' %></td>
   <td><%= form.collection_select :gas_type_id, GasType.all, :id, :name, class: '' %></td>
-  <td><%= form.text_field :zero_point, class: 'input' %></td>
   <td><%= form.text_field :min_value, class: 'input' %></td>
   <td><%= form.text_field :max_value, class: 'input' %></td>
   <td><%= form.date_field :application_date, class: 'input' %></td>
