@@ -4,16 +4,9 @@ Used in:
 -->
 <div class="columns">
   <div class="column">
-    <div class="is-size-5"><%= address.try(:match_code) %></div>
-    <div class="is-size-5"><%= address.try(:full_name) %></div>
-    <div class=""><%= address.try(:zip_city) %></div>
-
-    <% unless address.email_address.empty? %>
-    <div>
-      <span class="has-text-weight-light"><%= t :email_address %>:&nbsp;</span>
-      <span><%= address.email_address %></span>
-    </div>
-    <% end %>
+    <div class="is-size-5"><%= address.match_code %></div>
+    <div class="is-size-5"><%= address.full_name %></div>
+    <div class=""><%= address.zip_city %></div>
 
     <% unless address.mobile_number.empty? %>
     <div>
@@ -28,5 +21,13 @@ Used in:
       <span><%= address.telephone_number %></span>
     </div>
     <% end %>
+
+    <% unless address.email_address.empty? %>
+    <div>
+      <span class="has-text-weight-light"><%= t :email_address %>:&nbsp;</span>
+      <span><%= address.email_address %></span>
+    </div>
+    <% end %>
+
   </div>
 </div>

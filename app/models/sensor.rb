@@ -42,4 +42,14 @@ class Sensor < ApplicationRecord
   validates :sensor_type, presence: true
   validates :si_unit, presence: true
   validates :number, presence: true
+
+  # Virtual Attributes
+
+  # Sensor range (Messbereich)
+  # Used in app/views/service_protocols/show.pdf.prawn
+  def operational_range
+    "#{min_value}-#{max_value}"
+  end
+
+
 end
