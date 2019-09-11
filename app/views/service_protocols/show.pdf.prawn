@@ -114,6 +114,7 @@ prawn_document do |pdf|
     # pdf.move_down 20
 
     # Sensors
+    # Table headers
     data_sensor = [[
       "#{t('sensor_number.formats.short')}",
       "#{t('zero_point.formats.short')}",
@@ -131,6 +132,7 @@ prawn_document do |pdf|
       "#{t(:status)}"
     ]]
 
+    # Table data
     for sensor in @service_protocol.central_device.sensors.sort_by{|s| s.number.to_i}
       data_sensor += [[
         sensor.number,
@@ -150,10 +152,26 @@ prawn_document do |pdf|
       ]]
     end
 
+    # This generates the table
     pdf.table data_sensor,
       width: pdf.bounds.right,
       header: true,
-      column_widths: { 12 => 100 },
+      column_widths: {
+        0 => 20, # #
+        1 => 20, # NP
+        2 => 50, # Gasart
+        3 => 50, # Sensortyp
+        # 4 => 50, # MB
+        5 => 30, # GW
+        6 => 30, # NW
+        7 => 25, # AP1
+        8 => 25, # AP2
+        9 => 25, # AP3
+        10 => 25, # AP4
+        # 11 => 30, # SI
+        12 => 100, # Standort
+        13 => 60
+      },
       row_colors: ["F0F0F0","FFFFFF"],
       cell_style: { border_width: 0.5, size: 7 } do
         row(0).font_style = :bold
