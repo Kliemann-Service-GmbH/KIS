@@ -63,6 +63,7 @@ en:
       short: Short
   chemical_formula: Chemical formula
   contact_person: Contact person
+  copy_sensor: Copy sensor
   created_at: Created at
   customer: Customer
   customers:
@@ -150,10 +151,6 @@ en:
   sensor_types_title: Sensor types title
   serial_number: Serial number
   service_contract: Service contract
-  service_contract_auto_resume_interval: Service contract auto resume interval
-  service_contract_begin: Service contract begin
-  service_contract_end: Service contract end
-  service_contract_length: Service contract length
   service_object: Service object
   service_objects:
     edit:
@@ -163,7 +160,6 @@ en:
       help_service_contract_auto_resume_interval: Help service contract auto resume interval
       help_service_contract_begin: Help service contract begin
       help_service_contract_end: Help service contract end
-      help_service_contract_length: Help service contract length
     index:
       New: New
       placeholder: Placeholder
@@ -184,14 +180,12 @@ en:
     edit:
       Edit: Edit
     index:
-      New: New
       placeholder: Placeholder
     new:
       New: New
     show:
       devices_fazit: Devices fazit
       edit:
-        central_device: Central device
         service_object: Service object
   service_protocols_title: Service protocols title
   si_unit:
@@ -208,7 +202,6 @@ en:
   si_units_title: Si units title
   signature_employee: Signature employee
   status: Status
-  street: Street
   telephone_number: Telephone number
   time:
     formats:
@@ -218,7 +211,6 @@ en:
       month_year: "%m/%y"
       only_year: "%Y"
       short: "%d.%m.%Y"
-  title: Title
   until: until
   updated_at: Updated at
   welcome:
