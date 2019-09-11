@@ -47,8 +47,9 @@ prawn_document do |pdf|
       pdf.draw_text t(:service_contract), style: :bold, at: [width_half, 695]
     end
 
+    # Service Contract
     if @service_protocol.central_device.service_object.has_service_contract
-      pdf.draw_text "bis: #{@service_protocol.central_device.service_object.service_contract_length.strftime("%F")}", at: [width_half + 90, 695]
+      pdf.draw_text "#{t :until}: #{l @service_protocol.central_device.service_object.service_contract_length, format: :short}", at: [width_half + 90, 695]
     end
 
     # footer
