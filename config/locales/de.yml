@@ -219,6 +219,7 @@ de:
       only_year: "%Y"
       short: "%d.%m.%Y"
   title: Titel
+  until: bis
   updated_at: aktualisiert
   welcome:
     index:
