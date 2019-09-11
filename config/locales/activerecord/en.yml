@@ -2,8 +2,16 @@
 en:
   activerecord:
     models:
+      accu: Accu
       address: Address
+      alarm_setting: Alarm Setting
       central_device: Device
+      contact_address: Contact
       customer: Customer
+      gas_type: Gas Type
+      object_maintenance: Object Maintenance
+      sensor: Sensor
+      sensor_type: Sensor Typ
       service_object: Object
       service_protocol: Service Protocol
+      si_unit: SI Unit
