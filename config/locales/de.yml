@@ -63,6 +63,7 @@ de:
       short: Ok?
   chemical_formula: Chemische Formel
   contact_person: Kontakt
+  copy_sensor: Copy sensor
   created_at: erstellt
   customer: Kunde
   customers:
@@ -150,10 +151,6 @@ de:
   sensor_types_title: Sensortypen
   serial_number: Seriennummer
   service_contract: Wartungsvertrag
-  service_contract_auto_resume_interval: Wartungsvertrag wird automatisch verlängert um
-  service_contract_begin: Beginn Wartungsvertrag
-  service_contract_end: Ende Wartungsvertrag
-  service_contract_length: Länge Wartungsvertrag
   service_object: Objekt
   service_objects:
     edit:
@@ -163,7 +160,6 @@ de:
       help_service_contract_auto_resume_interval: Wird der Wartungsvertrag automatisch verlängert bitte dieses Feld ausfüllen.
       help_service_contract_begin: Beginn des Wartungsvertrags
       help_service_contract_end: Ende des Wartungsvertrags
-      help_service_contract_length: Länge des Wartungsvertrags
     index:
       New: Neues Objekt erstellen
       placeholder: Adressdetails, Name, Ort, ...
@@ -184,14 +180,12 @@ de:
     edit:
       Edit: Prüfprotokoll bearbeiten
     index:
-      New: Neu
       placeholder: Anlagennummer,
     new:
       New: Neu
     show:
       devices_fazit: 'Die Anlage ist:'
       edit:
-        central_device: Anlage bearbeiten
         service_object: Objekt bearbeiten
   service_protocols_title: Prüfprotokolle
   si_unit:
@@ -208,7 +202,6 @@ de:
   si_units_title: SI Einheiten
   signature_employee: Unterschrift AN
   status: Zustand
-  street: Straße
   telephone_number: Telefonnummer
   time:
     formats:
@@ -218,7 +211,7 @@ de:
       month_year: "%m/%y"
       only_year: "%Y"
       short: "%d.%m.%Y"
-  title: Titel
+  until: bis
   updated_at: aktualisiert
   welcome:
     index:

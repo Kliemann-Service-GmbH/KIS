@@ -133,7 +133,7 @@
       </tr>
     </tfoot>
     <tbody class="fields">
-    <%= form.fields_for :sensors, @central_device.sensors.sort_by(&:number) do |builder| %>
+    <%= form.fields_for :sensors, @central_device.sensors.sort_by{|s| s.number.to_i} do |builder| %>
       <%= render "sensors/form_sensor", form: builder %>
     <% end %>
     </tbody>
