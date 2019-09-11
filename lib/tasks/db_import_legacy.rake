@@ -8,7 +8,7 @@ namespace(:db) do
       if db_reachable then
         puts 'database connection successful'
       else
-        puts 'no successful connection possible, check network!'
+        puts 'database not reachable, please check network!'
       end
     end # End task :test
 
