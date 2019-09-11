@@ -128,6 +128,8 @@ group :test do
   # https://github.com/twalpole/apparition
   # gem 'apparition'
   gem 'apparition', github: 'twalpole/apparition'
+  # https://github.com/thoughtbot/shoulda-matchers
+  gem 'shoulda-matchers'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

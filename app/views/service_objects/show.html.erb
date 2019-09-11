@@ -8,7 +8,7 @@
 <div class="container">
   <div class="">
     <%= link_to customer_path(@service_object.customer) do %>
-    <%= render partial: "addresses/attributes", locals: { address: @service_object.customer.address } %>
+      <%= render partial: "addresses/attributes", locals: { address: @service_object.customer.address } %>
     <% end %>
   </div>
 </div>
@@ -19,14 +19,14 @@
 <% unless @service_object.central_devices.nil? %>
 <h2 class="subtitle"><%= t('.central_devices') %>:</h2>
   <% for central_device in @service_object.central_devices %>
-  <!-- TODO: create helper 'object_device_number' -->
-  <!-- [object number]-[device number] -->
-  <h3 class="is-size-5"><%= @service_object.object_number %>-<%= central_device.device_number %></h3>
+  <%= link_to central_device do %>
     <%= render partial: "central_devices/attributes", locals: { central_device: central_device } %>
+  <% end %>
+
     <div class="columns">
       <div class="column">
-        <%= link_to t('Show'), central_device, class: 'button' %>
-        <%= link_to t('Edit'), edit_central_device_path(central_device), class: 'button' %>
+        <%= link_to t('Show'), central_device, class: "button" %>
+        <%= link_to t('Edit'), edit_central_device_path(central_device), class: 'button is-warning' %>
         <%= link_to t('Destroy'), central_device, method: :delete, data: { confirm: 'Are you sure?' }, class: 'button is-danger' %>
       </div>
     </div>
@@ -40,6 +40,6 @@
 
 <!-- Site Navigation -->
 <div style="padding-top: 1em">
-<%= link_to t('Edit'), edit_service_object_path(@service_object), class: "button is-waring" %>
+<%= link_to t('.Edit'), edit_service_object_path(@service_object), class: "button is-waring" %>
 <%= link_to t('Back'), service_objects_path, class: "button" %>
 </div>

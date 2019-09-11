@@ -27,7 +27,7 @@
 
   <div class="field is-horizontal">
     <div class="field-label is-normal">
-      <%= form.label t(:address), class: 'label', id: :address %>
+      <%= form.label :address, t(:object_address), class: 'label', id: :address %>
     </div>
     <div class="field-body">
       <div class="field">
@@ -46,7 +46,7 @@
     <div class="field-body">
       <div class="field">
         <div class="label">
-          <%= form.label t(:begin), class: 'label', id: :service_contract_begin %>
+          <%= form.label :begin, t(:begin), class: 'label', id: :service_contract_begin %>
         </div>
         <div class="control is-expanded">
           <%= form.date_field :service_contract_begin %>
@@ -58,7 +58,7 @@
 
       <div class="field">
         <div class="label">
-          <%= form.label t(:end), class: 'label', id: :service_contract_end %>
+          <%= form.label :end, t(:end), class: 'label', id: :service_contract_end %>
         </div>
         <div class="control is-expanded">
           <%= form.date_field :service_contract_end %>
@@ -71,7 +71,7 @@
 
     <div class="field">
       <div class="label">
-        <%= form.label t('.automatic_resume'), class: 'label' %>
+        <%= form.label :automatic_resume, t('.automatic_resume'), class: 'label' %>
       </div>
       <div class="control is-expanded">
         <%= form.text_field :service_contract_auto_resume_interval, size: 2 %>&nbsp;<%= t(:years) %>
