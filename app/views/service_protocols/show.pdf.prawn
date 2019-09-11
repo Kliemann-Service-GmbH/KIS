@@ -107,11 +107,13 @@ prawn_document do |pdf|
     pdf.stroke_horizontal_rule
     pdf.move_down 20
 
+    # Alarm Settings
     # pdf.text "#{t(:alarm_settings)}", style: :bold
     #
     # pdf.stroke_horizontal_rule
     # pdf.move_down 20
 
+    # Sensors
     data_sensor = [[
       "#{t('sensor_number.formats.short')}",
       "#{t('zero_point.formats.short')}",
@@ -127,7 +129,6 @@ prawn_document do |pdf|
       "#{t('si_unit.formats.short')}",
       "#{t(:location)}",
       "#{t(:status)}"
-
     ]]
 
     for sensor in @service_protocol.central_device.sensors.sort_by{|s| s.number.to_i}
@@ -160,7 +161,7 @@ prawn_document do |pdf|
     pdf.move_down 20
 
     # Notes
-    pdf.start_new_page if pdf.cursor < 100
+    pdf.start_new_page if pdf.cursor < 240
     pdf.text "#{t(:notes)}", style: :bold
     pdf.bounding_box [pdf.bounds.left, pdf.cursor], width: pdf.bounds.width, height: 3.cm do
       pdf.line_width = 0.5
@@ -181,11 +182,9 @@ prawn_document do |pdf|
     pdf.bounding_box [pdf.bounds.left + 2 * width_third, current_line], width: width_third do
       pdf.text "[ ] #{t(:with_shortcomings)}"
     end
-
-    # # Signatur fields on bottom
-    pdf.start_new_page if pdf.cursor < 70
-
     pdf.move_down 20
+
+    # Signature fields
     current_line = pdf.cursor
     pdf.bounding_box [pdf.bounds.left, current_line], width: width_half do
       pdf.text "Ort: #{@service_protocol.central_device.service_object.address.zip_city}", style: :bold
