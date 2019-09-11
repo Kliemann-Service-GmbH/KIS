@@ -76,10 +76,10 @@ search:
 
   ## Alternatively, the only files or `File.fnmatch patterns` to search in `paths`:
   ## If specified, this settings takes priority over `exclude`, but `exclude` still applies.
-  # only: ["*.rb", "*.html.slim"]
+  # only: ["*.rb", "*.prawn", "*.html.slim"]
 
   ## If `strict` is `false`, guess usages such as t("categories.#{category}.title"). The default is `true`.
-  strict: false
+  strict: true
 
   ## Multiple scanners can be used. Their results are merged.
   ## The options specified above are passed down to each scanner. Per-scanner options can be specified as well.
@@ -106,6 +106,7 @@ ignore_unused:
 - 'activerecord.attributes.*'
 - 'activerecord.models.*'
 - 'time.formats.*'
+- 'zero_point.formats.*'
 # - '{devise,kaminari,will_paginate}.*'
 # - 'simple_form.{yes,no}'
 # - 'simple_form.{placeholders,hints,labels}.*'
