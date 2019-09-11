@@ -2,8 +2,16 @@
 de:
   activerecord:
     models:
+      accu: Akku
       address: Addresse
-      central_device: Gerät
+      alarm_setting: Alarmeinstellung
+      central_device: Anlage
+      contact_address: Kontaktadresse
       customer: Kunde
+      gas_type: Gasart
+      object_maintenance: Objektverwaltung
+      sensor: Sensor
+      sensor_type: Sensortyp
       service_object: Objekt
       service_protocol: Prüfprotokoll
+      si_unit: SI Einheit

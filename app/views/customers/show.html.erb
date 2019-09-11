@@ -1,14 +1,13 @@
-<div class="">
-  <%= render partial: "customers/attributes", locals: { customer: @customer } %>
-</div>
+<%= render partial: "customers/attributes", locals: { customer: @customer } %>
 
 <div class="" style="padding-top: 2em">
   <h2 class="subtitle"><%= t :service_objects_title %></h2>
 
   <% for service_object in @customer.service_objects do %>
-  <%= link_to service_object_path service_object  do %>
-  <%= render partial: "service_objects/attributes", locals: { service_object: service_object } %>
-  <% end %>
+    <%= link_to service_object_path service_object  do %>
+      <%= render partial: "service_objects/attributes", locals: { service_object: service_object } %>
+    <% end %>
+    <hr>
   <% end %>
 </div>
 

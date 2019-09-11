@@ -69,10 +69,7 @@ en:
     edit:
       Edit: Edit
     index:
-      New: New
       placeholder: Placeholder
-    new:
-      New: New
   customers_title: Customers title
   description: Description
   device_number: Device number
@@ -94,7 +91,6 @@ en:
     new:
       New: New
   gas_types_title: Gasarten
-  has_service_contract: Has service contract
   is_commisioning: Is commisioning
   is_expenditure: Is expenditure
   is_function_check: Is function check
@@ -102,7 +98,6 @@ en:
   is_repair: Is repair
   is_service_contract: Is service contract
   is_systemcheck: Is systemcheck
-  length: Length
   livetime:
     formats:
       default: Default
@@ -135,12 +130,11 @@ en:
   not_working: Not working
   notes: Notes
   number: Number
-  object: Object
+  object_address: Object address
+  object_device_number: Object device number
   object_nr: Object nr
-  object_number: Object number
   of: Of
   page: Page
-  placeholder: Placeholder
   sensor_number:
     formats:
       default: Default
@@ -176,6 +170,7 @@ en:
     new:
       New: New
     show:
+      Edit: Edit
       address: Address
       central_devices: Central devices
   service_objects_title: Service objects title
@@ -219,6 +214,7 @@ en:
     formats:
       default: "%dd.%mm.%YYYY"
       modern: "%Y-%m-%d"
+      modern_long: "%F %T"
       month_year: "%m/%y"
       only_year: "%Y"
       short: "%d.%m.%Y"

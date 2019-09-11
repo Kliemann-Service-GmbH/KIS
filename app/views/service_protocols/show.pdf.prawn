@@ -40,8 +40,8 @@ prawn_document do |pdf|
     pdf.draw_text t(:service_protocol).upcase, style: :bold, size: 16, at: [0, 730]
     pdf.draw_text "#{t(:object_nr)}: #{@service_protocol.central_device.service_object.object_number}-#{@service_protocol.central_device.device_number}", style: :bold, size: 16, at: [260, 730]
 
-    pdf.draw_text "#{t(:service_protocol)} #{t(:created_at)}: #{@service_protocol.created_at.strftime("%F %T")}", size: 8, at: [0, 710]
-    pdf.draw_text "#{t(:service_protocol)} #{t(:updated_at)}: #{@service_protocol.updated_at.strftime("%F %T")}", size: 8, at: [width_half, 710]
+    pdf.draw_text "#{t(:service_protocol)} #{t(:created_at)}: #{l @service_protocol.created_at, format: :default}", size: 8, at: [0, 710]
+    pdf.draw_text "#{t(:service_protocol)} #{t(:updated_at)}: #{l @service_protocol.updated_at, format: :default}", size: 8, at: [width_half, 710]
 
     if @service_protocol.central_device.service_object.has_service_contract
       pdf.draw_text t(:service_contract), style: :bold, at: [width_half, 695]
@@ -129,7 +129,7 @@ prawn_document do |pdf|
 
     ]]
 
-    for sensor in @service_protocol.central_device.sensors.sort_by(&:number)
+    for sensor in @service_protocol.central_device.sensors.sort_by{|s| s.number.to_i}
       data_sensor += [[
         sensor.number,
         "",

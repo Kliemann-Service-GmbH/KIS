@@ -17,7 +17,7 @@ data:
   read:
     ## Default:
     - config/locales/%{locale}.yml
-    - config/locales/**/%{locale}.yml
+    - config/locales/activerecord/%{locale}.yml
     ## More files:
 
   # Locale files to write new keys to, based on a list of key pattern => file rules. Matched from top to bottom:
@@ -27,6 +27,7 @@ data:
     # - ['{devise, simple_form}.*', 'config/locales/\1.%{locale}.yml']
     ## Catch-all default:
     - config/locales/%{locale}.yml
+    - config/locales/activerecord/%{locale}.yml
 
   # External locale data (e.g. gems).
   # This data is not considered unused and is never written to.
@@ -53,16 +54,18 @@ data:
 # Find translate calls
 search:
   ## Paths or `File.find` patterns to search in:
-  # paths:
-  #  - app/
+  paths:
+   - app/
+   - test/
+   - spec/
 
   ## Root directories for relative keys resolution.
-  # relative_roots:
-  #   - app/controllers
-  #   - app/helpers
-  #   - app/mailers
-  #   - app/presenters
-  #   - app/views
+  relative_roots:
+    - app/controllers
+    - app/helpers
+    - app/mailers
+    - app/presenters
+    - app/views
 
   ## Files or `File.fnmatch` patterns to exclude from search. Some files are always excluded regardless of this setting:
   ##   %w(*.jpg *.png *.gif *.svg *.ico *.eot *.otf *.ttf *.woff *.woff2 *.pdf *.css *.sass *.scss *.less *.yml *.json)
@@ -76,7 +79,7 @@ search:
   # only: ["*.rb", "*.html.slim"]
 
   ## If `strict` is `false`, guess usages such as t("categories.#{category}.title"). The default is `true`.
-  # strict: true
+  strict: false
 
   ## Multiple scanners can be used. Their results are merged.
   ## The options specified above are passed down to each scanner. Per-scanner options can be specified as well.
@@ -99,8 +102,10 @@ translation:
 # - '{devise,simple_form}.*'
 
 ## Consider these keys used:
-# ignore_unused:
-# - 'activerecord.attributes.*'
+ignore_unused:
+- 'activerecord.attributes.*'
+- 'activerecord.models.*'
+- 'time.formats.*'
 # - '{devise,kaminari,will_paginate}.*'
 # - 'simple_form.{yes,no}'
 # - 'simple_form.{placeholders,hints,labels}.*'
