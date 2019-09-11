@@ -51,4 +51,8 @@ class CentralDevice < ApplicationRecord
       }
     }
 
+  # Virtual Attributes
+  def object_device_number
+    "#{service_object.object_number}-#{device_number}"
+  end
 end

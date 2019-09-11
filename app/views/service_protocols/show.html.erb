@@ -86,7 +86,7 @@
     </div>
   </div>
   <div class="">
-    <%= link_to t('.edit.central_device'), edit_central_device_path(@service_protocol.central_device), class: 'button is-warning' %>
+    <%= link_to t('edit_central_device'), edit_central_device_path(@service_protocol.central_device), class: 'button is-warning' %>
   </div>
 
   <hr>
@@ -187,7 +187,7 @@
       </tr>
     </tfoot>
     <tbody>
-      <% for sensor in @service_protocol.central_device.sensors.order(:number) %>
+      <% for sensor in @service_protocol.central_device.sensors.sort_by{|s| s.number.to_i} %>
       <tr>
         <td><%= sensor.try(:number) %></td>
         <td><%= check_box_tag :checked %></td>

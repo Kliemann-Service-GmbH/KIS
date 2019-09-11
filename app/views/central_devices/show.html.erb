@@ -91,7 +91,7 @@
     </tr>
   </tfoot>
   <tbody>
-  <% for sensor in @sensors do %>
+  <% for sensor in @sensors.sort_by{|s| s.number.to_i} do %>
     <%= render "sensors/sensor", sensor: sensor %>
   <% end %>
   </tbody>
