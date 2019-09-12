@@ -166,7 +166,6 @@ en:
     new:
       New: New
     show:
-      Edit: Edit
       address: Address
       central_devices: Central devices
   service_objects_title: Service objects title
