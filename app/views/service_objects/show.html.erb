@@ -34,12 +34,12 @@
   <% end %>
 <% end %>
 
-<%= link_to t(:new_service_object_central_device), new_service_object_central_device_path(@service_object) %>
+<%= link_to t(:new_service_object_central_device), new_service_object_central_device_path(@service_object), class: 'button is-primary' %>
 
 <hr>
 
 <!-- Site Navigation -->
 <div style="padding-top: 1em">
-<%= link_to t('.Edit'), edit_service_object_path(@service_object), class: "button is-waring" %>
+<%= link_to t('Edit'), edit_service_object_path(@service_object), class: "button is-warning" %>
 <%= link_to t('Back'), service_objects_path, class: "button" %>
 </div>
