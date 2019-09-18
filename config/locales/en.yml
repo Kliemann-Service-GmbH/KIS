@@ -26,6 +26,7 @@ en:
       default: Default
       short: Short
   address: Address
+  address_number: Address number
   addresses:
     edit:
       Edit: Edit
@@ -53,19 +54,17 @@ en:
       alarm_outputs: Alarm outputs
       customer: Customer
       device_number: Device number
+      devices_fazit: 'Devices is:'
       location: Location
       serial_number: Serial number
       service_object: Service object
   central_devices_title: Central devices title
-  checked:
-    formats:
-      default: Default
-      short: Short
   chemical_formula: Chemical formula
   contact_person: Contact person
   copy_sensor: Copy sensor
   created_at: Created at
   customer: Customer
+  customer_number: Customer number
   customers:
     edit:
       Edit: Edit
@@ -76,11 +75,11 @@ en:
   device_number: Device number
   device_type: Device type
   draft: Draft
-  edit_central_device: Edit central device
   email_address: Email address
   end: End
   exchanged:
     formats:
+      default: Default
       short: Short
   field_required: Field required
   gas_type: Gas type
@@ -92,13 +91,6 @@ en:
     new:
       New: New
   gas_types_title: Gasarten
-  is_commisioning: Is commisioning
-  is_expenditure: Is expenditure
-  is_function_check: Is function check
-  is_montage: Is montage
-  is_repair: Is repair
-  is_service_contract: Is service contract
-  is_systemcheck: Is systemcheck
   livetime:
     formats:
       default: Default
@@ -110,7 +102,6 @@ en:
       short: Short
   measuring_range:
     formats:
-      default: Default
       short: Short
   min_value:
     formats:
@@ -122,18 +113,16 @@ en:
   name_customer: Name customer
   name_or_chemical_formula: Name or chemical formula
   need to be entered: Need to be entered
-  new_central_device_service_protocol: New central device service protocol
   new_service_object_central_device: New service object central device
   next_exchange:
     formats:
-      default: Default
       short: Short
   not_working: Not working
   notes: Notes
-  number: Number
   object_address: Object address
   object_device_number: Object device number
   object_nr: Object nr
+  object_number: Object number
   of: Of
   page: Page
   sensor_number:
@@ -170,23 +159,7 @@ en:
       central_devices: Central devices
   service_objects_title: Service objects title
   service_protocol: Service protocol
-  service_protocols:
-    attributes:
-      device_number: Device number
-      object_address: Object address
-      object_number: Object number
-      serial_number: Serial number
-    edit:
-      Edit: Edit
-    index:
-      placeholder: Placeholder
-    new:
-      New: New
-    show:
-      devices_fazit: Devices fazit
-      edit:
-        service_object: Service object
-  service_protocols_title: Service protocols title
+  show_print_pdf: Show print pdf
   si_unit:
     formats:
       default: Default

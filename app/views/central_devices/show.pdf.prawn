@@ -38,18 +38,18 @@ prawn_document do |pdf|
     # header
     pdf.image "#{Rails.root}/app/assets/images/logo_kliemann-service-gmbh.png", :at => [410,790], :width => 100
     pdf.draw_text t(:service_protocol).upcase, style: :bold, size: 16, at: [0, 730]
-    pdf.draw_text "#{t(:object_nr)}: #{@service_protocol.central_device.service_object.object_number}-#{@service_protocol.central_device.device_number}", style: :bold, size: 16, at: [260, 730]
+    pdf.draw_text "#{t(:object_nr)}: #{@central_device.service_object.object_number}-#{@central_device.device_number}", style: :bold, size: 16, at: [260, 730]
 
-    pdf.draw_text "#{t(:service_protocol)} #{t(:created_at)}: #{l @service_protocol.created_at, format: :default}", size: 8, at: [0, 710]
-    pdf.draw_text "#{t(:service_protocol)} #{t(:updated_at)}: #{l @service_protocol.updated_at, format: :default}", size: 8, at: [width_half, 710]
+    pdf.draw_text "#{t(:service_protocol)} #{t(:created_at)}: #{l @central_device.created_at, format: :default}", size: 8, at: [0, 710]
+    pdf.draw_text "#{t(:service_protocol)} #{t(:updated_at)}: #{l @central_device.updated_at, format: :default}", size: 8, at: [width_half, 710]
 
-    if @service_protocol.central_device.service_object.has_service_contract
+    if @central_device.service_object.has_service_contract
       pdf.draw_text t(:service_contract), style: :bold, at: [width_half, 695]
     end
 
     # Service Contract
-    if @service_protocol.central_device.service_object.has_service_contract
-      pdf.draw_text "#{t :until}: #{l @service_protocol.central_device.service_object.service_contract_length, format: :short}", at: [width_half + 90, 695]
+    if @central_device.service_object.has_service_contract
+      pdf.draw_text "#{t :until}: #{l @central_device.service_object.service_contract_length, format: :short}", at: [width_half + 90, 695]
     end
 
     # footer
@@ -62,17 +62,17 @@ prawn_document do |pdf|
     row_height = 50
     pdf.bounding_box [pdf.bounds.left, current_line], width: width_half, height: row_height do
       pdf.text "#{t(:service_object)}", style: :bold
-      pdf.text "#{@service_protocol.central_device.service_object.address.address_line}"
-      pdf.text "#{@service_protocol.central_device.service_object.address.street}"
-      pdf.text "#{@service_protocol.central_device.service_object.address.zip_city}"
+      pdf.text "#{@central_device.service_object.address.address_line}"
+      pdf.text "#{@central_device.service_object.address.street}"
+      pdf.text "#{@central_device.service_object.address.zip_city}"
     end
 
     # Customer address
     pdf.bounding_box [pdf.bounds.left + width_half, current_line], width: width_half, height: row_height do
       pdf.text "#{t(:customer)}", style: :bold
-      pdf.text "#{@service_protocol.central_device.service_object.customer.address.address_line}"
-      pdf.text "#{@service_protocol.central_device.service_object.customer.address.street}"
-      pdf.text "#{@service_protocol.central_device.service_object.customer.address.zip_city}"
+      pdf.text "#{@central_device.service_object.customer.address.address_line}"
+      pdf.text "#{@central_device.service_object.customer.address.street}"
+      pdf.text "#{@central_device.service_object.customer.address.zip_city}"
     end
 
     pdf.stroke_horizontal_rule
@@ -83,16 +83,16 @@ prawn_document do |pdf|
     row_height = 100
     pdf.bounding_box [pdf.bounds.left, current_line], width: width_half, height: row_height do
       pdf.text "#{t(:central_device)}", style: :bold
-      pdf.text "#{t(:serial_number)}: #{@service_protocol.central_device.serial_number}"
-      pdf.text "#{t(:device_type)}: #{@service_protocol.central_device.device_type}"
-      pdf.text "#{t(:location)}: #{@service_protocol.central_device.location}"
+      pdf.text "#{t(:serial_number)}: #{@central_device.serial_number}"
+      pdf.text "#{t(:device_type)}: #{@central_device.device_type}"
+      pdf.text "#{t(:location)}: #{@central_device.location}"
     end
 
     # ContactAdresses
-    unless @service_protocol.central_device.service_object.contact_addresses.empty?
+    unless @central_device.service_object.contact_addresses.empty?
       pdf.bounding_box [pdf.bounds.left + width_half, current_line], width: width_half, height: row_height do
         pdf.text "#{t(:contact_person)}", style: :bold
-        @service_protocol.central_device.service_object.contact_addresses.each_with_index do |contact, idx|
+        @central_device.service_object.contact_addresses.each_with_index do |contact, idx|
           pdf.text "#{contact.address.match_code}", style: :bold unless contact.address.match_code.empty?
           pdf.text "#{contact.address.full_name}", style: :bold unless contact.address.full_name.empty?
           pdf.text "#{contact.address.mobile_number}" unless contact.address.mobile_number.empty?
@@ -133,7 +133,7 @@ prawn_document do |pdf|
     ]]
 
     # Table data
-    for sensor in @service_protocol.central_device.sensors.sort_by{|s| s.number.to_i}
+    for sensor in @central_device.sensors.sort_by{|s| s.number.to_i}
       data_sensor += [[
         sensor.number,
         "",
@@ -205,7 +205,7 @@ prawn_document do |pdf|
     # Signature fields
     current_line = pdf.cursor
     pdf.bounding_box [pdf.bounds.left, current_line], width: width_half do
-      pdf.text "Ort: #{@service_protocol.central_device.service_object.address.zip_city}", style: :bold
+      pdf.text "Ort: #{@central_device.service_object.address.zip_city}", style: :bold
       pdf.move_down 50
       pdf.stroke_horizontal_line 0, 150
       pdf.text t(:signature_employee), size: 6

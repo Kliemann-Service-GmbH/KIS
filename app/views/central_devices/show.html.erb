@@ -2,22 +2,16 @@
 
 <hr>
 
-<h2 class="subtitle"><%= t('.customer') %></h2>
 <% unless @customer.blank? %>
-<div class="">
-  <%=  @customer.first.address.address_line %>
-</div>
-<%= render partial: "addresses/post_address", locals: {address: @customer.first.address} %>
+<h2 class="subtitle"><%= t('.customer') %></h2>
+<%= render partial: "addresses/attributes", locals: {address: @customer.first.address} %>
 <% end %>
 
 <hr>
 
-<h2 class="subtitle"><%= t('.service_object') %></h2>
 <% unless @service_object.blank? %>
-<div class="">
-  <%= @service_object.first.address.address_line %>
-</div>
-<%= render partial: "addresses/post_address", locals: {address: @service_object.first.address} %>
+<h2 class="subtitle"><%= t('.service_object') %></h2>
+<%= render partial: "addresses/attributes", locals: {address: @service_object.first.address} %>
 <% end %>
 
 <hr>
@@ -55,7 +49,7 @@
 
 <hr>
 
-<table class="table is-narrow is-bordered is-striped is-hoverable">
+<table class="table is-fullwidth is-bordered is-striped is-hoverable">
   <thead>
     <tr>
       <th><abbr title="<%= t('sensor_number.formats.default') %>"><%= t('sensor_number.formats.short') %></abbr></th>
@@ -63,7 +57,7 @@
       <th><%= t(:gas_type) %></th>
       <th><abbr title="<%= t('min_value.formats.default') %>"><%= t('min_value.formats.short') %></abbr></th>
       <th><abbr title="<%= t('max_value.formats.default') %>"><%= t('max_value.formats.short') %></abbr></th>
-      <th><abbr title="<%= t('application_date.formats.default') %>"><%= t('application_date.formats.short') %></abbr></th>
+      <th><abbr title="<%= t('exchanged.formats.default') %>"><%= t('exchanged.formats.short') %></abbr></th>
       <th><abbr title="<%= t('livetime.formats.default') %>"><%= t('livetime.formats.short') %></abbr></th>
       <th><abbr title="<%= t('a1.formats.default') %>"><%= t('a1.formats.short') %></abbr></th>
       <th><abbr title="<%= t('a2.formats.default') %>"><%= t('a2.formats.short') %></abbr></th>
@@ -80,7 +74,7 @@
       <th><%= t(:gas_type) %></th>
       <th><abbr title="<%= t('min_value.formats.default') %>"><%= t('min_value.formats.short') %></abbr></th>
       <th><abbr title="<%= t('max_value.formats.default') %>"><%= t('max_value.formats.short') %></abbr></th>
-      <th><abbr title="<%= t('application_date.formats.default') %>"><%= t('application_date.formats.short') %></abbr></th>
+      <th><abbr title="<%= t('exchanged.formats.default') %>"><%= t('exchanged.formats.short') %></abbr></th>
       <th><abbr title="<%= t('livetime.formats.default') %>"><%= t('livetime.formats.short') %></abbr></th>
       <th><abbr title="<%= t('a1.formats.default') %>"><%= t('a1.formats.short') %></abbr></th>
       <th><abbr title="<%= t('a2.formats.default') %>"><%= t('a2.formats.short') %></abbr></th>
@@ -97,13 +91,8 @@
   </tbody>
 </table>
 
-<% for service_protocol in @central_device.service_protocols do %>
-  <%= render "service_protocols/service_protocol", service_protocol: service_protocol %>
-<% end %>
-
-<%= link_to t(:new_central_device_service_protocol), new_central_device_service_protocol_path(@central_device), class: 'button is-primary' %>
-
 <div style="padding-top: 1em;">
+  <%= link_to t(:show_print_pdf), central_device_path(@central_device, format: :pdf), class: 'button is-info' %>
   <%= link_to t('Edit'), edit_central_device_path(@central_device), class: 'button is-warning' %>
   <%= link_to t('Back'), central_devices_path, class: 'button' %>
 </div>

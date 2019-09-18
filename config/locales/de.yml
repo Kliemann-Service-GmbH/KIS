@@ -26,6 +26,7 @@ de:
       default: Alarmpunkt 4
       short: AP4
   address: Adresse
+  address_number: Adress Nummer
   addresses:
     edit:
       Edit: Adresse bearbeiten
@@ -53,19 +54,17 @@ de:
       alarm_outputs: Alarmausgänge
       customer: Kunde
       device_number: Anlagennummer
+      devices_fazit: 'Die Anlage ist:'
       location: Standort
       serial_number: Seriennummer
       service_object: Objekt
   central_devices_title: Anlagen
-  checked:
-    formats:
-      default: geprüft
-      short: Ok?
   chemical_formula: Chemische Formel
   contact_person: Kontakt
   copy_sensor: Copy sensor
   created_at: erstellt
   customer: Kunde
+  customer_number: Kunden Nummer
   customers:
     edit:
       Edit: Kunde bearbeiten
@@ -76,11 +75,11 @@ de:
   device_number: Anlagennummer
   device_type: Anlagentyp
   draft: Entwurf
-  edit_central_device: Anlage bearbeiten
   email_address: Email Adresse
   end: Ende
   exchanged:
     formats:
+      default: Ausgetauscht
       short: GW
   field_required: "(*) benötigt"
   gas_type: Gasart
@@ -92,13 +91,6 @@ de:
     new:
       New: Neue Gasart speichern
   gas_types_title: Gasarten
-  is_commisioning: Kommision
-  is_expenditure: Wartung
-  is_function_check: Funktionsüberprüfung
-  is_montage: Montage
-  is_repair: Reparatur
-  is_service_contract: Wartungsvertrag
-  is_systemcheck: Systemprüfung
   livetime:
     formats:
       default: Nächster Wechsel
@@ -110,7 +102,6 @@ de:
       short: Max
   measuring_range:
     formats:
-      default: Messbereich
       short: MB
   min_value:
     formats:
@@ -122,18 +113,16 @@ de:
   name_customer: 'Unterschrift: AG/ Betreiber (Name in Druckbuchstaben)'
   name_or_chemical_formula: Name oder Chemische Formel
   need to be entered: müssen eingegeben werden
-  new_central_device_service_protocol: Neues Prüfprotokoll erstellen
   new_service_object_central_device: Neue Anlage erfassen
   next_exchange:
     formats:
-      default: Nächster Wechsel
       short: NW
   not_working: nicht funktionstüchtig
   notes: Bemerkungen
-  number: Nummer
   object_address: Objekt Adresse
   object_device_number: "<Objekt>-<Anlagennummer>"
   object_nr: Objekt Nr.
+  object_number: Objekt Nummer
   of: von
   page: Seite
   sensor_number:
@@ -170,23 +159,7 @@ de:
       central_devices: Anlagen
   service_objects_title: Objekte
   service_protocol: Prüfprotokoll
-  service_protocols:
-    attributes:
-      device_number: Anlagennummer
-      object_address: Objektadresse
-      object_number: Objektnummer
-      serial_number: Seriennummer
-    edit:
-      Edit: Prüfprotokoll bearbeiten
-    index:
-      placeholder: Anlagennummer,
-    new:
-      New: Neu
-    show:
-      devices_fazit: 'Die Anlage ist:'
-      edit:
-        service_object: Objekt bearbeiten
-  service_protocols_title: Prüfprotokolle
+  show_print_pdf: PDF anzeigen/ drucken
   si_unit:
     formats:
       default: SI Einheit

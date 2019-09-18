@@ -24,7 +24,6 @@ class CentralDevice < ApplicationRecord
   has_many :accus, dependent: :destroy, inverse_of: :central_device
   has_many :alarm_settings, dependent: :destroy, inverse_of: :central_device
   has_many :sensors, dependent: :destroy, inverse_of: :central_device
-  has_many :service_protocols, dependent: :destroy, inverse_of: :central_device
 
 
   # Validations
@@ -35,7 +34,6 @@ class CentralDevice < ApplicationRecord
   accepts_nested_attributes_for :sensors, allow_destroy: true, reject_if: :all_blank
   accepts_nested_attributes_for :accus, reject_if: :all_blank, allow_destroy: true
   accepts_nested_attributes_for :alarm_settings, reject_if: :all_blank, allow_destroy: true
-  accepts_nested_attributes_for :service_protocols, reject_if: :all_blank, allow_destroy: true
 
 
   # Full-Text search in PostgreSQL database
