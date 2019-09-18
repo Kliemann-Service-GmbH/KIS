@@ -207,7 +207,7 @@
   </table>
 
   <div style="padding-top: 1em;">
-  <%= link_to "PDF anzeigen", central_device_service_protocol_path(@service_protocol.central_device.id, @service_protocol, :format => "pdf"), class: "button is-info" %>
+  <%= link_to t('Show PDF'), central_device_service_protocol_path(@service_protocol.central_device.id, @service_protocol, :format => "pdf"), class: "button is-info" %>
   <%= link_to t('Edit'), edit_central_device_service_protocol_path(@service_protocol.central_device.id, @service_protocol), class: "button is-warning" %>
   <%= link_to t('Back'), service_protocols_path, class: "button" %>
   </div>

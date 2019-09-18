@@ -53,6 +53,7 @@ de:
       alarm_outputs: Alarmausgänge
       customer: Kunde
       device_number: Anlagennummer
+      devices_fazit: 'Die Anlage ist:'
       location: Standort
       serial_number: Seriennummer
       service_object: Objekt
@@ -187,6 +188,7 @@ de:
       edit:
         service_object: Objekt bearbeiten
   service_protocols_title: Prüfprotokolle
+  show_print_pdf: PDF anzeigen/ drucken
   si_unit:
     formats:
       default: SI Einheit

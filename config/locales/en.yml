@@ -53,6 +53,7 @@ en:
       alarm_outputs: Alarm outputs
       customer: Customer
       device_number: Device number
+      devices_fazit: 'Devices is:'
       location: Location
       serial_number: Serial number
       service_object: Service object
@@ -183,10 +184,11 @@ en:
     new:
       New: New
     show:
-      devices_fazit: Devices fazit
+      devices_fazit: 'Devices is:'
       edit:
         service_object: Service object
   service_protocols_title: Service protocols title
+  show_print_pdf: Show print pdf
   si_unit:
     formats:
       default: Default
