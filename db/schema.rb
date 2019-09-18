@@ -138,21 +138,6 @@ ActiveRecord::Schema.define(version: 2019_09_18_144359) do
     t.index ["customer_id"], name: "index_service_objects_on_customer_id"
   end
 
-  create_table "service_protocols", force: :cascade do |t|
-    t.bigint "central_device_id"
-    t.boolean "is_function_check"
-    t.boolean "is_montage"
-    t.boolean "is_systemcheck"
-    t.boolean "is_repair"
-    t.boolean "is_commisioning"
-    t.boolean "is_service_contract"
-    t.boolean "is_expenditure"
-    t.boolean "is_order"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["central_device_id"], name: "index_service_protocols_on_central_device_id"
-  end
-
   create_table "si_units", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
