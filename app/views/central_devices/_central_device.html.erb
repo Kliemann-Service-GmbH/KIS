@@ -20,7 +20,8 @@
 <div class="columns">
   <div class="column">
     <%= link_to t('Show'), central_device, class: 'button' %>
-    <%= link_to t('Edit'), edit_central_device_path(central_device), class: 'button' %>
+    <%= link_to t(:show_print_pdf), central_device_path(central_device, format: :pdf), class: 'button is-info' %>
+    <%= link_to t('Edit'), edit_central_device_path(central_device), class: 'button is-warning' %>
     <%= link_to t('Destroy'), central_device, method: :delete, data: { confirm: 'Are you sure?' }, class: 'button is-danger' %>
   </div>
 </div>

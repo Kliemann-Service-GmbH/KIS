@@ -92,10 +92,6 @@ FactoryBot.define do
     end
   end
 
-  factory :service_protocol do
-    central_device
-  end
-
   factory :si_unit do
     name {  "SI-#{Faker::Name.name}" }
   end

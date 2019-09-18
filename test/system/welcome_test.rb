@@ -5,14 +5,13 @@ class WelcomeTest < ApplicationSystemTestCase
     @address = create(:address)
     @customer = create(:customer)
     @service_object = create(:service_object)
-    @service_protocol = create(:service_protocol)
     rebuild_multisearch
   end
 
   # Recreate the pg_search multisearch index
   def rebuild_multisearch
     PgSearch::Document.delete_all()
-    [Customer, ServiceObject, CentralDevice, Address, ServiceProtocol].each do |klass|
+    [Customer, ServiceObject, CentralDevice, Address].each do |klass|
       PgSearch::Multisearch.rebuild(klass)
     end
   end
@@ -46,27 +45,12 @@ class WelcomeTest < ApplicationSystemTestCase
   end
 
   test "search Customer shows ServiceObjects" do
-    assert_equal @customer.address.address_number, @service_protocol.service_object_number
-
     visit root_url
     # search
     fill_in :q, with: @customer.address.address_number
     click_on I18n.t('Search')
 
     assert_selector "div", text: @customer.address.address_number
-    assert_selector "div", text: @service_protocol.service_object_number
-  end
-
-  test "search Customer shows ServiceProtocols" do
-    assert_equal @customer.address.address_number, @service_object.customer.address.address_number
-
-    visit root_url
-    # search
-    fill_in :q, with: @customer.address.address_number
-    click_on I18n.t('Search')
-
-    assert_selector "div", text: @customer.address.address_number
-    assert_selector "div", text: @service_object.address.address_number
   end
 
 end

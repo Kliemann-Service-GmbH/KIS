@@ -9,8 +9,6 @@ module WelcomeHelper
       result = ServiceObject.find(result.searchable_id)
       render partial: "service_objects/service_object", locals: { service_object: result }
     when "ServiceProtocol"
-      result = ServiceProtocol.find(result.searchable_id)
-      render partial: "service_protocols/service_protocol", locals: { service_protocol: result }
     when "Address"
       result = Address.find(result.searchable_id)
       render partial: "addresses/address", locals: { address: result }
