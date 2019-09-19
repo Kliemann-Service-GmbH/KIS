@@ -32,6 +32,12 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 
+# https://github.com/plataformatec/simple_form
+gem 'simple_form'
+
+# https://github.com/nathanvda/cocoon
+gem "cocoon"
+
 # https://github.com/Casecommons/pg_search
 gem 'pg_search'
 

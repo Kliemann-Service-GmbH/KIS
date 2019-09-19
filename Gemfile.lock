@@ -110,6 +110,7 @@ GEM
       xpath (~> 3.2)
     childprocess (2.0.0)
       rake (< 13.0)
+    cocoon (1.2.14)
     coderay (1.1.2)
     coffee-rails (4.2.2)
       coffee-script (>= 2.2.0)
@@ -310,6 +311,9 @@ GEM
     shellany (0.0.1)
     shoulda-matchers (4.1.2)
       activesupport (>= 4.2.0)
+    simple_form (4.1.0)
+      actionpack (>= 5.0)
+      activemodel (>= 5.0)
     spring (2.1.0)
     spring-watcher-listen (2.0.1)
       listen (>= 2.7, < 4.0)
@@ -374,6 +378,7 @@ DEPENDENCIES
   capistrano-yarn
   capistrano3-puma
   capybara
+  cocoon
   coffee-rails (~> 4.2)
   easy_translate
   ed25519 (>= 1.2, < 2.0)
@@ -400,6 +405,7 @@ DEPENDENCIES
   seedbank
   selenium-webdriver
   shoulda-matchers
+  simple_form
   spring
   spring-watcher-listen (~> 2.0.0)
   tiny_tds

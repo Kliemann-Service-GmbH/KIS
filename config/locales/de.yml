@@ -5,6 +5,7 @@ de:
   Destroy: löschen
   Edit: bearbeiten
   End can't be in the past if the service contracts begin starts in the future: Ende des Vertrags kann nicht in der Vergangenheit liegen wenn der Vertrag in der Zukunft beginnt!
+  History: History
   New Sensor: Neuer Sensor
   Object with such a customer address combination already exists: Es existiert bereits ein Objekt mit dieser 'Kunde/ Objektadresse' Kombination!
   Search: Suche
@@ -72,11 +73,13 @@ de:
       placeholder: Adressdetails Name, Telefonnummer, ...
   customers_title: Kunden
   description: Beschreibung
+  details: Details
   device_number: Anlagennummer
   device_type: Anlagentyp
   draft: Entwurf
   email_address: Email Adresse
   end: Ende
+  entry: Entry
   exchanged:
     formats:
       default: Ausgetauscht
@@ -91,6 +94,7 @@ de:
     new:
       New: Neue Gasart speichern
   gas_types_title: Gasarten
+  history: History
   livetime:
     formats:
       default: Nächster Wechsel
