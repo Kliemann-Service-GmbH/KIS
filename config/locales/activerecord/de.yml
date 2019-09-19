@@ -9,6 +9,7 @@ de:
       contact_address: Kontaktadresse
       customer: Kunde
       gas_type: Gasart
+      history_entry: Bemerkung
       object_maintenance: Objektverwaltung
       sensor: Sensor
       sensor_type: Sensortyp
