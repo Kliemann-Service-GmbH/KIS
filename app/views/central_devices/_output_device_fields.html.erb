@@ -1,5 +1,6 @@
 <tr class="nested-fields">
-  <td><%= f.text_area :entry, :rows => 3, style: 'width:100%;'  %></td>
+  <td><%= f.input :count, label: false %></td>
+  <td><%= f.input :device_type, label: false %></td>
   <td>
     <%= link_to_remove_association t('Remove'), f, class: 'button is-danger' %>
   </td>

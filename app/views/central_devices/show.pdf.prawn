@@ -113,7 +113,42 @@ prawn_document do |pdf|
     # pdf.stroke_horizontal_rule
     # pdf.move_down 20
 
+    # OutputDevices (LS)
+    pdf.text "#{t(:output_devices)}", style: :bold
+    # Table headers
+    data_output_device = [[
+      "#{t(:count)}",
+      "#{t(:device_type)}"
+    ]]
+
+    # Table data
+    for output_device in @central_device.output_devices
+      data_output_device += [[
+        output_device.count,
+        output_device.device_type
+      ]]
+    end
+    # empty rows
+    (0..0).each do
+      data_output_device += [[
+        " ",
+        " "
+      ]]
+    end
+
+
+    # This generates the table
+    pdf.table data_output_device,
+      width: pdf.bounds.right,
+      header: true,
+      row_colors: ["F0F0F0","FFFFFF"],
+      cell_style: { border_width: 0.5, size: 7 } do
+        row(0).font_style = :bold
+      end
+    pdf.move_down 20
+
     # Sensors
+    pdf.text "#{t(:sensors)}", style: :bold
     # Table headers
     data_sensor = [[
       "#{t('sensor_number.formats.short')}",
@@ -149,6 +184,12 @@ prawn_document do |pdf|
         sensor.si_unit.name,
         sensor.location,
         ""
+      ]]
+    end
+    # empty rows
+    (0..1).each do
+      data_sensor += [[
+        " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " "
       ]]
     end
 
