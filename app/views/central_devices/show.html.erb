@@ -1,61 +1,74 @@
-<h1 class="title"><%= @central_device.device_type %></h1>
-
-<hr>
-
-<h2 class="subtitle"><%= t('.customer') %></h2>
-<% unless @customer.blank? %>
-<div class="">
-  <%=  @customer.first.address.address_line %>
-</div>
-<%= render partial: "addresses/post_address", locals: {address: @customer.first.address} %>
-<% end %>
-
-<hr>
-
-<h2 class="subtitle"><%= t('.service_object') %></h2>
-<% unless @service_object.blank? %>
-<div class="">
-  <%= @service_object.first.address.address_line %>
-</div>
-<%= render partial: "addresses/post_address", locals: {address: @service_object.first.address} %>
-<% end %>
+<h1 class="title"><%= t 'central_device' %></h1>
+<h2 class="subtitle"><%= @central_device.device_type %></h2>
 
 <hr>
 
 <div class="columns">
   <div class="column">
-    <%= t('.serial_number') %>
+    <% unless @service_object.blank? %>
+    <h2 class="subtitle"><%= t('.service_object') %></h2>
+    <%= render partial: "addresses/attributes", locals: {address: @service_object.first.address} %>
+    <% end %>
   </div>
   <div class="column">
-    <%= @central_device.serial_number %>
-  </div>
-</div>
-
-<div class="columns">
-  <div class="column">
-    <%= t('.device_number') %>
-  </div>
-  <div class="column">
-    <%= @central_device.device_number %>
-  </div>
-</div>
-
-<div class="columns">
-  <div class="column">
-    <%= t('.location') %>
-  </div>
-  <div class="column">
-    <%= @central_device.location %>
+  <% unless @customer.blank? %>
+  <h2 class="subtitle"><%= t('.customer') %></h2>
+  <%= render partial: "addresses/attributes", locals: {address: @customer.first.address} %>
+  <% end %>
   </div>
 </div>
 
 <hr>
 
-<h2 class="subtitle"><%= t('.alarm_outputs') %></h2>
+<div class="columns">
+  <div class="column">
+    <h2 class="subtitle"><%= t 'details' %></h2>
+    <div class="box">
+      <div>
+        <span class="has-text-weight-light"><%= t '.serial_number' %>:&nbsp;</span>
+        <span class="has-text-weight-bold"><%= @central_device.serial_number %></span>
+      </div>
+
+      <div>
+        <span class="has-text-weight-light"><%= t '.device_number' %>:&nbsp;</span>
+        <span class="has-text-weight-bold"><%= @central_device.device_number %></span>
+      </div>
+
+      <div>
+        <span class="has-text-weight-light"><%= t '.location' %>:&nbsp;</span>
+        <span class="has-text-weight-bold"><%= @central_device.location %></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="column">
+    <h2 class="subtitle"><%= t('.alarm_outputs') %></h2>
+  </div>
+</div>
+
+
+<div class="columns">
+  <div class="column">
+    <h2 class="subtitle"><%= t 'history' %></h2>
+    <% for history in @central_device.history_entries do %>
+      <div class="box">
+        <div class="">
+          <%= history.entry %>
+        </div>
+        <div>
+          <span class="has-text-weight-light"><%= t :created_at %>:&nbsp;</span>
+          <span class="has-text-weight-bold"><%= l history.created_at, format: :default %></span>
+          <span class="has-text-weight-light"><%= t :updated_at %>:&nbsp;</span>
+          <span class="has-text-weight-bold"><%= l history.updated_at, format: :default %></span>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
 
 <hr>
 
-<table class="table is-narrow is-bordered is-striped is-hoverable">
+<table class="table is-fullwidth is-bordered is-striped is-hoverable">
   <thead>
     <tr>
       <th><abbr title="<%= t('sensor_number.formats.default') %>"><%= t('sensor_number.formats.short') %></abbr></th>
@@ -63,7 +76,7 @@
       <th><%= t(:gas_type) %></th>
       <th><abbr title="<%= t('min_value.formats.default') %>"><%= t('min_value.formats.short') %></abbr></th>
       <th><abbr title="<%= t('max_value.formats.default') %>"><%= t('max_value.formats.short') %></abbr></th>
-      <th><abbr title="<%= t('application_date.formats.default') %>"><%= t('application_date.formats.short') %></abbr></th>
+      <th><abbr title="<%= t('exchanged.formats.default') %>"><%= t('exchanged.formats.short') %></abbr></th>
       <th><abbr title="<%= t('livetime.formats.default') %>"><%= t('livetime.formats.short') %></abbr></th>
       <th><abbr title="<%= t('a1.formats.default') %>"><%= t('a1.formats.short') %></abbr></th>
       <th><abbr title="<%= t('a2.formats.default') %>"><%= t('a2.formats.short') %></abbr></th>
@@ -80,7 +93,7 @@
       <th><%= t(:gas_type) %></th>
       <th><abbr title="<%= t('min_value.formats.default') %>"><%= t('min_value.formats.short') %></abbr></th>
       <th><abbr title="<%= t('max_value.formats.default') %>"><%= t('max_value.formats.short') %></abbr></th>
-      <th><abbr title="<%= t('application_date.formats.default') %>"><%= t('application_date.formats.short') %></abbr></th>
+      <th><abbr title="<%= t('exchanged.formats.default') %>"><%= t('exchanged.formats.short') %></abbr></th>
       <th><abbr title="<%= t('livetime.formats.default') %>"><%= t('livetime.formats.short') %></abbr></th>
       <th><abbr title="<%= t('a1.formats.default') %>"><%= t('a1.formats.short') %></abbr></th>
       <th><abbr title="<%= t('a2.formats.default') %>"><%= t('a2.formats.short') %></abbr></th>
@@ -97,13 +110,8 @@
   </tbody>
 </table>
 
-<% for service_protocol in @central_device.service_protocols do %>
-  <%= render "service_protocols/service_protocol", service_protocol: service_protocol %>
-<% end %>
-
-<%= link_to t(:new_central_device_service_protocol), new_central_device_service_protocol_path(@central_device) %>
-
 <div style="padding-top: 1em;">
+  <%= link_to t(:show_print_pdf), central_device_path(@central_device, format: :pdf), class: 'button is-info' %>
   <%= link_to t('Edit'), edit_central_device_path(@central_device), class: 'button is-warning' %>
   <%= link_to t('Back'), central_devices_path, class: 'button' %>
 </div>

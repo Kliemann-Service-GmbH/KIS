@@ -18,7 +18,7 @@
     <div class="field-body">
       <div class="field">
         <div class="control">
-          <%= form.collection_select :customer_id, Customer.all, :id, :address_line, class: 'input is-danger' %>
+          <%= form.collection_select :customer_id, Customer.includes(:address), :id, :address_line, class: 'input is-danger' %>
         </div>
         <div class="help is-danger"><%= t :field_required %></div>
       </div>

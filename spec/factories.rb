@@ -1,4 +1,9 @@
 FactoryBot.define do
+  factory :history_entry do
+    service_object { nil }
+    entry { "MyText" }
+  end
+
   factory :accu do
     central_device
   end
@@ -90,10 +95,6 @@ FactoryBot.define do
         service_contract_auto_resume_interval { 1 }
       end
     end
-  end
-
-  factory :service_protocol do
-    central_device
   end
 
   factory :si_unit do

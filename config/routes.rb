@@ -19,13 +19,8 @@ Rails.application.routes.draw do
   end
   resources :service_objects, path: "Objekte"
 
-  resources :central_devices do
-    resources :service_protocols
-  end
+  resources :central_devices
   resources :central_devices, path: "Geraete"
-
-  resources :service_protocols
-  resources :service_protocols, path: "Pruefprotokolle"
 
   get 'welcome/index'
 

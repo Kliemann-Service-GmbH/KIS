@@ -12,15 +12,11 @@
 
   <div id="nav-menu" class="navbar-menu">
     <div class="navbar-start">
-      <%= link_to customers_title_with_size, :customers, class: 'navbar-item' %>
-      <%= link_to service_objects_title_with_size, :service_objects, class: 'navbar-item' %>
+      <%= link_to (title_with_size :customers), :customers, class: 'navbar-item' %>
+      <%= link_to (title_with_size :service_objects), :service_objects, class: 'navbar-item' %>
       <%= link_to t(:gas_types_title), :gas_types, class: 'navbar-item' %>
       <%= link_to t(:sensor_types_title), :sensor_types, class: 'navbar-item' %>
       <%= link_to t(:si_units_title), :si_units, class: 'navbar-item' %>
-    </div>
-
-    <div class="navbar-end">
-      <%= link_to service_protocols_title_with_size, :service_protocols, {class: 'button is-warning'} %>
     </div>
   </div>
 </nav>
