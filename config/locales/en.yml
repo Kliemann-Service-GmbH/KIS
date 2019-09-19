@@ -1,5 +1,6 @@
 ---
 en:
+  Add Entry: Add Entry
   Auto resume can't be set without a valid begin or end: Auto resume can't be set without a valid begin or end
   Back: Back
   Destroy: Destroy
@@ -8,6 +9,7 @@ en:
   History: History
   New Sensor: Neuer Sensor
   Object with such a customer address combination already exists: Object with such a customer address combination already exists
+  Remove Entry: Remove Entry
   Search: Search
   Show: Show
   a1:

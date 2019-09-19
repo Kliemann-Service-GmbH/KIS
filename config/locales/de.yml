@@ -1,5 +1,6 @@
 ---
 de:
+  Add Entry: Bemerkung hinzufügen
   Auto resume can't be set without a valid begin or end: Ohne gültigen Beginn oder Ende des Vertrags kann die automatische Verlängerung nicht gesetzt werden!
   Back: zurück
   Destroy: löschen
@@ -8,6 +9,7 @@ de:
   History: History
   New Sensor: Neuer Sensor
   Object with such a customer address combination already exists: Es existiert bereits ein Objekt mit dieser 'Kunde/ Objektadresse' Kombination!
+  Remove Entry: Bemerkung entfernen
   Search: Suche
   Show: anzeigen
   a1:
@@ -79,7 +81,7 @@ de:
   draft: Entwurf
   email_address: Email Adresse
   end: Ende
-  entry: Entry
+  entry: Bemerkung
   exchanged:
     formats:
       default: Ausgetauscht
