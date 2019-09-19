@@ -24,19 +24,17 @@ class CentralDevice < ApplicationRecord
   has_many :accus, dependent: :destroy, inverse_of: :central_device
   has_many :alarm_settings, dependent: :destroy, inverse_of: :central_device
   has_many :sensors, dependent: :destroy, inverse_of: :central_device
-  has_many :service_protocols, dependent: :destroy, inverse_of: :central_device
+  has_many :history_entries, dependent: :destroy, inverse_of: :central_device
 
 
   # Validations
   validates :device_type, presence: true
 
   # Nested Attributes
-  # accepts_nested_attributes_for :sensors, allow_destroy: true, reject_if: proc { |attr| attr['sensor_type_id'].blank? }
   accepts_nested_attributes_for :sensors, allow_destroy: true, reject_if: :all_blank
   accepts_nested_attributes_for :accus, reject_if: :all_blank, allow_destroy: true
   accepts_nested_attributes_for :alarm_settings, reject_if: :all_blank, allow_destroy: true
-  accepts_nested_attributes_for :service_protocols, reject_if: :all_blank, allow_destroy: true
-
+  accepts_nested_attributes_for :history_entries, allow_destroy: true, reject_if: proc { |attr| attr['entry'].blank? }
 
   # Full-Text search in PostgreSQL database
   include PgSearch::Model

@@ -1,33 +1,43 @@
-<!--
-Used in:
-* _address.html.erb
--->
-<div class="columns">
-  <div class="column">
+<%= link_to address do %>
+<div class="box">
+  <div>
+    <span class="has-text-weight-light"><%= t :address_number %>:&nbsp;</span>
+    <span class="has-text-weight-bold">#</span>
+    <span class="has-text-weight-bold"><%= address.address_number %></span>
+  </div>
+
+  <div>
     <div class="is-size-5"><%= address.match_code %></div>
     <div class="is-size-5"><%= address.full_name %></div>
     <div class=""><%= address.zip_city %></div>
+  </div>
 
-    <% unless address.mobile_number.empty? %>
-    <div>
-      <span class="has-text-weight-light"><%= t :mobile_number %>:&nbsp;</span>
-      <span><%= address.mobile_number %></span>
-    </div>
-    <% end %>
+  <% unless address.mobile_number.empty? %>
+  <div>
+    <span class="has-text-weight-light"><%= t :mobile_number %>:&nbsp;</span>
+    <span><%= address.mobile_number %></span>
+  </div>
+  <% end %>
 
-    <% unless address.telephone_number.empty? %>
-    <div>
-      <span class="has-text-weight-light"><%= t :telephone_number %>:&nbsp;</span>
-      <span><%= address.telephone_number %></span>
-    </div>
-    <% end %>
+  <% unless address.telephone_number.empty? %>
+  <div>
+    <span class="has-text-weight-light"><%= t :telephone_number %>:&nbsp;</span>
+    <span><%= address.telephone_number %></span>
+  </div>
+  <% end %>
 
-    <% unless address.email_address.empty? %>
-    <div>
-      <span class="has-text-weight-light"><%= t :email_address %>:&nbsp;</span>
-      <span><%= address.email_address %></span>
-    </div>
-    <% end %>
+  <% unless address.email_address.empty? %>
+  <div>
+    <span class="has-text-weight-light"><%= t :email_address %>:&nbsp;</span>
+    <span><%= address.email_address %></span>
+  </div>
+  <% end %>
 
+  <div>
+    <span class="has-text-weight-light"><%= t :created_at %>:&nbsp;</span>
+    <span class="has-text-weight-bold"><%= l address.created_at, format: :default %></span>
+    <span class="has-text-weight-light"><%= t :updated_at %>:&nbsp;</span>
+    <span class="has-text-weight-bold"><%= l address.updated_at, format: :default %></span>
   </div>
 </div>
+<% end %>

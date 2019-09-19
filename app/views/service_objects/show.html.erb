@@ -1,3 +1,4 @@
+<h1 class="title"><%= t 'service_object' %></h1>
 <h2 class="subtitle"><%= t('.address') %>:</h2>
 <%= render partial: "service_objects/attributes", locals: { service_object: @service_object } %>
 
@@ -25,7 +26,8 @@
 
     <div class="columns">
       <div class="column">
-        <%= link_to t('Show'), central_device, class: "button" %>
+        <%= link_to t('Show'), central_device, class: 'button' %>
+        <%= link_to t(:show_print_pdf), central_device_path(central_device, format: :pdf), class: 'button is-info' %>
         <%= link_to t('Edit'), edit_central_device_path(central_device), class: 'button is-warning' %>
         <%= link_to t('Destroy'), central_device, method: :delete, data: { confirm: 'Are you sure?' }, class: 'button is-danger' %>
       </div>
@@ -34,12 +36,12 @@
   <% end %>
 <% end %>
 
-<%= link_to t(:new_service_object_central_device), new_service_object_central_device_path(@service_object) %>
+<%= link_to t(:new_service_object_central_device), new_service_object_central_device_path(@service_object), class: 'button is-primary' %>
 
 <hr>
 
 <!-- Site Navigation -->
 <div style="padding-top: 1em">
-<%= link_to t('.Edit'), edit_service_object_path(@service_object), class: "button is-waring" %>
+<%= link_to t('Edit'), edit_service_object_path(@service_object), class: "button is-warning" %>
 <%= link_to t('Back'), service_objects_path, class: "button" %>
 </div>

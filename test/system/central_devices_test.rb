@@ -108,18 +108,13 @@ class CentralDevicesTest < ApplicationSystemTestCase
     @central_device = create(:central_device_with_sensors)
     visit central_device_url(@central_device.id)
 
-    click_on I18n.t('Edit'), match: :first
+    assert_difference('@central_device.sensors.size', -1) do
+      click_on I18n.t('Edit'), match: :first
+      click_on I18n.t('Destroy'), match: :first
+      find(:css, 'input[type="submit"]').click
+      assert_text "Central device was successfully updated"
+    end
 
-    assert false
-
-    fill_in :central_device_device_number, with: @central_device.device_number
-    fill_in :central_device_device_type, with: @central_device.device_type
-    fill_in :central_device_location, with: @central_device.location
-    fill_in :central_device_montage_date, with: @central_device.montage_date
-
-    find(:css, 'input[type="submit"]').click
-
-    assert_text "Central device was successfully updated"
     click_on I18n.t('Back')
   end
 
