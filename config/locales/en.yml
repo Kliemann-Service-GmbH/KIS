@@ -5,6 +5,7 @@ en:
   Destroy: Destroy
   Edit: Edit
   End can't be in the past if the service contracts begin starts in the future: Can't be in the past if service contract begin is in the future
+  History: History
   New Sensor: Neuer Sensor
   Object with such a customer address combination already exists: Object with such a customer address combination already exists
   Search: Search
@@ -72,11 +73,13 @@ en:
       placeholder: Placeholder
   customers_title: Customers title
   description: Description
+  details: Details
   device_number: Device number
   device_type: Device type
   draft: Draft
   email_address: Email address
   end: End
+  entry: Entry
   exchanged:
     formats:
       default: Default
@@ -91,6 +94,7 @@ en:
     new:
       New: New
   gas_types_title: Gasarten
+  history: History
   livetime:
     formats:
       default: Default

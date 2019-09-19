@@ -139,8 +139,29 @@
     </tbody>
   </table>
 
+  <hr>
+
+  <h2 class="subtitle"><%= t 'History' %></h2>
+  <table class="table is-fullwidth as-td-padding-0 is-bordered is-striped is-hoverable">
+    <thead>
+      <tr>
+        <th><%= t :entry %></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody class="history_entries">
+    <%= form.fields_for :history_entries do |entry| %>
+      <%= render "history_entry_fields", f: entry %>
+    <% end %>
+    </tbody>
+  </table>
+
   <div class="actions">
     <%= form.submit nil, class: 'button is-primary' %>
     <%= link_to_add_row( t('New Sensor'), form, :sensors, class: 'button') %>
+    <%= link_to_add_association t('Add Entry'), form, :history_entries, class: 'button', data: {
+      association_insertion_method: 'append',
+      association_insertion_node: '.history_entries'
+    } %>
   </div>
 <% end %>

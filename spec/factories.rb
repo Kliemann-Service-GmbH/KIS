@@ -1,4 +1,9 @@
 FactoryBot.define do
+  factory :history_entry do
+    service_object { nil }
+    entry { "MyText" }
+  end
+
   factory :accu do
     central_device
   end
