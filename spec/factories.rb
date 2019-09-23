@@ -1,4 +1,13 @@
 FactoryBot.define do
+  factory :output_device do
+    service_object { nil }
+    accu { nil }
+    device_type { Faker::Hipster.word }
+    location { Faker::Address.city }
+    montage_date { Time.now }
+    status { "Ok" }
+  end
+
   factory :history_entry do
     service_object { nil }
     entry { "MyText" }

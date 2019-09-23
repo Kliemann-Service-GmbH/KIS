@@ -17,6 +17,7 @@
 class Accu < ApplicationRecord
   # Associations
   belongs_to :central_device
+  belongs_to :output_device
 
   # Validations
   # validates :central_device, presence: true

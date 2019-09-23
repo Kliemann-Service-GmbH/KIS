@@ -1,6 +1,7 @@
 ---
 en:
   Add Entry: Add Entry
+  Add Output Device: LS hinzufügen
   Auto resume can't be set without a valid begin or end: Auto resume can't be set without a valid begin or end
   Back: Back
   Destroy: Destroy
@@ -9,6 +10,8 @@ en:
   History: History
   New Sensor: Neuer Sensor
   Object with such a customer address combination already exists: Object with such a customer address combination already exists
+  OutputDevice: Outputdevice
+  Remove: Remove
   Remove Entry: Remove Entry
   Search: Search
   Show: Show
@@ -65,6 +68,7 @@ en:
   chemical_formula: Chemical formula
   contact_person: Contact person
   copy_sensor: Copy sensor
+  count: Count
   created_at: Created at
   customer: Customer
   customer_number: Customer number
@@ -130,6 +134,7 @@ en:
   object_nr: Object nr
   object_number: Object number
   of: Of
+  output_devices: Output devices
   page: Page
   sensor_number:
     formats:
@@ -144,6 +149,7 @@ en:
     new:
       New: New
   sensor_types_title: Sensor types title
+  sensors: Sensors
   serial_number: Serial number
   service_contract: Service contract
   service_object: Service object
@@ -189,6 +195,7 @@ en:
       month_year: "%m/%y"
       only_year: "%Y"
       short: "%d.%m.%Y"
+  type: Type
   until: until
   updated_at: Updated at
   welcome:
