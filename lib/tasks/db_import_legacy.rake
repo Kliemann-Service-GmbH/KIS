@@ -4,16 +4,16 @@ require 'activerecord-sqlserver-adapter'
 namespace(:db) do
   namespace(:import_legacy) do
     desc "Test connection to the SQL Server"
-    task test: :environment do
+    task test_connection: :environment do
       if db_reachable then
         puts 'database connection successful'
       else
         puts 'database not reachable, please check network!'
       end
-    end # End task :test
+    end # End task :test_connection
 
     desc "Import addresses from easyWinArt4"
-    task addresses: [:environment, :test] do
+    task addresses: [:environment, :test_connection] do
       results = legacy_database.execute('SELECT * FROM easyWinArtKliemann_Service_GmbH.ewa.Adressen;')
       results.each do |row|
         Address.find_or_create_by(id: row['AdressNummer']) do |address|
@@ -66,7 +66,15 @@ end # End namespace(:db)
 
 
 def legacy_database
-  @client = TinyTds::Client.new(username: 'sa', password: '$easyWinArt4', host: '192.168.89.202', port: 50740)
+  legacy_database_username = Rails.application.credentials[:legacy_database][:username]
+  legacy_database_password = Rails.application.credentials[:legacy_database][:password]
+  legacy_database_host = Rails.application.credentials[:legacy_database][:host]
+  @client = TinyTds::Client.new(
+    username: Rails.application.credentials[:legacy_database][:username],
+    password: Rails.application.credentials[:legacy_database][:password],
+    host: Rails.application.credentials[:legacy_database][:host],
+    port: Rails.application.credentials[:legacy_database][:port]
+  )
   puts 'Connecting to SQL Server'
 
   if @client.active? == true then puts 'Done' end
@@ -74,5 +82,10 @@ def legacy_database
 end
 
 def db_reachable
-  Socket.tcp("192.168.89.202", 50740, connect_timeout: 3) { true }
+  return
+  Socket.tcp(
+    Rails.application.credentials[:legacy_database][:host],
+    Rails.application.credentials[:legacy_database][:port],
+    connect_timeout: 3
+  ) { true }
 end
