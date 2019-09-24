@@ -98,6 +98,7 @@ class CentralDevicesController < ApplicationController
         :location,
         :service_object_id,
         :montage_date,
+        alarm_outputs_attributes: AlarmOutput.attribute_names.map(&:to_sym).push(:_destroy),
         history_entries_attributes: HistoryEntry.attribute_names.map(&:to_sym).push(:_destroy),
         output_devices_attributes: OutputDevice.attribute_names.map(&:to_sym).push(:_destroy),
         sensors_attributes: Sensor.attribute_names.map(&:to_sym).push(:_destroy)

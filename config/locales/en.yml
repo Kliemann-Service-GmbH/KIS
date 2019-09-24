@@ -2,6 +2,7 @@
 en:
   Add Entry: Add Entry
   Add Output Device: LS hinzufügen
+  AlarmOutputs: Alarmoutputs
   Auto resume can't be set without a valid begin or end: Auto resume can't be set without a valid begin or end
   Back: Back
   Destroy: Destroy
@@ -78,6 +79,7 @@ en:
     index:
       placeholder: Placeholder
   customers_title: Customers title
+  defect: Defect
   description: Description
   details: Details
   device_number: Device number
@@ -101,6 +103,7 @@ en:
       New: New
   gas_types_title: Gasarten
   history: History
+  invert: Invert
   livetime:
     formats:
       default: Default
@@ -134,6 +137,8 @@ en:
   object_nr: Object nr
   object_number: Object number
   of: Of
+  ok: Ok
+  old_used: Old used
   output_devices: Output devices
   page: Page
   sensor_number:

@@ -1,7 +1,8 @@
 ---
 de:
   Add Entry: Bemerkung hinzufügen
-  Add Output Device: LS hinzufügen
+  Add Output Device: Leuchtscheibe hinzufügen
+  AlarmOutputs: Alarmausgänge
   Auto resume can't be set without a valid begin or end: Ohne gültigen Beginn oder Ende des Vertrags kann die automatische Verlängerung nicht gesetzt werden!
   Back: zurück
   Destroy: löschen
@@ -10,7 +11,7 @@ de:
   History: History
   New Sensor: Neuer Sensor
   Object with such a customer address combination already exists: Es existiert bereits ein Objekt mit dieser 'Kunde/ Objektadresse' Kombination!
-  OutputDevice: LS
+  OutputDevice: Leuchtscheibe
   Remove: Remove
   Remove Entry: Bemerkung entfernen
   Search: Suche
@@ -78,6 +79,7 @@ de:
     index:
       placeholder: Adressdetails Name, Telefonnummer, ...
   customers_title: Kunden
+  defect: Defekt
   description: Beschreibung
   details: Details
   device_number: Anlagennummer
@@ -101,6 +103,7 @@ de:
       New: Neue Gasart speichern
   gas_types_title: Gasarten
   history: History
+  invert: invertiert
   livetime:
     formats:
       default: Nächster Wechsel
@@ -134,7 +137,9 @@ de:
   object_nr: Objekt Nr.
   object_number: Objekt Nummer
   of: von
-  output_devices: LS
+  ok: Ok
+  old_used: verbraucht
+  output_devices: Leuchtscheibe
   page: Seite
   sensor_number:
     formats:

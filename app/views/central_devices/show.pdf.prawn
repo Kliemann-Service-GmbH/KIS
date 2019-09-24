@@ -88,20 +88,30 @@ prawn_document do |pdf|
       pdf.text "#{t(:location)}: #{@central_device.location}"
     end
 
-    # ContactAdresses
-    unless @central_device.service_object.contact_addresses.empty?
-      pdf.bounding_box [pdf.bounds.left + width_half, current_line], width: width_half, height: row_height do
-        pdf.text "#{t(:contact_person)}", style: :bold
-        @central_device.service_object.contact_addresses.each_with_index do |contact, idx|
-          pdf.text "#{contact.address.match_code}", style: :bold unless contact.address.match_code.empty?
-          pdf.text "#{contact.address.full_name}", style: :bold unless contact.address.full_name.empty?
-          pdf.text "#{contact.address.mobile_number}" unless contact.address.mobile_number.empty?
-          pdf.text "#{contact.address.telephone_number}" unless contact.address.telephone_number.empty?
-          pdf.text "#{contact.address.email_address}" unless contact.address.email_address.empty?
+    # # ContactAdresses
+    # unless @central_device.service_object.contact_addresses.empty?
+    #   pdf.bounding_box [pdf.bounds.left + width_half, current_line], width: width_half, height: row_height do
+    #     pdf.text "#{t(:contact_person)}", style: :bold
+    #     @central_device.service_object.contact_addresses.each_with_index do |contact, idx|
+    #       pdf.text "#{contact.address.match_code}", style: :bold unless contact.address.match_code.empty?
+    #       pdf.text "#{contact.address.full_name}", style: :bold unless contact.address.full_name.empty?
+    #       pdf.text "#{contact.address.mobile_number}" unless contact.address.mobile_number.empty?
+    #       pdf.text "#{contact.address.telephone_number}" unless contact.address.telephone_number.empty?
+    #       pdf.text "#{contact.address.email_address}" unless contact.address.email_address.empty?
+    #
+    #       pdf.stroke_horizontal_rule
+    #     end
+    #   end
+    # end
 
-          pdf.stroke_horizontal_rule
-        end
+    # Alarm Outputs
+    pdf.bounding_box [pdf.bounds.left + width_half, current_line], width: width_half, height: row_height do
+      pdf.text "#{t('AlarmOutputs')}", style: :bold
+      for output in @central_device.alarm_outputs do
+        pdf.text "#{output.key}: #{output.value} [#{output.invert ? 'x' : ' '}]"
       end
+      # Legende
+      pdf.text "[x] #{t(:invert)}?", size: 8
     end
 
     pdf.stroke_horizontal_rule
@@ -200,23 +210,34 @@ prawn_document do |pdf|
       column_widths: {
         0 => 20, # #
         1 => 20, # NP
-        2 => 50, # Gasart
+        2 => 60, # Gasart
         3 => 50, # Sensortyp
-        # 4 => 50, # MB
+        4 => 30, # MB
         5 => 30, # GW
         6 => 30, # NW
         7 => 25, # AP1
         8 => 25, # AP2
         9 => 25, # AP3
         10 => 25, # AP4
-        # 11 => 30, # SI
-        12 => 100, # Standort
-        13 => 60
+        11 => 25, # SI
+        # 12 => 120, # Standort
+        13 => 50
       },
       row_colors: ["F0F0F0","FFFFFF"],
       cell_style: { border_width: 0.5, size: 7 } do
         row(0).font_style = :bold
       end
+    # Legende
+    pdf.move_down 2
+    pdf.formatted_text [
+      { :text => "O", size: 8, styles: [:bold] },
+      { :text => "=>#{t(:ok)}; ", size: 8 },
+      { :text => "V", size: 8, styles: [:bold] },
+      { :text => "=>#{t(:old_used)}; ", size: 8 },
+      { :text => "D", size: 8, styles: [:bold] },
+      { :text => "=>#{t(:defect)}", size: 8 },
+    ], align: :right
+
     pdf.move_down 20
 
     # Notes

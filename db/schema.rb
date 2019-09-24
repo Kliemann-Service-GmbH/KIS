@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_19_130510) do
+ActiveRecord::Schema.define(version: 2019_09_24_152536) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "hstore"
@@ -30,6 +30,16 @@ ActiveRecord::Schema.define(version: 2019_09_19_130510) do
     t.string "address_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "alarm_outputs", force: :cascade do |t|
+    t.bigint "central_device_id"
+    t.string "key"
+    t.string "value"
+    t.boolean "invert"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["central_device_id"], name: "index_alarm_outputs_on_central_device_id"
   end
 
   create_table "alarm_settings", force: :cascade do |t|
@@ -166,6 +176,7 @@ ActiveRecord::Schema.define(version: 2019_09_19_130510) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "alarm_outputs", "central_devices"
   add_foreign_key "history_entries", "central_devices"
   add_foreign_key "output_devices", "accus"
   add_foreign_key "output_devices", "central_devices"

@@ -95,33 +95,68 @@
     </div>
   </div>
 
-  <!-- Begin OutputDevice -->
-  <div class="">
-    <h2 class="subtitle"><%= t 'OutputDevice' %></h2>
-    <table class="table is-fullwidth as-td-padding-0 is-bordered is-striped is-hoverable">
-      <thead>
-        <tr>
-          <th><%= t :count %></th>
-          <th><%= t :type %></th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody class="output_devices">
-      <%= form.fields_for :output_devices do |builder| %>
-        <%= render "output_device_fields", f: builder %>
-      <% end %>
-      </tbody>
-    </table>
-    <!-- BEGIN Actions -->
-    <div class="actions">
-      <%= link_to_add_association t('Add Output Device'), form, :output_devices, class: 'button is-info', data: {
-        association_insertion_method: 'append',
-        association_insertion_node: '.output_devices'
-      } %>
+  <div class="columns">
+    <div class="column">
+      <!-- Begin OutputDevice -->
+      <div class="">
+        <h2 class="subtitle"><%= t 'OutputDevice' %></h2>
+        <table class="table is-fullwidth as-td-padding-0 is-bordered is-striped is-hoverable">
+          <thead>
+            <tr>
+              <th><%= t :count %></th>
+              <th><%= t :type %></th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody class="output_devices">
+          <%= form.fields_for :output_devices do |builder| %>
+            <%= render "output_device_fields", f: builder %>
+          <% end %>
+          </tbody>
+        </table>
+        <!-- BEGIN Actions -->
+        <div class="actions">
+          <%= link_to_add_association t('.Add Output Device'), form, :output_devices, class: 'button is-info', data: {
+            association_insertion_method: 'append',
+            association_insertion_node: '.output_devices'
+          } %>
+        </div>
+        <!-- END Actions -->
+      </div>
+      <!-- END OutputDevice -->
     </div>
-    <!-- END Actions -->
+
+    <div class="column">
+      <!-- Begin AlarmOutput -->
+      <div class="">
+        <h2 class="subtitle"><%= t 'AlarmOutputs' %></h2>
+        <table class="table is-fullwidth as-td-padding-0 is-bordered is-striped is-hoverable">
+          <thead>
+            <tr>
+              <th></th>
+              <th></th>
+              <th><%= t :invert %></th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody class="alarm_outputs">
+          <%= form.fields_for :alarm_outputs do |builder| %>
+            <%= render "alarm_output_fields", f: builder %>
+          <% end %>
+          </tbody>
+        </table>
+        <!-- BEGIN Actions AlarmOutput-->
+        <div class="actions">
+          <%= link_to_add_association t('.Add AlarmOutput'), form, :alarm_outputs, class: 'button is-info', data: {
+            association_insertion_method: 'append',
+            association_insertion_node: '.alarm_outputs'
+          } %>
+        </div>
+        <!-- END Actions AlarmOutput-->
+      </div>
+      <!-- END Alarm Output -->
+    </div>
   </div>
-  <!-- END OutputDevice -->
 
 
   <!-- BEGIN Sensors -->
@@ -192,11 +227,11 @@
   <!-- BEGIN Actions -->
   <div class="actions">
     <%= form.submit nil, class: 'button is-primary' %>
-    <%= link_to_add_association t('New Sensor'), form, :sensors, class: 'button is-info', data: {
+    <%= link_to_add_association t('.New Sensor'), form, :sensors, class: 'button is-info', data: {
       association_insertion_method: 'append',
       association_insertion_node: '.sensor_entries'
     } %>
-    <%= link_to_add_association t('Add Entry'), form, :history_entries, class: 'button is-info', data: {
+    <%= link_to_add_association t('.Add Entry'), form, :history_entries, class: 'button is-info', data: {
       association_insertion_method: 'append',
       association_insertion_node: '.history_entries'
     } %>
