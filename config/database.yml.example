@@ -1,25 +1,43 @@
-# SQLite version 3.x
-#   gem install sqlite3
-#
-#   Ensure the SQLite 3 gem is defined in your Gemfile
-#   gem 'sqlite3'
-#
 default: &default
-  adapter: sqlite3
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  adapter: postgresql
+  encoding: UTF-8
+  pool: 5
+  username: postgres
+  password: example
+  host: localhost
+  socket:
+  port: 5432
   timeout: 5000
+
+test:
+  <<: *default
+  database: kls-kis_test
+  port: 54321
 
 development:
   <<: *default
-  database: db/development.sqlite3
+  database: kls-kis_development
+  port: 54321
 
-# Warning: The database defined as "test" will be erased and
-# re-generated from your development database when you run "rake".
-# Do not set this db to the same as development or production.
-test:
-  <<: *default
-  database: db/test.sqlite3
+staging:
+  database: kis_staging
+  pool: 100
+  username: Rails.application.credentials[:staging][:postgres][:username]
+  password: Rails.application.credentials[:staging][:postgres][:password]
+  timeout: 5000
 
+# Achtung username, password und db name 'staging'
+# da der stage Rechner zum productionn System gecloned wurde!
 production:
   <<: *default
-  database: db/production.sqlite3
+  database: kis_staging
+  username: Rails.application.credentials[:production][:postgres][:username]
+  password: Rails.application.credentials[:production][:postgres][:password]
+  pool: 100
+
+# legacy_production:
+#   adapter: sqlserver
+#   host: Rails.application.credentials[:legacy_database][:host]
+#   port: Rails.application.credentials[:legacy_database][:port]
+#   username: Rails.application.credentials[:legacy_database][:username]
+#   password: Rails.application.credentials[:legacy_database][:password]

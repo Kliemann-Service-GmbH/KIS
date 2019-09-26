@@ -18,6 +18,7 @@ data:
     ## Default:
     - config/locales/%{locale}.yml
     - config/locales/activerecord/%{locale}.yml
+    - config/locales/simple_form.%{locale}.yml
     ## More files:
 
   # Locale files to write new keys to, based on a list of key pattern => file rules. Matched from top to bottom:
@@ -97,9 +98,9 @@ translation:
   # google_translate_api_key:
 
 ## Do not consider these keys missing:
-# ignore_missing:
+ignore_missing:
 # - 'errors.messages.{accepted,blank,invalid,too_short,too_long}'
-# - '{devise,simple_form}.*'
+- '{devise,simple_form}.*'
 
 ## Consider these keys used:
 ignore_unused:
@@ -108,6 +109,7 @@ ignore_unused:
 - 'time.formats.*'
 - 'zero_point.formats.*'
 # - '{devise,kaminari,will_paginate}.*'
+- 'simple_form.*'
 # - 'simple_form.{yes,no}'
 # - 'simple_form.{placeholders,hints,labels}.*'
 # - 'simple_form.{error_notification,required}.:'

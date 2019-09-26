@@ -39,12 +39,107 @@
         <span class="has-text-weight-bold"><%= @central_device.location %></span>
       </div>
     </div>
+
+    <% if @central_device.has_accu %>
+    <div class="box">
+      <h2 class="subtitle"><%= t 'has_accu' %></h2>
+      <% unless @central_device.accu_montage_date.blank? %>
+        <span class="has-text-weight-light"><%= t :accu_montage_date %>:&nbsp;</span>
+        <span class="has-text-weight-light"><%= l @central_device.accu_montage_date, format: :month_year unless @central_device.accu_montage_date.blank? %></span>
+      <% end %>
+    </div>
+    <% end %>
   </div>
 
+  <% unless @central_device.alarm_outputs.blank? %>
   <div class="column">
-    <h2 class="subtitle"><%= t('.alarm_outputs') %></h2>
+    <!-- BEGIN Alarm Output -->
+    <h2 class="subtitle"><%= t 'AlarmOutputs' %></h2>
+    <table class="table is-fullwidth as-td-padding-0 is-bordered is-striped is-hoverable">
+      <thead>
+        <tr>
+          <th></th>
+          <th></th>
+          <th><%= t :invert %></th>
+        </tr>
+      </thead>
+      <tbody class="alarm_outputs">
+      <% for alarm_output in @central_device.alarm_outputs %>
+        <%= render "alarm_output", f: alarm_output %>
+      <% end %>
+      </tbody>
+    </table>
+    <!-- END Alarm Output -->
   </div>
+  <% end %>
 </div>
+
+<hr>
+
+<!-- BEGIN OutputDevice -->
+<div class="">
+  <h2 class="subtitle"><%= t 'OutputDevice' %></h2>
+  <table class="table is-fullwidth as-td-padding-0 is-bordered is-striped is-hoverable">
+    <thead>
+      <tr>
+        <th><%= t :count %></th>
+        <th><%= t :type %></th>
+        <th><%= t :has_accu %></th>
+        <th><%= t :accu_montage_date %></th>
+      </tr>
+    </thead>
+    <tbody class="output_devices">
+    <% for output_device in @central_device.output_devices %>
+      <%= render "output_device", output_device: output_device %>
+    <% end %>
+    </tbody>
+  </table>
+</div>
+<!-- END OutputDevice -->
+
+<hr>
+
+<table class="table is-fullwidth is-bordered is-striped is-hoverable">
+  <thead>
+    <tr>
+      <th><abbr title="<%= t('sensor_number.formats.default') %>"><%= t('sensor_number.formats.short') %></abbr></th>
+      <th><%= t :sensor_type %></th>
+      <th><%= t :gas_type %></th>
+      <th><abbr title="<%= t 'min_value.formats.default' %>"><%= t 'min_value.formats.short' %></abbr></th>
+      <th><abbr title="<%= t 'max_value.formats.default' %>"><%= t 'max_value.formats.short' %></abbr></th>
+      <th><abbr title="<%= t 'exchanged.formats.default' %>"><%= t 'exchanged.formats.short' %></abbr></th>
+      <th><abbr title="<%= t 'livetime.formats.default' %>"><%= t 'livetime.formats.short' %></abbr></th>
+      <th><abbr title="<%= t 'a1.formats.default' %>"><%= t 'a1.formats.short' %></abbr></th>
+      <th><abbr title="<%= t 'a2.formats.default' %>"><%= t 'a2.formats.short' %></abbr></th>
+      <th><abbr title="<%= t 'a3.formats.default' %>"><%= t 'a3.formats.short' %></abbr></th>
+      <th><abbr title="<%= t 'a4.formats.default' %>"><%= t 'a4.formats.short' %></abbr></th>
+      <th><abbr title="<%= t 'si_unit.formats.default' %>"><%= t 'si_unit.formats.short' %></abbr></th>
+      <th><%= t :location %></th>
+    </tr>
+  </thead>
+  <tfoot>
+    <tr>
+      <th><abbr title="<%= t('sensor_number.formats.default') %>"><%= t('sensor_number.formats.short') %></abbr></th>
+      <th><%= t :sensor_type %></th>
+      <th><%= t :gas_type %></th>
+      <th><abbr title="<%= t 'min_value.formats.default' %>"><%= t 'min_value.formats.short' %></abbr></th>
+      <th><abbr title="<%= t 'max_value.formats.default' %>"><%= t 'max_value.formats.short' %></abbr></th>
+      <th><abbr title="<%= t 'exchanged.formats.default' %>"><%= t 'exchanged.formats.short' %></abbr></th>
+      <th><abbr title="<%= t 'livetime.formats.default' %>"><%= t 'livetime.formats.short' %></abbr></th>
+      <th><abbr title="<%= t 'a1.formats.default' %>"><%= t 'a1.formats.short' %></abbr></th>
+      <th><abbr title="<%= t 'a2.formats.default' %>"><%= t 'a2.formats.short' %></abbr></th>
+      <th><abbr title="<%= t 'a3.formats.default' %>"><%= t 'a3.formats.short' %></abbr></th>
+      <th><abbr title="<%= t 'a4.formats.default' %>"><%= t 'a4.formats.short' %></abbr></th>
+      <th><abbr title="<%= t 'si_unit.formats.default' %>"><%= t 'si_unit.formats.short' %></abbr></th>
+      <th><%= t :location %></th>
+    </tr>
+  </tfoot>
+  <tbody>
+  <% for sensor in @sensors.sort_by{|s| s.number.to_i} do %>
+    <%= render "sensors/sensor", sensor: sensor %>
+  <% end %>
+  </tbody>
+</table>
 
 
 <div class="columns">
@@ -65,50 +160,6 @@
     <% end %>
   </div>
 </div>
-
-<hr>
-
-<table class="table is-fullwidth is-bordered is-striped is-hoverable">
-  <thead>
-    <tr>
-      <th><abbr title="<%= t('sensor_number.formats.default') %>"><%= t('sensor_number.formats.short') %></abbr></th>
-      <th><%= t(:sensor_type) %></th>
-      <th><%= t(:gas_type) %></th>
-      <th><abbr title="<%= t('min_value.formats.default') %>"><%= t('min_value.formats.short') %></abbr></th>
-      <th><abbr title="<%= t('max_value.formats.default') %>"><%= t('max_value.formats.short') %></abbr></th>
-      <th><abbr title="<%= t('exchanged.formats.default') %>"><%= t('exchanged.formats.short') %></abbr></th>
-      <th><abbr title="<%= t('livetime.formats.default') %>"><%= t('livetime.formats.short') %></abbr></th>
-      <th><abbr title="<%= t('a1.formats.default') %>"><%= t('a1.formats.short') %></abbr></th>
-      <th><abbr title="<%= t('a2.formats.default') %>"><%= t('a2.formats.short') %></abbr></th>
-      <th><abbr title="<%= t('a3.formats.default') %>"><%= t('a3.formats.short') %></abbr></th>
-      <th><abbr title="<%= t('a4.formats.default') %>"><%= t('a4.formats.short') %></abbr></th>
-      <th><abbr title="<%= t('si_unit.formats.default') %>"><%= t('si_unit.formats.short') %></abbr></th>
-      <th><%= t(:location) %></th>
-    </tr>
-  </thead>
-  <tfoot>
-    <tr>
-      <th><abbr title="<%= t('sensor_number.formats.default') %>"><%= t('sensor_number.formats.short') %></abbr></th>
-      <th><%= t(:sensor_type) %></th>
-      <th><%= t(:gas_type) %></th>
-      <th><abbr title="<%= t('min_value.formats.default') %>"><%= t('min_value.formats.short') %></abbr></th>
-      <th><abbr title="<%= t('max_value.formats.default') %>"><%= t('max_value.formats.short') %></abbr></th>
-      <th><abbr title="<%= t('exchanged.formats.default') %>"><%= t('exchanged.formats.short') %></abbr></th>
-      <th><abbr title="<%= t('livetime.formats.default') %>"><%= t('livetime.formats.short') %></abbr></th>
-      <th><abbr title="<%= t('a1.formats.default') %>"><%= t('a1.formats.short') %></abbr></th>
-      <th><abbr title="<%= t('a2.formats.default') %>"><%= t('a2.formats.short') %></abbr></th>
-      <th><abbr title="<%= t('a3.formats.default') %>"><%= t('a3.formats.short') %></abbr></th>
-      <th><abbr title="<%= t('a4.formats.default') %>"><%= t('a4.formats.short') %></abbr></th>
-      <th><abbr title="<%= t('si_unit.formats.default') %>"><%= t('si_unit.formats.short') %></abbr></th>
-      <th><%= t(:location) %></th>
-    </tr>
-  </tfoot>
-  <tbody>
-  <% for sensor in @sensors.sort_by{|s| s.number.to_i} do %>
-    <%= render "sensors/sensor", sensor: sensor %>
-  <% end %>
-  </tbody>
-</table>
 
 <div style="padding-top: 1em;">
   <%= link_to t(:show_print_pdf), central_device_path(@central_device, format: :pdf), class: 'button is-info' %>

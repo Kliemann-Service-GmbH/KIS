@@ -1,4 +1,4 @@
-<%= form_with model: central_device, local: true do |form| %>
+<%= simple_form_for @central_device do |form| %>
   <% if central_device.errors.any? %>
     <div id="error_explanation" class="notification is-danger">
       <h2><%= pluralize(central_device.errors.count, "error") %> prohibited this central_device from being saved:</h2>
@@ -95,6 +95,93 @@
     </div>
   </div>
 
+  <div class="field is-horizontal box">
+    <div class="field-label is-normal">
+      <%= form.label t('.accu'), class: 'label' %>
+    </div>
+    <div class="field-body">
+      <div class="field">
+        <div class="control">
+          <%= form.input :has_accu, label: false %>
+        </div>
+        <div class="help"><%= t :has_accu %></div>
+      </div>
+      <div class="field">
+        <div class="control">
+          <%= form.date_field :accu_montage_date %>
+        </div>
+        <div class="help"><%= t :accu_montage_date %></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="columns">
+    <div class="column">
+      <!-- Begin OutputDevice -->
+      <div class="">
+        <h2 class="subtitle"><%= t 'OutputDevice' %></h2>
+        <table class="table has-td-padding-0 is-bordered is-striped is-hoverable">
+          <thead>
+            <tr>
+              <th><%= t :count %></th>
+              <th><%= t :type %></th>
+              <th><%= t :has_accu %></th>
+              <th><%= t :accu_montage_date %></th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody class="output_devices">
+          <%= form.fields_for :output_devices do |builder| %>
+            <%= render "output_device_fields", f: builder %>
+          <% end %>
+          </tbody>
+        </table>
+        <!-- BEGIN Actions -->
+        <div class="actions">
+          <%= link_to_add_association t('Add Output Device'), form, :output_devices, class: 'button is-info', data: {
+            association_insertion_method: 'append',
+            association_insertion_node: '.output_devices'
+          } %>
+        </div>
+        <!-- END Actions -->
+      </div>
+      <!-- END OutputDevice -->
+    </div>
+
+    <div class="column">
+      <!-- Begin AlarmOutput -->
+      <div class="">
+        <h2 class="subtitle"><%= t 'AlarmOutputs' %></h2>
+        <table class="table has-td-padding-0 is-bordered is-striped is-hoverable">
+          <thead>
+            <tr>
+              <th></th>
+              <th></th>
+              <th><%= t :invert %></th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody class="alarm_outputs">
+          <%= form.fields_for :alarm_outputs do |builder| %>
+            <%= render "alarm_output_fields", f: builder %>
+          <% end %>
+          </tbody>
+        </table>
+        <!-- BEGIN Actions AlarmOutput-->
+        <div class="actions">
+          <%= link_to_add_association t('Add AlarmOutput'), form, :alarm_outputs, class: 'button is-info', data: {
+            association_insertion_method: 'append',
+            association_insertion_node: '.alarm_outputs'
+          } %>
+        </div>
+        <!-- END Actions AlarmOutput-->
+      </div>
+      <!-- END Alarm Output -->
+    </div>
+  </div>
+
+
+  <!-- BEGIN Sensors -->
   <table class="table has-td-padding-0 is-bordered is-striped is-hoverable">
     <thead>
       <tr>
@@ -103,7 +190,7 @@
         <th><%= t :gas_type %></th>
         <th><abbr title="<%= t 'min_value.formats.default' %>"><%= t 'min_value.formats.short' %></abbr></th>
         <th><abbr title="<%= t 'max_value.formats.default' %>"><%= t 'max_value.formats.short' %></abbr></th>
-        <th><abbr title="<%= t 'application_date.formats.default' %>"><%= t 'application_date.formats.short' %></abbr></th>
+        <th><abbr title="<%= t 'exchanged.formats.default' %>"><%= t 'exchanged.formats.short' %></abbr></th>
         <th><abbr title="<%= t 'livetime.formats.default' %>"><%= t 'livetime.formats.short' %></abbr></th>
         <th><abbr title="<%= t 'a1.formats.default' %>"><%= t 'a1.formats.short' %></abbr></th>
         <th><abbr title="<%= t 'a2.formats.default' %>"><%= t 'a2.formats.short' %></abbr></th>
@@ -121,7 +208,7 @@
         <th><%= t :gas_type %></th>
         <th><abbr title="<%= t 'min_value.formats.default' %>"><%= t 'min_value.formats.short' %></abbr></th>
         <th><abbr title="<%= t 'max_value.formats.default' %>"><%= t 'max_value.formats.short' %></abbr></th>
-        <th><abbr title="<%= t 'application_date.formats.default' %>"><%= t 'application_date.formats.short' %></abbr></th>
+        <th><abbr title="<%= t 'exchanged.formats.default' %>"><%= t 'exchanged.formats.short' %></abbr></th>
         <th><abbr title="<%= t 'livetime.formats.default' %>"><%= t 'livetime.formats.short' %></abbr></th>
         <th><abbr title="<%= t 'a1.formats.default' %>"><%= t 'a1.formats.short' %></abbr></th>
         <th><abbr title="<%= t 'a2.formats.default' %>"><%= t 'a2.formats.short' %></abbr></th>
@@ -132,15 +219,26 @@
         <th colspan="2"></th>
       </tr>
     </tfoot>
-    <tbody class="fields">
+    <tbody class="sensor_entries">
+    <%#= form.association :sensors %>
     <%= form.fields_for :sensors, @central_device.sensors.sort_by{|s| s.number.to_i} do |builder| %>
-      <%= render "sensors/form_sensor", form: builder %>
+      <%= render "sensor_fields", f: builder %>
     <% end %>
     </tbody>
   </table>
+  <!-- BEGIN Actions Sensors -->
+  <div class="actions">
+    <%= link_to_add_association t('New Sensor'), form, :sensors, class: 'button is-info', data: {
+      association_insertion_method: 'append',
+      association_insertion_node: '.sensor_entries'
+    } %>
+  </div>
+  <!-- END Actions Sensors -->
+  <!-- END Sensors -->
 
   <hr>
 
+  <!-- Begin History -->
   <h2 class="subtitle"><%= t 'History' %></h2>
   <table class="table is-fullwidth as-td-padding-0 is-bordered is-striped is-hoverable">
     <thead>
@@ -150,18 +248,25 @@
       </tr>
     </thead>
     <tbody class="history_entries">
-    <%= form.fields_for :history_entries do |entry| %>
-      <%= render "history_entry_fields", f: entry %>
-    <% end %>
-    </tbody>
+    <%= form.fields_for :history_entries do |builder| %>
+      <%= render "history_entry_fields", f: builder %>
+    <% end %>    </tbody>
   </table>
-
+  <!-- BEGIN Actions History -->
   <div class="actions">
-    <%= form.submit nil, class: 'button is-primary' %>
-    <%= link_to_add_row( t('New Sensor'), form, :sensors, class: 'button is-info') %>
     <%= link_to_add_association t('Add Entry'), form, :history_entries, class: 'button is-info', data: {
       association_insertion_method: 'append',
       association_insertion_node: '.history_entries'
     } %>
   </div>
+  <!-- END Actions History -->
+  <!-- END History -->
+
+  <hr>
+
+  <!-- BEGIN Actions -->
+  <div class="actions">
+    <%= form.submit nil, class: 'button is-primary' %>
+  </div>
+  <!-- END Actions -->
 <% end %>

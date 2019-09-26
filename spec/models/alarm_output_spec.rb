@@ -1,16 +1,18 @@
 # == Schema Information
 #
-# Table name: history_entries
+# Table name: alarm_outputs
 #
 #  id                :bigint           not null, primary key
-#  entry             :text
+#  invert            :boolean
+#  key               :string
+#  value             :string
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
 #  central_device_id :bigint
 #
 # Indexes
 #
-#  index_history_entries_on_central_device_id  (central_device_id)
+#  index_alarm_outputs_on_central_device_id  (central_device_id)
 #
 # Foreign Keys
 #
@@ -19,7 +21,7 @@
 
 require 'rails_helper'
 
-RSpec.describe HistoryEntry, type: :model do
+RSpec.describe AlarmOutput, type: :model do
   it "is valid with valid attributes" do
     expect(build(:address)).to be_valid
   end
