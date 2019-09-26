@@ -1,5 +1,6 @@
 ---
 en:
+  Add AlarmOutput: Alarmausgang hinzufügen
   Add Entry: Add Entry
   Add Output Device: LS hinzufügen
   AlarmOutputs: Alarmoutputs
@@ -32,6 +33,7 @@ en:
     formats:
       default: Default
       short: Short
+  accu_montage_date: Accu montage date
   address: Address
   address_number: Address number
   addresses:
@@ -52,6 +54,8 @@ en:
   central_devices:
     edit:
       Edit: Edit
+    form:
+      accu: Accu
     index:
       New: New
       placeholder: Placeholder
@@ -92,6 +96,7 @@ en:
     formats:
       default: Default
       short: Short
+  'false': Nein
   field_required: Field required
   gas_type: Gas type
   gas_types:
@@ -102,6 +107,7 @@ en:
     new:
       New: New
   gas_types_title: Gasarten
+  has_accu: Has accu
   history: History
   invert: Invert
   livetime:
@@ -200,6 +206,7 @@ en:
       month_year: "%m/%y"
       only_year: "%Y"
       short: "%d.%m.%Y"
+  'true': Ja
   type: Type
   until: until
   updated_at: Updated at
@@ -209,6 +216,7 @@ en:
   with_shortcomings: With shortcomings
   working: Working
   years: Years
+  'yes': 'Yes'
   zero_point:
     formats:
       default: Default

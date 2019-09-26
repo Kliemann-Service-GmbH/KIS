@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_24_152536) do
+ActiveRecord::Schema.define(version: 2019_09_25_142640) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "hstore"
@@ -59,6 +59,8 @@ ActiveRecord::Schema.define(version: 2019_09_24_152536) do
     t.datetime "montage_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "has_accu"
+    t.datetime "accu_montage_date"
     t.index ["service_object_id"], name: "index_central_devices_on_service_object_id"
   end
 
@@ -111,6 +113,8 @@ ActiveRecord::Schema.define(version: 2019_09_24_152536) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "count"
+    t.boolean "has_accu"
+    t.datetime "accu_montage_date"
     t.index ["accu_id"], name: "index_output_devices_on_accu_id"
     t.index ["central_device_id"], name: "index_output_devices_on_central_device_id"
   end

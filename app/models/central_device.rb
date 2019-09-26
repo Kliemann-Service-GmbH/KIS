@@ -3,8 +3,10 @@
 # Table name: central_devices
 #
 #  id                :bigint           not null, primary key
+#  accu_montage_date :datetime
 #  device_number     :string           default("0")
 #  device_type       :string
+#  has_accu          :boolean
 #  location          :string
 #  montage_date      :datetime
 #  serial_number     :string
@@ -21,7 +23,6 @@ class CentralDevice < ApplicationRecord
   # Associations
   belongs_to :service_object
 
-  has_one :accu, dependent: :destroy, inverse_of: :central_device
   has_many :alarm_outputs, dependent: :destroy, inverse_of: :central_device
   has_many :alarm_settings, dependent: :destroy, inverse_of: :central_device
   has_many :history_entries, dependent: :destroy, inverse_of: :central_device
@@ -33,7 +34,6 @@ class CentralDevice < ApplicationRecord
   validates :device_type, presence: true
 
   # Nested Attributes
-  accepts_nested_attributes_for :accu, allow_destroy: true, reject_if: :all_blank
   accepts_nested_attributes_for :alarm_outputs, allow_destroy: true, reject_if: :all_blank
   accepts_nested_attributes_for :alarm_settings, allow_destroy: true, reject_if: :all_blank
   accepts_nested_attributes_for :history_entries, allow_destroy: true, reject_if: proc { |attr| attr['entry'].blank? }

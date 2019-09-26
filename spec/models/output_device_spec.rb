@@ -3,8 +3,10 @@
 # Table name: output_devices
 #
 #  id                :bigint           not null, primary key
+#  accu_montage_date :datetime
 #  count             :integer
 #  device_type       :string
+#  has_accu          :boolean
 #  location          :string
 #  montage_date      :datetime
 #  status            :string

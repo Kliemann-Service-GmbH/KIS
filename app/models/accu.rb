@@ -18,5 +18,4 @@ class Accu < ApplicationRecord
   # Associations
 
   # Validations
-  # validates :central_device, presence: true
 end

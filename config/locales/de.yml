@@ -33,6 +33,7 @@ de:
     formats:
       default: Alarmpunkt 4
       short: AP4
+  accu_montage_date: Akku Einbau Datum
   address: Adresse
   address_number: Adress Nummer
   addresses:
@@ -53,6 +54,8 @@ de:
   central_devices:
     edit:
       Edit: Anlage bearbeiten
+    form:
+      accu: Akku
     index:
       New: Neues Anlage
       placeholder: Anlagennummer, -typ, Standort, ...
@@ -93,6 +96,7 @@ de:
     formats:
       default: Ausgetauscht
       short: GW
+  'false': Nein
   field_required: "(*) benötigt"
   gas_type: Gasart
   gas_types:
@@ -103,6 +107,7 @@ de:
     new:
       New: Neue Gasart speichern
   gas_types_title: Gasarten
+  has_accu: Akku vorhanden
   history: History
   invert: invertiert
   livetime:
@@ -201,6 +206,7 @@ de:
       month_year: "%m/%y"
       only_year: "%Y"
       short: "%d.%m.%Y"
+  'true': Ja
   type: Typ
   until: bis
   updated_at: aktualisiert
@@ -210,6 +216,7 @@ de:
   with_shortcomings: mit Mängeln
   working: funktionstüchtig
   years: Jahre
+  'yes': Ja
   zero_point:
     formats:
       default: Nullpunkt

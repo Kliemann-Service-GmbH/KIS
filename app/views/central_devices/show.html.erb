@@ -39,8 +39,19 @@
         <span class="has-text-weight-bold"><%= @central_device.location %></span>
       </div>
     </div>
+
+    <% if @central_device.has_accu %>
+    <div class="box">
+      <h2 class="subtitle"><%= t 'has_accu' %></h2>
+      <% unless @central_device.accu_montage_date.blank? %>
+        <span class="has-text-weight-light"><%= t :accu_montage_date %>:&nbsp;</span>
+        <span class="has-text-weight-light"><%= l @central_device.accu_montage_date, format: :month_year unless @central_device.accu_montage_date.blank? %></span>
+      <% end %>
+    </div>
+    <% end %>
   </div>
 
+  <% unless @central_device.alarm_outputs.blank? %>
   <div class="column">
     <!-- BEGIN Alarm Output -->
     <h2 class="subtitle"><%= t 'AlarmOutputs' %></h2>
@@ -60,6 +71,7 @@
     </table>
     <!-- END Alarm Output -->
   </div>
+  <% end %>
 </div>
 
 <hr>
@@ -72,6 +84,8 @@
       <tr>
         <th><%= t :count %></th>
         <th><%= t :type %></th>
+        <th><%= t :has_accu %></th>
+        <th><%= t :accu_montage_date %></th>
       </tr>
     </thead>
     <tbody class="output_devices">

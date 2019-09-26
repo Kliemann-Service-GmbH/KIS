@@ -86,23 +86,14 @@ prawn_document do |pdf|
       pdf.text "#{t(:serial_number)}: #{@central_device.serial_number}"
       pdf.text "#{t(:device_type)}: #{@central_device.device_type}"
       pdf.text "#{t(:location)}: #{@central_device.location}"
+
+      # Accu
+      if @central_device.has_accu
+        pdf.text "#{t 'has_accu'}", style: :bold
+        pdf.text "#{t 'accu_montage_date'}: #{l @central_device.accu_montage_date, format: :month_year unless @central_device.accu_montage_date.blank?}"
+      end
     end
 
-    # # ContactAdresses
-    # unless @central_device.service_object.contact_addresses.empty?
-    #   pdf.bounding_box [pdf.bounds.left + width_half, current_line], width: width_half, height: row_height do
-    #     pdf.text "#{t(:contact_person)}", style: :bold
-    #     @central_device.service_object.contact_addresses.each_with_index do |contact, idx|
-    #       pdf.text "#{contact.address.match_code}", style: :bold unless contact.address.match_code.empty?
-    #       pdf.text "#{contact.address.full_name}", style: :bold unless contact.address.full_name.empty?
-    #       pdf.text "#{contact.address.mobile_number}" unless contact.address.mobile_number.empty?
-    #       pdf.text "#{contact.address.telephone_number}" unless contact.address.telephone_number.empty?
-    #       pdf.text "#{contact.address.email_address}" unless contact.address.email_address.empty?
-    #
-    #       pdf.stroke_horizontal_rule
-    #     end
-    #   end
-    # end
 
     # Alarm Outputs
     pdf.bounding_box [pdf.bounds.left + width_half, current_line], width: width_half, height: row_height do
@@ -111,36 +102,36 @@ prawn_document do |pdf|
         pdf.text "#{output.key}: #{output.value} [#{output.invert ? 'x' : ' '}]"
       end
       # Legende
-      pdf.text "[x] #{t(:invert)}?", size: 8
+      pdf.text "[x] #{t(:invert)}?", size: 8 unless @central_device.alarm_outputs.blank?
     end
 
     pdf.stroke_horizontal_rule
     pdf.move_down 20
-
-    # Alarm Settings
-    # pdf.text "#{t(:alarm_settings)}", style: :bold
-    #
-    # pdf.stroke_horizontal_rule
-    # pdf.move_down 20
 
     # OutputDevices (LS)
     pdf.text "#{t(:output_devices)}", style: :bold
     # Table headers
     data_output_device = [[
       "#{t(:count)}",
-      "#{t(:device_type)}"
+      "#{t(:device_type)}",
+      "#{t(:has_accu)}",
+      "#{t(:accu_montage_date)}"
     ]]
 
     # Table data
     for output_device in @central_device.output_devices
       data_output_device += [[
         output_device.count,
-        output_device.device_type
+        output_device.device_type,
+        "#{t output_device.has_accu}",
+        "#{l(output_device.accu_montage_date, format: :month_year) if !output_device.accu_montage_date.nil? }"
       ]]
     end
     # empty rows
     (0..0).each do
       data_output_device += [[
+        " ",
+        " ",
         " ",
         " "
       ]]
@@ -227,7 +218,7 @@ prawn_document do |pdf|
       cell_style: { border_width: 0.5, size: 7 } do
         row(0).font_style = :bold
       end
-    # Legende
+    # Legende Sensor Status
     pdf.move_down 2
     pdf.formatted_text [
       { :text => "O", size: 8, styles: [:bold] },
@@ -246,6 +237,8 @@ prawn_document do |pdf|
     pdf.bounding_box [pdf.bounds.left, pdf.cursor], width: pdf.bounds.width, height: 3.cm do
       pdf.line_width = 0.5
       pdf.stroke_bounds
+      pdf.move_down 4
+      pdf.text "Alle Sensoren mit dem Zustand \"V\" oder \"D\" müssen ausgetauscht werden."
     end
     pdf.move_down 20
 
