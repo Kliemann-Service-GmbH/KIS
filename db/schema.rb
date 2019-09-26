@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_18_193501) do
+ActiveRecord::Schema.define(version: 2019_09_25_142640) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "hstore"
@@ -32,6 +32,16 @@ ActiveRecord::Schema.define(version: 2019_09_18_193501) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "alarm_outputs", force: :cascade do |t|
+    t.bigint "central_device_id"
+    t.string "key"
+    t.string "value"
+    t.boolean "invert"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["central_device_id"], name: "index_alarm_outputs_on_central_device_id"
+  end
+
   create_table "alarm_settings", force: :cascade do |t|
     t.bigint "central_device_id"
     t.hstore "outputs"
@@ -49,6 +59,8 @@ ActiveRecord::Schema.define(version: 2019_09_18_193501) do
     t.datetime "montage_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "has_accu"
+    t.datetime "accu_montage_date"
     t.index ["service_object_id"], name: "index_central_devices_on_service_object_id"
   end
 
@@ -89,6 +101,22 @@ ActiveRecord::Schema.define(version: 2019_09_18_193501) do
     t.datetime "updated_at", null: false
     t.index ["contact_address_id"], name: "index_object_maintenances_on_contact_address_id"
     t.index ["service_object_id"], name: "index_object_maintenances_on_service_object_id"
+  end
+
+  create_table "output_devices", force: :cascade do |t|
+    t.bigint "central_device_id"
+    t.bigint "accu_id"
+    t.string "device_type"
+    t.string "location"
+    t.datetime "montage_date"
+    t.string "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "count"
+    t.boolean "has_accu"
+    t.datetime "accu_montage_date"
+    t.index ["accu_id"], name: "index_output_devices_on_accu_id"
+    t.index ["central_device_id"], name: "index_output_devices_on_central_device_id"
   end
 
   create_table "pg_search_documents", force: :cascade do |t|
@@ -152,5 +180,8 @@ ActiveRecord::Schema.define(version: 2019_09_18_193501) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "alarm_outputs", "central_devices"
   add_foreign_key "history_entries", "central_devices"
+  add_foreign_key "output_devices", "accus"
+  add_foreign_key "output_devices", "central_devices"
 end

@@ -1,11 +1,23 @@
 FactoryBot.define do
+  factory :alarm_output do
+    key { "MyString" }
+    value { "MyString" }
+    invert { false }
+    central_device
+  end
+
+  factory :output_device do
+    service_object { nil }
+    accu { nil }
+    device_type { Faker::Hipster.word }
+    location { Faker::Address.city }
+    montage_date { Time.now }
+    status { "Ok" }
+  end
+
   factory :history_entry do
     service_object { nil }
     entry { "MyText" }
-  end
-
-  factory :accu do
-    central_device
   end
 
   factory :address do
@@ -17,6 +29,9 @@ FactoryBot.define do
         address_number: rand(1000..9999)
       }
     }
+  end
+
+  factory :accu do
   end
 
   factory :alarm_setting do

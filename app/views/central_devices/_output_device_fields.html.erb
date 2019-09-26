@@ -1,0 +1,13 @@
+<tr class="nested-fields">
+  <td><%= f.input :count, label: false, input_html: { class: 'input' } %></td>
+  <td><%= f.input :device_type, label: false, input_html: { class: 'input' } %></td>
+  <td><%= f.input :has_accu, label: false %></td>
+  <td><%= f.date_field :accu_montage_date, label: false, input_html: { class: 'input' } %></td>
+  <td>
+    <!-- BEGIN Actions -->
+    <div class="actions">
+      <%= link_to_remove_association t('Destroy'), f, class: 'button is-danger' %>
+    </div>
+    <!-- END Actions -->
+  </td>
+</tr>

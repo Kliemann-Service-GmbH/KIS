@@ -1,0 +1,6 @@
+<tr>
+  <td><%= output_device.count %></td>
+  <td><%= output_device.device_type %></td>
+  <td><%= t :yes if output_device.has_accu %></td>
+  <td><%= l output_device.accu_montage_date, format: :month_year if output_device.has_accu && !output_device.accu_montage_date.nil? %></td>
+</tr>

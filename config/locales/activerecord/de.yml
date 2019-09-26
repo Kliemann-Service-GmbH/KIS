@@ -4,6 +4,7 @@ de:
     models:
       accu: Akku
       address: Addresse
+      alarm_output: Alarmausgang
       alarm_setting: Alarmeinstellung
       central_device: Anlage
       contact_address: Kontaktadresse
@@ -11,6 +12,7 @@ de:
       gas_type: Gasart
       history_entry: Bemerkung
       object_maintenance: Objektverwaltung
+      output_device: Leuchtscheibe
       sensor: Sensor
       sensor_type: Sensortyp
       service_object: Objekt

@@ -92,13 +92,18 @@ class CentralDevicesController < ApplicationController
     def central_device_params
       # params.require(:central_device).permit(:device_number, :device_type, :location)
       params.require(:central_device).permit(
+        :has_accu,
+        :accu_montage_date,
         :device_number,
         :serial_number,
         :device_type,
         :location,
         :service_object_id,
         :montage_date,
+        accu_attributes: Accu.attribute_names.map(&:to_sym).push(:_destroy),
+        alarm_outputs_attributes: AlarmOutput.attribute_names.map(&:to_sym).push(:_destroy),
         history_entries_attributes: HistoryEntry.attribute_names.map(&:to_sym).push(:_destroy),
+        output_devices_attributes: OutputDevice.attribute_names.map(&:to_sym).push(:_destroy),
         sensors_attributes: Sensor.attribute_names.map(&:to_sym).push(:_destroy)
       )
     end

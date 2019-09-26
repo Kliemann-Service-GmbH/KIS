@@ -17,31 +17,3 @@
 //= require turbolinks
 //= require cocoon
 //= require_tree .
-
-
-// Add rows to the a rails form table
-// https://www.driftingruby.com/episodes/nested-forms-from-scratch
-$(document).on('turbolinks:load', function() {
-
-  $('form').on('click', '.remove_record', function(event) {
-    $(this).prev('input[type=hidden]').val('1');
-    $(this).closest('tr').hide();
-    return event.preventDefault();
-  });
-
-  $('form').on('click', '.add_fields', function(event) {
-    var regexp, time;
-    time = new Date().getTime();
-    regexp = new RegExp($(this).data('id'), 'g');
-    $('.fields').append($(this).data('fields').replace(regexp, time));
-    return event.preventDefault();
-  });
-
-  $('form').on('click', '.copy_row', function(event) {
-    var regexp, time;
-    time = new Date().getTime();
-    regexp = new RegExp($(this).data('id'), 'g');
-    $(this).closest('tr').after($(this).data('fields').replace(regexp, time))
-    return event.preventDefault();
-  });
-});
