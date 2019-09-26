@@ -1,7 +1,9 @@
 ---
 en:
+  Add AlarmOutput: Alarmausgang hinzufügen
   Add Entry: Add Entry
   Add Output Device: LS hinzufügen
+  AlarmOutputs: Alarmoutputs
   Auto resume can't be set without a valid begin or end: Auto resume can't be set without a valid begin or end
   Back: Back
   Destroy: Destroy
@@ -31,6 +33,7 @@ en:
     formats:
       default: Default
       short: Short
+  accu_montage_date: Accu montage date
   address: Address
   address_number: Address number
   addresses:
@@ -51,6 +54,8 @@ en:
   central_devices:
     edit:
       Edit: Edit
+    form:
+      accu: Accu
     index:
       New: New
       placeholder: Placeholder
@@ -78,6 +83,7 @@ en:
     index:
       placeholder: Placeholder
   customers_title: Customers title
+  defect: Defect
   description: Description
   details: Details
   device_number: Device number
@@ -90,6 +96,7 @@ en:
     formats:
       default: Default
       short: Short
+  'false': Nein
   field_required: Field required
   gas_type: Gas type
   gas_types:
@@ -100,7 +107,9 @@ en:
     new:
       New: New
   gas_types_title: Gasarten
+  has_accu: Has accu
   history: History
+  invert: Invert
   livetime:
     formats:
       default: Default
@@ -134,6 +143,8 @@ en:
   object_nr: Object nr
   object_number: Object number
   of: Of
+  ok: Ok
+  old_used: Old used
   output_devices: Output devices
   page: Page
   sensor_number:
@@ -195,6 +206,7 @@ en:
       month_year: "%m/%y"
       only_year: "%Y"
       short: "%d.%m.%Y"
+  'true': Ja
   type: Type
   until: until
   updated_at: Updated at
@@ -204,6 +216,7 @@ en:
   with_shortcomings: With shortcomings
   working: Working
   years: Years
+  'yes': 'Yes'
   zero_point:
     formats:
       default: Default

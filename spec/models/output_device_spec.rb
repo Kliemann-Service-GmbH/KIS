@@ -3,8 +3,10 @@
 # Table name: output_devices
 #
 #  id                :bigint           not null, primary key
+#  accu_montage_date :datetime
 #  count             :integer
 #  device_type       :string
+#  has_accu          :boolean
 #  location          :string
 #  montage_date      :datetime
 #  status            :string
@@ -27,5 +29,7 @@
 require 'rails_helper'
 
 RSpec.describe OutputDevice, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it "is valid with valid attributes" do
+    expect(build(:address)).to be_valid
+  end
 end

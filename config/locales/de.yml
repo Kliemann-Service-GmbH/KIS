@@ -1,7 +1,9 @@
 ---
 de:
+  Add AlarmOutput: Alarmausgang hinzufügen
   Add Entry: Bemerkung hinzufügen
-  Add Output Device: LS hinzufügen
+  Add Output Device: Leuchtscheibe hinzufügen
+  AlarmOutputs: Alarmausgänge
   Auto resume can't be set without a valid begin or end: Ohne gültigen Beginn oder Ende des Vertrags kann die automatische Verlängerung nicht gesetzt werden!
   Back: zurück
   Destroy: löschen
@@ -10,7 +12,7 @@ de:
   History: History
   New Sensor: Neuer Sensor
   Object with such a customer address combination already exists: Es existiert bereits ein Objekt mit dieser 'Kunde/ Objektadresse' Kombination!
-  OutputDevice: LS
+  OutputDevice: Leuchtscheibe
   Remove: Remove
   Remove Entry: Bemerkung entfernen
   Search: Suche
@@ -31,6 +33,7 @@ de:
     formats:
       default: Alarmpunkt 4
       short: AP4
+  accu_montage_date: Akku Einbau Datum
   address: Adresse
   address_number: Adress Nummer
   addresses:
@@ -51,6 +54,8 @@ de:
   central_devices:
     edit:
       Edit: Anlage bearbeiten
+    form:
+      accu: Akku
     index:
       New: Neues Anlage
       placeholder: Anlagennummer, -typ, Standort, ...
@@ -78,6 +83,7 @@ de:
     index:
       placeholder: Adressdetails Name, Telefonnummer, ...
   customers_title: Kunden
+  defect: Defekt
   description: Beschreibung
   details: Details
   device_number: Anlagennummer
@@ -90,6 +96,7 @@ de:
     formats:
       default: Ausgetauscht
       short: GW
+  'false': Nein
   field_required: "(*) benötigt"
   gas_type: Gasart
   gas_types:
@@ -100,7 +107,9 @@ de:
     new:
       New: Neue Gasart speichern
   gas_types_title: Gasarten
+  has_accu: Akku vorhanden
   history: History
+  invert: invertiert
   livetime:
     formats:
       default: Nächster Wechsel
@@ -134,7 +143,9 @@ de:
   object_nr: Objekt Nr.
   object_number: Objekt Nummer
   of: von
-  output_devices: LS
+  ok: Ok
+  old_used: verbraucht
+  output_devices: Leuchtscheibe
   page: Seite
   sensor_number:
     formats:
@@ -195,6 +206,7 @@ de:
       month_year: "%m/%y"
       only_year: "%Y"
       short: "%d.%m.%Y"
+  'true': Ja
   type: Typ
   until: bis
   updated_at: aktualisiert
@@ -204,6 +216,7 @@ de:
   with_shortcomings: mit Mängeln
   working: funktionstüchtig
   years: Jahre
+  'yes': Ja
   zero_point:
     formats:
       default: Nullpunkt

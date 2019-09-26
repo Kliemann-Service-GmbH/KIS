@@ -1,4 +1,11 @@
 FactoryBot.define do
+  factory :alarm_output do
+    key { "MyString" }
+    value { "MyString" }
+    invert { false }
+    central_device
+  end
+
   factory :output_device do
     service_object { nil }
     accu { nil }
@@ -13,10 +20,6 @@ FactoryBot.define do
     entry { "MyText" }
   end
 
-  factory :accu do
-    central_device
-  end
-
   factory :address do
     address_type { 'FactoryBot' }
     address_details {
@@ -26,6 +29,9 @@ FactoryBot.define do
         address_number: rand(1000..9999)
       }
     }
+  end
+
+  factory :accu do
   end
 
   factory :alarm_setting do
