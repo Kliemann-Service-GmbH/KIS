@@ -137,7 +137,6 @@ prawn_document do |pdf|
       ]]
     end
 
-
     # This generates the table
     pdf.table data_output_device,
       width: pdf.bounds.right,
@@ -156,6 +155,7 @@ prawn_document do |pdf|
       "#{t('zero_point.formats.short')}",
       "#{t(:gas_type)}",
       "#{t(:sensor_type)}",
+      "GT",
       "#{t('measuring_range.formats.short')}",
       "#{t('exchanged.formats.short')}",
       "#{t('next_exchange.formats.short')}",
@@ -175,6 +175,7 @@ prawn_document do |pdf|
         "",
         sensor.gas_type.name_with_formula,
         sensor.sensor_type.name,
+        "",
         sensor.operational_range,
         "#{l sensor.application_date, format: :month_year unless sensor.application_date.nil?}",
         "#{l sensor.livetime, format: :month_year unless sensor.livetime.nil?}",
@@ -190,7 +191,7 @@ prawn_document do |pdf|
     # empty rows
     (0..1).each do
       data_sensor += [[
-        " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " "
+        " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " "
       ]]
     end
 
@@ -218,16 +219,33 @@ prawn_document do |pdf|
       cell_style: { border_width: 0.5, size: 7 } do
         row(0).font_style = :bold
       end
+    # Legende
+    # Legende Sensor Status
     # Legende Sensor Status
     pdf.move_down 2
-    pdf.formatted_text [
-      { :text => "O", size: 8, styles: [:bold] },
-      { :text => "=>#{t(:ok)}; ", size: 8 },
-      { :text => "V", size: 8, styles: [:bold] },
-      { :text => "=>#{t(:old_used)}; ", size: 8 },
-      { :text => "D", size: 8, styles: [:bold] },
-      { :text => "=>#{t(:defect)}", size: 8 },
-    ], align: :right
+    current_line = pdf.cursor
+    pdf.bounding_box [pdf.bounds.left , current_line], width: width_half, height: row_height do
+      pdf.text "0) Kunststoff 100x6040 (CO-Sensor alt)", size: 8
+      pdf.text "1) Kunststoff 80x80x50 (Bocube 80806 grau 2x Loch im Unterteil)", size: 8
+      pdf.text "2) Aluminium 80x80x60 (Rolec Loch im Deckel)", size: 8
+      pdf.text "3) Aluminium 100x6040 (Gassensor IR)", size: 8
+      pdf.text "4) Kunststoff 100x8060 (Bocube B100806 Loch im Deckel)", size: 8
+      pdf.text "5) Kunststoff 100x8060 (Bocube B100806 Loch im Unterteil)", size: 8
+      pdf.text "6) Kunststoff 200x8060 (Bocube B100806 Loch im Deckel)", size: 8
+      pdf.text "7) Kunststoff 80x80x50 (Bocube B100806 Loch im Deckel)", size: 8
+      pdf.text "8) Aluminium 80x80x60 (Rolec Loch im Unterteil)", size: 8
+      pdf.text "9) sonstiges Gehäuse (unbekannt)", size: 8
+    end
+    pdf.bounding_box [pdf.bounds.left + width_half, current_line], width: width_half, height: row_height do
+      pdf.formatted_text [
+        { :text => "O", size: 8, styles: [:bold] },
+        { :text => "=>#{t(:ok)}; ", size: 8 },
+        { :text => "V", size: 8, styles: [:bold] },
+        { :text => "=>#{t(:old_used)}; ", size: 8 },
+        { :text => "D", size: 8, styles: [:bold] },
+        { :text => "=>#{t(:defect)}", size: 8 },
+      ], align: :right
+    end
 
     pdf.move_down 20
 
