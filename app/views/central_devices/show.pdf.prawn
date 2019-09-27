@@ -204,16 +204,17 @@ prawn_document do |pdf|
         1 => 20, # NP
         2 => 60, # Gasart
         3 => 50, # Sensortyp
-        4 => 30, # MB
-        5 => 30, # GW
-        6 => 30, # NW
-        7 => 25, # AP1
-        8 => 25, # AP2
-        9 => 25, # AP3
-        10 => 25, # AP4
-        11 => 25, # SI
-        # 12 => 120, # Standort
-        13 => 50
+        4 => 20, # GT
+        5 => 30, # MB
+        6 => 30, # GW
+        7 => 30, # NW
+        8 => 25, # AP1
+        9 => 25, # AP2
+        10 => 25, # AP3
+        11 => 25, # AP4
+        12 => 25, # SI
+        # 13 => 120, # Standort
+        14 => 50
       },
       row_colors: ["F0F0F0","FFFFFF"],
       cell_style: { border_width: 0.5, size: 7 } do
@@ -224,20 +225,34 @@ prawn_document do |pdf|
     # Legende Sensor Status
     pdf.move_down 2
     current_line = pdf.cursor
-    pdf.bounding_box [pdf.bounds.left , current_line], width: width_half, height: row_height do
-      pdf.text "0) Kunststoff 100x6040 (CO-Sensor alt)", size: 8
-      pdf.text "1) Kunststoff 80x80x50 (Bocube 80806 grau 2x Loch im Unterteil)", size: 8
-      pdf.text "2) Aluminium 80x80x60 (Rolec Loch im Deckel)", size: 8
-      pdf.text "3) Aluminium 100x6040 (Gassensor IR)", size: 8
-      pdf.text "4) Kunststoff 100x8060 (Bocube B100806 Loch im Deckel)", size: 8
-      pdf.text "5) Kunststoff 100x8060 (Bocube B100806 Loch im Unterteil)", size: 8
-      pdf.text "6) Kunststoff 200x8060 (Bocube B100806 Loch im Deckel)", size: 8
-      pdf.text "7) Kunststoff 80x80x50 (Bocube B100806 Loch im Deckel)", size: 8
-      pdf.text "8) Aluminium 80x80x60 (Rolec Loch im Unterteil)", size: 8
-      pdf.text "9) sonstiges Gehäuse (unbekannt)", size: 8
+    pdf.bounding_box [pdf.bounds.left , current_line], width: width_half + 100, height: row_height do
+      pdf.formatted_text [
+        { :text => "Gehäusetyp (GT): ", size: 8, styles: [:bold] },
+        { :text => "0) ", size: 8, styles: [:bold] },
+        { :text => "Kunststoff 100x6040 (CO-Sensor alt); ", size: 8 },
+        { :text => "1) ", size: 8, styles: [:bold] },
+        { :text => "Kunststoff 80x80x50 (Bocube 80806 grau 2x Loch im Unterteil); ", size: 8 },
+        { :text => "2) ", size: 8, styles: [:bold] },
+        { :text => "Aluminium 80x80x60 (Rolec Loch im Deckel); ", size: 8 },
+        { :text => "3) ", size: 8, styles: [:bold] },
+        { :text => "Aluminium 100x6040 (Gassensor IR); ", size: 8 },
+        { :text => "4) ", size: 8, styles: [:bold] },
+        { :text => "Kunststoff 100x8060 (Bocube B100806 Loch im Deckel); ", size: 8 },
+        { :text => "5) ", size: 8, styles: [:bold] },
+        { :text => "Kunststoff 100x8060 (Bocube B100806 Loch im Unterteil); ", size: 8 },
+        { :text => "6) ", size: 8, styles: [:bold] },
+        { :text => "Kunststoff 200x8060 (Bocube B100806 Loch im Deckel); ", size: 8 },
+        { :text => "7) ", size: 8, styles: [:bold] },
+        { :text => "Kunststoff 80x80x50 (Bocube B100806 Loch im Deckel); ", size: 8 },
+        { :text => "8) ", size: 8, styles: [:bold] },
+        { :text => "Aluminium 80x80x60 (Rolec Loch im Unterteil); ", size: 8 },
+        { :text => "9) ", size: 8, styles: [:bold] },
+        { :text => "sonstiges Gehäuse (unbekannt); ", size: 8 },
+      ], align: :left
     end
     pdf.bounding_box [pdf.bounds.left + width_half, current_line], width: width_half, height: row_height do
       pdf.formatted_text [
+        { :text => "Zustand: ", size: 8, styles: [:bold] },
         { :text => "O", size: 8, styles: [:bold] },
         { :text => "=>#{t(:ok)}; ", size: 8 },
         { :text => "V", size: 8, styles: [:bold] },
