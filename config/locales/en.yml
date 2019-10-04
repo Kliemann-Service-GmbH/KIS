@@ -50,6 +50,10 @@ en:
       default: Default
       short: Short
   begin: Begin
+  case_type:
+    formats:
+      default: Default
+      short: Short
   central_device: Central device
   central_devices:
     edit:

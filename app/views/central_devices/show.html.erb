@@ -99,11 +99,13 @@
 
 <hr>
 
+<!-- BEGIN Sensors -->
 <table class="table is-fullwidth is-bordered is-striped is-hoverable">
   <thead>
     <tr>
       <th><abbr title="<%= t('sensor_number.formats.default') %>"><%= t('sensor_number.formats.short') %></abbr></th>
       <th><%= t :sensor_type %></th>
+      <th><abbr title="<%= t 'case_type.formats.default' %>"><%= t 'case_type.formats.short' %></abbr></th>
       <th><%= t :gas_type %></th>
       <th><abbr title="<%= t 'min_value.formats.default' %>"><%= t 'min_value.formats.short' %></abbr></th>
       <th><abbr title="<%= t 'max_value.formats.default' %>"><%= t 'max_value.formats.short' %></abbr></th>
@@ -121,6 +123,7 @@
     <tr>
       <th><abbr title="<%= t('sensor_number.formats.default') %>"><%= t('sensor_number.formats.short') %></abbr></th>
       <th><%= t :sensor_type %></th>
+      <th><abbr title="<%= t 'case_type.formats.default' %>"><%= t 'case_type.formats.short' %></abbr></th>
       <th><%= t :gas_type %></th>
       <th><abbr title="<%= t 'min_value.formats.default' %>"><%= t 'min_value.formats.short' %></abbr></th>
       <th><abbr title="<%= t 'max_value.formats.default' %>"><%= t 'max_value.formats.short' %></abbr></th>
@@ -140,7 +143,7 @@
   <% end %>
   </tbody>
 </table>
-
+<!-- END Sensors -->
 
 <div class="columns">
   <div class="column">

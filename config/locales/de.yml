@@ -50,6 +50,10 @@ de:
       default: Installations Datum
       short: Inst
   begin: Beginn
+  case_type:
+    formats:
+      default: Gehäusetyp
+      short: GT
   central_device: Anlage
   central_devices:
     edit:

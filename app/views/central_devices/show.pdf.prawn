@@ -155,7 +155,7 @@ prawn_document do |pdf|
       "#{t('zero_point.formats.short')}",
       "#{t(:gas_type)}",
       "#{t(:sensor_type)}",
-      "GT",
+      "#{t('case_type.formats.short')}",
       "#{t('measuring_range.formats.short')}",
       "#{t('exchanged.formats.short')}",
       "#{t('next_exchange.formats.short')}",
@@ -227,7 +227,7 @@ prawn_document do |pdf|
     current_line = pdf.cursor
     pdf.bounding_box [pdf.bounds.left , current_line], width: width_half + 100, height: row_height do
       pdf.formatted_text [
-        { :text => "Gehäusetyp (GT): ", size: 8, styles: [:bold] },
+        { :text => "#{t('case_type.formats.default')} (#{t('case_type.formats.short')}): ", size: 8, styles: [:bold] },
         { :text => "0) ", size: 8, styles: [:bold] },
         { :text => "Kunststoff 100x6040 (CO-Sensor alt); ", size: 8 },
         { :text => "1) ", size: 8, styles: [:bold] },
@@ -252,7 +252,7 @@ prawn_document do |pdf|
     end
     pdf.bounding_box [pdf.bounds.left + width_half, current_line], width: width_half, height: row_height do
       pdf.formatted_text [
-        { :text => "Zustand: ", size: 8, styles: [:bold] },
+        { :text => "#{t('status')}: ", size: 8, styles: [:bold] },
         { :text => "O", size: 8, styles: [:bold] },
         { :text => "=>#{t(:ok)}; ", size: 8 },
         { :text => "V", size: 8, styles: [:bold] },
