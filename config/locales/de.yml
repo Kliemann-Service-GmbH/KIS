@@ -142,6 +142,7 @@ de:
       short: NW
   not_working: nicht funktionstüchtig
   notes: Bemerkungen
+  object: Objekt
   object_address: Objekt Adresse
   object_device_number: "<Objekt>-<Anlagennummer>"
   object_nr: Objekt Nr.
@@ -167,6 +168,10 @@ de:
   sensors: Sensoren
   serial_number: Seriennummer
   service_contract: Wartungsvertrag
+  service_contract_auto_resume_interval: automatische Verlängerung
+  service_contract_begin: Beginn des Wartungsvertrags
+  service_contract_end: Ende des Wartungsvertrags
+  service_contracts: Wartungsverträge
   service_object: Objekt
   service_objects:
     edit:

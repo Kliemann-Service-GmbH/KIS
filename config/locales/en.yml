@@ -142,6 +142,7 @@ en:
       short: Short
   not_working: Not working
   notes: Notes
+  object: Object
   object_address: Object address
   object_device_number: Object device number
   object_nr: Object nr
@@ -167,6 +168,10 @@ en:
   sensors: Sensors
   serial_number: Serial number
   service_contract: Service contract
+  service_contract_auto_resume_interval: Service contract auto resume interval
+  service_contract_begin: Service contract begin
+  service_contract_end: Service contract end
+  service_contracts: Service contracts
   service_object: Service object
   service_objects:
     edit:

@@ -1,11 +1,11 @@
 require "rails_helper"
 
-RSpec.describe ServiceContract, type: :controller do
+RSpec.describe ServiceContractsController, type: :controller do
 
   describe "GET index" do
-    it "assigns @serive_contracts" do
+    it "assigns @service_contracts" do
       get :index
-      exoect(assigns(:service_contracts)).to eq([])
+      expect(assigns(:service_contracts)).to eq([])
     end
 
     it "renders the index template" do

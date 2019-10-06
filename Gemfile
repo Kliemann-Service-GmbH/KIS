@@ -75,6 +75,8 @@ group :development, :test do
   # https://github.com/thoughtbot/factory_bot/blob/master/GETTING_STARTED.md
   gem 'factory_bot_rails'
   gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
+
+  gem 'rails-controller-testing'
 end
 
 # SQL Server support

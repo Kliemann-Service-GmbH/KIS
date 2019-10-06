@@ -19,6 +19,8 @@ Rails.application.routes.draw do
   end
   resources :service_objects, path: "Objekte"
 
+  resources :service_contracts, only: [:index, :show]
+
   resources :central_devices
   resources :central_devices, path: "Geraete"
 

@@ -4,7 +4,7 @@ RSpec.describe ServiceContract, type: :routing do
   describe 'Index view' do
     it "should route 'service_contracts/", :to => 'service_contracts#index' do
       expect(:get => "/service_contracts").to route_to(
-        controller: "service_contracts"
+        controller: "service_contracts", action: "index"
       )
     end
   end
