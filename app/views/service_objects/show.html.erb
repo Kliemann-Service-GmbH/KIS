@@ -9,7 +9,7 @@
 <div class="container">
   <div class="">
     <%= link_to customer_path(@service_object.customer) do %>
-      <%= render partial: "addresses/attributes", locals: { address: @service_object.customer.address } %>
+      <%= render partial: "customers/attributes", locals: { customer: @service_object.customer } %>
     <% end %>
   </div>
 </div>
