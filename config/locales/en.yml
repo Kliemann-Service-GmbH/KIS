@@ -6,6 +6,7 @@ en:
   AlarmOutputs: Alarmoutputs
   Auto resume can't be set without a valid begin or end: Auto resume can't be set without a valid begin or end
   Back: Back
+  Database synchronization started: Database synchronization started
   Destroy: Destroy
   Edit: Edit
   End can't be in the past if the service contracts begin starts in the future: Can't be in the past if service contract begin is in the future
@@ -87,6 +88,7 @@ en:
     index:
       placeholder: Placeholder
   customers_title: Customers title
+  db_import_legacy: Db import legacy
   defect: Defect
   description: Description
   details: Details

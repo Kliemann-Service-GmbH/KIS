@@ -6,6 +6,7 @@ de:
   AlarmOutputs: Alarmausgänge
   Auto resume can't be set without a valid begin or end: Ohne gültigen Beginn oder Ende des Vertrags kann die automatische Verlängerung nicht gesetzt werden!
   Back: zurück
+  Database synchronization started: Datenbankabgleich gestartet
   Destroy: löschen
   Edit: bearbeiten
   End can't be in the past if the service contracts begin starts in the future: Ende des Vertrags kann nicht in der Vergangenheit liegen wenn der Vertrag in der Zukunft beginnt!
@@ -87,6 +88,7 @@ de:
     index:
       placeholder: Adressdetails Name, Telefonnummer, ...
   customers_title: Kunden
+  db_import_legacy: Datenbankabgleich
   defect: Defekt
   description: Beschreibung
   details: Details
