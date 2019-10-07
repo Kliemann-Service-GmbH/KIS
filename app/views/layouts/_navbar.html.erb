@@ -17,6 +17,11 @@
       <%= link_to t(:gas_types_title), :gas_types, class: 'navbar-item' %>
       <%= link_to t(:sensor_types_title), :sensor_types, class: 'navbar-item' %>
       <%= link_to t(:si_units_title), :si_units, class: 'navbar-item' %>
+      <%= link_to t(:service_contracts), :service_contracts, class: 'navbar-item notification is-warning' %>
+    </div>
+
+    <div class="navbar-end">
+      <%= link_to t(:db_import_legacy), system_task_db_import_legacy_path, class: 'button is-danger' %>
     </div>
   </div>
 </nav>

@@ -6,6 +6,7 @@ en:
   AlarmOutputs: Alarmoutputs
   Auto resume can't be set without a valid begin or end: Auto resume can't be set without a valid begin or end
   Back: Back
+  Database synchronization started: Database synchronization started
   Destroy: Destroy
   Edit: Edit
   End can't be in the past if the service contracts begin starts in the future: Can't be in the past if service contract begin is in the future
@@ -87,6 +88,7 @@ en:
     index:
       placeholder: Placeholder
   customers_title: Customers title
+  db_import_legacy: Db import legacy
   defect: Defect
   description: Description
   details: Details
@@ -142,6 +144,7 @@ en:
       short: Short
   not_working: Not working
   notes: Notes
+  object: Object
   object_address: Object address
   object_device_number: Object device number
   object_nr: Object nr
@@ -167,6 +170,10 @@ en:
   sensors: Sensors
   serial_number: Serial number
   service_contract: Service contract
+  service_contract_auto_resume_interval: Service contract auto resume interval
+  service_contract_begin: Service contract begin
+  service_contract_end: Service contract end
+  service_contracts: Service contracts
   service_object: Service object
   service_objects:
     edit:

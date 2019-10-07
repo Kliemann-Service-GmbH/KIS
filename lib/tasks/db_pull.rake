@@ -9,34 +9,38 @@ namespace :db do
   task :pull => [:dump, :restore]
 
   desc '''
-Dump der Datenbank (:env) auf :host erstellen.
+Dump der Datenbank (:env) auf (:host) erstellen.
 Beispiel Aufruf:
   `rake db:dump[production,kis]`
 '''
   task :dump, [:env, :host] do |t, args|
     args.with_defaults(:env => 'staging', :host => 'stage')
-
     dumpfile = "#{Rails.root}/tmp/latest-#{args.env}.dump"
-    puts "PG_DUMP on #{args.host}: #{args.env} database ..."
-    environment = Rails.application.config.database_configuration["#{args.env}"]
-    system "ssh kis@#{args.host} 'PGPASSWORD=\"#{environment['password']}\" pg_dump -U postgres #{environment['database']} -h #{environment['host']} -F t' > \"#{dumpfile}\""
+    # FIXME: Check and exception if credentials not set `rails credentials:edit`
+    database = Rails.application.credentials[args.env.to_sym][:postgres][:database]
+    username = Rails.application.credentials[args.env.to_sym][:postgres][:username]
+    password = Rails.application.credentials[args.env.to_sym][:postgres][:password]
+
+    puts "PG_DUMP on host: [#{args.host}] and database: [#{args.env}] ..."
+    system "ssh kis@#{args.host} pg_dump postgresql://#{username}:#{password}@127.0.0.1:5432/#{database} -Ft > \"#{dumpfile}\""
     puts 'Done!'
   end
 
   desc '''
-Restore des Dump (:env)
+Restore des Dump (:from) auf die Datenbank (:to)
 Beispiel Aufruf:
-  `rake db:restore[production]`
+  `rake db:restore[production,development]`
 '''
-  task :restore, [:env] do |t, args|
-    args.with_defaults(:env => 'staging')
+  task :restore, [:from, :to] do |t, args|
+    args.with_defaults(:from => 'staging', :to => 'development')
+    dumpfile = "#{Rails.root}/tmp/latest-#{args.from}.dump"
+    # FIXME: Check and exception if credentials not set `rails credentials:edit`
+    database = Rails.application.credentials[args.to.to_sym][:postgres][:database]
+    username = Rails.application.credentials[args.to.to_sym][:postgres][:username]
+    password = Rails.application.credentials[args.to.to_sym][:postgres][:password]
 
-    development = Rails.application.config.database_configuration['development']
-    dumpfile = "#{Rails.root}/tmp/latest-#{args.env}.dump"
-    puts "PG_RESTORE on #{args.env} database..."
-    environment = Rails.application.config.database_configuration["#{args.env}"]
-    # system "PGPASSWORD=\"#{environment['password']}\" pg_restore --verbose --clean --no-acl --no-owner -h #{development['host']} -p #{development['port']} -U #{development['username']} -d #{development['database']} \"#{dumpfile}\""
-    system "pg_restore --verbose --clean --no-acl --no-owner -h #{development['host']} -p #{development['port']} -U #{development['username']} -d #{development['database']} \"#{dumpfile}\""
+    puts "PG_RESTORE from [#{args.from}] database to [#{args.to}] database ..."
+    system "pg_restore --verbose --clean --no-acl --no-owner -h localhost -p 54321 -U #{username} -d #{database} \"#{dumpfile}\""
     puts 'Done!'
   end
 end

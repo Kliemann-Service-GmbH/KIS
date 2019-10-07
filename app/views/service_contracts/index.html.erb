@@ -1,0 +1,24 @@
+<h1 class=title><%= t(:service_contracts) %></h1>
+
+<table  class="table is-fullwidth is-bordered is-striped is-hoverable">
+  <thead>
+    <tr>
+      <th><%= t :object %></th>
+      <th><%= t :customer %></th>
+      <th><%= t :service_contract_begin %></th>
+      <th><%= t :service_contract_end %></th>
+      <th><%= t :service_contract_auto_resume_interval %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% for service_contract in @service_contracts do %>
+    <tr>
+      <td><%= link_to service_contract.address.address_line, service_object_path( service_contract ) %></td>
+      <td><%= link_to service_contract.customer.address.address_line, customer_path( service_contract.customer ) %></td>
+      <td><%= l service_contract.service_contract_begin, format: :short unless service_contract.service_contract_begin.nil? %></td>
+      <td><%= l service_contract.service_contract_end, format: :short unless service_contract.service_contract_end.nil? %></td>
+      <td><%= service_contract.service_contract_auto_resume_interval %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

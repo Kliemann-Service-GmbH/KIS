@@ -5,6 +5,23 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Added
+- Wartungsverträge können nun in einer eigenen Ansicht angezeigt werden.
+- Dateiname PDF Prüfprotokoll
+    Das Prüfprotokoll PDF besitzt nun ein default Dateinamen, sichtbar wenn man
+    versucht das PDF Dokument zu speichern.
+- Datenbankabgleich mittels eines Button
+    Es ist nun möglich dem Datenabgleich von der Weboberfläche aus zu starten
+- Deutsche Endpunkte zur leichten Erreichbarkeit der einzelnen Daten
+    http://kis.gaswarnanlagen.lan/adressen
+    http://kis.gaswarnanlagen.lan/gasarten
+    http://kis.gaswarnanlagen.lan/geräte
+    http://kis.gaswarnanlagen.lan/kunden
+    http://kis.gaswarnanlagen.lan/objekte
+    http://kis.gaswarnanlagen.lan/sensorarten
+    http://kis.gaswarnanlagen.lan/si_einheiten
+    http://kis.gaswarnanlagen.lan/wartungsverträge
+
 
 ## [0.5.9]
 ### Added
