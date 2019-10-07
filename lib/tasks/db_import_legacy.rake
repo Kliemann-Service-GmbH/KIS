@@ -82,7 +82,6 @@ def legacy_database
 end
 
 def db_reachable
-  return
   Socket.tcp(
     Rails.application.credentials[:legacy_database][:host],
     Rails.application.credentials[:legacy_database][:port],
