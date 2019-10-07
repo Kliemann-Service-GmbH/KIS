@@ -1,6 +1,6 @@
 require "prawn/measurement_extensions"
 
-prawn_document do |pdf|
+prawn_document(filename: "Prüfprotokoll-##{@central_device.service_object.object_number}-#{@central_device.device_number} #{@central_device.service_object.address.match_code}") do |pdf|
   # Font setup
   pdf.font_families.update(
     "Arial" => {
