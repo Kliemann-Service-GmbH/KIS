@@ -1,6 +1,6 @@
 # TODO
-
 ## [High priority]
+* RSpec Tests für alle Teile der Seite
 * Notification Mailer
   * `rails generate mailer Notification service_contract_expired`
   * DEBUG
@@ -37,5 +37,6 @@
     ```
 
 ## [Low priority]
+* Refactor Routes, aber erst nach den Tests https://guides.rubyonrails.org/routing.html#shallow-nesting
 * cypress.io Rails integration https://github.com/shakacode/cypress-on-rails
 * cypress.io Tests
