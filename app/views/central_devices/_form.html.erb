@@ -169,7 +169,7 @@
         </table>
         <!-- BEGIN Actions AlarmOutput-->
         <div class="actions">
-          <%= link_to_add_association t('Add AlarmOutput'), form, :alarm_outputs, class: 'button is-info', data: {
+          <%= link_to_add_association I18n.t('Add AlarmOutput'), form, :alarm_outputs, class: 'button is-info', data: {
             association_insertion_method: 'append',
             association_insertion_node: '.alarm_outputs'
           } %>
@@ -187,6 +187,7 @@
       <tr>
         <th><abbr title="<%= t 'sensor_number.formats.default' %>"><%= t 'sensor_number.formats.short' %></abbr></th>
         <th><%= t :sensor_type %></th>
+        <th><abbr title="<%= t 'case_type.formats.default' %>"><%= t 'case_type.formats.short' %></abbr></th>
         <th><%= t :gas_type %></th>
         <th><abbr title="<%= t 'min_value.formats.default' %>"><%= t 'min_value.formats.short' %></abbr></th>
         <th><abbr title="<%= t 'max_value.formats.default' %>"><%= t 'max_value.formats.short' %></abbr></th>
@@ -205,6 +206,7 @@
       <tr>
         <th><abbr title="<%= t 'sensor_number.formats.default' %>"><%= t 'sensor_number.formats.short' %></abbr></th>
         <th><%= t :sensor_type %></th>
+        <th><abbr title="<%= t 'case_type.formats.default' %>"><%= t 'case_type.formats.short' %></abbr></th>
         <th><%= t :gas_type %></th>
         <th><abbr title="<%= t 'min_value.formats.default' %>"><%= t 'min_value.formats.short' %></abbr></th>
         <th><abbr title="<%= t 'max_value.formats.default' %>"><%= t 'max_value.formats.short' %></abbr></th>

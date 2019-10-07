@@ -6,6 +6,7 @@ de:
   AlarmOutputs: Alarmausgänge
   Auto resume can't be set without a valid begin or end: Ohne gültigen Beginn oder Ende des Vertrags kann die automatische Verlängerung nicht gesetzt werden!
   Back: zurück
+  Database synchronization started: Datenbankabgleich gestartet
   Destroy: löschen
   Edit: bearbeiten
   End can't be in the past if the service contracts begin starts in the future: Ende des Vertrags kann nicht in der Vergangenheit liegen wenn der Vertrag in der Zukunft beginnt!
@@ -50,6 +51,10 @@ de:
       default: Installations Datum
       short: Inst
   begin: Beginn
+  case_type:
+    formats:
+      default: Gehäusetyp
+      short: GT
   central_device: Anlage
   central_devices:
     edit:
@@ -83,6 +88,7 @@ de:
     index:
       placeholder: Adressdetails Name, Telefonnummer, ...
   customers_title: Kunden
+  db_import_legacy: Datenbankabgleich
   defect: Defekt
   description: Beschreibung
   details: Details
@@ -138,6 +144,7 @@ de:
       short: NW
   not_working: nicht funktionstüchtig
   notes: Bemerkungen
+  object: Objekt
   object_address: Objekt Adresse
   object_device_number: "<Objekt>-<Anlagennummer>"
   object_nr: Objekt Nr.
@@ -163,6 +170,10 @@ de:
   sensors: Sensoren
   serial_number: Seriennummer
   service_contract: Wartungsvertrag
+  service_contract_auto_resume_interval: automatische Verlängerung
+  service_contract_begin: Beginn des Wartungsvertrags
+  service_contract_end: Ende des Wartungsvertrags
+  service_contracts: Wartungsverträge
   service_object: Objekt
   service_objects:
     edit:

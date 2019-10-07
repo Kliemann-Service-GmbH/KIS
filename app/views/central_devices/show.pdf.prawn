@@ -1,6 +1,6 @@
 require "prawn/measurement_extensions"
 
-prawn_document do |pdf|
+prawn_document(filename: "Prüfprotokoll-##{@central_device.service_object.object_number}-#{@central_device.device_number} #{@central_device.service_object.address.match_code}") do |pdf|
   # Font setup
   pdf.font_families.update(
     "Arial" => {
@@ -137,7 +137,6 @@ prawn_document do |pdf|
       ]]
     end
 
-
     # This generates the table
     pdf.table data_output_device,
       width: pdf.bounds.right,
@@ -156,6 +155,7 @@ prawn_document do |pdf|
       "#{t('zero_point.formats.short')}",
       "#{t(:gas_type)}",
       "#{t(:sensor_type)}",
+      "#{t('case_type.formats.short')}",
       "#{t('measuring_range.formats.short')}",
       "#{t('exchanged.formats.short')}",
       "#{t('next_exchange.formats.short')}",
@@ -175,6 +175,7 @@ prawn_document do |pdf|
         "",
         sensor.gas_type.name_with_formula,
         sensor.sensor_type.name,
+        "",
         sensor.operational_range,
         "#{l sensor.application_date, format: :month_year unless sensor.application_date.nil?}",
         "#{l sensor.livetime, format: :month_year unless sensor.livetime.nil?}",
@@ -190,7 +191,7 @@ prawn_document do |pdf|
     # empty rows
     (0..1).each do
       data_sensor += [[
-        " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " "
+        " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " "
       ]]
     end
 
@@ -203,31 +204,63 @@ prawn_document do |pdf|
         1 => 20, # NP
         2 => 60, # Gasart
         3 => 50, # Sensortyp
-        4 => 30, # MB
-        5 => 30, # GW
-        6 => 30, # NW
-        7 => 25, # AP1
-        8 => 25, # AP2
-        9 => 25, # AP3
-        10 => 25, # AP4
-        11 => 25, # SI
-        # 12 => 120, # Standort
-        13 => 50
+        4 => 20, # GT
+        5 => 30, # MB
+        6 => 30, # GW
+        7 => 30, # NW
+        8 => 25, # AP1
+        9 => 25, # AP2
+        10 => 25, # AP3
+        11 => 25, # AP4
+        12 => 25, # SI
+        # 13 => 120, # Standort
+        14 => 50
       },
       row_colors: ["F0F0F0","FFFFFF"],
       cell_style: { border_width: 0.5, size: 7 } do
         row(0).font_style = :bold
       end
+    # Legende
+    # Legende Sensor Status
     # Legende Sensor Status
     pdf.move_down 2
-    pdf.formatted_text [
-      { :text => "O", size: 8, styles: [:bold] },
-      { :text => "=>#{t(:ok)}; ", size: 8 },
-      { :text => "V", size: 8, styles: [:bold] },
-      { :text => "=>#{t(:old_used)}; ", size: 8 },
-      { :text => "D", size: 8, styles: [:bold] },
-      { :text => "=>#{t(:defect)}", size: 8 },
-    ], align: :right
+    current_line = pdf.cursor
+    pdf.bounding_box [pdf.bounds.left , current_line], width: width_half + 100, height: row_height do
+      pdf.formatted_text [
+        { :text => "#{t('case_type.formats.default')} (#{t('case_type.formats.short')}): ", size: 8, styles: [:bold] },
+        { :text => "0) ", size: 8, styles: [:bold] },
+        { :text => "Kunststoff 100x6040 (CO-Sensor alt); ", size: 8 },
+        { :text => "1) ", size: 8, styles: [:bold] },
+        { :text => "Kunststoff 80x80x50 (Bocube 80806 grau 2x Loch im Unterteil); ", size: 8 },
+        { :text => "2) ", size: 8, styles: [:bold] },
+        { :text => "Aluminium 80x80x60 (Rolec Loch im Deckel); ", size: 8 },
+        { :text => "3) ", size: 8, styles: [:bold] },
+        { :text => "Aluminium 100x6040 (Gassensor IR); ", size: 8 },
+        { :text => "4) ", size: 8, styles: [:bold] },
+        { :text => "Kunststoff 100x8060 (Bocube B100806 Loch im Deckel); ", size: 8 },
+        { :text => "5) ", size: 8, styles: [:bold] },
+        { :text => "Kunststoff 100x8060 (Bocube B100806 Loch im Unterteil); ", size: 8 },
+        { :text => "6) ", size: 8, styles: [:bold] },
+        { :text => "Kunststoff 200x8060 (Bocube B100806 Loch im Deckel); ", size: 8 },
+        { :text => "7) ", size: 8, styles: [:bold] },
+        { :text => "Kunststoff 80x80x50 (Bocube B100806 Loch im Deckel); ", size: 8 },
+        { :text => "8) ", size: 8, styles: [:bold] },
+        { :text => "Aluminium 80x80x60 (Rolec Loch im Unterteil); ", size: 8 },
+        { :text => "9) ", size: 8, styles: [:bold] },
+        { :text => "sonstiges Gehäuse (unbekannt); ", size: 8 },
+      ], align: :left
+    end
+    pdf.bounding_box [pdf.bounds.left + width_half, current_line], width: width_half, height: row_height do
+      pdf.formatted_text [
+        { :text => "#{t('status')}: ", size: 8, styles: [:bold] },
+        { :text => "O", size: 8, styles: [:bold] },
+        { :text => "=>#{t(:ok)}; ", size: 8 },
+        { :text => "V", size: 8, styles: [:bold] },
+        { :text => "=>#{t(:old_used)}; ", size: 8 },
+        { :text => "D", size: 8, styles: [:bold] },
+        { :text => "=>#{t(:defect)}", size: 8 },
+      ], align: :right
+    end
 
     pdf.move_down 20
 

@@ -8,6 +8,7 @@
 #  alarm_point_3     :decimal(, )
 #  alarm_point_4     :decimal(, )
 #  application_date  :datetime
+#  case_type         :integer
 #  livetime          :datetime
 #  location          :string
 #  max_value         :decimal(, )

@@ -1,6 +1,7 @@
 <tr class="nested-fields">
   <td><%= f.text_field :number, class: 'input is-fullwidth' %></td>
   <td><%= f.collection_select :sensor_type_id, SensorType.all, :id, :name, class: '' %></td>
+  <td><%= f.text_field :case_type, class: 'input is-fullwidth' %></td>
   <td><%= f.collection_select :gas_type_id, GasType.all, :id, :name_with_formula, class: '' %></td>
   <td><%= f.text_field :min_value, class: 'input' %></td>
   <td><%= f.text_field :max_value, class: 'input' %></td>
