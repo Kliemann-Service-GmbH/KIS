@@ -6,6 +6,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 ### Added
+- Wartungsverträge können nun in einer eigenen Ansicht angezeigt werden.
 - Dateiname PDF Prüfprotokoll
     Das Prüfprotokoll PDF besitzt nun ein default Dateinamen
 
