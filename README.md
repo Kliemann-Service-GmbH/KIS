@@ -51,7 +51,30 @@ Wärend der Entwicklung kann mit folgendem Befehl ein Live Reload im Browser akt
 guard
 ```
 
-# Lizens
+## Datenbank Import/ Export
+
+```bash
+rake db:pull[production,kis]
+```
+
+```bash
+rake db:restore[production,development]
+```
+
+Danach ist es wichtig die Datenbank wieder in den development Modus zu versetzen
+
+```bash
+bin/rails db:environment:set RAILS_ENV=development
+```
+
+Außerdem kann es sein das nicht alle Migrationen in der soeben importierten Datenbank integriert wurden
+
+```bash
+rake db:migrate
+```
+
+
+# Lizenz
 
 
 KIS - Kliemann-Service Info System

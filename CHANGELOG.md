@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 ### Added
+- Gehäusetypen können nun für Sensoren erfasst werden
+- Formularfelder für die Gehäusetypen der Sensoren sind nun im PDF Formular
+- Im Prüfprotokoll PDF gibt es nun eine Legende für die Geäusetypen,
+    sie sind unter den Sensoren zu finden
 - Wartungsverträge können nun in einer eigenen Ansicht angezeigt werden.
 - Dateiname PDF Prüfprotokoll
     Das Prüfprotokoll PDF besitzt nun ein default Dateinamen, sichtbar wenn man
