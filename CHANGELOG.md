@@ -6,6 +6,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.6.1]
+### Added
+- Prüfprotokoll PDF angepasst
+  - die Spalte "Gehäusetyp" wird mit den Daten der Datenbank gefüllt,
+    das wurde in der letzten Version einfach vergessen
+  - die Spalte "gewechselt" GW wird nun nicht mehr mit den Daten aus der
+    Datenbank gefüllt
+  - die Legende "Gehäusetyp" und "Zustand" (des Sensors) wurden unter die
+    Unterschriftenfelder verschoben
+  - die Legende "Zustand" (des Sensors) wurden die Buchstaben "O", "V" und
+    "D" in Zahlen geändert um Verwechselungen
+    mit "V" und einem Häckchen ✓ zu vermeiden
+
 ## [0.6.0]
 ### Added
 - Gehäusetypen können nun für Sensoren erfasst werden
