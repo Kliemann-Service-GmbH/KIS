@@ -175,9 +175,9 @@ prawn_document(filename: "Prüfprotokoll-##{@central_device.service_object.objec
         "",
         sensor.gas_type.name_with_formula,
         sensor.sensor_type.name,
-        "",
+        sensor.case_type,
         sensor.operational_range,
-        "#{l sensor.application_date, format: :month_year unless sensor.application_date.nil?}",
+        "",
         "#{l sensor.livetime, format: :month_year unless sensor.livetime.nil?}",
         sensor.alarm_point_1,
         sensor.alarm_point_2,
@@ -186,12 +186,6 @@ prawn_document(filename: "Prüfprotokoll-##{@central_device.service_object.objec
         sensor.si_unit.name,
         sensor.location,
         ""
-      ]]
-    end
-    # empty rows
-    (0..1).each do
-      data_sensor += [[
-        " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " "
       ]]
     end
 
@@ -220,47 +214,6 @@ prawn_document(filename: "Prüfprotokoll-##{@central_device.service_object.objec
       cell_style: { border_width: 0.5, size: 7 } do
         row(0).font_style = :bold
       end
-    # Legende
-    # Legende Sensor Status
-    # Legende Sensor Status
-    pdf.move_down 2
-    current_line = pdf.cursor
-    pdf.bounding_box [pdf.bounds.left , current_line], width: width_half + 100, height: row_height do
-      pdf.formatted_text [
-        { :text => "#{t('case_type.formats.default')} (#{t('case_type.formats.short')}): ", size: 8, styles: [:bold] },
-        { :text => "0) ", size: 8, styles: [:bold] },
-        { :text => "Kunststoff 100x6040 (CO-Sensor alt); ", size: 8 },
-        { :text => "1) ", size: 8, styles: [:bold] },
-        { :text => "Kunststoff 80x80x50 (Bocube 80806 grau 2x Loch im Unterteil); ", size: 8 },
-        { :text => "2) ", size: 8, styles: [:bold] },
-        { :text => "Aluminium 80x80x60 (Rolec Loch im Deckel); ", size: 8 },
-        { :text => "3) ", size: 8, styles: [:bold] },
-        { :text => "Aluminium 100x6040 (Gassensor IR); ", size: 8 },
-        { :text => "4) ", size: 8, styles: [:bold] },
-        { :text => "Kunststoff 100x8060 (Bocube B100806 Loch im Deckel); ", size: 8 },
-        { :text => "5) ", size: 8, styles: [:bold] },
-        { :text => "Kunststoff 100x8060 (Bocube B100806 Loch im Unterteil); ", size: 8 },
-        { :text => "6) ", size: 8, styles: [:bold] },
-        { :text => "Kunststoff 200x8060 (Bocube B100806 Loch im Deckel); ", size: 8 },
-        { :text => "7) ", size: 8, styles: [:bold] },
-        { :text => "Kunststoff 80x80x50 (Bocube B100806 Loch im Deckel); ", size: 8 },
-        { :text => "8) ", size: 8, styles: [:bold] },
-        { :text => "Aluminium 80x80x60 (Rolec Loch im Unterteil); ", size: 8 },
-        { :text => "9) ", size: 8, styles: [:bold] },
-        { :text => "sonstiges Gehäuse (unbekannt); ", size: 8 },
-      ], align: :left
-    end
-    pdf.bounding_box [pdf.bounds.left + width_half, current_line], width: width_half, height: row_height do
-      pdf.formatted_text [
-        { :text => "#{t('status')}: ", size: 8, styles: [:bold] },
-        { :text => "O", size: 8, styles: [:bold] },
-        { :text => "=>#{t(:ok)}; ", size: 8 },
-        { :text => "V", size: 8, styles: [:bold] },
-        { :text => "=>#{t(:old_used)}; ", size: 8 },
-        { :text => "D", size: 8, styles: [:bold] },
-        { :text => "=>#{t(:defect)}", size: 8 },
-      ], align: :right
-    end
 
     pdf.move_down 20
 
@@ -271,7 +224,7 @@ prawn_document(filename: "Prüfprotokoll-##{@central_device.service_object.objec
       pdf.line_width = 0.5
       pdf.stroke_bounds
       pdf.move_down 4
-      pdf.text "Alle Sensoren mit dem Zustand \"V\" oder \"D\" müssen ausgetauscht werden."
+      pdf.text "Alle Sensoren mit dem Zustand \"2\" oder \"3\" müssen ausgetauscht werden."
     end
     pdf.move_down 20
 
@@ -305,7 +258,53 @@ prawn_document(filename: "Prüfprotokoll-##{@central_device.service_object.objec
       pdf.stroke_horizontal_line 0, 150
       pdf.text t(:name_customer), size: 6
     end
-  end
+
+
+
+    # Legende
+    pdf.move_down 50
+
+    # Legende Sensor Status
+    pdf.bounding_box [pdf.bounds.left, pdf.cursor], width: pdf.bounds.width, height: 1.cm do
+      pdf.formatted_text [
+        { :text => "#{t('status')}: ", size: 8, styles: [:bold] },
+        { :text => "1", size: 8, styles: [:bold] },
+        { :text => "=>#{t(:ok)}; ", size: 8 },
+        { :text => "2", size: 8, styles: [:bold] },
+        { :text => "=>#{t(:old_used)}; ", size: 8 },
+        { :text => "3", size: 8, styles: [:bold] },
+        { :text => "=>#{t(:defect)}", size: 8 },
+      ], align: :left
+    end
+
+    # Legende Sensor Case
+    pdf.bounding_box [pdf.bounds.left , pdf.cursor], width: pdf.bounds.width, height: 2.cm do
+      pdf.formatted_text [
+        { :text => "#{t('case_type.formats.default')} (#{t('case_type.formats.short')}): ", size: 8, styles: [:bold] },
+        { :text => "0) ", size: 8, styles: [:bold] },
+        { :text => "Kunststoff 100x60x40 (CO-Sensor alt); ", size: 8 },
+        { :text => "1) ", size: 8, styles: [:bold] },
+        { :text => "Kunststoff 80x80x50 (Bocube 80806 grau 2x Loch im Unterteil); ", size: 8 },
+        { :text => "2) ", size: 8, styles: [:bold] },
+        { :text => "Aluminium 80x80x60 (Rolec Loch im Deckel); ", size: 8 },
+        { :text => "3) ", size: 8, styles: [:bold] },
+        { :text => "Aluminium 100x60x40 (Gassensor IR); ", size: 8 },
+        { :text => "4) ", size: 8, styles: [:bold] },
+        { :text => "Kunststoff 100x80x60 (Bocube B100806 Loch im Deckel); ", size: 8 },
+        { :text => "5) ", size: 8, styles: [:bold] },
+        { :text => "Kunststoff 100x80x60 (Bocube B100806 Loch im Unterteil); ", size: 8 },
+        { :text => "6) ", size: 8, styles: [:bold] },
+        { :text => "Kunststoff 200x80x60 (Bocube B100806 Loch im Deckel); ", size: 8 },
+        { :text => "7) ", size: 8, styles: [:bold] },
+        { :text => "Kunststoff 80x80x50 (Bocube B100806 Loch im Deckel); ", size: 8 },
+        { :text => "8) ", size: 8, styles: [:bold] },
+        { :text => "Aluminium 80x80x60 (Rolec Loch im Unterteil); ", size: 8 },
+        { :text => "9) ", size: 8, styles: [:bold] },
+        { :text => "sonstiges Gehäuse (unbekannt); ", size: 8 },
+      ], align: :left
+    end
+
+  end # END Body
 
   string ="#{t(:page)} <page> #{t(:of)} <total>"
   options ={
@@ -315,4 +314,6 @@ prawn_document(filename: "Prüfprotokoll-##{@central_device.service_object.objec
     :start_count_at => 1,
   }
   pdf.number_pages string, options
-end
+
+
+end # prawn document
