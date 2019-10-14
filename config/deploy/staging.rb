@@ -2,7 +2,7 @@ server "stage.kis.gaswarnanlagen.lan", user: "kis", roles: %w{app db web}
 
 set :stage, :staging
 
-set :branch, "development"
+set :branch, "release"
 
 
 #set :pg_generate_random_password, true # Generates a random password on each setup
