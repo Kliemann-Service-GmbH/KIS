@@ -7,6 +7,24 @@
   </div>
 </div>
 
+<div class="">
+  <div class="has-text-weight-bold">
+    <%= t('sensor_types.livetime') %>:
+  </div>
+  <div class="column">
+    <%= @sensor_type.livetime %>
+  </div>
+</div>
+
+<div class="">
+  <div class="has-text-weight-bold">
+    <%= t(:description) %>:
+  </div>
+  <div class="column">
+    <%= @sensor_type.description %>
+  </div>
+</div>
+
 <!-- Site Navigation -->
 <div style="padding-top: 1em">
 <%= link_to t('Edit'), edit_sensor_type_path(@sensor_type), class: "button is-warning" %>

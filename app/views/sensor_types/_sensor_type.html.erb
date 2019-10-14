@@ -1,9 +1,14 @@
 <tr>
   <td><%= sensor_type.name %></td>
+  <td><%= sensor_type.livetime %></td>
+  <td><%= sensor_type.description %></td>
   <td>
-    <%= link_to t('Destroy'), sensor_type, method: :delete, data: { confirm: 'Are you sure?' }, class: 'button is-danger' %>
+  <%= link_to t('Show'), sensor_type, class: 'button' %>
   </td>
   <td>
-    <%= link_to t('Edit'), edit_sensor_type_path(sensor_type), class: 'button' %>
+  <%= link_to t('Edit'), edit_sensor_type_path(sensor_type), class: 'button is-warning' %>
+  </td>
+  <td>
+  <%= link_to t('Destroy'), sensor_type, method: :delete, data: { confirm: 'Are you sure?' }, class: 'button is-danger' %>
   </td>
 </tr>

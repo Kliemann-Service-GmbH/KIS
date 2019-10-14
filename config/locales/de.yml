@@ -164,6 +164,7 @@ de:
       Edit: Sensortyp bearbeiten
     index:
       New: Neue Sensortyp erstellen
+    livetime: Lebensdauer
     new:
       New: Sensortyp speichern
   sensor_types_title: Sensortypen
