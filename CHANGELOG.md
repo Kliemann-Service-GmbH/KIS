@@ -6,11 +6,25 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 ### Added
+- Felder SensorTypen angepasst
+    - SensorTypen haben nun Felder für die Lebensdauer eines Sensortypes sowie
+      ein weiteres Feld für Beschreibungen (URLS ins Wiki oder ins Web)
 - Autom. Update nächster Wechsel (livetime) Sensoren
-    Im Sensor Model wurde ein Callback implementiert der das Datum für den
-    nächsten Wechsel automatisch ausfüllt. Es wird der Wert der Lebensdauer des
-    SensorTypes (in Jahren) addiert und in das Feld 'nächster Wechsel'
-    geschrieben
+    - Im Sensor Model wurde ein Callback implementiert der das Datum für den
+      nächsten Wechsel automatisch ausfüllt. Es wird der Wert der Lebensdauer des
+      SensorTypes (in Jahren) addiert und in das Feld 'nächster Wechsel'
+      geschrieben
+### Changed
+- Ansichten "SI Einheiten", "Gasarten" und "SensorTypen" wurden verbessert
+    - Die Erscheinung der Ansichten wurden vereinheitlicht.
+      D.h. die Index, Show und Edit Views sehen nun alle ähnlich aus
+- PDF Layout verbessert
+    - Die Legenede (Zustand und Gehäusetyp) hat teilweise die Seitennummern 
+      überschrieben. Das wurde durch eine weiteren 'neue Seite' Logik behoben
+- Sicherheitsupdate
+    - einige verwendete Gems wurden im audit mit Sicherheitsproblemen gemeldet
+- Fehlerbehebung
+    - der Datenbankabgleich erzeugte Fehler beim Aufruf der Unit Tests
 
 ## [0.6.1]
 ### Added
