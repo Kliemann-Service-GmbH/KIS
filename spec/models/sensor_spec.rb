@@ -36,11 +36,29 @@ RSpec.describe Sensor, type: :model do
   it "is valid with valid attributes" do
     expect(build(:sensor)).to be_valid
   end
+
+  context "without an application_date" do
+    it "sensors livetime is nil" do
+      sensor = create(:sensor)
+      expect(sensor.livetime).to eq nil
+    end
+  end
+
+  context "with application_date" do
+    it "updates the sensors livetime" do
+      # Setup
+      # create a sensor with a sensor_type were a livetime was set
+      sensor = create(:sensor_with_application_date, sensor_type: create(:sensor_type, livetime: 5))
+      livetime = sensor.application_date.blank? ? nil : sensor.application_date + sensor.sensor_type.livetime.to_i.year
+      expect(sensor.livetime).to eq livetime
+    end
+  end
 end
 
+# Virtual Attributes
 # Prefix instance methods with a '#'
-RSpec.describe Sensor, '#operational_range' do
-  it 'it returns the operational sensor range, called Messbereich in germany' do
+RSpec.describe Sensor, "#operational_range" do
+  it "it returns the operational sensor range, called Messbereich in germany" do
     # setup
     sensor = build(:sensor_with_range)
 

@@ -31,6 +31,9 @@
 #
 
 class Sensor < ApplicationRecord
+  # Callbacks
+  before_validation :update_livetime
+
   # Associations
   belongs_to :central_device
   belongs_to :gas_type
@@ -53,4 +56,9 @@ class Sensor < ApplicationRecord
   end
 
 
+  private
+
+  def update_livetime
+    self.livetime = self.application_date.blank? ? nil : self.application_date + self.sensor_type.livetime.to_i.year
+  end
 end

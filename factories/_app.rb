@@ -73,18 +73,6 @@ FactoryBot.define do
     name { "SENSOR-#{Faker::Name.name}" }
   end
 
-  factory :sensor do
-    central_device
-    gas_type
-    sensor_type
-    si_unit
-
-    factory :sensor_with_range do
-      min_value { 0.0 }
-      max_value { 100.0 }
-    end
-  end
-
   factory :service_object do
     address
     customer
