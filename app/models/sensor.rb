@@ -59,6 +59,6 @@ class Sensor < ApplicationRecord
   private
 
   def update_livetime
-    self.livetime = self.application_date.blank? ? nil : self.application_date + self.sensor_type.livetime.to_i.year
+    self.livetime = self.application_date.blank? || self.sensor_type.livetime.blank? ? nil : self.application_date + self.sensor_type.livetime.to_i.year
   end
 end

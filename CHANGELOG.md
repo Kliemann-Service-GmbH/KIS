@@ -25,7 +25,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
     - einige verwendete Gems wurden im audit mit Sicherheitsproblemen gemeldet
 - Fehlerbehebung
     - der Datenbankabgleich erzeugte Fehler beim Aufruf der Unit Tests
-
+    - Datenbankabgleich in der Testumgebung deaktiviert
+        - der Datenbankabgleich mit den Daten der EasyWinArt Datenbank wurde
+          auch in der Testumgebung ausgeführt
 ## [0.6.1]
 ### Added
 - Prüfprotokoll PDF angepasst

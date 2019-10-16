@@ -45,11 +45,19 @@ RSpec.describe Sensor, type: :model do
   end
 
   context "with application_date" do
-    it "updates the sensors livetime" do
+    it "updates the sensors livetime if SensorType has livetime set" do
       # Setup
       # create a sensor with a sensor_type were a livetime was set
       sensor = create(:sensor_with_application_date, sensor_type: create(:sensor_type, livetime: 5))
       livetime = sensor.application_date.blank? ? nil : sensor.application_date + sensor.sensor_type.livetime.to_i.year
+      expect(sensor.livetime).to eq livetime
+    end
+
+    it "returns nil if SensorType has no livetime set" do
+      # Setup
+      # SensorType.livetime not set
+      sensor = create(:sensor_with_application_date, sensor_type: create(:sensor_type, livetime: nil))
+      livetime = sensor.application_date.blank? || sensor.sensor_type.livetime.blank? ? nil : sensor.application_date + sensor.sensor_type.livetime.to_i.year
       expect(sensor.livetime).to eq livetime
     end
   end
