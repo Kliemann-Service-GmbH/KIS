@@ -2,6 +2,9 @@ Dokumentation für den Release Prozess des KIS Systems.
 
 *Bitte beachte das du ein Git Remote Branch mit dem Namen `origin` einrichten musst. Der Branch muss auf das Github Repo des KIS verweisen!*
 
+- [] `git checkout development` in den `development` Branch wechseln
+- [] evtl. alle lokalen Branches in development Zweig mergen
+- [] `git push` Branch ins remote Repo pushen
 - [] Stelle sicher das lokal *alle* Tests fehlerfrei durchlaufen werden
   - Übersprungene Tests werden im Moment noch akzeptiert
   - [] `rails test:system test` Rails Integrationstests gefolgt von den Minitest Unit Tests aufrufen. Sind diese fehlerfrei?
@@ -16,5 +19,5 @@ Dokumentation für den Release Prozess des KIS Systems.
   - [] `cap staging deploy` erfolgreich?
 - [] wechsel in den Master Branch
 - [] `git merge --no-ff release` merge den lokalen `release` Branch
-- [] `git push`
+- [] `git push` Branch ins remote Repo pushen
   - [] `cap production deploy` erfolgreich?
