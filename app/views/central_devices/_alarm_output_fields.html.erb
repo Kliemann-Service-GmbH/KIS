@@ -1,7 +1,7 @@
 <tr class="nested-fields">
-  <td><%= f.input :key, label: false %></td>
-  <td><%= f.input :value, label: false %></td>
-  <td><%= f.input :invert, label: false %></td>
+  <td><%= f.input :key, label: false, input_html: { class: 'input' } %></td>
+  <td><%= f.input :value, label: false, input_html: { class: 'input' } %></td>
+  <td><%= f.input :invert, label: false, input_html: { class: 'checkbox' } %></td>
   <td>
     <%= link_to_remove_association t('Destroy'), f, class: 'button is-danger' %>
   </td>

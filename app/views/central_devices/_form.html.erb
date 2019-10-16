@@ -138,7 +138,9 @@
         </table>
         <!-- BEGIN Actions -->
         <div class="actions">
-          <%= link_to_add_association t('Add Output Device'), form, :output_devices, class: 'button is-info', data: {
+
+          <%# i18n-tasks-use t(AddOutputDevice') %>
+          <%= link_to_add_association t('AddOutputDevice'), form, :output_devices, class: 'button is-info', data: {
             association_insertion_method: 'append',
             association_insertion_node: '.output_devices'
           } %>
@@ -169,7 +171,8 @@
         </table>
         <!-- BEGIN Actions AlarmOutput-->
         <div class="actions">
-          <%= link_to_add_association I18n.t('Add AlarmOutput'), form, :alarm_outputs, class: 'button is-info', data: {
+          <%# i18n-tasks-use t('AddAlarmOutput') %>
+          <%= link_to_add_association t('AddAlarmOutput'), form, :alarm_outputs, class: 'button is-info', data: {
             association_insertion_method: 'append',
             association_insertion_node: '.alarm_outputs'
           } %>
@@ -256,7 +259,8 @@
   </table>
   <!-- BEGIN Actions History -->
   <div class="actions">
-    <%= link_to_add_association t('Add Entry'), form, :history_entries, class: 'button is-info', data: {
+    <%# i18n-tasks-use t('AddEntry')  %>
+    <%= link_to_add_association t('AddEntry'), form, :history_entries, class: 'button is-info', data: {
       association_insertion_method: 'append',
       association_insertion_node: '.history_entries'
     } %>

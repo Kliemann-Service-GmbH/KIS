@@ -15,7 +15,7 @@ class I18nTest < ActiveSupport::TestCase
   end
 
   def test_no_unused_keys
-    skip "Find solution for the unused keys in i18n-tasks"
+    # skip "Find solution for the unused keys in i18n-tasks"
     assert_empty @unused_keys,
                  "#{@unused_keys.leaves.count} unused i18n keys, run `i18n-tasks unused' to show them"
   end

@@ -1,8 +1,8 @@
 ---
 de:
-  Add AlarmOutput: Alarmausgang hinzufügen
-  Add Entry: Bemerkung hinzufügen
-  Add Output Device: Leuchtscheibe hinzufügen
+  AddAlarmOutput: Alarmausgang hinzufügen
+  AddEntry: Bemerkung hinzufügen
+  AddOutputDevice: Leuchtscheibe hinzufügen
   AlarmOutputs: Alarmausgänge
   Auto resume can't be set without a valid begin or end: Ohne gültigen Beginn oder Ende des Vertrags kann die automatische Verlängerung nicht gesetzt werden!
   Back: zurück
@@ -14,8 +14,6 @@ de:
   New Sensor: Neuer Sensor
   Object with such a customer address combination already exists: Es existiert bereits ein Objekt mit dieser 'Kunde/ Objektadresse' Kombination!
   OutputDevice: Leuchtscheibe
-  Remove: Remove
-  Remove Entry: Bemerkung entfernen
   Search: Suche
   Show: anzeigen
   a1:
@@ -45,10 +43,8 @@ de:
     new:
       New: Neue Adresse
   addresses_title: Adressen
-  alarm_settings: Alarm Einstellungen
   application_date:
     formats:
-      default: Installations Datum
       short: Inst
   begin: Beginn
   case_type:
@@ -67,7 +63,6 @@ de:
     new:
       New: Neue Anlage
     show:
-      alarm_outputs: Alarmausgänge
       customer: Kunde
       device_number: Anlagennummer
       devices_fazit: 'Die Anlage ist:'
@@ -76,7 +71,6 @@ de:
       service_object: Objekt
   central_devices_title: Anlagen
   chemical_formula: Chemische Formel
-  contact_person: Kontakt
   copy_sensor: Copy sensor
   count: Anzahl
   created_at: erstellt
@@ -164,6 +158,7 @@ de:
       Edit: Sensortyp bearbeiten
     index:
       New: Neue Sensortyp erstellen
+    livetime: Lebensdauer
     new:
       New: Sensortyp speichern
   sensor_types_title: Sensortypen
