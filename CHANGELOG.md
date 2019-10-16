@@ -5,6 +5,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
+## [0.7.0] - 2019-10-16
 ### Added
 - Felder SensorTypen angepasst
     - SensorTypen haben nun Felder für die Lebensdauer eines Sensortypes sowie
@@ -19,7 +21,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
     - Die Erscheinung der Ansichten wurden vereinheitlicht.
       D.h. die Index, Show und Edit Views sehen nun alle ähnlich aus
 - PDF Layout verbessert
-    - Die Legenede (Zustand und Gehäusetyp) hat teilweise die Seitennummern 
+    - Die Legenede (Zustand und Gehäusetyp) hat teilweise die Seitennummern
       überschrieben. Das wurde durch eine weiteren 'neue Seite' Logik behoben
 - Sicherheitsupdate
     - einige verwendete Gems wurden im audit mit Sicherheitsproblemen gemeldet
