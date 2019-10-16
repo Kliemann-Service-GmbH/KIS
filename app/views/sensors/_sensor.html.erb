@@ -5,6 +5,7 @@
   <td><%= sensor.gas_type.name_with_formula %></td>
   <td><%= sensor.min_value %></td>
   <td><%= sensor.max_value %></td>
+  <%# i18n-tasks-use t('application_date.formats.short')  %>
   <td><%= l sensor.application_date, format: :short unless sensor.application_date.nil? %></td>
   <td><%= l sensor.livetime, format: :short unless sensor.livetime.nil? %></td>
   <td><%= sensor.alarm_point_1 %></td>

@@ -6,6 +6,8 @@
 #  default_livetime  :datetime
 #  default_max_value :decimal(, )
 #  default_min_value :decimal(, )
+#  description       :text
+#  livetime          :integer
 #  name              :string
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null

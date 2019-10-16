@@ -1,5 +1,6 @@
 require "prawn/measurement_extensions"
 
+# BEGIN prawn document
 prawn_document(filename: "Prüfprotokoll-##{@central_device.service_object.object_number}-#{@central_device.device_number} #{@central_device.service_object.address.match_code}") do |pdf|
   # Font setup
   pdf.font_families.update(
@@ -19,8 +20,8 @@ prawn_document(filename: "Prüfprotokoll-##{@central_device.service_object.objec
   pdf.line_width = 0.5
   pdf.fill_color "111111"
 
-
-  # Header and Footer
+  # BEGIN header and footer
+  # "draft" stamps in development environment
   pdf.repeat :all do
     if Rails.env.development?
       pdf.stroke_axis
@@ -53,10 +54,21 @@ prawn_document(filename: "Prüfprotokoll-##{@central_device.service_object.objec
     end
 
     # footer
+    # BEGIN page number
+    string ="#{t(:page)} <page> #{t(:of)} <total>"
+    options ={
+      :at =>[ pdf.bounds.right - 150, 10],
+      :width => 150,
+      :align =>:right,
+      :start_count_at => 1,
+    }
+    pdf.number_pages string, options
+    # END page number
   end
+  # END header and footer
 
-  # body
-  pdf.bounding_box [pdf.bounds.left, pdf.bounds.top - 100], :width  => pdf.bounds.width, :height => pdf.bounds.height - 100 do
+  # BEGIN body
+  pdf.bounding_box [pdf.bounds.left, pdf.bounds.top - 100], :width  => pdf.bounds.width, :height => pdf.bounds.height - 120 do
     # ServiceObject address
     current_line = pdf.cursor
     row_height = 50
@@ -75,6 +87,7 @@ prawn_document(filename: "Prüfprotokoll-##{@central_device.service_object.objec
       pdf.text "#{@central_device.service_object.customer.address.zip_city}"
     end
 
+    pdf.stroke_color '000000'
     pdf.stroke_horizontal_rule
     pdf.move_down 10
 
@@ -105,6 +118,7 @@ prawn_document(filename: "Prüfprotokoll-##{@central_device.service_object.objec
       pdf.text "[x] #{t(:invert)}?", size: 8 unless @central_device.alarm_outputs.blank?
     end
 
+    pdf.stroke_color '000000'
     pdf.stroke_horizontal_rule
     pdf.move_down 20
 
@@ -145,6 +159,7 @@ prawn_document(filename: "Prüfprotokoll-##{@central_device.service_object.objec
       cell_style: { border_width: 0.5, size: 7 } do
         row(0).font_style = :bold
       end
+
     pdf.move_down 20
 
     # Sensors
@@ -218,19 +233,22 @@ prawn_document(filename: "Prüfprotokoll-##{@central_device.service_object.objec
     pdf.move_down 20
 
     # Notes
+    # New page logic
     pdf.start_new_page if pdf.cursor < 240
     pdf.text "#{t(:notes)}", style: :bold
     pdf.bounding_box [pdf.bounds.left, pdf.cursor], width: pdf.bounds.width, height: 3.cm do
       pdf.line_width = 0.5
+      pdf.stroke_color '000000'
       pdf.stroke_bounds
       pdf.move_down 4
       pdf.text "Alle Sensoren mit dem Zustand \"2\" oder \"3\" müssen ausgetauscht werden."
     end
+    # END Notes
+
     pdf.move_down 20
 
-
+    # BEGIN fazit ("Die Anlage ist:")
     pdf.text t('.devices_fazit'), style: :bold
-
     current_line = pdf.cursor
     pdf.bounding_box [pdf.bounds.left, current_line], width: width_third do
       pdf.text "[ ] #{t(:working)}"
@@ -241,6 +259,8 @@ prawn_document(filename: "Prüfprotokoll-##{@central_device.service_object.objec
     pdf.bounding_box [pdf.bounds.left + 2 * width_third, current_line], width: width_third do
       pdf.text "[ ] #{t(:with_shortcomings)}"
     end
+    # END fazit
+
     pdf.move_down 20
 
     # Signature fields
@@ -259,13 +279,14 @@ prawn_document(filename: "Prüfprotokoll-##{@central_device.service_object.objec
       pdf.text t(:name_customer), size: 6
     end
 
-
-
     # Legende
-    pdf.move_down 50
+    # 30 units under the signature fields
+    pdf.move_down 30
+    # New page logic
+    pdf.start_new_page if pdf.cursor < 20
 
-    # Legende Sensor Status
-    pdf.bounding_box [pdf.bounds.left, pdf.cursor], width: pdf.bounds.width, height: 1.cm do
+    # BEGIN legende sensor status
+    pdf.bounding_box [pdf.bounds.left, pdf.cursor], width: pdf.bounds.width, height: 0.5.cm do
       pdf.formatted_text [
         { :text => "#{t('status')}: ", size: 8, styles: [:bold] },
         { :text => "1", size: 8, styles: [:bold] },
@@ -276,8 +297,9 @@ prawn_document(filename: "Prüfprotokoll-##{@central_device.service_object.objec
         { :text => "=>#{t(:defect)}", size: 8 },
       ], align: :left
     end
+    # END legende sensor status
 
-    # Legende Sensor Case
+    # BEGIN legende sensor case
     pdf.bounding_box [pdf.bounds.left , pdf.cursor], width: pdf.bounds.width, height: 2.cm do
       pdf.formatted_text [
         { :text => "#{t('case_type.formats.default')} (#{t('case_type.formats.short')}): ", size: 8, styles: [:bold] },
@@ -303,17 +325,8 @@ prawn_document(filename: "Prüfprotokoll-##{@central_device.service_object.objec
         { :text => "sonstiges Gehäuse (unbekannt); ", size: 8 },
       ], align: :left
     end
-
-  end # END Body
-
-  string ="#{t(:page)} <page> #{t(:of)} <total>"
-  options ={
-    :at =>[ pdf.bounds.right - 150, 10],
-    :width => 150,
-    :align =>:right,
-    :start_count_at => 1,
-  }
-  pdf.number_pages string, options
-
-
-end # prawn document
+    # END legende sensor case
+  end
+  # END Body
+end
+# END prawn document

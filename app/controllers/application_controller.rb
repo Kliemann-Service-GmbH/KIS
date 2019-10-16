@@ -20,7 +20,9 @@ class ApplicationController < ActionController::Base
     args = options.map { |n, v| "#{n.to_s.upcase}='#{v}'" }
     File.open(logfilename, 'a') { |file| file.write("#{Time.now.strftime("%F %H:%M:%S")} ") }
     File.open(logfilename, 'a') { |file| file.write("#{request.remote_ip} ") }
-    system "bundle exec rake #{task} #{args.join(' ')} --trace >> \"#{logfilename}\" &"
+    # FIXME: --trace makes noise in `rspec spec` runs
+    #system "bundle exec rake #{task} #{args.join(' ')} --trace >> \"#{logfilename}\" &"
+    system "bundle exec rake #{task} #{args.join(' ')} >> \"#{logfilename}\" &"
   end
 
 end

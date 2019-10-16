@@ -1,3 +1,4 @@
+
 FactoryBot.define do
   factory :alarm_output do
     key { "MyString" }
@@ -19,21 +20,6 @@ FactoryBot.define do
     service_object { nil }
     entry { "MyText" }
   end
-
-  factory :address do
-    address_type { 'FactoryBot' }
-    address_details {
-      {
-        name: Faker::Company.unique.name,
-        match_code: Faker::Company.unique.name,
-        address_number: rand(1000..9999)
-      }
-    }
-  end
-
-  factory :accu do
-  end
-
   factory :alarm_setting do
     central_device
   end
@@ -85,18 +71,6 @@ FactoryBot.define do
 
   factory :sensor_type do
     name { "SENSOR-#{Faker::Name.name}" }
-  end
-
-  factory :sensor do
-    central_device
-    gas_type
-    sensor_type
-    si_unit
-
-    factory :sensor_with_range do
-      min_value { 0.0 }
-      max_value { 100.0 }
-    end
   end
 
   factory :service_object do
