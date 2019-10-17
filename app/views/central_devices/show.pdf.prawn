@@ -167,7 +167,6 @@ prawn_document(filename: "Prüfprotokoll-##{@central_device.service_object.objec
     # Table headers
     data_sensor = [[
       "#{t('sensor_number.formats.short')}",
-      "#{t('zero_point.formats.short')}",
       "#{t(:gas_type)}",
       "#{t(:sensor_type)}",
       "#{t('case_type.formats.short')}",
@@ -178,6 +177,8 @@ prawn_document(filename: "Prüfprotokoll-##{@central_device.service_object.objec
       "#{t('a2.formats.short')}",
       "#{t('a3.formats.short')}",
       "#{t('a4.formats.short')}",
+      "#{t('AZ0.formats.short')}",
+      "#{t('AZEnd.formats.short')}",
       "#{t('si_unit.formats.short')}",
       "#{t(:location)}",
       "#{t(:status)}"
@@ -187,7 +188,6 @@ prawn_document(filename: "Prüfprotokoll-##{@central_device.service_object.objec
     for sensor in @central_device.sensors.sort_by{|s| s.number.to_i}
       data_sensor += [[
         sensor.number,
-        "",
         sensor.gas_type.name_with_formula,
         sensor.sensor_type.name,
         sensor.case_type,
@@ -198,6 +198,8 @@ prawn_document(filename: "Prüfprotokoll-##{@central_device.service_object.objec
         sensor.alarm_point_2,
         sensor.alarm_point_3,
         sensor.alarm_point_4,
+        "",
+        "",
         sensor.si_unit.name,
         sensor.location,
         ""
@@ -210,20 +212,21 @@ prawn_document(filename: "Prüfprotokoll-##{@central_device.service_object.objec
       header: true,
       column_widths: {
         0 => 20, # #
-        1 => 20, # NP
-        2 => 60, # Gasart
-        3 => 50, # Sensortyp
-        4 => 20, # GT
-        5 => 30, # MB
-        6 => 30, # GW
-        7 => 30, # NW
-        8 => 25, # AP1
-        9 => 25, # AP2
-        10 => 25, # AP3
-        11 => 25, # AP4
-        12 => 25, # SI
-        # 13 => 120, # Standort
-        14 => 50
+        1 => 60, # Gasart
+        2 => 50, # Sensortyp
+        3 => 15, # GT
+        4 => 25, # MB
+        5 => 25, # GW
+        6 => 30, # NW
+        7 => 25, # AP1
+        8 => 25, # AP2
+        9 => 25, # AP3
+        10 => 25, # AP4
+        11 => 40, # AZ0 vor/ nach
+        12 => 40, # AZEnd vor/ nach
+        13 => 25, # SI
+        # 14 => 120, # Standort
+        15 => 40 # Zustand
       },
       row_colors: ["F0F0F0","FFFFFF"],
       cell_style: { border_width: 0.5, size: 7 } do
@@ -266,14 +269,14 @@ prawn_document(filename: "Prüfprotokoll-##{@central_device.service_object.objec
     # Signature fields
     current_line = pdf.cursor
     pdf.bounding_box [pdf.bounds.left, current_line], width: width_half do
-      pdf.text "Ort: #{@central_device.service_object.address.zip_city}", style: :bold
+      pdf.text "#{t :signature_location}: #{@central_device.service_object.address.zip_city}", style: :bold
       pdf.move_down 50
       pdf.stroke_horizontal_line 0, 150
       pdf.text t(:signature_employee), size: 6
     end
 
     pdf.bounding_box [pdf.bounds.left + width_half, current_line], width: width_half do
-      pdf.text "Datum:", style: :bold
+      pdf.text "#{t :date}:", style: :bold
       pdf.move_down 50
       pdf.stroke_horizontal_line 0, 150
       pdf.text t(:name_customer), size: 6
@@ -285,8 +288,45 @@ prawn_document(filename: "Prüfprotokoll-##{@central_device.service_object.objec
     # New page logic
     pdf.start_new_page if pdf.cursor < 20
 
+    pdf.text "#{t :legende}:", style: :bold
+    pdf.move_down 10
+
+    # BEGIN legende sensor
+    pdf.bounding_box [pdf.bounds.left, pdf.cursor], width: pdf.bounds.width do
+      pdf.formatted_text [
+        { :text => "#{t(:sensor)}: ", size: 8, styles: [:bold] },
+        { :text => "#{t('sensor_number.formats.short')}", size: 8, styles: [:bold] },
+        { :text => "=>#{t('sensor_number.formats.default')}; ", size: 8 },
+        { :text => "#{t('case_type.formats.short')}", size: 8, styles: [:bold] },
+        { :text => "=>#{t('case_type.formats.default')}; ", size: 8 },
+        { :text => "#{t('measuring_range.formats.short')}", size: 8, styles: [:bold] },
+        { :text => "=>#{t('measuring_range.formats.default')}; ", size: 8 },
+        { :text => "#{t('exchanged.formats.short')}", size: 8, styles: [:bold] },
+        { :text => "=>#{t('exchanged.formats.default')}; ", size: 8 },
+        { :text => "#{t('next_exchange.formats.short')}", size: 8, styles: [:bold] },
+        { :text => "=>#{t('next_exchange.formats.default')}; ", size: 8 },
+        { :text => "#{t('a1.formats.short')}", size: 8, styles: [:bold] },
+        { :text => "=>#{t('a1.formats.default')}; ", size: 8 },
+        { :text => "#{t('a2.formats.short')}", size: 8, styles: [:bold] },
+        { :text => "=>#{t('a2.formats.default')}; ", size: 8 },
+        { :text => "#{t('a3.formats.short')}", size: 8, styles: [:bold] },
+        { :text => "=>#{t('a3.formats.default')}; ", size: 8 },
+        { :text => "#{t('a4.formats.short')}", size: 8, styles: [:bold] },
+        { :text => "=>#{t('a4.formats.default')}; ", size: 8 },
+        { :text => "#{t('AZ0.formats.short')}", size: 8, styles: [:bold] },
+        { :text => "=>#{t('AZ0.formats.default')}; ", size: 8 },
+        { :text => "#{t('AZEnd.formats.short')}", size: 8, styles: [:bold] },
+        { :text => "=>#{t('AZEnd.formats.default')}; ", size: 8 },
+        { :text => "#{t('si_unit.formats.short')}", size: 8, styles: [:bold] },
+        { :text => "=>#{t('si_unit.formats.default')}; ", size: 8 },
+      ], align: :left
+    end
+    # END legende sensor
+
+    pdf.move_down 10
+
     # BEGIN legende sensor status
-    pdf.bounding_box [pdf.bounds.left, pdf.cursor], width: pdf.bounds.width, height: 0.5.cm do
+    pdf.bounding_box [pdf.bounds.left, pdf.cursor], width: pdf.bounds.width do
       pdf.formatted_text [
         { :text => "#{t('status')}: ", size: 8, styles: [:bold] },
         { :text => "1", size: 8, styles: [:bold] },
@@ -299,8 +339,10 @@ prawn_document(filename: "Prüfprotokoll-##{@central_device.service_object.objec
     end
     # END legende sensor status
 
+    pdf.move_down 10
+
     # BEGIN legende sensor case
-    pdf.bounding_box [pdf.bounds.left , pdf.cursor], width: pdf.bounds.width, height: 2.cm do
+    pdf.bounding_box [pdf.bounds.left , pdf.cursor], width: pdf.bounds.width do
       pdf.formatted_text [
         { :text => "#{t('case_type.formats.default')} (#{t('case_type.formats.short')}): ", size: 8, styles: [:bold] },
         { :text => "0) ", size: 8, styles: [:bold] },
