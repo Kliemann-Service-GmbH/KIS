@@ -4,12 +4,12 @@ Dokumentation für den Release Prozess des KIS Systems.
 
 - [] `git checkout development` in den `development` Branch wechseln
 - [] evtl. alle lokalen Branches in development Zweig mergen
-- [] `git push` Branch ins remote Repo pushen
 - [] Stelle sicher das lokal *alle* Tests fehlerfrei durchlaufen werden
   - Übersprungene Tests werden im Moment noch akzeptiert
   - [] `rails test:system test` Rails Integrationstests gefolgt von den Minitest Unit Tests aufrufen. Sind diese fehlerfrei?
   - [] `rspec` Rspec Tests fehlerfrei?
 - [] Changelog aktuell? Wurde die Datei `CHANGELOG.md` mit allen wichtigen Änderungen am System gefüllt?
+- [] `git push` Branch ins remote Repo pushen
 - [] `git checkout release` wechsele in den Release Branch
 - [] `git merge --no-ff development` merge den lokalen `development` Branch
 - [] `git tag vN.N.N` Tagge die Version
