@@ -32,7 +32,7 @@ RSpec.describe CentralDevice, type: :model do
 
   # Lazily loaded to ensure it's only used when it's needed
   # RSpec tip: Try to avoid @instance_variables if possible. They're slow
-  let(:factory_instance) { build(:central_device) }
+  let(:central_device) { build(:central_device) }
 
   describe 'associations' do
     it { should belong_to(:service_object) }
@@ -44,13 +44,13 @@ RSpec.describe CentralDevice, type: :model do
 
   describe "public instance methods" do
     context "responds to its methods" do
-      it { expect(factory_instance).to respond_to(:object_device_number) }
+      it { expect(central_device).to respond_to(:object_device_number) }
     end
 
     context "executes methods correctly" do
       context "#object_device_number" do
         it "shows object_number followed by the device_number" do
-          expect(factory_instance.object_device_number).to eq("#{factory_instance.service_object.object_number}-#{factory_instance.device_number}")
+          expect(central_device.object_device_number).to eq("#{central_device.service_object.object_number}-#{central_device.device_number}")
         end
       end
     end

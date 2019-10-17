@@ -6,6 +6,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.7.1] - 2019-10-17
+### Changed
+- Prüfprotokoll PDF
+  - Tabellen Layout verschoben für maximale Platzausnutzung
+  - Legende unter dem Unterschriftenfeld erweitert
+    die kurzen Tabellenköpfe werden nun ebenfalls erklärt
+  - Sensoren Messbereich
+    - hier war ein Darstellungsfehler wenn die Sensoren Werte Min und Max nicht
+      in der Datenbank eingetragen waren. Es erschien einfach ein Minus Zeichen '-'
+- englische Übersetzung verbessert
+- alle automatischen Tests funktionieren nun wieder
+### Removed
+- Prüfprotokoll PDF
+  - Spalte NP (Nullpunktabgleich) entfernt
+  - Spalte GW (gewechselt) wird nicht mehr mit den Daten aus der Datenbank
+    gefüllt. Diese Spalte bleibt somit immer leer auf dem PDF Ausdruck
+
 ## [0.7.0] - 2019-10-16
 ### Added
 - Felder SensorTypen angepasst
@@ -30,6 +47,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
     - Datenbankabgleich in der Testumgebung deaktiviert
         - der Datenbankabgleich mit den Daten der EasyWinArt Datenbank wurde
           auch in der Testumgebung ausgeführt
+
 ## [0.6.1]
 ### Added
 - Prüfprotokoll PDF angepasst
@@ -64,7 +82,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
     http://kis.gaswarnanlagen.lan/sensorarten
     http://kis.gaswarnanlagen.lan/si_einheiten
     http://kis.gaswarnanlagen.lan/wartungsverträge
-
 
 ## [0.5.9]
 ### Added
