@@ -167,17 +167,17 @@ prawn_document(filename: "Prüfprotokoll-##{@central_device.service_object.objec
     # Table headers
     data_sensor = [[
       "#{t('sensor_number.formats.short')}",
-      "#{t('zero_point.formats.short')}",
       "#{t(:gas_type)}",
       "#{t(:sensor_type)}",
       "#{t('case_type.formats.short')}",
       "#{t('measuring_range.formats.short')}",
-      "#{t('exchanged.formats.short')}",
       "#{t('next_exchange.formats.short')}",
       "#{t('a1.formats.short')}",
       "#{t('a2.formats.short')}",
       "#{t('a3.formats.short')}",
       "#{t('a4.formats.short')}",
+      "AZ0 vor/ nach",
+      "AZEnd vor/ nach",
       "#{t('si_unit.formats.short')}",
       "#{t(:location)}",
       "#{t(:status)}"
@@ -187,17 +187,17 @@ prawn_document(filename: "Prüfprotokoll-##{@central_device.service_object.objec
     for sensor in @central_device.sensors.sort_by{|s| s.number.to_i}
       data_sensor += [[
         sensor.number,
-        "",
         sensor.gas_type.name_with_formula,
         sensor.sensor_type.name,
         sensor.case_type,
         sensor.operational_range,
-        "",
         "#{l sensor.livetime, format: :month_year unless sensor.livetime.nil?}",
         sensor.alarm_point_1,
         sensor.alarm_point_2,
         sensor.alarm_point_3,
         sensor.alarm_point_4,
+        "",
+        "",
         sensor.si_unit.name,
         sensor.location,
         ""
@@ -210,17 +210,17 @@ prawn_document(filename: "Prüfprotokoll-##{@central_device.service_object.objec
       header: true,
       column_widths: {
         0 => 20, # #
-        1 => 20, # NP
-        2 => 60, # Gasart
-        3 => 50, # Sensortyp
-        4 => 20, # GT
-        5 => 30, # MB
-        6 => 30, # GW
-        7 => 30, # NW
-        8 => 25, # AP1
-        9 => 25, # AP2
-        10 => 25, # AP3
-        11 => 25, # AP4
+        1 => 60, # Gasart
+        2 => 50, # Sensortyp
+        3 => 20, # GT
+        4 => 30, # MB
+        5 => 30, # NW
+        6 => 25, # AP1
+        7 => 25, # AP2
+        8 => 25, # AP3
+        9 => 25, # AP4
+        # 10 =>, # AZ0 vor/ nach
+        # 11 =>, # AZEnd vor/ nach
         12 => 25, # SI
         # 13 => 120, # Standort
         14 => 50
