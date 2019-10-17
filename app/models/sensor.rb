@@ -52,7 +52,11 @@ class Sensor < ApplicationRecord
   # Sensor range (Messbereich)
   # Used in app/views/service_protocols/show.pdf.prawn
   def operational_range
-    "#{min_value}-#{max_value}"
+    if !min_value.nil? && !max_value.nil?
+      "#{min_value}-#{max_value}"
+    else
+      ""
+    end
   end
 
 
