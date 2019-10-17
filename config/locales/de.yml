@@ -1,5 +1,13 @@
 ---
 de:
+  AZ0:
+    formats:
+      default: Anzeigewert in der Auswerteeinheit vor/ nach der Justage
+      short: AZ0 vor/ nach
+  AZEnd:
+    formats:
+      default: Anzeige Endwert in der Auswerteeinheit vor/ nach der Justage
+      short: AZEnd vor/ nach
   AddAlarmOutput: Alarmausgang hinzufügen
   AddEntry: Bemerkung hinzufügen
   AddOutputDevice: Leuchtscheibe hinzufügen
@@ -82,6 +90,7 @@ de:
     index:
       placeholder: Adressdetails Name, Telefonnummer, ...
   customers_title: Kunden
+  date: Datum
   db_import_legacy: Datenbankabgleich
   defect: Defekt
   description: Beschreibung
@@ -94,7 +103,7 @@ de:
   entry: Bemerkung
   exchanged:
     formats:
-      default: Ausgetauscht
+      default: gewechselt
       short: GW
   'false': Nein
   field_required: "(*) benötigt"
@@ -110,6 +119,7 @@ de:
   has_accu: Akku vorhanden
   history: History
   invert: invertiert
+  legende: Legende
   livetime:
     formats:
       default: Nächster Wechsel
@@ -121,6 +131,7 @@ de:
       short: Max
   measuring_range:
     formats:
+      default: Messbereich
       short: MB
   min_value:
     formats:
@@ -135,6 +146,7 @@ de:
   new_service_object_central_device: Neue Anlage erfassen
   next_exchange:
     formats:
+      default: Default
       short: NW
   not_working: nicht funktionstüchtig
   notes: Bemerkungen
@@ -148,6 +160,7 @@ de:
   old_used: verbraucht
   output_devices: Leuchtscheibe
   page: Seite
+  sensor: Sensor
   sensor_number:
     formats:
       default: Sensor Nummer
@@ -202,6 +215,7 @@ de:
       New: SI Einheit speichern
   si_units_title: SI Einheiten
   signature_employee: Unterschrift AN
+  signature_location: Ort
   status: Zustand
   telephone_number: Telefonnummer
   time:
