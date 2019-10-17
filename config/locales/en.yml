@@ -1,37 +1,45 @@
 ---
 en:
-  AddAlarmOutput: Addalarmoutput
-  AddEntry: Bemerkung hinzufügen
-  AddOutputDevice: Addoutputdevice
-  AlarmOutputs: Alarmoutputs
-  Auto resume can't be set without a valid begin or end: Auto resume can't be set without a valid begin or end
+  AZ0:
+    formats:
+      default: Shown value Zero Gas min/ max
+      short: ZG min/ max
+  AZEnd:
+    formats:
+      default: Shown value Test Gas min/ max
+      short: TG min/ max
+  AddAlarmOutput: Add Alarm Output
+  AddEntry: Add Entry
+  AddOutputDevice: Add Output Device
+  AlarmOutputs: Alarm outputs
+  Auto resume can't be set without a valid begin or end: Automatic resume can't be set without a valid begin or end
   Back: Back
   Database synchronization started: Database synchronization started
   Destroy: Destroy
   Edit: Edit
   End can't be in the past if the service contracts begin starts in the future: Can't be in the past if service contract begin is in the future
   History: History
-  New Sensor: Neuer Sensor
+  New Sensor: New Sensor
   Object with such a customer address combination already exists: Object with such a customer address combination already exists
-  OutputDevice: Outputdevice
+  OutputDevice: Output device
   Search: Search
   Show: Show
   a1:
     formats:
-      default: Default
-      short: Short
+      default: Alarm 1
+      short: A1
   a2:
     formats:
-      default: Default
-      short: Short
+      default: Alarm 2
+      short: A2
   a3:
     formats:
-      default: Default
-      short: Short
+      default: Alarm 3
+      short: A3
   a4:
     formats:
-      default: Default
-      short: Short
+      default: Alarm 4
+      short: A4
   accu_montage_date: Accu montage date
   address: Address
   address_number: Address number
@@ -39,18 +47,18 @@ en:
     edit:
       Edit: Edit
     index:
-      placeholder: Placeholder
+      placeholder: Address number, ...
     new:
       New: New
   addresses_title: Addresses title
   application_date:
     formats:
-      short: Short
+      short: AD
   begin: Begin
   case_type:
     formats:
-      default: Default
-      short: Short
+      default: Case type
+      short: CT
   central_device: Central device
   central_devices:
     edit:
@@ -59,7 +67,7 @@ en:
       accu: Accu
     index:
       New: New
-      placeholder: Placeholder
+      placeholder: Device number, ...
     new:
       New: New
     show:
@@ -80,8 +88,9 @@ en:
     edit:
       Edit: Edit
     index:
-      placeholder: Placeholder
+      placeholder: Customer number, ....
   customers_title: Customers title
+  date: Date
   db_import_legacy: Db import legacy
   defect: Defect
   description: Description
@@ -103,29 +112,31 @@ en:
     edit:
       Edit: Edit
     index:
-      New: Neue Gasart
+      New: New Gas type
     new:
       New: New
-  gas_types_title: Gasarten
+  gas_types_title: Gas type
   has_accu: Has accu
   history: History
   invert: Invert
+  legende: Legende
   livetime:
     formats:
-      default: Default
-      short: Short
+      default: Livetime
+      short: LT
   location: Location
   max_value:
     formats:
-      default: Default
-      short: Short
+      default: Max value
+      short: MV
   measuring_range:
     formats:
-      short: Short
+      default: Measuring range
+      short: MR
   min_value:
     formats:
-      default: Default
-      short: Short
+      default: Min value
+      short: MV
   mobile_number: Mobile number
   montage_date: Montage date
   name: Name
@@ -135,23 +146,25 @@ en:
   new_service_object_central_device: New service object central device
   next_exchange:
     formats:
-      short: Short
+      default: Next exchange
+      short: NE
   not_working: Not working
   notes: Notes
   object: Object
   object_address: Object address
   object_device_number: Object device number
-  object_nr: Object nr
+  object_nr: Object No
   object_number: Object number
   of: Of
   ok: Ok
   old_used: Old used
   output_devices: Output devices
   page: Page
+  sensor: Sensor
   sensor_number:
     formats:
-      default: Default
-      short: Short
+      default: Sensor number
+      short: SNo
   sensor_type: Sensor type
   sensor_types:
     edit:
@@ -191,8 +204,8 @@ en:
   show_print_pdf: Show print pdf
   si_unit:
     formats:
-      default: Default
-      short: Short
+      default: SI unit
+      short: SI
   si_units:
     edit:
       Edit: Edit
@@ -202,6 +215,7 @@ en:
       New: New
   si_units_title: Si units title
   signature_employee: Signature employee
+  signature_location: Signature location
   status: Status
   telephone_number: Telephone number
   time:
@@ -225,5 +239,5 @@ en:
   'yes': 'Yes'
   zero_point:
     formats:
-      default: Default
-      short: Short
+      default: Zero point
+      short: ZP
