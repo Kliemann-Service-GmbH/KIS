@@ -2,17 +2,17 @@
 en:
   AZ0:
     formats:
-      default: Default
-      short: Short
+      default: Shown value Zero Gas min/ max
+      short: ZG min/ max
   AZEnd:
     formats:
-      default: Anzeige Endwert in der Auswerteeinheit vor/ nach der Justage
-      short: Short
+      default: Shown value Test Gas min/ max
+      short: TG min/ max
   AddAlarmOutput: Add Alarm Output
   AddEntry: Add Entry
   AddOutputDevice: Add Output Device
-  AlarmOutputs: Alarmoutputs
-  Auto resume can't be set without a valid begin or end: Auto resume can't be set without a valid begin or end
+  AlarmOutputs: Alarm outputs
+  Auto resume can't be set without a valid begin or end: Automatic resume can't be set without a valid begin or end
   Back: Back
   Database synchronization started: Database synchronization started
   Destroy: Destroy
@@ -131,7 +131,7 @@ en:
       short: MV
   measuring_range:
     formats:
-      default: Default
+      default: Measuring range
       short: MR
   min_value:
     formats:
@@ -146,7 +146,7 @@ en:
   new_service_object_central_device: New service object central device
   next_exchange:
     formats:
-      default: Default
+      default: Next exchange
       short: NE
   not_working: Not working
   notes: Notes
