@@ -61,16 +61,36 @@ RSpec.describe Sensor, type: :model do
       expect(sensor.livetime).to eq livetime
     end
   end
-end
 
-# Virtual Attributes
-# Prefix instance methods with a '#'
-RSpec.describe Sensor, "#operational_range" do
-  it "it returns the operational sensor range, called Messbereich in germany" do
-    # setup
-    sensor = build(:sensor_with_range)
+  # Virtual Attributes
+  # Prefix instance methods with a '#'
+  context "#operational_range" do
+    context "with min_value and max_value set" do
+      it "it returns the operational sensor range, called Messbereich in germany" do
+        sensor = build(:sensor, min_value: 0.0, max_value: 100.0)
+        expect(sensor.operational_range).to eq "0.0-100.0"
+      end
+    end
 
-    # exercise and verify
-    expect(sensor.operational_range).to eq "0.0-100.0"
+    context "without min_value and max_value" do
+      it "it returns an empty string" do
+        sensor = build(:sensor, min_value: nil, max_value: nil)
+        expect(sensor.operational_range).to eq ""
+      end
+    end
+
+    context "only min_value set" do
+      it "returns an empty String" do
+        sensor = build(:sensor, min_value: 0.0, max_value: nil)
+        expect(sensor.operational_range).to eq ""
+      end
+    end
+
+    context "only max_value set" do
+      it "returns an empty String" do
+        sensor = build(:sensor, min_value: nil, max_value: 100.0)
+        expect(sensor.operational_range).to eq ""
+      end
+    end
   end
 end
