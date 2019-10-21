@@ -5,6 +5,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### geändert
+- Seitennummerierung im Prüfprotokoll PDF wurde nicht richtig berechnet
+- Fehlerhafter Seitenumbruch auf der ersten Seite
+  - die Objekt- und Kundenadressen hatten eine fixe Höhe,
+    bei langen Adressen wie zum Beispiel Max Plank (#1466) wurde ein
+    fehlerhafter Seitenumbruch eingefügt. Die beiden Adresspalten werden nun
+    nicht mehr beschränkt, die Felder nehmen sich dynamisch soviel Platz
+    sie brauchen
 
 ## [0.7.1] - 2019-10-17
 ### Changed
