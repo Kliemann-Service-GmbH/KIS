@@ -54,16 +54,6 @@ prawn_document(filename: "Prüfprotokoll-##{@central_device.service_object.objec
     end
 
     # footer
-    # BEGIN page number
-    string ="#{t(:page)} <page> #{t(:of)} <total>"
-    options ={
-      :at =>[ pdf.bounds.right - 150, 10],
-      :width => 150,
-      :align =>:right,
-      :start_count_at => 1,
-    }
-    pdf.number_pages string, options
-    # END page number
   end
   # END header and footer
 
@@ -370,5 +360,16 @@ prawn_document(filename: "Prüfprotokoll-##{@central_device.service_object.objec
     # END legende sensor case
   end
   # END Body
+
+  # BEGIN page number
+  string ="#{t(:page)} <page> #{t(:of)} <total>"
+  options ={
+    :at =>[ pdf.bounds.right - 150, 10],
+    :width => 150,
+    :align =>:right,
+    :start_count_at => 1,
+  }
+  pdf.number_pages string, options
+  # END page number
 end
 # END prawn document
