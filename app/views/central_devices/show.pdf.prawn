@@ -54,16 +54,6 @@ prawn_document(filename: "Prüfprotokoll-##{@central_device.service_object.objec
     end
 
     # footer
-    # BEGIN page number
-    string ="#{t(:page)} <page> #{t(:of)} <total>"
-    options ={
-      :at =>[ pdf.bounds.right - 150, 10],
-      :width => 150,
-      :align =>:right,
-      :start_count_at => 1,
-    }
-    pdf.number_pages string, options
-    # END page number
   end
   # END header and footer
 
@@ -71,8 +61,7 @@ prawn_document(filename: "Prüfprotokoll-##{@central_device.service_object.objec
   pdf.bounding_box [pdf.bounds.left, pdf.bounds.top - 100], :width  => pdf.bounds.width, :height => pdf.bounds.height - 120 do
     # ServiceObject address
     current_line = pdf.cursor
-    row_height = 50
-    pdf.bounding_box [pdf.bounds.left, current_line], width: width_half, height: row_height do
+    pdf.bounding_box [pdf.bounds.left, current_line], width: width_half do
       pdf.text "#{t(:service_object)}", style: :bold
       pdf.text "#{@central_device.service_object.address.address_line}"
       pdf.text "#{@central_device.service_object.address.street}"
@@ -80,7 +69,7 @@ prawn_document(filename: "Prüfprotokoll-##{@central_device.service_object.objec
     end
 
     # Customer address
-    pdf.bounding_box [pdf.bounds.left + width_half, current_line], width: width_half, height: row_height do
+    pdf.bounding_box [pdf.bounds.left + width_half, current_line], width: width_half do
       pdf.text "#{t(:customer)}", style: :bold
       pdf.text "#{@central_device.service_object.customer.address.address_line}"
       pdf.text "#{@central_device.service_object.customer.address.street}"
@@ -370,5 +359,16 @@ prawn_document(filename: "Prüfprotokoll-##{@central_device.service_object.objec
     # END legende sensor case
   end
   # END Body
+
+  # BEGIN page number
+  string ="#{t(:page)} <page> #{t(:of)} <total>"
+  options ={
+    :at =>[ pdf.bounds.right - 150, 10],
+    :width => 150,
+    :align =>:right,
+    :start_count_at => 1,
+  }
+  pdf.number_pages string, options
+  # END page number
 end
 # END prawn document
