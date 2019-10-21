@@ -1,27 +1,13 @@
 # Changelog
-Alle erwähnenswert Änderungen am Projekt werden in dieser Datei dokumentiert.
 All notable changes to this project will be documented in this file.
 
-Das Format der Datei basiert auf [Führe ein CHANGELOG](https://keepachangelog.com/de/1.0.0/),
-außerdem befolgt dieses Projekt die [Semantische Versionierung](https://semver.org/lang/de/spec/v2.0.0.html)
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
-### neu hinzugefügt
-- diverse statische Webseiten
-  - letzte Änderungenen http://kis.gaswarnanlagen.lan/changelog
-  - Infos über das System http://kis.gaswarnanlagen.lan/about
-  - Lizenzinformationen http://kis.gaswarnanlagen.lan/license
 ### geändert
 - Seitennummerierung im Prüfprotokoll PDF wurde nicht richtig berechnet
-- Fehlerhafter Seitenumbruch auf der ersten Seite
-  - die Objekt- und Kundenadressen hatten eine fixe Höhe,
-    bei langen Adressen wie zum Beispiel Max Plank (#1466) wurde ein
-    fehlerhafter Seitenumbruch eingefügt. Die beiden Adresspalten werden nun
-    nicht mehr beschränkt, die Felder nehmen sich dynamisch soviel Platz
-    sie brauchen
-- Änderungen im CHANGELOG werden nun in primär, in deutsch geführt
+- 
 
 ## [0.7.1] - 2019-10-17
 ### Changed

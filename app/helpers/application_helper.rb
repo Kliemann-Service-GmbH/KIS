@@ -1,5 +1,4 @@
 module ApplicationHelper
-
   # Generiert aus dem übergebenen Symbol ein Titel und Model Namen mit dem die
   # Anzahl der Model Member abgefragt werden.
   def title_with_size(model)
