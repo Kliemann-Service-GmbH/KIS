@@ -1,0 +1,11 @@
+require "rails_helper"
+
+RSpec.describe "static pages", type: :routing do
+  describe 'About' do
+    it "route '/about", :to => 'static_pages#about' do
+      expect(:get => "/about").to route_to(
+        controller: "static_page", action: "about"
+      )
+    end
+  end
+end

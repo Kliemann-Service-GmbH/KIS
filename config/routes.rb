@@ -1,4 +1,13 @@
 Rails.application.routes.draw do
+  get '/about', to: 'static_page#about'
+  get '/über', to: 'static_page#about'
+
+  get '/changelog', to: 'static_page#changelog'
+  get '/änderungen', to: 'static_page#changelog'
+
+  get '/license', to: 'static_page#license'
+  get '/lizenz', to: 'static_page#license'
+
   get 'system_task/db_import_legacy'
   resources :addresses, only: [:index, :show]
   resources :addresses, only: [:index, :show], path: "adressen"
