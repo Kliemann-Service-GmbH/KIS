@@ -22,6 +22,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
     nicht mehr beschränkt, die Felder nehmen sich dynamisch soviel Platz
     sie brauchen
 - Änderungen im CHANGELOG werden nun in primär, in deutsch geführt
+- Fehler im Adress Update behoben
 
 ## [0.7.1] - 2019-10-17
 ### Changed
