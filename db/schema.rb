@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_14_095619) do
+ActiveRecord::Schema.define(version: 2019_10_24_092316) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "hstore"
@@ -148,7 +148,7 @@ ActiveRecord::Schema.define(version: 2019_10_14_095619) do
     t.decimal "min_value"
     t.decimal "max_value"
     t.datetime "application_date"
-    t.datetime "livetime"
+    t.datetime "next_change_date"
     t.decimal "alarm_point_1"
     t.decimal "alarm_point_2"
     t.decimal "alarm_point_3"

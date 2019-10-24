@@ -4,10 +4,15 @@ Dokumentation für den Release Prozess des KIS Systems.
 
 - [] `git checkout development` in den 'development' Branch wechseln
 - [] evtl. alle lokalen Branches in development Zweig mergen
-- [] Stelle sicher das lokal *alle* Tests fehlerfrei durchlaufen werden
-  - Übersprungene Tests werden im Moment noch akzeptiert
+- [] stelle sicher das lokal *alle* Tests fehlerfrei durchlaufen werden
+    übersprungene Tests werden im Moment noch akzeptiert
   - [] `rails test:system test` Rails Integrationstests gefolgt von den Minitest Unit Tests aufrufen. Sind diese fehlerfrei?
   - [] `rspec` Rspec Tests fehlerfrei?
+- draw.io *Optional*
+  - [] draw.io Zeichnung Versionsnummer erhöhen
+  - draw.io Zeichnung speichern
+    - [] PDF
+    - [] draw.io Format
 - [] Changelog aktuell? Wurde die Datei 'CHANGELOG.md' mit allen wichtigen Änderungen am System gefüllt?
 - [] Update der nächsten Version Nummer im 'CHANGELOG.md' https://keepachangelog.com/en/1.0.0/
   - [] aktuelles Tagesdatum neben der Version im 'CHANGELOG.md' stehen
@@ -16,9 +21,6 @@ Dokumentation für den Release Prozess des KIS Systems.
 - [] `git checkout release` wechsele in den Release Branch
 - [] `git merge --no-ff development` merge den lokalen 'development' Branch
 - [] `git tag vN.N.N` Tagge die Version
-- draw.io Zeichnung speichern
-  - [] PDF
-  - [] draw.io Format
 - [] `rake release:bump_version && git commit -a -m "Update Version"` aktualisiere die Versionsnummer im KIS (Rails intern, liest die Git Tag Version aus)
 - [] `git push`
 - [] Deploy in die `staging` Umgebung
