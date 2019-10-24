@@ -7,7 +7,7 @@
   <td><%= sensor.max_value %></td>
   <%# i18n-tasks-use t('application_date.formats.short')  %>
   <td><%= l sensor.application_date, format: :short unless sensor.application_date.nil? %></td>
-  <td><%= l sensor.livetime, format: :short unless sensor.livetime.nil? %></td>
+  <td><%= l sensor.next_change_date, format: :short unless sensor.next_change_date.nil? %></td>
   <td><%= sensor.alarm_point_1 %></td>
   <td><%= sensor.alarm_point_2 %></td>
   <td><%= sensor.alarm_point_3 %></td>

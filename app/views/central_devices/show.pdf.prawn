@@ -182,7 +182,7 @@ prawn_document(filename: "Prüfprotokoll-##{@central_device.service_object.objec
         sensor.case_type,
         sensor.operational_range,
         "",
-        "#{l sensor.livetime, format: :month_year unless sensor.livetime.nil?}",
+        "#{l sensor.next_change_date, format: :month_year unless sensor.next_change_date.nil?}",
         sensor.alarm_point_1,
         sensor.alarm_point_2,
         sensor.alarm_point_3,
