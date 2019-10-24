@@ -15,7 +15,7 @@ class GasType < ApplicationRecord
   has_many :sensors, dependent: :destroy, inverse_of: :gas_type
 
   # Validations
-  validates :name, uniqueness: true
+  validates :name, uniqueness: true, allow_blank: true
   validates :chemical_formula, uniqueness: true
   validate :name_or_chemical_formula_present
 
