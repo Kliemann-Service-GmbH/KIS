@@ -15,7 +15,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
     eingetragen wurde. Dabei aber auch die Automatik zu beachten, nach der
     der nächste Wechel automatisch ausgefüllt wird, wenn ein Einbaudatum
     erfasst und der Sensor Typ eine Standard Lebensdauer besitzt.
-
+### geändert
+- Sensoren Datenbankspalte umbenannt
+    Die Sensoren Datenbank Spalte 'livetime'
+    wurde in 'next_change_date' (Datum nächster Wechsel) umbenannt.
 ## [0.7.2] - 2019-10-22
 ### neu hinzugefügt
 - diverse statische Webseiten

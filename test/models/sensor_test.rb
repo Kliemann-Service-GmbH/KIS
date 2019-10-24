@@ -9,10 +9,10 @@
 #  alarm_point_4     :decimal(, )
 #  application_date  :datetime
 #  case_type         :integer
-#  livetime          :datetime
 #  location          :string
 #  max_value         :decimal(, )
 #  min_value         :decimal(, )
+#  next_change_date  :datetime
 #  number            :string           default("0")
 #  zero_point        :decimal(, )
 #  created_at        :datetime         not null

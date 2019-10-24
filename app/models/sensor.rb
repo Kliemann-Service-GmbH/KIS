@@ -9,10 +9,10 @@
 #  alarm_point_4     :decimal(, )
 #  application_date  :datetime
 #  case_type         :integer
-#  livetime          :datetime
 #  location          :string
 #  max_value         :decimal(, )
 #  min_value         :decimal(, )
+#  next_change_date  :datetime
 #  number            :string           default("0")
 #  zero_point        :decimal(, )
 #  created_at        :datetime         not null
@@ -32,7 +32,7 @@
 
 class Sensor < ApplicationRecord
   # Callbacks
-  before_validation :update_livetime
+  before_validation :update_next_change_date
 
   # Associations
   belongs_to :central_device
@@ -62,12 +62,12 @@ class Sensor < ApplicationRecord
 
   private
 
-  def update_livetime
-    if self.livetime.blank? && self.application_date && self.sensor_type.livetime
-      self.livetime = self.application_date + self.sensor_type.livetime.to_i.year
-    elsif self.livetime && self.application_date && self.sensor_type.livetime
+  def update_next_change_date
+    if self.next_change_date.blank? && self.application_date && self.sensor_type.livetime
+      self.next_change_date = self.application_date + self.sensor_type.livetime.to_i.year
+    elsif self.next_change_date && self.application_date && self.sensor_type.livetime
       livetime = self.application_date + self.sensor_type.livetime.to_i.year
-      self.livetime = self.livetime < livetime ? self.livetime : livetime
+      self.next_change_date = self.next_change_date < livetime ? self.next_change_date : livetime
     end
   end
 end

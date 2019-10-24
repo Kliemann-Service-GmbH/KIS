@@ -69,6 +69,20 @@ class SensorsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def sensor_params
-      params.require(:sensor).permit(:central_device_id, :gas_type_id, :sensor_type_id, :si_unit_id, :zero_point, :min_value, :max_value, :application_date, :livetime, :alarm_point_1, :alarm_point_2, :alarm_point_3, :alarm_point_4)
+      params.require(:sensor).permit(
+        :alarm_point_1,
+        :alarm_point_2,
+        :alarm_point_3,
+        :alarm_point_4,
+        :application_date,
+        :central_device_id,
+        :gas_type_id,
+        :max_value,
+        :min_value,
+        :next_change_date,
+        :sensor_type_id,
+        :si_unit_id,
+        :zero_point
+      )
     end
 end
