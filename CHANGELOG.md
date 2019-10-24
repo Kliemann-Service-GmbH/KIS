@@ -8,7 +8,17 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
-
+### neu hinzugefügt
+- Logik 'nächster Wechsel' im Sensor
+    Der nächste Wechsel wird nun in einer Update Funktion behandelt.
+    Ziel ist es das kürzere Wecheldatum zu behalten, wenn dieses manuell
+    eingetragen wurde. Dabei aber auch die Automatik zu beachten, nach der
+    der nächste Wechel automatisch ausgefüllt wird, wenn ein Einbaudatum
+    erfasst und der Sensor Typ eine Standard Lebensdauer besitzt.
+### geändert
+- Sensoren Datenbankspalte umbenannt
+    Die Sensoren Datenbank Spalte 'livetime'
+    wurde in 'next_change_date' (Datum nächster Wechsel) umbenannt.
 ## [0.7.2] - 2019-10-22
 ### neu hinzugefügt
 - diverse statische Webseiten
