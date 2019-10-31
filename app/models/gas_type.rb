@@ -16,7 +16,7 @@ class GasType < ApplicationRecord
 
   # Validations
   validates :name, uniqueness: true, allow_blank: true
-  validates :chemical_formula, uniqueness: true
+  validates :chemical_formula, uniqueness: true, allow_blank: true
   validate :name_or_chemical_formula_present
 
   # Virtual Attributes
