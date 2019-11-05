@@ -9,12 +9,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 ### geändert
+- Prüfprotokoll PDF komplett neu aufgebaut
+    - Nachdem nun viele Änderungen in das Prüfprotokoll eingeflossen sind,
+    ohne vorher einen genauen Plan zu haben, waren verschiedene Fehler
+    aufgetreten. Der Seitenumbruch wurde an mehreren Stellen falsch berechnet.
+    - Außerdem wurde eine Versionsnummer an den Rand des Protokolls
+    eingetragen. Zusammen mit der schon bestehenden Angaben wann das
+    Protokoll erstellt wurde kann nun genauer nachvollzogen werden wann ein
+    Fehler im Protokoll das erste mal auftritt.
 - leere Felder in Gasarten
-  - erlaubt leere Felder für Namen oder chemische Formel
-    Man kann nun zum Beispiel das Gas mit dem Namen R134a und einer leeren chmischen Formel erfassen.
-    Vor dieser Änderung wurde beim nächsten erfassen eines Gases wieder mit einer leeren chemischen Formel ein Fehler ausgegeben
-    der sagte: "chemische Formel schon vergeben"  (2x leer war gleich)
-
+  - erlaubt nun leere Felder für Namen oder chemische Formel
+    Man kann nun zum Beispiel das Gas mit dem Namen R134a und einer leeren
+    chmischen Formel erfassen.
+    Vor dieser Änderung wurde beim nächsten erfassen eines Gases wieder mit
+    einer leeren chemischen Formel ein Fehler ausgegeben der sagte:
+    "chemische Formel schon vergeben"  (2x leer wurde als gleich angesehen)
 ## [0.7.2] - 2019-1--24
 ### neu hinzugefügt
 - Logik 'nächster Wechsel' im Sensor

@@ -85,6 +85,11 @@ de:
   customer: Kunde
   customer_number: Kunden Nummer
   customers:
+    attributes:
+      service_object:
+        one: 1 Objekt
+        other: "%{count} Objekte"
+        zero: ''
     edit:
       Edit: Kunde bearbeiten
     index:
