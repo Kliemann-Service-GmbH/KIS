@@ -8,6 +8,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### geändert
+- leere Felder in Gasarten
+  - erlaubt leere Felder für Namen oder chemische Formel
+    Man kann nun zum Beispiel das Gas mit dem Namen R134a und einer leeren chmischen Formel erfassen.
+    Vor dieser Änderung wurde beim nächsten erfassen eines Gases wieder mit einer leeren chemischen Formel ein Fehler ausgegeben
+    der sagte: "chemische Formel schon vergeben"  (2x leer war gleich)
 
 ## [0.7.2] - 2019-1--24
 ### neu hinzugefügt
