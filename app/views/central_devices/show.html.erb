@@ -7,13 +7,13 @@
   <div class="column">
     <% unless @service_object.blank? %>
     <h2 class="subtitle"><%= t('.service_object') %></h2>
-    <%= render partial: "addresses/attributes", locals: {address: @service_object.first.address} %>
+    <%= render partial: "addresses/attributes", locals: {address: @service_object.address} %>
     <% end %>
   </div>
   <div class="column">
   <% unless @customer.blank? %>
   <h2 class="subtitle"><%= t('.customer') %></h2>
-  <%= render partial: "addresses/attributes", locals: {address: @customer.first.address} %>
+  <%= render partial: "addresses/attributes", locals: {address: @customer.address} %>
   <% end %>
   </div>
 </div>

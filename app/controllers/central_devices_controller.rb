@@ -5,7 +5,6 @@ class CentralDevicesController < ApplicationController
   # GET /central_devices.json
   def index
     if params[:service_object_id]
-      # @central_device = CentralDevice.find(params[:service_object]).includes(:service_object).service_object
       @service_object = ServiceObject.find(params[:service_object_id])
       @central_devices = CentralDevice.where(service_object_id: params[:service_object_id])
     else
@@ -24,10 +23,8 @@ class CentralDevicesController < ApplicationController
   # GET /central_devices/1.json
   def show
     @sensors = @central_device.sensors.order(:number).all
-    @service_object = ServiceObject.includes(:central_devices).where(central_devices: @central_device)
-    @customer = unless @service_object.blank?
-      Customer.includes(:service_objects).where(service_objects: @service_object)
-    end
+    @service_object = @central_device.service_object
+    @customer = @central_device.service_object.customer
   end
 
   # GET /central_devices/new
