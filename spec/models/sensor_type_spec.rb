@@ -16,7 +16,19 @@
 require 'rails_helper'
 
 RSpec.describe SensorType, type: :model do
-  it "is valid with valid attributes" do
-    expect(build(:sensor_type)).to be_valid
+  let(:sensor_type) { create(:sensor_type) }
+
+  subject { sensor_type }
+
+  describe "Associations" do
+    it { should have_many(:sensors) }
+  end
+
+  describe "Validations" do
+    it "is valid with valid attributes" do
+      expect(build(:sensor_type)).to be_valid
+    end
+
+    it { should validate_uniqueness_of(:name) }
   end
 end
