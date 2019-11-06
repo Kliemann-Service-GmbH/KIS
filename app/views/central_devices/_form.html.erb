@@ -18,7 +18,7 @@
     <div class="field-body">
       <div class="field">
         <div class="control">
-          <%= form.select :service_object_id, ServiceObject.includes(:address).collect { |service_object| [service_object.address.address_line, service_object.id]}, { include_blank: 'None' } %>
+          <%= form.select :service_object_id, ServiceObject.includes(:address).collect { |service_object| [service_object.address.address_line, service_object.id]}, { include_blank: '' } %>
         </div>
         <div class="help is-danger"><%= t :field_required %></div>
       </div>
