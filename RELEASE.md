@@ -13,6 +13,7 @@ Dokumentation für den Release Prozess des KIS Systems.
   - draw.io Zeichnung speichern
     - [] PDF
     - [] draw.io Format
+  - [] `git commit -a -m "Update Version in Flowchart draw.io"`
 - [] Changelog aktuell? Wurde die Datei 'CHANGELOG.md' mit allen wichtigen Änderungen am System gefüllt?
 - [] Update der nächsten Version Nummer im 'CHANGELOG.md' https://keepachangelog.com/en/1.0.0/
   - [] aktuelles Tagesdatum neben der Version im 'CHANGELOG.md' stehen
