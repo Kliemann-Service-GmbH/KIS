@@ -11,6 +11,10 @@
 
 class Address < ApplicationRecord
   # Associations
+  has_one :service_object
+  has_one :contact_address
+  has_one :customer
+  has_one :service_object
 
   # Validations
 
