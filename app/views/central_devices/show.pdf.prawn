@@ -20,9 +20,9 @@ prawn_document(filename: "Prüfprotokoll-##{@central_device.service_object.objec
   pdf.line_width = 0.5
   pdf.fill_color "111111"
 
-  # BEGIN header and footer
-  # "draft" stamps in development environment
+  # BEGIN header
   pdf.repeat :all do
+    # BEGIN "draft" stamps in development environment
     if Rails.env.development?
       pdf.stroke_axis
 
@@ -35,27 +35,28 @@ prawn_document(filename: "Prüfprotokoll-##{@central_device.service_object.objec
       end
       pdf.fill_color "111111"
     end
+    # END "draft" stamps in development environment
 
     # header
     pdf.image "#{Rails.root}/app/assets/images/logo_kliemann-service-gmbh.png", :at => [410,790], :width => 100
     pdf.draw_text t(:service_protocol).upcase, style: :bold, size: 16, at: [0, 730]
     pdf.draw_text "#{t(:object_nr)}: #{@central_device.service_object.object_number}-#{@central_device.device_number}", style: :bold, size: 16, at: [260, 730]
-
-    pdf.draw_text "#{t(:service_protocol)} #{t(:created_at)}: #{l @central_device.created_at, format: :default}", size: 8, at: [0, 710]
-    pdf.draw_text "#{t(:service_protocol)} #{t(:updated_at)}: #{l @central_device.updated_at, format: :default}", size: 8, at: [width_half, 710]
-
-    if @central_device.service_object.has_service_contract
-      pdf.draw_text t(:service_contract), style: :bold, at: [width_half, 695]
-    end
+    # Meta data
+    pdf.draw_text "#{t(:service_protocol)} #{t(:created_at)}: #{l @central_device.created_at, format: :default}", size: 8, at: [0, 720]
+    pdf.draw_text "#{t(:service_protocol)} #{t(:updated_at)}: #{l @central_device.updated_at, format: :default}", size: 8, at: [width_half, 720]
+    # Version Number
+    pdf.draw_text "Formular Version: #{version_number}", size: 6, style: :normal, at: [535, 50], rotate: 90
 
     # Service Contract
     if @central_device.service_object.has_service_contract
-      pdf.draw_text "#{t :until}: #{l @central_device.service_object.service_contract_length, format: :short}", at: [width_half + 90, 695]
+      pdf.draw_text t(:service_contract), style: :bold, at: [width_half, 700]
+      pdf.draw_text "#{t :until}: #{l @central_device.service_object.service_contract_length, format: :short}", at: [width_half + 90, 700]
     end
 
-    # footer
+    # Footer, not used at the moment
   end
-  # END header and footer
+  # END header
+
 
   # BEGIN body
   pdf.bounding_box [pdf.bounds.left, pdf.bounds.top - 100], :width  => pdf.bounds.width, :height => pdf.bounds.height - 120 do
@@ -82,7 +83,7 @@ prawn_document(filename: "Prüfprotokoll-##{@central_device.service_object.objec
 
     # CentralDevice
     current_line = pdf.cursor
-    row_height = 100
+    row_height = 70
     pdf.bounding_box [pdf.bounds.left, current_line], width: width_half, height: row_height do
       pdf.text "#{t(:central_device)}", style: :bold
       pdf.text "#{t(:serial_number)}: #{@central_device.serial_number}"
@@ -224,9 +225,10 @@ prawn_document(filename: "Prüfprotokoll-##{@central_device.service_object.objec
 
     pdf.move_down 20
 
-    # Notes
     # New page logic
     pdf.start_new_page if pdf.cursor < 240
+
+    # Notes
     pdf.text "#{t(:notes)}", style: :bold
     pdf.bounding_box [pdf.bounds.left, pdf.cursor], width: pdf.bounds.width, height: 3.cm do
       pdf.line_width = 0.5
@@ -274,89 +276,86 @@ prawn_document(filename: "Prüfprotokoll-##{@central_device.service_object.objec
     # Legende
     # 30 units under the signature fields
     pdf.move_down 30
+
     # New page logic
-    pdf.start_new_page if pdf.cursor < 20
+    pdf.start_new_page if pdf.cursor < 56
 
     pdf.text "#{t :legende}:", style: :bold
     pdf.move_down 10
 
     # BEGIN legende sensor
-    pdf.bounding_box [pdf.bounds.left, pdf.cursor], width: pdf.bounds.width do
-      pdf.formatted_text [
-        { :text => "#{t(:sensor)}: ", size: 8, styles: [:bold] },
-        { :text => "#{t('sensor_number.formats.short')}", size: 8, styles: [:bold] },
-        { :text => "=>#{t('sensor_number.formats.default')}; ", size: 8 },
-        { :text => "#{t('case_type.formats.short')}", size: 8, styles: [:bold] },
-        { :text => "=>#{t('case_type.formats.default')}; ", size: 8 },
-        { :text => "#{t('measuring_range.formats.short')}", size: 8, styles: [:bold] },
-        { :text => "=>#{t('measuring_range.formats.default')}; ", size: 8 },
-        { :text => "#{t('exchanged.formats.short')}", size: 8, styles: [:bold] },
-        { :text => "=>#{t('exchanged.formats.default')}; ", size: 8 },
-        { :text => "#{t('next_exchange.formats.short')}", size: 8, styles: [:bold] },
-        { :text => "=>#{t('next_exchange.formats.default')}; ", size: 8 },
-        { :text => "#{t('a1.formats.short')}", size: 8, styles: [:bold] },
-        { :text => "=>#{t('a1.formats.default')}; ", size: 8 },
-        { :text => "#{t('a2.formats.short')}", size: 8, styles: [:bold] },
-        { :text => "=>#{t('a2.formats.default')}; ", size: 8 },
-        { :text => "#{t('a3.formats.short')}", size: 8, styles: [:bold] },
-        { :text => "=>#{t('a3.formats.default')}; ", size: 8 },
-        { :text => "#{t('a4.formats.short')}", size: 8, styles: [:bold] },
-        { :text => "=>#{t('a4.formats.default')}; ", size: 8 },
-        { :text => "#{t('AZ0.formats.short')}", size: 8, styles: [:bold] },
-        { :text => "=>#{t('AZ0.formats.default')}; ", size: 8 },
-        { :text => "#{t('AZEnd.formats.short')}", size: 8, styles: [:bold] },
-        { :text => "=>#{t('AZEnd.formats.default')}; ", size: 8 },
-        { :text => "#{t('si_unit.formats.short')}", size: 8, styles: [:bold] },
-        { :text => "=>#{t('si_unit.formats.default')}; ", size: 8 },
-      ], align: :left
-    end
+    pdf.formatted_text [
+      { :text => "#{t(:sensor)}: ", size: 8, styles: [:bold] },
+      { :text => "#{t('sensor_number.formats.short')}", size: 8, styles: [:bold] },
+      { :text => "=>#{t('sensor_number.formats.default')}; ", size: 8 },
+      { :text => "#{t('case_type.formats.short')}", size: 8, styles: [:bold] },
+      { :text => "=>#{t('case_type.formats.default')}; ", size: 8 },
+      { :text => "#{t('measuring_range.formats.short')}", size: 8, styles: [:bold] },
+      { :text => "=>#{t('measuring_range.formats.default')}; ", size: 8 },
+      { :text => "#{t('exchanged.formats.short')}", size: 8, styles: [:bold] },
+      { :text => "=>#{t('exchanged.formats.default')}; ", size: 8 },
+      { :text => "#{t('next_exchange.formats.short')}", size: 8, styles: [:bold] },
+      { :text => "=>#{t('next_exchange.formats.default')}; ", size: 8 },
+      { :text => "#{t('a1.formats.short')}", size: 8, styles: [:bold] },
+      { :text => "=>#{t('a1.formats.default')}; ", size: 8 },
+      { :text => "#{t('a2.formats.short')}", size: 8, styles: [:bold] },
+      { :text => "=>#{t('a2.formats.default')}; ", size: 8 },
+      { :text => "#{t('a3.formats.short')}", size: 8, styles: [:bold] },
+      { :text => "=>#{t('a3.formats.default')}; ", size: 8 },
+      { :text => "#{t('a4.formats.short')}", size: 8, styles: [:bold] },
+      { :text => "=>#{t('a4.formats.default')}; ", size: 8 },
+      { :text => "#{t('AZ0.formats.short')}", size: 8, styles: [:bold] },
+      { :text => "=>#{t('AZ0.formats.default')}; ", size: 8 },
+      { :text => "#{t('AZEnd.formats.short')}", size: 8, styles: [:bold] },
+      { :text => "=>#{t('AZEnd.formats.default')}; ", size: 8 },
+      { :text => "#{t('si_unit.formats.short')}", size: 8, styles: [:bold] },
+      { :text => "=>#{t('si_unit.formats.default')}; ", size: 8 },
+    ], align: :left
     # END legende sensor
 
     pdf.move_down 10
 
     # BEGIN legende sensor status
-    pdf.bounding_box [pdf.bounds.left, pdf.cursor], width: pdf.bounds.width do
-      pdf.formatted_text [
-        { :text => "#{t('status')}: ", size: 8, styles: [:bold] },
-        { :text => "1", size: 8, styles: [:bold] },
-        { :text => "=>#{t(:ok)}; ", size: 8 },
-        { :text => "2", size: 8, styles: [:bold] },
-        { :text => "=>#{t(:old_used)}; ", size: 8 },
-        { :text => "3", size: 8, styles: [:bold] },
-        { :text => "=>#{t(:defect)}", size: 8 },
-      ], align: :left
-    end
+    pdf.formatted_text [
+      { :text => "#{t('status')}: ", size: 8, styles: [:bold] },
+      { :text => "1", size: 8, styles: [:bold] },
+      { :text => "=>#{t(:ok)}; ", size: 8 },
+      { :text => "2", size: 8, styles: [:bold] },
+      { :text => "=>#{t(:old_used)}; ", size: 8 },
+      { :text => "3", size: 8, styles: [:bold] },
+      { :text => "=>#{t(:defect)}", size: 8 },
+    ], align: :left
     # END legende sensor status
 
     pdf.move_down 10
 
     # BEGIN legende sensor case
-    pdf.bounding_box [pdf.bounds.left , pdf.cursor], width: pdf.bounds.width do
-      pdf.formatted_text [
-        { :text => "#{t('case_type.formats.default')} (#{t('case_type.formats.short')}): ", size: 8, styles: [:bold] },
-        { :text => "0) ", size: 8, styles: [:bold] },
-        { :text => "Kunststoff 100x60x40 (CO-Sensor alt); ", size: 8 },
-        { :text => "1) ", size: 8, styles: [:bold] },
-        { :text => "Kunststoff 80x80x50 (Bocube 80806 grau 2x Loch im Unterteil); ", size: 8 },
-        { :text => "2) ", size: 8, styles: [:bold] },
-        { :text => "Aluminium 80x80x60 (Rolec Loch im Deckel); ", size: 8 },
-        { :text => "3) ", size: 8, styles: [:bold] },
-        { :text => "Aluminium 100x60x40 (Gassensor IR); ", size: 8 },
-        { :text => "4) ", size: 8, styles: [:bold] },
-        { :text => "Kunststoff 100x80x60 (Bocube B100806 Loch im Deckel); ", size: 8 },
-        { :text => "5) ", size: 8, styles: [:bold] },
-        { :text => "Kunststoff 100x80x60 (Bocube B100806 Loch im Unterteil); ", size: 8 },
-        { :text => "6) ", size: 8, styles: [:bold] },
-        { :text => "Kunststoff 200x80x60 (Bocube B100806 Loch im Deckel); ", size: 8 },
-        { :text => "7) ", size: 8, styles: [:bold] },
-        { :text => "Kunststoff 80x80x50 (Bocube B100806 Loch im Deckel); ", size: 8 },
-        { :text => "8) ", size: 8, styles: [:bold] },
-        { :text => "Aluminium 80x80x60 (Rolec Loch im Unterteil); ", size: 8 },
-        { :text => "9) ", size: 8, styles: [:bold] },
-        { :text => "sonstiges Gehäuse (unbekannt); ", size: 8 },
-      ], align: :left
-    end
+    pdf.formatted_text [
+      { :text => "#{t('case_type.formats.default')} (#{t('case_type.formats.short')}): ", size: 8, styles: [:bold] },
+      { :text => "0) ", size: 8, styles: [:bold] },
+      { :text => "Kunststoff 100x60x40 (CO-Sensor alt); ", size: 8 },
+      { :text => "1) ", size: 8, styles: [:bold] },
+      { :text => "Kunststoff 80x80x50 (Bocube 80806 grau 2x Loch im Unterteil); ", size: 8 },
+      { :text => "2) ", size: 8, styles: [:bold] },
+      { :text => "Aluminium 80x80x60 (Rolec Loch im Deckel); ", size: 8 },
+      { :text => "3) ", size: 8, styles: [:bold] },
+      { :text => "Aluminium 100x60x40 (Gassensor IR); ", size: 8 },
+      { :text => "4) ", size: 8, styles: [:bold] },
+      { :text => "Kunststoff 100x80x60 (Bocube B100806 Loch im Deckel); ", size: 8 },
+      { :text => "5) ", size: 8, styles: [:bold] },
+      { :text => "Kunststoff 100x80x60 (Bocube B100806 Loch im Unterteil); ", size: 8 },
+      { :text => "6) ", size: 8, styles: [:bold] },
+      { :text => "Kunststoff 200x80x60 (Bocube B100806 Loch im Deckel); ", size: 8 },
+      { :text => "7) ", size: 8, styles: [:bold] },
+      { :text => "Kunststoff 80x80x50 (Bocube B100806 Loch im Deckel); ", size: 8 },
+      { :text => "8) ", size: 8, styles: [:bold] },
+      { :text => "Aluminium 80x80x60 (Rolec Loch im Unterteil); ", size: 8 },
+      { :text => "9) ", size: 8, styles: [:bold] },
+      { :text => "sonstiges Gehäuse (unbekannt); ", size: 8 },
+    ], align: :left
     # END legende sensor case
+
+    pdf.move_down 10
   end
   # END Body
 

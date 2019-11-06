@@ -1,21 +1,17 @@
 <%= link_to customer do %>
 <div class="box">
-  <div class="has-text-weight-bold">
+  <div>
     <span class="has-text-weight-light"><%= t :customer_number %>:&nbsp;</span>
-    <span>#</span>
-    <span><%= customer.customer_number %></span>
+    <span class="has-text-weight-bold">#</span>
+    <span class="has-text-weight-bold"><%= customer.customer_number %></span>
+    <% unless customer.service_objects.blank? %>
+    <span class="button is-size-7"><%= t '.service_object', count: customer.service_objects.size %></span>
+    <% end %>
   </div>
 
 <div class="">
-  <div class="has-text-weight-light">
-    <%= t :address %>:
-  </div>
   <%= render partial: "addresses/attributes", locals: {address: customer.address } %>
 </div>
 
-  <div class="">
-    <span><%= customer.service_objects.size %></span>
-    <span><%= t 'service_object' %></span>
-  </div>
 </div>
 <% end %>

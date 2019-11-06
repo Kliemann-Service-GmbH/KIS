@@ -33,6 +33,21 @@
   </div>
   <% end %>
 
+  <%# More details about this address %>
+  <div id="more_details" class="">
+    <% unless address.service_object.nil? %>
+    <span>
+      <%= link_to t(:service_object), address.service_object, class: "button" %>&nbsp;
+    </span>
+    <% end %>
+
+    <% unless address.customer.nil? %>
+    <span>
+      <%= link_to t(:customer), address.customer, class: "button" %>&nbsp;
+    </span>
+    <% end %>
+  </div>
+
   <div>
     <span class="has-text-weight-light"><%= t :created_at %>:&nbsp;</span>
     <span class="has-text-weight-bold"><%= l address.created_at, format: :default %></span>
