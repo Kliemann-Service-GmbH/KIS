@@ -59,7 +59,7 @@ prawn_document(filename: "Prüfprotokoll-##{@central_device.service_object.objec
 
 
   # BEGIN body
-  pdf.bounding_box [pdf.bounds.left, pdf.bounds.top - 100], :width  => pdf.bounds.width, :height => pdf.bounds.height - 120 do
+  pdf.bounding_box [pdf.bounds.left, pdf.bounds.top - 80], :width  => pdf.bounds.width, :height => pdf.bounds.height - 100 do
     # ServiceObject address
     current_line = pdf.cursor
     pdf.bounding_box [pdf.bounds.left, current_line], width: width_half do
@@ -68,7 +68,6 @@ prawn_document(filename: "Prüfprotokoll-##{@central_device.service_object.objec
       pdf.text "#{@central_device.service_object.address.street}"
       pdf.text "#{@central_device.service_object.address.zip_city}"
     end
-
     # Customer address
     pdf.bounding_box [pdf.bounds.left + width_half, current_line], width: width_half do
       pdf.text "#{t(:customer)}", style: :bold
@@ -83,8 +82,7 @@ prawn_document(filename: "Prüfprotokoll-##{@central_device.service_object.objec
 
     # CentralDevice
     current_line = pdf.cursor
-    row_height = 70
-    pdf.bounding_box [pdf.bounds.left, current_line], width: width_half, height: row_height do
+    pdf.bounding_box [pdf.bounds.left, current_line], width: width_half do
       pdf.text "#{t(:central_device)}", style: :bold
       pdf.text "#{t(:serial_number)}: #{@central_device.serial_number}"
       pdf.text "#{t(:device_type)}: #{@central_device.device_type}"
@@ -96,10 +94,18 @@ prawn_document(filename: "Prüfprotokoll-##{@central_device.service_object.objec
         pdf.text "#{t 'accu_montage_date'}: #{l @central_device.accu_montage_date, format: :month_year unless @central_device.accu_montage_date.blank?}"
       end
     end
+    # Object_maintainer
+    pdf.bounding_box [pdf.bounds.left + width_half, current_line], width: width_half do
+      # pdf.text "#{t(:maintainer)}", style: :bold
+    end
 
+    pdf.stroke_color '000000'
+    pdf.stroke_horizontal_rule
+    pdf.move_down 10
 
+    current_line = pdf.cursor
     # Alarm Outputs
-    pdf.bounding_box [pdf.bounds.left + width_half, current_line], width: width_half, height: row_height do
+    pdf.bounding_box [pdf.bounds.left + width_half, current_line], width: width_half do
       pdf.text "#{t('AlarmOutputs')}", style: :bold
       for output in @central_device.alarm_outputs do
         pdf.text "#{output.key}: #{output.value} [#{output.invert ? 'x' : ' '}]"
@@ -107,50 +113,63 @@ prawn_document(filename: "Prüfprotokoll-##{@central_device.service_object.objec
       # Legende
       pdf.text "[x] #{t(:invert)}?", size: 8 unless @central_device.alarm_outputs.blank?
     end
-
-    pdf.stroke_color '000000'
-    pdf.stroke_horizontal_rule
-    pdf.move_down 20
+    # Fix wrong cursor calculation, first part look after OutputDevices for more ....
+    tmp_cursor_after_alarm_output = pdf.cursor
 
     # OutputDevices (LS)
-    pdf.text "#{t(:output_devices)}", style: :bold
-    # Table headers
-    data_output_device = [[
-      "#{t(:count)}",
-      "#{t(:device_type)}",
-      "#{t(:has_accu)}",
-      "#{t(:accu_montage_date)}"
-    ]]
+    pdf.bounding_box [pdf.bounds.left, current_line], width: width_half - 10 do
 
-    # Table data
-    for output_device in @central_device.output_devices
-      data_output_device += [[
-        output_device.count,
-        output_device.device_type,
-        "#{t output_device.has_accu}",
-        "#{l(output_device.accu_montage_date, format: :month_year) if !output_device.accu_montage_date.nil? }"
+      pdf.text "#{t(:output_devices)}", style: :bold
+      # Table headers
+      data_output_device = [[
+        "#{t(:count)}",
+        "#{t(:output_device_type)}",
+        "#{t(:has_accu)}",
+        "#{t(:accu_montage_date)}"
       ]]
-    end
-    # empty rows
-    (0..0).each do
-      data_output_device += [[
-        " ",
-        " ",
-        " ",
-        " "
-      ]]
-    end
+      # Table data
+      for output_device in @central_device.output_devices
+        data_output_device += [[
+          output_device.count,
+          output_device.device_type,
+          "#{t output_device.has_accu}",
+          "#{l(output_device.accu_montage_date, format: :month_year) if !output_device.accu_montage_date.nil? }"
+          ]]
+      end
+      # empty rows
+      (0..0).each do
+        data_output_device += [[
+          " ",
+          " ",
+          " ",
+          " "
+          ]]
+        end
 
-    # This generates the table
-    pdf.table data_output_device,
+      # This generates the table
+      pdf.table data_output_device,
       width: pdf.bounds.right,
       header: true,
+      column_widths: {
+        0 => 40, # Anzahl
+        # 1 => 40, # Anlagentyp
+        2 => 50, # Akku vorhanden
+        3 => 50   # Einbau Datuum
+      },
       row_colors: ["F0F0F0","FFFFFF"],
       cell_style: { border_width: 0.5, size: 7 } do
         row(0).font_style = :bold
       end
+    end
 
-    pdf.move_down 20
+    # Fix wrong cursor calculation, first part look after OutputDevices for more ....
+    current_line = pdf.cursor > tmp_cursor_after_alarm_output ? tmp_cursor_after_alarm_output : pdf.cursor
+    pdf.bounding_box [pdf.bounds.left, current_line], :width  => pdf.bounds.width do
+      # just an empty bounding box to fix the cursor calculation
+      pdf.stroke_color '000000'
+      pdf.stroke_horizontal_rule
+      pdf.move_down 10
+    end
 
     # Sensors
     pdf.text "#{t(:sensors)}", style: :bold

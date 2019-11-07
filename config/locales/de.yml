@@ -130,6 +130,7 @@ de:
       default: Nächster Wechsel
       short: NW
   location: Standort
+  maintainer: Ansprechpartner
   max_value:
     formats:
       default: Messbereich Maximal
@@ -163,6 +164,7 @@ de:
   of: von
   ok: Ok
   old_used: verbraucht
+  output_device_type: Anzeige Gerät (Leuchtscheiben, Hupen, usw.)
   output_devices: Leuchtscheibe
   page: Seite
   sensor: Sensor

@@ -2,7 +2,6 @@ require "application_system_test_case"
 
 class ServiceObjectsTest < ApplicationSystemTestCase
   setup do
-    Capybara.current_driver = Capybara.javascript_driver
     @customer = create(:customer)
     @address = create(:address)
   end
@@ -28,8 +27,8 @@ class ServiceObjectsTest < ApplicationSystemTestCase
     visit service_objects_url
     click_on I18n.t('service_objects.index.New')
 
-    select nil, from: 'service_object_customer_id', match: :first
-    select nil, from: 'service_object_address_id', match: :first
+    select @customer.address_line, from: 'service_object_customer_id', match: :first
+    select @address.address_line, from: 'service_object_address_id', match: :first
 
     find(:css, 'input[type="submit"]').click
 
@@ -93,6 +92,9 @@ class ServiceObjectsTest < ApplicationSystemTestCase
 
     visit service_objects_url
     click_on I18n.t('service_objects.index.New')
+
+    select @customer.address_line, from: 'service_object_customer_id', match: :first
+    select @address.address_line, from: 'service_object_address_id', match: :first
 
     fill_in 'service_object_service_contract_begin', with: @service_object.service_contract_begin
     fill_in 'service_object_service_contract_end', with: @service_object.service_contract_end
