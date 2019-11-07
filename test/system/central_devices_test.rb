@@ -62,12 +62,14 @@ class CentralDevicesTest < ApplicationSystemTestCase
   end
 
   test "creating Sensors on Central device" do
-    skip("FIXME: Test disabled because 'New Sensor' click not working")
-    create(:si_unit)
-    create(:gas_type)
-    create(:sensor_type)
+    skip("Fix in test Javascript for 'New Sensor'!")
     visit central_devices_url()
     click_on I18n.t('central_devices.index.New')
+
+    # This dos'nt work
+    5.times do
+      click_on I18n.t('New Sensor')
+    end
 
     select @service_object.address.address_line, from: 'central_device_service_object_id', match: :first
 
@@ -75,10 +77,6 @@ class CentralDevicesTest < ApplicationSystemTestCase
     fill_in :central_device_device_type, with: @central_device.device_type
     fill_in :central_device_location, with: @central_device.location
     fill_in :central_device_montage_date, with: @central_device.montage_date
-
-    5.times do
-      click_on I18n.t('New Sensor')
-    end
 
     find(:css, 'input[type="submit"]').click
 

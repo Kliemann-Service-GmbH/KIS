@@ -130,6 +130,7 @@ en:
       default: Livetime
       short: LT
   location: Location
+  maintainer: Maintainer
   max_value:
     formats:
       default: Max value
@@ -163,6 +164,7 @@ en:
   of: Of
   ok: Ok
   old_used: Old used
+  output_device_type: Output device type
   output_devices: Output devices
   page: Page
   sensor: Sensor
