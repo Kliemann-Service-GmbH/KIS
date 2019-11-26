@@ -14,7 +14,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Zeilenumbruch im Prüfprotokoll Formular behoben
     Wurden mehr als 4 Alarmausgänge konfiguriert wurde der Umbruch wieder falsch
     berechnet.
-
 ## [0.8.0] - 2019-11-06
 ### geändert
 - Prüfprotokoll PDF komplett neu aufgebaut
