@@ -31,4 +31,20 @@ services:
 
 before_script:
   - psql -c 'create database "kls-kis_test";' -U postgres
-  - cp config/database.yml.example config/database.yml
+  - cat <<-EOF > config/database.yml
+default: &default
+  adapter: postgresql
+  encoding: UTF-8
+  pool: 5
+  username: postgres
+  password: example
+  host: localhost
+  socket:
+  port: 5432
+  timeout: 5000
+
+test:
+  <<: *default
+  database: kls-kis_test
+  port: 5432
+EOF
