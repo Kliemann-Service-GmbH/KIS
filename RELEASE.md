@@ -24,9 +24,10 @@ Dokumentation für den Release Prozess des KIS Systems.
 - [] `git tag vN.N.N` Tagge die Version
 - [] `rake release:bump_version && git commit -a -m "Update Version"` aktualisiere die Versionsnummer im KIS (Rails intern, liest die Git Tag Version aus)
 - [] `git push`
-- [] Deploy in die `staging` Umgebung
+- [] Deploy in die **staging** Umgebung
   - [] `cap staging deploy` erfolgreich?
 - [] `git checkout master` wechsel in den Master Branch
 - [] `git merge --no-ff release` merge den lokalen 'release' Branch
 - [] `git push` Branch ins remote Repo pushen
+- [] Deploy in die **production** Umgebung
   - [] `cap production deploy` erfolgreich?
