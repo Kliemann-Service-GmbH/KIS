@@ -225,6 +225,10 @@ de:
   signature_employee: Unterschrift AN
   signature_location: Ort
   status: Zustand
+  status_not_ok: nicht funktionstüchtig
+  status_ok: funktionstüchtig
+  status_ok_and_status_not_ok_are_exclusive: "'funktionstüchtig' und 'nicht funktionstüchtig' können nicht gleichzeitig gesetzt werden!"
+  status_with_issues: mit Mängeln
   telephone_number: Telefonnummer
   time:
     formats:

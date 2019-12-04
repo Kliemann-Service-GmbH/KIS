@@ -225,6 +225,10 @@ en:
   signature_employee: Signature employee
   signature_location: Signature location
   status: Status
+  status_not_ok: Status not ok
+  status_ok: Status ok
+  status_ok_and_status_not_ok_are_exclusive: Status ok and status not ok are exclusive
+  status_with_issues: Status with issues
   telephone_number: Telephone number
   time:
     formats:
