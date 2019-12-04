@@ -154,6 +154,7 @@ en:
     formats:
       default: Next exchange
       short: NE
+  not_ok: not working
   not_working: Not working
   notes: Notes
   object: Object
@@ -240,6 +241,7 @@ en:
   welcome:
     index:
       placeholder: Placeholder
+  with_issues: with issues
   with_shortcomings: With shortcomings
   working: Working
   years: Years

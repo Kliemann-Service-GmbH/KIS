@@ -154,6 +154,7 @@ de:
     formats:
       default: Default
       short: NW
+  not_ok: nicht funktionstüchtig
   not_working: nicht funktionstüchtig
   notes: Bemerkungen
   object: Objekt
@@ -240,6 +241,7 @@ de:
   welcome:
     index:
       placeholder: Adressnummer, Objektnummer, Adressdetail, Seriennummer, ...
+  with_issues: mit Mängeln
   with_shortcomings: mit Mängeln
   working: funktionstüchtig
   years: Jahre

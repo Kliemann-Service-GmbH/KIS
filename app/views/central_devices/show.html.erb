@@ -1,4 +1,6 @@
-<h1 class="title"><%= t 'central_device' %></h1>
+<%= bg_status @central_device %>
+
+<h1 class="title"><%= t 'central_device' %>&nbsp;<%= button_status(@central_device) %></h1>
 <h2 class="subtitle"><%= @central_device.device_type %></h2>
 
 <hr>
