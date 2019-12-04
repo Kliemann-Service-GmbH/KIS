@@ -4,23 +4,29 @@
 <hr>
 
 <div class="columns">
+  <!-- BEGIN Object Address -->
   <div class="column">
     <% unless @service_object.blank? %>
     <h2 class="subtitle"><%= t('.service_object') %></h2>
     <%= render partial: "addresses/attributes", locals: {address: @service_object.address} %>
     <% end %>
   </div>
+  <!-- END Object Address -->
+
+  <!-- BEGIN Customer Address -->
   <div class="column">
   <% unless @customer.blank? %>
   <h2 class="subtitle"><%= t('.customer') %></h2>
   <%= render partial: "addresses/attributes", locals: {address: @customer.address} %>
   <% end %>
   </div>
+  <!-- END Customer Address -->
 </div>
 
 <hr>
 
 <div class="columns">
+  <!-- BEGIN Details -->
   <div class="column">
     <h2 class="subtitle"><%= t 'details' %></h2>
     <div class="box">
@@ -50,10 +56,41 @@
     </div>
     <% end %>
   </div>
+  <!-- END Details -->
 
-  <% unless @central_device.alarm_outputs.blank? %>
+  <!-- BEGIN Ansprechpartner -->
   <div class="column">
-    <!-- BEGIN Alarm Output -->
+  </div>
+  <!-- END Ansprechpartner -->
+</div>
+
+<hr>
+
+<div class="columns">
+  <!-- BEGIN OutputDevice -->
+  <div class="column">
+    <h2 class="subtitle"><%= t 'OutputDevice' %></h2>
+    <table class="table is-fullwidth as-td-padding-0 is-bordered is-striped is-hoverable">
+      <thead>
+        <tr>
+          <th><%= t :count %></th>
+          <th><%= t :type %></th>
+          <th><%= t :has_accu %></th>
+          <th><%= t :accu_montage_date %></th>
+        </tr>
+      </thead>
+      <tbody class="output_devices">
+      <% for output_device in @central_device.output_devices %>
+        <%= render "output_device", output_device: output_device %>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+  <!-- END OutputDevice -->
+
+  <!-- BEGIN Alarm Output -->
+  <div class="column">
+    <% unless @central_device.alarm_outputs.blank? %>
     <h2 class="subtitle"><%= t 'AlarmOutputs' %></h2>
     <table class="table is-fullwidth as-td-padding-0 is-bordered is-striped is-hoverable">
       <thead>
@@ -69,33 +106,10 @@
       <% end %>
       </tbody>
     </table>
-    <!-- END Alarm Output -->
-  </div>
-  <% end %>
-</div>
-
-<hr>
-
-<!-- BEGIN OutputDevice -->
-<div class="">
-  <h2 class="subtitle"><%= t 'OutputDevice' %></h2>
-  <table class="table is-fullwidth as-td-padding-0 is-bordered is-striped is-hoverable">
-    <thead>
-      <tr>
-        <th><%= t :count %></th>
-        <th><%= t :type %></th>
-        <th><%= t :has_accu %></th>
-        <th><%= t :accu_montage_date %></th>
-      </tr>
-    </thead>
-    <tbody class="output_devices">
-    <% for output_device in @central_device.output_devices %>
-      <%= render "output_device", output_device: output_device %>
     <% end %>
-    </tbody>
-  </table>
+  </div>
+  <!-- END Alarm Output -->
 </div>
-<!-- END OutputDevice -->
 
 <hr>
 
@@ -146,6 +160,7 @@
 <!-- END Sensors -->
 
 <div class="columns">
+  <!-- BEGIN History -->
   <div class="column">
     <h2 class="subtitle"><%= t 'history' %></h2>
     <% for history in @central_device.history_entries do %>
@@ -162,6 +177,7 @@
       </div>
     <% end %>
   </div>
+  <!-- END History -->
 </div>
 
 <div style="padding-top: 1em;">
