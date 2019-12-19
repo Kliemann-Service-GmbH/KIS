@@ -1,0 +1,49 @@
+sudo: required
+cache: bundler
+
+language: ruby
+rvm:
+ - 2.6.5
+
+before_install:
+  # https://github.com/rails-sqlserver/tiny_tds
+  - sudo apt-get install wget
+  - sudo apt-get install build-essential
+  - sudo apt-get install libc6-dev
+  - wget http://www.freetds.org/files/stable/freetds-1.1.6.tar.gz
+  - tar -xzf freetds-1.1.6.tar.gz
+  - cd freetds-1.1.6
+  - ./configure --prefix=/usr/local --with-tdsver=7.3
+  - make
+  - sudo make install
+  - cd ..
+  - gem update --system
+
+bundler_args: --without production
+
+script:
+  - bin/rake db:migrate RAILS_ENV=test
+  - bundle exec rspec spec
+
+services:
+  - postgresql
+
+before_script:
+  - psql -c 'create database "kls-kis_test";' -U postgres
+  - |
+    cat <<-EOF > config/database.yml
+      default: &default
+        adapter: postgresql
+        encoding: UTF-8
+        pool: 5
+        username: postgres
+        password: example
+        host: localhost
+        socket:
+        port: 5432
+        timeout: 5000
+      test:
+        <<: *default
+        database: kls-kis_test
+        port: 5432
+    EOF

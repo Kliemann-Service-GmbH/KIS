@@ -1,3 +1,8 @@
+Kundeninformationssystem der Kliemann-Service GmbH
+
+[![Build Status](https://travis-ci.org/Kliemann-Service-GmbH/KIS.svg?branch=master)](https://travis-ci.org/Kliemann-Service-GmbH/KIS)&nbsp;-&nbsp;master&nbsp;
+[![Build Status](https://travis-ci.org/Kliemann-Service-GmbH/KIS.svg?branch=development)](https://travis-ci.org/Kliemann-Service-GmbH/KIS)&nbsp;-&nbsp;development&nbsp;
+
 # Start
 ## Datenbank
 
