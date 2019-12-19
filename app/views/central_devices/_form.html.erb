@@ -256,7 +256,7 @@
     </tfoot>
     <tbody class="sensor_entries">
     <%#= form.association :sensors %>
-    <%= form.fields_for :sensors, @central_device.sensors.sort_by{|s| s.number.to_i} do |builder| %>
+    <%= form.fields_for :sensors, @central_device.sensors.sort_by{|s| s.number} do |builder| %>
       <%= render "sensor_fields", f: builder %>
     <% end %>
     </tbody>
