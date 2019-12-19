@@ -95,7 +95,36 @@
     </div>
   </div>
 
+  <!-- BEGIN Status -->
   <div class="field is-horizontal box">
+    <div class="field-label is-normal">
+      <%= form.label t('status'), class: 'label' %>
+    </div>
+    <div class="field-body">
+      <div class="field">
+        <div class="control">
+          <%= form.input :status_ok, label: false %>
+        </div>
+        <div class="help"><%= t :status_ok %></div>
+      </div>
+      <div class="field">
+        <div class="control">
+          <%= form.input :status_not_ok, label: false %>
+        </div>
+        <div class="help"><%= t :status_not_ok %></div>
+      </div>
+      <div class="field">
+        <div class="control">
+          <%= form.input :status_with_issues, label: false %>
+        </div>
+        <div class="help"><%= t :status_with_issues %></div>
+      </div>
+    </div>
+  </div>
+  <!-- END Status -->
+
+  <div class="field is-horizontal box">
+    <!-- BEGIN Accu -->
     <div class="field-label is-normal">
       <%= form.label t('.accu'), class: 'label' %>
     </div>
@@ -113,6 +142,7 @@
         <div class="help"><%= t :accu_montage_date %></div>
       </div>
     </div>
+    <!-- END Accu -->
   </div>
 
   <div class="columns">
@@ -226,7 +256,7 @@
     </tfoot>
     <tbody class="sensor_entries">
     <%#= form.association :sensors %>
-    <%= form.fields_for :sensors, @central_device.sensors.sort_by{|s| s.number.to_i} do |builder| %>
+    <%= form.fields_for :sensors, @central_device.sensors.sort_by{|s| s.number} do |builder| %>
       <%= render "sensor_fields", f: builder %>
     <% end %>
     </tbody>

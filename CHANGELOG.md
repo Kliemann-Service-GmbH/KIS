@@ -9,6 +9,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.8.3] - 2019-12-19
+### geändert
+- Sensor Formular überarbeitet
+  - Sortierung der Sensoren einheitlich
+  - Breite der Sensor Nummer wurde erweitert
+- Anlagen #show Ansicht überarbeitet
+  - die HTML Ansicht sieht nun wieder wie das PDF Fomular aus
+### neu hinzugefügt
+- Anlagen können nun mit Status markiert werden
+- Hintergrund und Titel der #show Ansicht
+  - farbiger Hintergrund bei Anlage mit Mängeln oder Defekt
+  - Button neben dem Titel (Name der Anlage) bei Mängeln oder Defekt
+
 ## [0.8.2] - 2019-11-28
 ### geändert
 - automatische Tests mit Travis aktiviert (nur RSpec Tests)

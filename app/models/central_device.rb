@@ -32,6 +32,7 @@ class CentralDevice < ApplicationRecord
 
   # Validations
   validates :device_type, presence: true
+  validate :status
 
   # Nested Attributes
   accepts_nested_attributes_for :alarm_outputs, allow_destroy: true, reject_if: :all_blank
@@ -56,5 +57,10 @@ class CentralDevice < ApplicationRecord
   # Virtual Attributes
   def object_device_number
     "#{service_object.object_number}-#{device_number}"
+  end
+
+  # Custom Validation function
+  def status
+    errors.add(I18n.t(:status), I18n.t('status_ok_and_status_not_ok_are_exclusive')) if status_ok && status_not_ok
   end
 end
