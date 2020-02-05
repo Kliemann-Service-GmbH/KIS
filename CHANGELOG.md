@@ -9,7 +9,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-
+## [0.8.5]
+### Sicherheitsupdate FIX
+- Update 'rack' Gem auf Version 2.1.2
+- Update 'puma' Gem auf Version 3.12.2
 ## [0.8.4] 2020-02-05
 ### neu hinzugefügt
 - Reparaturen, Liste der Anlagen mit 'Mängeln' oder 'nicht funktionstüchtig'
