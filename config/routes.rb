@@ -123,6 +123,8 @@
 #               rails_direct_uploads POST   /rails/active_storage/direct_uploads(.:format)                                           active_storage/direct_uploads#create
 
 Rails.application.routes.draw do
+  get 'repairs/index'
+  get 'repairs/show'
   get '/about', to: 'static_page#about'
   get '/über', to: 'static_page#about'
 
@@ -155,6 +157,9 @@ Rails.application.routes.draw do
 
   resources :service_contracts, only: [:index, :show]
   resources :service_contracts, only: [:index, :show], path: "wartungsverträge"
+
+  resources :repairs, only: [:index]
+  resources :repairs, only: [:index], path: "reparaturen"
 
   resources :central_devices
   resources :central_devices, path: "geräte"
