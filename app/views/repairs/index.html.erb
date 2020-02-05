@@ -10,8 +10,10 @@
     </tr>
   </thead>
   <tbody>
-    <% for central_device in @central_devices %>
-      <%= render partial: "central_devices/table_attributes", locals: { central_device: central_device } %>
+    <% unless @central_devices.blank? %>
+      <% for central_device in @central_devices %>
+        <%= render partial: "central_devices/table_attributes", locals: { central_device: central_device } %>
+      <% end %>
     <% end %>
   </tbody>
 </table>
