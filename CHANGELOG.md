@@ -9,6 +9,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.8.6]
+### Sicherheitsupdate FIX
+- Update 'loofah' Gem auf Version 2.4.0
 ## [0.8.5]
 ### Sicherheitsupdate FIX
 - Update 'rack' Gem auf Version 2.1.2
