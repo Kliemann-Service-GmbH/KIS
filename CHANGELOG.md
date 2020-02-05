@@ -9,6 +9,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+
+## [0.8.4] 2020-02-05
+### neu hinzugefügt
+- Reparaturen, Liste der Anlagen mit 'Mängeln' oder 'nicht funktionstüchtig'
 ## [0.8.3] - 2019-12-19
 ### geändert
 - Sensor Formular überarbeitet

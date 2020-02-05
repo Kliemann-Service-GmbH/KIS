@@ -168,6 +168,15 @@ en:
   output_device_type: Output device type
   output_devices: Output devices
   page: Page
+  repairs:
+    index:
+      central_device:
+        device_type: Device type
+        service_object:
+          address: Address
+          customer: Customer
+        status: Status
+  repairs_title: Repairs title
   sensor: Sensor
   sensor_number:
     formats:

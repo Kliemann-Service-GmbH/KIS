@@ -168,6 +168,15 @@ de:
   output_device_type: Anzeige Gerät (Leuchtscheiben, Hupen, usw.)
   output_devices: Leuchtscheibe
   page: Seite
+  repairs:
+    index:
+      central_device:
+        device_type: Anlagentyp
+        service_object:
+          address: Adresse
+          customer: Kunde
+        status: Status
+  repairs_title: Reparaturen
   sensor: Sensor
   sensor_number:
     formats:

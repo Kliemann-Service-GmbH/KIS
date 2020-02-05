@@ -1,0 +1,19 @@
+<h1 class=title><%= t(:repairs_title) %></h1>
+
+<table  class="table is-fullwidth is-bordered is-striped is-hoverable">
+  <thead>
+    <tr>
+      <th><%= t '.central_device.device_type' %></th>
+      <th><%= t '.central_device.status' %></th>
+      <th><%= t '.central_device.service_object.address' %></th>
+      <th><%= t '.central_device.service_object.customer' %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% unless @central_devices.blank? %>
+      <% for central_device in @central_devices %>
+        <%= render partial: "central_devices/table_attributes", locals: { central_device: central_device } %>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
