@@ -102,6 +102,7 @@ de:
   details: Details
   device_number: Anlagennummer
   device_type: Anlagentyp
+  disabled: inaktiv
   draft: Entwurf
   email_address: Email Adresse
   end: Ende
@@ -169,6 +170,13 @@ de:
   output_devices: Leuchtscheibe
   page: Seite
   repairs:
+    all:
+      central_device:
+        device_type: Device type
+        service_object:
+          address: Address
+          customer: Customer
+        status: Status
     index:
       central_device:
         device_type: Anlagentyp
@@ -176,7 +184,9 @@ de:
           address: Adresse
           customer: Kunde
         status: Status
-  repairs_title: Reparaturen
+  repairs_all: Alle Reparaturen
+  repairs_all_title: Alle Reparturen (auch inaktive Anlagen)
+  repairs_title: Reparaturen (ohne inaktive Anlagen)
   sensor: Sensor
   sensor_number:
     formats:
@@ -234,6 +244,7 @@ de:
   signature_employee: Unterschrift AN
   signature_location: Ort
   status: Zustand
+  status_disabled: inaktiv
   status_not_ok: nicht funktionstüchtig
   status_ok: funktionstüchtig
   status_ok_and_status_not_ok_are_exclusive: "'funktionstüchtig' und 'nicht funktionstüchtig' können nicht gleichzeitig gesetzt werden!"

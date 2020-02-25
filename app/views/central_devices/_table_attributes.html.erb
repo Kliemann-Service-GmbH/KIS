@@ -1,6 +1,6 @@
 <tr style="background-color: <%= status_bg_color(central_device) %>">
   <td><%=link_to central_device.device_type, central_device_path(central_device) %></td>
   <td><%= button_status central_device %></td>
-  <td><%= link_to central_device.service_object.address.match_code, address_path(central_device.service_object.address) %></td>
-  <td><%= link_to central_device.service_object.customer.address.match_code, customer_path(central_device.service_object.customer) %></td>
+  <td><%= link_to central_device.service_object.address.address_line, address_path(central_device.service_object.address) %></td>
+  <td><%= link_to central_device.service_object.customer.address.address_line, customer_path(central_device.service_object.customer) %></td>
 </tr>
