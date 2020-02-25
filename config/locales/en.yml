@@ -102,6 +102,7 @@ en:
   details: Details
   device_number: Device number
   device_type: Device type
+  disabled: Disabled
   draft: Draft
   email_address: Email address
   end: End
@@ -169,6 +170,13 @@ en:
   output_devices: Output devices
   page: Page
   repairs:
+    all:
+      central_device:
+        device_type: Device type
+        service_object:
+          address: Address
+          customer: Customer
+        status: Status
     index:
       central_device:
         device_type: Device type
@@ -176,6 +184,8 @@ en:
           address: Address
           customer: Customer
         status: Status
+  repairs_all: Repairs all
+  repairs_all_title: Repairs all title
   repairs_title: Repairs title
   sensor: Sensor
   sensor_number:
@@ -234,6 +244,7 @@ en:
   signature_employee: Signature employee
   signature_location: Signature location
   status: Status
+  status_disabled: Status disabled
   status_not_ok: Status not ok
   status_ok: Status ok
   status_ok_and_status_not_ok_are_exclusive: Status ok and status not ok are exclusive

@@ -123,18 +123,17 @@
 #               rails_direct_uploads POST   /rails/active_storage/direct_uploads(.:format)                                           active_storage/direct_uploads#create
 
 Rails.application.routes.draw do
-  get 'repairs/index'
-  get 'repairs/show'
   get '/about', to: 'static_page#about'
   get '/über', to: 'static_page#about'
-
   get '/changelog', to: 'static_page#changelog'
   get '/änderungen', to: 'static_page#changelog'
-
   get '/license', to: 'static_page#license'
   get '/lizenz', to: 'static_page#license'
 
   get 'system_task/db_import_legacy'
+
+  get 'repairs/all', to: 'repairs#all'
+
   resources :addresses, only: [:index, :show]
   resources :addresses, only: [:index, :show], path: "adressen"
 
@@ -155,11 +154,11 @@ Rails.application.routes.draw do
   end
   resources :service_objects, path: "objekte"
 
+  resources :repairs, only: [:index, :all]
+  resources :repairs, only: [:index, :all], path: "reparaturen"
+
   resources :service_contracts, only: [:index, :show]
   resources :service_contracts, only: [:index, :show], path: "wartungsverträge"
-
-  resources :repairs, only: [:index]
-  resources :repairs, only: [:index], path: "reparaturen"
 
   resources :central_devices
   resources :central_devices, path: "geräte"
