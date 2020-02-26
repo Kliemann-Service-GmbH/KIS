@@ -172,14 +172,16 @@ de:
   repairs:
     all:
       central_device:
-        device_type: Device type
+        device_type: Anlagentyp
+        offer_made: Angebot erstellt
         service_object:
-          address: Address
-          customer: Customer
+          address: Adresse
+          customer: Kunde
         status: Status
     index:
       central_device:
         device_type: Anlagentyp
+        offer_made: Angebot erstellt
         service_object:
           address: Adresse
           customer: Kunde

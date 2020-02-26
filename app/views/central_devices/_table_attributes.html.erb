@@ -1,6 +1,17 @@
-<tr style="background-color: <%= status_bg_color(central_device) %>">
+<tr id="dut" style="background-color: <%= status_bg_color(central_device) %>">
   <td><%=link_to central_device.device_type, central_device_path(central_device) %></td>
   <td><%= button_status central_device %></td>
   <td><%= link_to central_device.service_object.address.address_line, address_path(central_device.service_object.address) %></td>
   <td><%= link_to central_device.service_object.customer.address.address_line, customer_path(central_device.service_object.customer) %></td>
+  <td class="central_device_offer_made">
+    <%= form_with model: central_device do |f| %>
+      <%= f.check_box :offer_made %>
+      <%= f.submit "save" %>
+    <% end %>
+  </td>
 </tr>
+
+<!--
+Parameters: {"utf8"=>"✓", "authenticity_token"=>"QFiUl21Y0WcQxcYKiQ59k7JEwtsDYBHXhZkaubSg5Zdn/nvvH8WjbspOop4D8BZreUo3fH4vcyqQn7TFG1JRlw==", "central_device"=>{"offer_made"=>"1"}, "commit"=>"Ok", "id"=>"4"}
+
+-->

@@ -173,6 +173,7 @@ en:
     all:
       central_device:
         device_type: Device type
+        offer_made: Offer made
         service_object:
           address: Address
           customer: Customer
@@ -180,6 +181,7 @@ en:
     index:
       central_device:
         device_type: Device type
+        offer_made: Offer made
         service_object:
           address: Address
           customer: Customer
