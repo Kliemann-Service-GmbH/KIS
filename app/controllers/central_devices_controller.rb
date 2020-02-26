@@ -61,6 +61,7 @@ class CentralDevicesController < ApplicationController
     respond_to do |format|
       if @central_device.update(central_device_params)
         format.html { redirect_to @central_device, notice: 'Central device was successfully updated.' }
+        format.js
         format.json { render :show, status: :ok, location: @central_device }
       else
         format.html { render :edit }
@@ -100,6 +101,8 @@ class CentralDevicesController < ApplicationController
         :status_ok,
         :status_not_ok,
         :status_with_issues,
+        :status_disabled,
+        :offer_made,
         accu_attributes: Accu.attribute_names.map(&:to_sym).push(:_destroy),
         alarm_outputs_attributes: AlarmOutput.attribute_names.map(&:to_sym).push(:_destroy),
         history_entries_attributes: HistoryEntry.attribute_names.map(&:to_sym).push(:_destroy),
