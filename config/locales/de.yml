@@ -186,7 +186,6 @@ de:
           address: Adresse
           customer: Kunde
         status: Status
-  repairs_all: Alle Reparaturen
   repairs_all_title: Alle Reparturen (auch inaktive Anlagen)
   repairs_title: Reparaturen (ohne inaktive Anlagen)
   sensor: Sensor

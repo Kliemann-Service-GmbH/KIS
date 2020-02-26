@@ -186,7 +186,6 @@ en:
           address: Address
           customer: Customer
         status: Status
-  repairs_all: Repairs all
   repairs_all_title: Repairs all title
   repairs_title: Repairs title
   sensor: Sensor
