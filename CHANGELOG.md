@@ -10,6 +10,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ## [0.8.7] 2020-02-26
+### Sicherheitsupdate FIX
+- Update 'nokogiri' Gem auf Version 1.10.8
 ### neu hinzugefügt
 - Anlagen deaktivierbar
 - Angebot erstellt Haken
