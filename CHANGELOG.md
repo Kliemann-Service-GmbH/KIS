@@ -9,10 +9,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.8.7] 2020-02-26
+### Sicherheitsupdate FIX
+- Update 'nokogiri' Gem auf Version 1.10.8
+### neu hinzugefügt
+- Anlagen deaktivierbar
+- Angebot erstellt Haken
 ## [0.8.6]
 ### Sicherheitsupdate FIX
 - Update 'loofah' Gem auf Version 2.4.0
-## [0.8.5]
+## [0.8.5] 2020-02-05
 ### Sicherheitsupdate FIX
 - Update 'rack' Gem auf Version 2.1.2
 - Update 'puma' Gem auf Version 3.12.2
