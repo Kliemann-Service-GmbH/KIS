@@ -9,6 +9,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.8.8] 2020-04-17
+### Sicherheitsupdate FIX
+- Update 'ffi' Gem auf Version 1.12.2 (was 1.11.1)
+- Update 'puma' Gem auf Version 3.12.4 (was 3.12.2)
 ## [0.8.7] 2020-02-26
 ### Sicherheitsupdate FIX
 - Update 'nokogiri' Gem auf Version 1.10.8
