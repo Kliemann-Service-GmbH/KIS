@@ -17,7 +17,7 @@ Dokumentation für den Release Prozess des KIS Systems.
 - [] Changelog aktuell? Wurde die Datei 'CHANGELOG.md' mit allen wichtigen Änderungen am System gefüllt?
 - [] Update der nächsten Version Nummer im 'CHANGELOG.md' https://keepachangelog.com/en/1.0.0/
   - [] aktuelles Tagesdatum neben der Version im 'CHANGELOG.md' stehen
-  - [] `git commit -a -m "Update Version in Changelog"`
+  - [] `git commit -a -m "Update Changelog"`
 - [] `git push` Branch ins remote Repo pushen
 - [] `git checkout release` wechsele in den Release Branch
 - [] `git merge --no-ff development` merge den lokalen 'development' Branch
